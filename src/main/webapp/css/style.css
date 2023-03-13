@@ -51,23 +51,43 @@
 }
 
 .contentsbar {
+  background-color: #F8F9FA;
+  border-bottom: 1px solid #DEE2E6;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
-  background-color: #f8f9fa;
-  padding: 10px;
-  margin-top: 20px;
+  font-weight: bold;
+  font-size: 16px;
 }
 
 .contentsbar div {
-  font-size: 16px;
-  font-weight: bold;
-  color: #212529;
-  cursor: pointer;
+  padding: 10px;
   text-align: center;
-  transition: all 0.3s ease-in-out;
+  color: #343A40;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 }
 
 .contentsbar div:hover {
-  color: #007bff;
+	  background-color: #E9ECEF;
+ 	  color: #007bff;
+}
+.contentsbar > div.active {
+  background-color: #007BFF;
+  color: #FFFFFF;
+}
+
+@media screen and (max-width: 768px) {
+  .contentsbar {
+    flex-wrap: wrap;
+  }
+  .contentsbar > div {
+    width: 100%;
+    border-top: 1px solid #DEE2E6;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    padding: 15px 10px;
+    font-size: 14px;
+  }
 }
