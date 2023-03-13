@@ -8,6 +8,6 @@
 </head>
 <body>
 <h1> 하이</h1>
-집에 가고 싶다
+
 </body>
 </html>
