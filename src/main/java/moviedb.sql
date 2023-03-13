@@ -58,3 +58,9 @@ create table reservation(
     foreign key (memberId) references member(id),
     foreign key (screeningNo) references screening(screeningNo)
 );
+
+create table seats(
+	theaterNo int not null,
+    seatNum varchar(10) not null,
+    checkSeat boolean default true
+);
