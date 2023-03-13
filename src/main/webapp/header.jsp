@@ -18,9 +18,9 @@
 <img alt="logo" src="${ctx}/img/logo.png">
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownBtn">
-    
+    asdadsadsadsadsa3123123123123131313123
   </button>
-  <div class="dropdown-menu">
+  <div class="dropdown-menu dropdown-menu-end">
     <a class="dropdown-item" href="#">dropdown item 1</a>
     <a class="dropdown-item" href="#">dropdown item 2</a>
     <a class="dropdown-item" href="#">dropdown item 3</a>
