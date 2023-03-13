@@ -12,12 +12,20 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
-
+<div>
+	<c:if test="${log == null}">
+		<div>로그인</div>
+		<div>회원가입</div>
+	</c:if>
+	<c:if test="${log != null}">
+		<div>로그아웃</div>
+	</c:if>
+</div>
 <div class="nav justify-content-start contentsbar">
 	<div class="col-2 py-3" onclick="#"> 예매 </div>
 	<div class="col-2 py-3" onclick="#"> 현재상영작 </div>
 	<c:if test="${log == 'admin'}">
-	<div class="col-2 py-3" onclick="#"> 관리자페이지 </div>		
+	<div class="col-2 py-3" onclick="#"> 관리자페이지 </div>
 	<div class="col-2 py-3" onclick="#"> 회원관리 </div>
 	<div class="col-2 py-3" onclick="#"> 영화추가 </div>
 	<div class="col-2 py-3" onclick="#"> 영화관리 </div>

@@ -5,3 +5,9 @@ h1 {
 div.nav div{
 	text-align: center;
 }
+.contentsbar{
+	border: 1px solid black;
+}
+.contentsbar div{
+	border-right: 1px solid black;
+}
