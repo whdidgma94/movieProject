@@ -38,7 +38,7 @@ create table theater(
 	theaterNo int primary key auto_increment,	# 영화관 식별번호
     theaterName varchar(20) not null,			# 영화관 이름
     theaterLocation varchar(100) not null,	 	# 영화관 위치정보
-    seats int not null							# 예매 가능한 좌석 수
+    seats varchar(10) not null					# 예매 가능한 좌석 수
 );
 
 CREATE TABLE screening (
