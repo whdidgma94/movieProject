@@ -8,11 +8,14 @@ create table movie(
 	director varchar(20) not null,			# 감독 이름
     actor varchar(100) not null,			# 출연진 이름
     duration int not null,					# 상영 시간
-	grade int not null,						# 평점
-	audience int not null,					# 누적 관객수
+	grade double,							# 평점
+	audience int,							# 누적 관객수
     movieInfo varchar(10000) not null 		# 영화 정보
 );
-
+insert into movie(movieName, genre, ageLimit, releaseDay, director, actor, duration, movieInfo) values("스즈메의 문단속", "애니메이션", "12", "2023-03-08", "신카이 마코토", "하라 나노카, 마츠무라 호쿠토", "121", 
+" '이 근처에 폐허 없니? 문을 찾고 있어
+규슈의 한적한 마을에 살고 있는 소녀 ‘스즈메’는
+문을 찾아 여행 중인 청년 ‘소타’를 만난다.")
 create table member(
 	memberNo int primary key auto_increment,	# 회원 식별번호
     memberName varchar(20) not null, 			# 회원 이름
@@ -45,7 +48,7 @@ CREATE TABLE screening (
 screeningNo INT NOT NULL primary key AUTO_INCREMENT,	# 상영 정보 식별번호
 movieNo INT NOT NULL,									# 영화 식별번호
 theaterNo INT NOT NULL,									# 영화관 식별번호
-startTime timestamp not NULL,							# 상영 시작 시간
+startTime varchar(20) not NULL,							# 상영 시작 시간
 FOREIGN KEY (movieNo) REFERENCES movie(movieNo) on update cascade on delete cascade,
 FOREIGN KEY (theaterNo) REFERENCES theater(theaterNo) on update cascade on delete cascade
 );
@@ -62,5 +65,11 @@ create table reservation(
 create table seats(
 	theaterNo int not null,
     seatNum varchar(10) not null,
-    checkSeat boolean default true
+    checkSeat boolean default true,
+    foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
 );
+
+insert into theater(theaterName, theaterLocation, seats) values("강남점", "강남", 25);
+insert into theater(theaterName, theaterLocation, seats) values("서초점", "서초", 25);
+insert into theater(theaterName, theaterLocation, seats) values("송파점", "송파", 25);
+insert into member(memberName, id, pw, birthDay, address, favoriteGenre, gender) values("관리자", "admin", "admin", "0000-00-00", "admin", "admin", "admin");
