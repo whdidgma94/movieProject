@@ -1,13 +1,11 @@
 @charset "UTF-8";
-h1 {
-	color:green;
+*{
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
 }
-div.nav div{
-	text-align: center;
-}
-.contentsbar{
-	border: 1px solid black;
-}
-.contentsbar div{
-	border-right: 1px solid black;
+.top{
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }

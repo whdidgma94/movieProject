@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ include file="header.jsp" %>
 <body>
-<h1> index </h1>
+<h1>index</h1>
+
+
 </body>
-<%@ include file="footer.jsp" %>
+</html>

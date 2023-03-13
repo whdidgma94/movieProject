@@ -7,28 +7,31 @@
 <head>
 <meta charset="UTF-8">
 <title>이름</title>
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <link href="${ctx}/css/style.css" rel="stylesheet" type="text/css">
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
 </head>
-<div>
-	<c:if test="${log == null}">
-		<div>로그인</div>
-		<div>회원가입</div>
-	</c:if>
-	<c:if test="${log != null}">
-		<div>로그아웃</div>
-	</c:if>
+<body>
+<div class="top">
+<img alt="logo" src="${ctx}/img/logo.png">
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownBtn">
+    
+  </button>
+  <div class="dropdown-menu">
+    <a class="dropdown-item" href="#">dropdown item 1</a>
+    <a class="dropdown-item" href="#">dropdown item 2</a>
+    <a class="dropdown-item" href="#">dropdown item 3</a>
+  </div>
 </div>
-<div class="nav justify-content-start contentsbar">
-	<div class="col-2 py-3" onclick="#"> 예매 </div>
-	<div class="col-2 py-3" onclick="#"> 현재상영작 </div>
-	<c:if test="${log == 'admin'}">
-	<div class="col-2 py-3" onclick="#"> 관리자페이지 </div>
-	<div class="col-2 py-3" onclick="#"> 회원관리 </div>
-	<div class="col-2 py-3" onclick="#"> 영화추가 </div>
-	<div class="col-2 py-3" onclick="#"> 영화관리 </div>
-	</c:if>
-	<c:if test="${log != 'admin' && log != null}"><div class="col-2 py-3" onclick="#"> 마이페이지 </div></c:if>
+</div>
+<div class="nav justify-content-around contentsbar">
+	<div class="col-2 py-3" onclick="location.href=#"> 예약하기 </div>
+	<div class="col-2 py-3" onclick="location.href=#"> 예약확인 </div>	
+	<div class="col-2 py-3" onclick="location.href=#"> 게시판 </div>
+	<c:if test="${log == 'admin'}"><div class="col-2 py-3" onclick="location.href=#"> 회원관리 </div>
+								   <div class="col-2 py-3" onclick="location.href=#"> 차량추가 </div></c:if>
+	<c:if test="${log != 'admin' && log != null}"><div class="col-2 py-3" onclick="location.href=#"> 마이페이지 </div></c:if>
 </div>
