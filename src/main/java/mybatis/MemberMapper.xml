@@ -19,19 +19,19 @@
   		SELECT * FROM member
 	</select>
   
-    <select id="memberLogin" parameterType="memberVO" resultType="String">
+    <select id="memberLogin" parameterType="member" resultType="String">
         select id from member where id=#{id} and pw=#{pw}       
     </select>
     
        <select id="validId" resultType="String" parameterType="String">
-        select id from user where id=#{id}        
+        select id from member where id=#{id}        
     </select>
     
-    	<select id="getOneMember" parameterType="String" resultMap="memberVO">
+    	<select id="getOneMember" parameterType="String" resultMap="member">
     	 SELECT * FROM member where id=#{id} 
     	</select>
     
-        <insert id="memberInsert" parameterType="memberVO">
+        <insert id="memberInsert" parameterType="member">
         INSERT INTO member (memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
        VALUES(
         #{memberName},
@@ -45,7 +45,7 @@
         )       
     </insert>
     
-     <update id="memberUpdate" parameterType="memberVO">
+     <update id="memberUpdate" parameterType="member">
          update member
          set pw=#{pw}, email=#{email}, address=#{address}, favoriteGenre=#{favoriteGenre}  
          where id=#{id} 	 
