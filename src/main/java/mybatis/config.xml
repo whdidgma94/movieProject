@@ -5,10 +5,12 @@
 <configuration>
   <properties resource="mybatis/db.properties"/> 
   <typeAliases>
-      <typeAlias type="vo.User" alias="user"/>
-      <typeAlias type="vo.Rentcar"  alias="rentcar" />   
-      <typeAlias type="vo.Board"  alias="board" />   
-      <typeAlias type="vo.Reservation"  alias="reservation" />   
+      <typeAlias type="Member.MemberVO" alias="user"/>
+      <typeAlias type="Board.BoardVO"  alias="board" />   
+      <typeAlias type="Movie.MovieVO"  alias="movie" />   
+      <typeAlias type="Reservation.ReservationVO"  alias="reservation" />   
+      <typeAlias type="Screening.ScreeningVO"  alias="screening" />   
+      <typeAlias type="Theater.TheaterVO"  alias="theater" />   
        
   </typeAliases> 
   
@@ -25,9 +27,11 @@
   </environments>
   
   <mappers>
-    <mapper resource="com/basic/rentcar/mybatis/UserMapper.xml"/>
-    <mapper resource="com/basic/rentcar/mybatis/RentcarMapper.xml"/>
-    <mapper resource="com/basic/rentcar/mybatis/ReservaionMapper.xml"/>
-    <mapper resource="com/basic/rentcar/mybatis/BoardMapper.xml"/>
+    <mapper resource="mybatis/MemberMapper.xml"/>
+    <mapper resource="mybatis/BoardMapper.xml"/>
+    <mapper resource="mybatis/MovieMapper.xml"/>
+    <mapper resource="mybatis/ReservationMapper.xml"/>
+    <mapper resource="mybatis/ScreeningMapper.xml"/>
+    <mapper resource="mybatis/TheaterMapper.xml"/>
   </mappers>
 </configuration>

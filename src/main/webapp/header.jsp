@@ -25,7 +25,7 @@
   <div class="dropdown-menu dropdown-menu-right">
   	<c:if test="${log == null}">
    		<a class="dropdown-item" href="#">로그인</a>
-    	<a class="dropdown-item" href="#">회원가입</a>
+    	<a class="dropdown-item" href="">회원가입</a>
   	</c:if>
 	<c:if test="${log != null}">
 		<a class="dropdown-item" href="#">로그아웃</a>

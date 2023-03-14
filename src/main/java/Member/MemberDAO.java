@@ -11,7 +11,7 @@ public class MemberDAO {
 	static public MemberDAO getInstance() {
 		return instance;
 	}
-	public String userLogin(MemberVO memberVO) {
+	public String memberLogin(MemberVO memberVO) {
 		
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
 		   String userId=session.selectOne("mapper.member.memberLogin", memberVO);
@@ -35,7 +35,7 @@ public class MemberDAO {
 	   
 	   public MemberVO getOneUser(String id) {
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
-		   MemberVO memberVO = session.selectOne("mapper.member.getOneUser",id);
+		   MemberVO memberVO = session.selectOne("mapper.member.getOneMember",id);
 		   session.close();
 		   return memberVO;
 	   }
@@ -50,7 +50,7 @@ public class MemberDAO {
 	   
 	   public int removeUser(String id) {
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
-		   int cnt=session.insert("mapper.user.userDelete", id);
+		   int cnt=session.insert("mapper.user.memberDelete", id);
 		   session.close();
 		   return cnt;
 	   }

@@ -1,4 +1,4 @@
-package Controller;
+package FrontController;
 
 public class ViewResolver {
 	public static String makeView(String nextPage) {

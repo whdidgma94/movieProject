@@ -2,52 +2,57 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.user">
-  
-  <resultMap id="user" type="com.basic.rentcar.vo.User">
+<mapper namespace="mapper.member"> 
+  <resultMap id="member" type="Member.MemberVO">
   <id property="num" column="num"/>
-  <result property="name" column="name"/>
-  <result property="userid" column="userid"/>
-  <result property="pwd" column="pwd"/>
+  <result property="memberName" column="memberName"/>
+  <result property="id" column="id"/>
+  <result property="pw" column="pw"/>
+  <result property="birthDay" column="birthDay"/>
+  <result property="address" column="address"/>
   <result property="email" column="email"/>
-  <result property="phone" column="phone"/>
+  <result property="favoriteGenre" column="favoriteGenre"/>
+  <result property="gender" column="gender"/>
 </resultMap>
   
-  <select id="selectAllUsers" resultMap="user">
-  SELECT * FROM user
-</select>
+  	<select id="selectAllMembers" resultMap="member">
+  		SELECT * FROM member
+	</select>
   
-    <select id="userLogin" parameterType="user" resultType="String">
-        select userid from user where userid=#{userid} and pwd=#{pwd}       
+    <select id="memberLogin" parameterType="memberVO" resultType="String">
+        select id from member where id=#{id} and pw=#{pw}       
     </select>
     
        <select id="validId" resultType="String" parameterType="String">
-        select userid from user where userid=#{userid}        
+        select id from user where id=#{id}        
     </select>
     
-    	<select id="getOneUser" parameterType="String" resultMap="user">
-    	 SELECT * FROM user where userid=#{userid} 
+    	<select id="getOneMember" parameterType="String" resultMap="memberVO">
+    	 SELECT * FROM member where id=#{id} 
     	</select>
     
-        <insert id="userInsert" parameterType="user">
-        INSERT INTO user (name, userid, pwd, email, phone)
+        <insert id="memberInsert" parameterType="memberVO">
+        INSERT INTO member (memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
        VALUES(
-        #{name},
-        #{userid},
-        #{pwd},
+        #{memberName},
+        #{id},
+        #{pw},
+        #{birthDay},
+        #{address},
         #{email},
-        #{phone}
+        #{favoriteGenre},
+        #{gender}
         )       
     </insert>
     
-     <update id="userUpdate" parameterType="user">
-         update user
-         set email=#{email}, phone=#{phone} 
-         where userid=#{userid} 	 
+     <update id="memberUpdate" parameterType="memberVO">
+         update member
+         set pw=#{pw}, email=#{email}, address=#{address}, favoriteGenre=#{favoriteGenre}  
+         where id=#{id} 	 
     </update>
     
-      <delete id="userDelete" parameterType="String">  
-        delete from user where userid=#{userid} 
+      <delete id="memberDelete" parameterType="String">  
+        delete from member where id=#{id} 
     </delete>
     
 </mapper>
