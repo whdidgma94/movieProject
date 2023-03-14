@@ -26,7 +26,7 @@ public class MemberDAO {
 		   return userId;
 	   }
 	      
-	   public int addUser(MemberVO memberVO) {
+	   public int addMemberVO(MemberVO memberVO) {
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
 		   int cnt=session.insert("mapper.member.memberInsert", memberVO);
 		   session.close();
