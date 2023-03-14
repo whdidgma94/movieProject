@@ -45,10 +45,10 @@ create table theater(
 
 CREATE TABLE screening (
 screeningNo INT NOT NULL primary key AUTO_INCREMENT,	# 상영 정보 식별번호
-movieNo INT NOT NULL,									# 영화 식별번호
+movieCd INT NOT NULL,									# 영화 식별번호
 theaterNo INT NOT NULL,									# 영화관 식별번호
 startTime varchar(20) not NULL,							# 상영 시작 시간
-FOREIGN KEY (movieNo) REFERENCES movie(movieNo) on update cascade on delete cascade,
+FOREIGN KEY (movieCd) REFERENCES movie(movieCd) on update cascade on delete cascade,
 FOREIGN KEY (theaterNo) REFERENCES theater(theaterNo) on update cascade on delete cascade
 );
 
