@@ -16,14 +16,14 @@ public class SeatsDAO {
 
 	public List<SeatsVO> getValidSeats() {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		List<SeatsVO> list = session.selectList("mapper.theater.getOneTheater");
+		List<SeatsVO> list = session.selectList("mapper.seats.getValidSeats");
 		session.close();
 		return list;
 	}
 
 	public SeatsVO getOneSeats(String seatNum) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		SeatsVO seatsVO = session.selectOne("mapper.theater.getOneTheater", seatNum);
+		SeatsVO seatsVO = session.selectOne("mapper.seats.getOneSeats", seatNum);
 		session.close();
 		return seatsVO;
 	}

@@ -11,7 +11,7 @@
 		<result property="seatCnt" column="seatCnt" />
 	</resultMap>
 
-	<select id="getTheaterList" resultMap="theater">
+	<select id="getAllTheater" resultMap="theater">
 		select * from theater
 	</select>
 
