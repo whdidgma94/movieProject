@@ -4,12 +4,12 @@ public class ReservationVO {
 	private int reserveNo;
 	private String memberId;
 	private int screeningNo;
-	private String[] seatNumber;
+	private String seatNumber;
 
 	public ReservationVO() {
 	}
 
-	public ReservationVO(int reserveNo, String memberId, int screeningNo, String[] seatNumber) {
+	public ReservationVO(int reserveNo, String memberId, int screeningNo, String seatNumber) {
 		super();
 		this.reserveNo = reserveNo;
 		this.memberId = memberId;
@@ -17,7 +17,7 @@ public class ReservationVO {
 		this.seatNumber = seatNumber;
 	}
 
-	public ReservationVO(String memberId, int screeningNo, String[] seatNumber) {
+	public ReservationVO(String memberId, int screeningNo, String seatNumber) {
 		super();
 		this.memberId = memberId;
 		this.screeningNo = screeningNo;
@@ -48,11 +48,11 @@ public class ReservationVO {
 		this.screeningNo = screeningNo;
 	}
 
-	public String[] getSeatNumber() {
+	public String getSeatNumber() {
 		return seatNumber;
 	}
 
-	public void setSeatNumber(String[] seatNumber) {
+	public void setSeatNumber(String seatNumber) {
 		this.seatNumber = seatNumber;
 	}
 
