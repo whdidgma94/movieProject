@@ -12,10 +12,7 @@ create table movie(
 	audience int,							# 누적 관객수
     movieInfo varchar(10000) not null 		# 영화 정보
 );
-insert into movie(movieName, genre, ageLimit, releaseDay, director, actor, duration, movieInfo) values("스즈메의 문단속", "애니메이션", "12", "2023-03-08", "신카이 마코토", "하라 나노카, 마츠무라 호쿠토", "121", 
-" '이 근처에 폐허 없니? 문을 찾고 있어
-규슈의 한적한 마을에 살고 있는 소녀 ‘스즈메’는
-문을 찾아 여행 중인 청년 ‘소타’를 만난다.")
+
 create table member(
 	memberNo int primary key auto_increment,	# 회원 식별번호
     memberName varchar(20) not null, 			# 회원 이름
@@ -23,6 +20,7 @@ create table member(
     pw varchar(20) not null,					# 비밀번호
     birthDay varchar(20) not null,				# 생년월일
     address varchar(50) not null,				# 주소
+    email varchar(30) not null, 				# 이메일
     favoriteGenre varchar(20),					# 선호 장르
     gender varchar(20) not null	 				# 성별
 );
