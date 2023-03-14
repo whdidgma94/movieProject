@@ -29,7 +29,7 @@
 		VALUES(
 		#{memberId},
 		#{screeningNo},
-		#{seatNumber},
+		#{seatNumber}
 		)
 	</insert>
 

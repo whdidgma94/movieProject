@@ -36,7 +36,7 @@ public class ReservationDAO {
 	}
 	public void insertReservation(ReservationVO resVO) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		session.update("mapper.reservation.insertReservation", resVO);
+		session.insert("mapper.reservation.insertReservation", resVO);
 		session.close();
 	}
 	

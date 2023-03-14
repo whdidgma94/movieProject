@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.Board">
+<mapper namespace="mapper.board">
 
 	<resultMap id="board" type="Board.BoardVO">
 		<id property="boardNo" column="boardNo" />
@@ -11,7 +11,47 @@
 		<result property="grade" column="grade" />
 		<result property="contents" column="contents" />
 	</resultMap>
+	<select id="getAllBoard" resultMap="board">
+		select * from board
+	</select>
 
-	
+	<select id="getOneBoard" parameterType="Integer"
+		resultType="board">
+		select * from board where boardNo = #{boardNo}
+	</select>
+
+	<select id="getMemberBoard" parameterType="String"
+		resultType="board">
+		select * from board where writerId = #{writerId}
+	</select>
+
+	<select id="getMovieBoard" parameterType="Integer"
+		resultType="board">
+		select * from board where movieCd = #{movieCd}
+	</select>
+	<select id="getAvgGrade" parameterType="Integer"
+		resultType="double">
+		select AVG(grade) from board where movieCd=#{movidCd}
+	</select>
+
+	<update id="updateBoard" parameterType="board">
+		update board
+		set
+		grade=#{grade}, contents=#{contents} where boardNo=#{boardNo}
+	</update>
+	<insert id="insertBoard" parameterType="board">
+		INSERT INTO board
+		(writerId, movieCd, grade, contents)
+		VALUES(
+		#{writerId},
+		#{movieCd},
+		#{grade},
+		#{contents}
+		)
+	</insert>
+	<delete id="deleteBoard" parameterType="Integer">
+		delete from board where
+		boardNo=#{boardNo}
+	</delete>
 
 </mapper>
