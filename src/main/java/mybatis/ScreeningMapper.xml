@@ -3,12 +3,11 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.user">
-  
   <resultMap id="screening" type="Screening.ScreeningVO">
   <id property="screeningNo" column="screeningNo"/>
   <result property="movieCd" column="movieCd"/>
   <result property="theaterNo" column="theaterNo"/>
-
+  <result property="startTime" column="startTime"/>
 </resultMap>
   
  

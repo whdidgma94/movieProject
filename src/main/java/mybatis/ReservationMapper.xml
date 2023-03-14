@@ -20,32 +20,21 @@
 	</select>
 
 	<select id="getOneReservation" resultType="reservation" parameterType="Integer">
-		select userid from user where userid=#{userid}
+		select * from user where reserveNo=#{reserveNo}
 	</select>
 
-	<select id="getOneUser" parameterType="String" resultMap="user">
-		SELECT * FROM user where userid=#{userid}
-	</select>
 
-	<insert id="userInsert" parameterType="user">
-		INSERT INTO user (name, userid, pwd, email, phone)
+	<insert id="insertReservation" parameterType="reservation">
+		INSERT INTO reservation (memberId, screeningNo, seatNumber)
 		VALUES(
-		#{name},
-		#{userid},
-		#{pwd},
-		#{email},
-		#{phone}
+		#{memberId},
+		#{screeningNo},
+		#{seatNumber},
 		)
 	</insert>
 
-	<update id="userUpdate" parameterType="user">
-		update user
-		set email=#{email}, phone=#{phone}
-		where userid=#{userid}
-	</update>
-
-	<delete id="userDelete" parameterType="String">
-		delete from user where userid=#{userid}
+	<delete id="deleteReservation" parameterType="Integer">
+		delete from reservation where reservationNo=#{reservationNo}
 	</delete>
 
 </mapper>

@@ -15,13 +15,13 @@ public class TheaterDAO {
 	static public TheaterDAO getInstance() {
 		return instance;
 	}
-	public List<TheaterVO> getTheaterList(){
+	public List<TheaterVO> getAllTheater(){
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		List<TheaterVO> list = session.selectList("mapper.theater.getTheaterList");
+		List<TheaterVO> list = session.selectList("mapper.theater.getAllTheater");
 		session.close();
 		return list;
 	}
-	public List<TheaterVO> getOneUser(int theaterNo) {
+	public List<TheaterVO> getOneTheater(int theaterNo) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		List<TheaterVO> list = session.selectList("mapper.theater.getOneTheater", theaterNo);
 		session.close();
@@ -36,7 +36,7 @@ public class TheaterDAO {
 	}
 	public void updateTheater(int theaterNo) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		session.update("mapper.theater.checkSeatCnt", theaterNo);
+		session.update("mapper.theater.updateTheater", theaterNo);
 		session.close();
 	}
 

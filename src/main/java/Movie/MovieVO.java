@@ -7,7 +7,7 @@ public class MovieVO {
 	private String watchGradeNm;
 	private String openDt;
 	private String director;
-	private String[] actor;
+	private String actor;
 	private int showTm;
 	private double grade;
 	private int audiCnt;
@@ -17,7 +17,7 @@ public class MovieVO {
 	}
 
 	public MovieVO(int movieCd, String movieNm, String genreNm, String watchGradeNm, String openDt, String director,
-			String[] actor, int showTm, double grade, int audiCnt, String movieInfo) {
+			String actor, int showTm, double grade, int audiCnt, String movieInfo) {
 		super();
 		this.movieCd = movieCd;
 		this.movieNm = movieNm;
@@ -80,11 +80,11 @@ public class MovieVO {
 		this.director = director;
 	}
 
-	public String[] getActor() {
+	public String getActor() {
 		return actor;
 	}
 
-	public void setActor(String[] actor) {
+	public void setActor(String actor) {
 		this.actor = actor;
 	}
 
