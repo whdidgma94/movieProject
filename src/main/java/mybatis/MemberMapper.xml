@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.member"> 
+  <resultMap id="member" type="Member.MemberVO">
+  <id property="memberNo" column="memberNo"/>
+  <result property="memberName" column="memberName"/>
+  <result property="id" column="id"/>
+  <result property="pw" column="pw"/>
+  <result property="birthDay" column="birthDay"/>
+  <result property="address" column="address"/>
+  <result property="email" column="email"/>
+  <result property="favoriteGenre" column="favoriteGenre"/>
+  <result property="gender" column="gender"/>
+</resultMap>
+  
+  	<select id="selectAllMembers" resultMap="member">
+  		SELECT * FROM member
+	</select>
+  
+    <select id="memberLogin" parameterType="member" resultType="String">
+        select id from member where id=#{id} and pw=#{pw}
+    </select>
+    
+       <select id="validId" resultType="String" parameterType="String">
+        select id from member where id=#{id}        
+    </select>
+    
+    	<select id="getOneMember" parameterType="String" resultMap="member">
+    	 SELECT * FROM member where id=#{id} 
+    	</select>
+    
+        <insert id="memberInsert" parameterType="member">
+        INSERT INTO member (memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
+       VALUES(
+        #{memberName},
+        #{id},
+        #{pw},
+        #{birthDay},
+        #{address},
+        #{email},
+        #{favoriteGenre},
+        #{gender}
+        )       
+    </insert>
+    
+     <update id="memberUpdate" parameterType="member">
+         update member
+         set pw=#{pw}, email=#{email}, address=#{address}, favoriteGenre=#{favoriteGenre}  
+         where id=#{id} 	 
+    </update>
+    
+      <delete id="memberDelete" parameterType="String">  
+        delete from member where id=#{id} 
+    </delete>
+    
+</mapper>

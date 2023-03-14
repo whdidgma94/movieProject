@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.screening">
+	<resultMap id="screening" type="Screening.ScreeningVO">
+		<id property="screeningNo" column="screeningNo" />
+		<result property="movieCd" column="movieCd" />
+		<result property="theaterNo" column="theaterNo" />
+		<result property="startTime" column="startTime" />
+	</resultMap>
+
+	<select id="getAllScreening" resultMap="screening">
+		select * from screening
+	</select>
+
+	<select id="getOneScreening" parameterType="Integer"
+		resultType="screening">
+		select * from screening where screeningNo = #{screeningNo}
+	</select>
+
+	<select id="getTheaterScreening" parameterType="Integer"
+		resultType="screening">
+		select * from screening where theaterNo = #{theaterNo}
+	</select>
+
+	<select id="getMovieScreening" parameterType="Integer"
+		resultType="screening">
+		select * from screening where movieCd=#{movieCd}
+	</select>
+
+	<insert id="insertScreening" parameterType="screening">
+		INSERT INTO
+		screening
+		(movieCd, theaterNo, startTime)
+		VALUES(
+		#{movieCd},
+		#{theaterNo},
+		#{startTime}
+		)
+	</insert>
+
+	<delete id="deleteScreening" parameterType="Integer">
+		delete from
+		screening
+		where screeningNo=#{screeningNo}
+	</delete>
+</mapper>
