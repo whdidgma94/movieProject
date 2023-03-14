@@ -17,7 +17,9 @@
 <body>
 <div class="top">
 <img alt="logo" src="${ctx}/img/logo.png">
-<div class="curLog">로그인중</div>
+	<c:if test="${log != null}">
+		<div class="curLog">${log} 님 로그인중</div>
+	</c:if>
 <div class="dropdown">
   <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" id="dropdownBtn">
     <i class="fa-solid fa-user"></i>
@@ -28,7 +30,7 @@
     	<a class="dropdown-item" href="${ctx}/memberJoin.do">회원가입</a>
   	</c:if>
 	<c:if test="${log != null}">
-		<a class="dropdown-item" href="#">로그아웃</a>
+		<a class="dropdown-item" href="${ctx}/memberLogout.do">로그아웃</a>
 		<a class="dropdown-item" href="#">마이페이지</a>
 	</c:if>	
   </div>
