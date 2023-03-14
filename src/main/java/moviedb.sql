@@ -3,14 +3,14 @@ create table movie(
 	movieCd int primary key,				# 영화 식별번호
     movieNm varchar(100) not null,			# 영화 이름 
     genreNm varchar(50) not null,			# 영화 장르
-    watchGradeNm int, 						# 관람 등급
-	openDt varchar(20) not null,			# 영화 개봉일
+    watchGradeNm varchar(20), 						# 관람 등급
+	openDt varchar(20) not null,			# 영화 개봉일	
 	director varchar(20) not null,			# 감독 이름
     actor varchar(100) not null,			# 출연진 이름
     showTm int not null,					# 상영 시간
     showTypeNm String not null,				# 상영 형태
 	grade double,							# 평점
-	audience int,							# 누적 관객수
+	audiCnt int,							# 누적 관객수
     movieInfo varchar(10000) not null 		# 영화 정보
 );
 
@@ -29,19 +29,19 @@ create table member(
 create table board(
 	boardNo int primary key auto_increment,		# 댓글 번호
     writerId varchar(20) not null, 				# 작성자 아이디
-	movieNo int not null,						# 영화 이름
+	movieCd int not null,						# 영화 이름
     grade int not null,							# 평점
     contents varchar(5000) ,					# 내용(후기)
     foreign key (writerId) references member(id) on delete cascade,
-    foreign key (movieNo) references movie(movieNo) on delete cascade
+    foreign key (movieCd) references movie(movieCd) on delete cascade
 );
 
 create table theater(
 	theaterNo int primary key auto_increment,	# 영화관 식별번호
     theaterName varchar(20) not null,			# 영화관 이름
     theaterLocation varchar(100) not null,	 	# 영화관 위치정보
-    seats varchar(10) not null					# 예매 가능한 좌석 수
-);
+    seatCnt int not null						# 가용 좌석 수
+    );
 
 CREATE TABLE screening (
 screeningNo INT NOT NULL primary key AUTO_INCREMENT,	# 상영 정보 식별번호
