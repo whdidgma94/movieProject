@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mapper.theater">
 
-	<resultMap id="theater" type="Theater">
+	<resultMap id="theater" type="Theater.TheaterVO">
 		<id property="theaterNo" column="theaterNo" />
 		<result property="theaterName" column="theaterName" />
 		<result property="theaterLocation" column="theaterLocation" />

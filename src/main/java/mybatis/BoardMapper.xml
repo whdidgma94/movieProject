@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.Board">
+
+	<resultMap id="board" type="Board.BoardVO">
+		<id property="boardNo" column="boardNo" />
+		<result property="writerId" column="writerId" />
+		<result property="movieCd" column="movieCd" />
+		<result property="grade" column="grade" />
+		<result property="contents" column="contents" />
+	</resultMap>
+
+	<select id="selectAllUsers" resultMap="user">
+		SELECT * FROM user
+	</select>
+
+	<select id="userLogin" parameterType="user" resultType="String">
+		select userid from user where userid=#{userid} and pwd=#{pwd}
+	</select>
+
+	<select id="validId" resultType="String" parameterType="String">
+		select userid from user where userid=#{userid}
+	</select>
+
+	<select id="getOneUser" parameterType="String" resultMap="user">
+		SELECT * FROM user where userid=#{userid}
+	</select>
+
+	<insert id="userInsert" parameterType="user">
+		INSERT INTO user (name, userid, pwd, email, phone)
+		VALUES(
+		#{name},
+		#{userid},
+		#{pwd},
+		#{email},
+		#{phone}
+		)
+	</insert>
+
+	<update id="userUpdate" parameterType="user">
+		update user
+		set email=#{email}, phone=#{phone}
+		where userid=#{userid}
+	</update>
+
+	<delete id="userDelete" parameterType="String">
+		delete from user where userid=#{userid}
+	</delete>
+
+</mapper>
