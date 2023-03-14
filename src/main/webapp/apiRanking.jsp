@@ -57,6 +57,8 @@
 <input type="date" id="date"><button id="mybtn">확인</button>
 <div id="boxoffice">
     박스 오피스 순위<br>
+    
+    
 </div>
 </body>
 </html>
