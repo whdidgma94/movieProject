@@ -1,13 +1,14 @@
 use moviedb;
 create table movie(
-	movieNo int primary key auto_increment, # 영화 식별번호
-    movieName varchar(100) not null,		# 영화 이름 
-    genre varchar(50) not null,				# 영화 장르
-    ageLimit int, 							# 관람 등급
-	releaseDay varchar(20) not null,		# 영화 개봉일
+	movieCd int primary key,				# 영화 식별번호
+    movieNm varchar(100) not null,			# 영화 이름 
+    genreNm varchar(50) not null,			# 영화 장르
+    watchGradeNm int, 						# 관람 등급
+	openDt varchar(20) not null,			# 영화 개봉일
 	director varchar(20) not null,			# 감독 이름
     actor varchar(100) not null,			# 출연진 이름
-    duration int not null,					# 상영 시간
+    showTm int not null,					# 상영 시간
+    showTypeNm String not null,				# 상영 형태
 	grade double,							# 평점
 	audience int,							# 누적 관객수
     movieInfo varchar(10000) not null 		# 영화 정보
@@ -67,7 +68,7 @@ create table seats(
     foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
 );
 
-insert into theater(theaterName, theaterLocation, seats) values("강남점", "강남", 25);
-insert into theater(theaterName, theaterLocation, seats) values("서초점", "서초", 25);
-insert into theater(theaterName, theaterLocation, seats) values("송파점", "송파", 25);
+insert into theater(theaterName, theaterLocation, seats) values("강남관", "강남", 25);
+insert into theater(theaterName, theaterLocation, seats) values("서초관", "서초", 25);
+insert into theater(theaterName, theaterLocation, seats) values("송파관", "송파", 25);
 insert into member(memberName, id, pw, birthDay, address, favoriteGenre, gender) values("관리자", "admin", "admin", "0000-00-00", "admin", "admin", "admin");
