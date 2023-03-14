@@ -20,7 +20,7 @@
 	</select>
   
     <select id="memberLogin" parameterType="member" resultType="String">
-        select id from member where id=#{id} and pw=#{pw}       
+        select id from member where id=#{id} and pw=#{pw}
     </select>
     
        <select id="validId" resultType="String" parameterType="String">

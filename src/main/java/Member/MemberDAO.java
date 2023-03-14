@@ -11,12 +11,14 @@ public class MemberDAO {
 	static public MemberDAO getInstance() {
 		return instance;
 	}
-	public String memberLogin(MemberVO memberVO) {
-		
+	public boolean memberLogin(MemberVO memberVO) {	
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
 		   String userId=session.selectOne("mapper.member.memberLogin", memberVO);
 		   session.close();
-		   return userId;
+		   if(userId==null) {
+			   return false;
+		   }
+		   return true;
 	   }
 	   
 	   public boolean checkValidId(String id) {
