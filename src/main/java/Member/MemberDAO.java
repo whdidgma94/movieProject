@@ -19,15 +19,19 @@ public class MemberDAO {
 		   return userId;
 	   }
 	   
-	   public String checkValidId(String id) {
+	   public boolean checkValidId(String id) {
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
 		   String userId=session.selectOne("mapper.member.validId", id);
 		   session.close();
-		   return userId;
+		   if(userId==null) {
+			   return true;
+		   }
+		   return false;
 	   }
 	      
 	   public int addMemberVO(MemberVO memberVO) {
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
+		   System.out.println(memberVO.getMemberName());
 		   int cnt=session.insert("mapper.member.memberInsert", memberVO);
 		   session.close();
 		   return cnt;

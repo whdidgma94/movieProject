@@ -11,14 +11,12 @@ public class MybatisConfig {
 		   try {//resource 경로 지정 다시 해야함
 			   String resource = "mybatis/config.xml";
 			   InputStream inputStream = Resources.getResourceAsStream(resource);
-			   System.out.println(inputStream);
 			   sqlSessionFactory =new SqlSessionFactoryBuilder().build(inputStream); 
 		   }catch(Exception e) {
 			   e.printStackTrace();
 		   }
 	   }	   
 	   public static SqlSessionFactory getInstance() {
-		   System.out.println(sqlSessionFactory);
 		   return sqlSessionFactory;
 	   }
 }

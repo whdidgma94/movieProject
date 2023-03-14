@@ -24,6 +24,8 @@ public class MemberJoinController implements Controller{
 		m.setPw(request.getParameter("pw"));
 		m.setBirthDay(request.getParameter("age"));
 		m.setEmail(request.getParameter("email"));
+		m.setBirthDay(request.getParameter("birthDay"));
+		m.setAddress(request.getParameter("address"));
 		m.setFavoriteGenre(request.getParameter("favoriteGenre"));
 		m.setGender(request.getParameter("gender"));
 		int check = MemberDAO.getInstance().addMemberVO(m);

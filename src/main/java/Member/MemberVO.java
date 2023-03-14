@@ -6,10 +6,17 @@ public class MemberVO {
 	private String id;
 	private String pw;
 	private String birthDay;
+	private String address;
 	private String email;
 	private String favoriteGenre;
 	private String gender;
 	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
 	public int getMemberNo() {
 		return memberNo;
 	}

@@ -15,9 +15,12 @@ public class MemberIdConfirmController implements Controller{
 		request.setCharacterEncoding("utf-8");
 		String id = request.getParameter("id");
 		MemberDAO manager = MemberDAO.getInstance();
-		String check= manager.checkValidId(id);
-		System.out.println(check);
-		response.getWriter().print(check);
+		boolean check= manager.checkValidId(id);
+		if(check) {
+			response.getWriter().print("true");		
+		}else {
+			response.getWriter().print("false");	
+		}
 		return null;
 	}
 

@@ -7,8 +7,9 @@
 	<table class="table table-bordered">
 		<tr><td>아이디</td><td><input type="text" name="id" onchange="idChange()">&emsp;<input type="button" value="중복확인" onclick="idCheck()" id="idCheckBtn"></td></tr>
 		<tr><td>비밀번호</td><td><input type="password" name="pw"></td></tr>
-		<tr><td>이름</td><td><input type="text" name=" memberName"></td></tr>
+		<tr><td>이름</td><td><input type="text" name="memberName"></td></tr>
 		<tr><td>생년월일</td> <td><input type="date" name="birthDay" id="today" size="15"></td> </tr>
+		<tr><td>주소</td><td><input type="text" name="address"></td></tr>
 		<tr><td>이메일</td><td><input type="email" name="email"></td></tr>
 		<tr><td>성별</td><td><input type="radio" name="gender" value="남자" checked>남자 &emsp;<input type="radio" name="gender" value="여자">여자
 	</td></tr>
@@ -38,7 +39,7 @@
 					url : "memberIdConfirm.do",
 					data : query,
 					success : function(data) {
-						if (data == 1) {
+						if (data == "false") {
 							swal('중복체크','이미 존재하는 아이디 입니다','error');
 							 $("input[name=id]").val('');
 							 confirmed=false;
