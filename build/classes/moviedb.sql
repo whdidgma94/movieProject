@@ -27,12 +27,8 @@ create table member(
 );
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
-('김영희', 'kim123', 'abc123', '1995-01-01', '서울특별시 강남구', 'kim123@gmail.com', '로맨스', '여성'),
-('홍길동', 'honggd', 'qwe123', '1990-05-05', '경기도 수원시', 'honggd@naver.com', '미스터리', '남성'),
-('박지영', 'jypark', 'zxc123', '1999-09-09', '서울특별시 마포구', 'jypark@hotmail.com', '판타지', '여성'),
-('이영수', 'leeys', 'poi123', '1988-04-10', '부산광역시 해운대구', 'leeys@daum.net', 'SF', '남성'),
-('유미경', 'yumikyung', 'mnb123', '2001-07-15', '경기도 고양시', 'yumikyung@naver.com', '로맨스', '여성');
-select * from member;
+('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
+SELECT * FROM member;
 create table board(
 	boardNo int primary key auto_increment,		# 댓글 번호
     writerId varchar(20) not null, 				# 작성자 아이디
