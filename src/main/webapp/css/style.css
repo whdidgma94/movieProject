@@ -6,7 +6,7 @@
 }
 
 .top {
-  background-color: #fff;
+  background-color: white;
   padding: 10px;
   display: flex;
   justify-content: space-between;
@@ -36,7 +36,7 @@
 }
 
 .dropdown-item {
-  color: #212529;
+  color: black;
   font-weight: 400;
   display: block;
   width: 100%;
