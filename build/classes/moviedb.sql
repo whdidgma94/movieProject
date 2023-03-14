@@ -60,7 +60,7 @@ create table reservation(
     foreign key (memberId) references member(id),
     foreign key (screeningNo) references screening(screeningNo)
 );
-
+ SELECT * FROM reservation
 create table seats(
 	theaterNo int primary key not null,
     seatNum varchar(10) not null,
