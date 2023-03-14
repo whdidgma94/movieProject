@@ -1,6 +1,6 @@
 package Theater;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -15,24 +15,29 @@ public class TheaterDAO {
 	static public TheaterDAO getInstance() {
 		return instance;
 	}
-	public ArrayList<TheaterVO> getTheaterList(){
+	public List<TheaterVO> getTheaterList(){
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		ArrayList<TheaterVO> list = session.selectOne("mapper.theater.getTheaterList");
-		
+		List<TheaterVO> list = session.selectList("mapper.theater.getTheaterList");
+		session.close();
 		return list;
 	}
-	public TheaterVO getOneUser(int theaterNo) {
+	public List<TheaterVO> getOneUser(int theaterNo) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		TheaterVO theaterVO = session.selectOne("mapper.theater.getOneTheater", theaterNo);
+		List<TheaterVO> list = session.selectList("mapper.theater.getOneTheater", theaterNo);
 		session.close();
-		return theaterVO;
+		return list;
 	}
 
-	public int updateTheater(TheaterVO theaterVO) {
+	public int checkSeatCnt(int theaterNo) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		int cnt = session.update("mapper.member.memberUpdate", theaterVO);
+		int cnt = session.update("mapper.theater.checkSeatCnt", theaterNo);
 		session.close();
 		return cnt;
+	}
+	public void updateTheater(int theaterNo) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.update("mapper.theater.checkSeatCnt", theaterNo);
+		session.close();
 	}
 
 }

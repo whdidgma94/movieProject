@@ -14,7 +14,7 @@
 		SELECT * FROM seats
 	</select>
 
-	<select id="getValidSeats" resultType="String">
+	<select id="getValidSeats" resultType="seats">
 		select seatNum from seats where checkSeat = true;
 	</select>
 
@@ -22,10 +22,4 @@
 		select * from seats where seatNum=#{seatNum}
 	</select>
 
-	<update id="seatUpdate" parameterType="String">
-		update seats
-		set checkSeat=#{checkSeat} where seatNum=#{seatNum}
-		<!-- 다시 확인 -->
-	</update>
-	
 </mapper>
