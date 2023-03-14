@@ -3,12 +3,12 @@ create table movie(
 	movieCd int primary key,				# 영화 식별번호
     movieNm varchar(100) not null,			# 영화 이름 
     genreNm varchar(50) not null,			# 영화 장르
-    watchGradeNm varchar(20), 						# 관람 등급
+    watchGradeNm varchar(20), 				# 관람 등급
 	openDt varchar(20) not null,			# 영화 개봉일	
 	director varchar(20) not null,			# 감독 이름
     actor varchar(100) not null,			# 출연진 이름
     showTm int not null,					# 상영 시간
-    showTypeNm String not null,				# 상영 형태
+    showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
 	audiCnt int,							# 누적 관객수
     movieInfo varchar(10000) not null 		# 영화 정보
