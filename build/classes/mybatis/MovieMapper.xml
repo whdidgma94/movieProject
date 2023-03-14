@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.movie">
+
+	<resultMap id="movie" type="Movie.MovieVO">
+		<id property="movieCd" column="movieCd" />
+		<result property="movieNm" column="movieNm" />
+		<result property="genreNm" column="genreNm" />
+		<result property="watchGradeNm" column="watchGradeNm" />
+		<result property="openDt" column="openDt" />
+		<result property="director" column="director" />
+		<result property="actor" column="actor" />
+		<result property="showTm" column="showTm" />
+		<result property="grade" column="grade" />
+		<result property="audiCnt" column="audiCnt" />
+		<result property="movieInfo" column="movieInfo" />
+	</resultMap>
+
+	<select id="getAllMovie" resultMap="movie">
+		select * from movie
+	</select>
+
+	<select id="getOneMovie" parameterType="Integer"
+		resultType="movie">
+		select * from movie where movieCd = #{movieCd}
+	</select>
+
+	<insert id="insertMovie" parameterType="movie">
+		INSERT INTO movie
+		(movieCd, movieNm, genreNm, watchGradeNm,openDt, director,
+		actor,showTm,,grade,audiCnt,movieInfo)
+		VALUES(
+		#{movieCd},
+		#{movieNm},
+		#{genreNm},
+		#{watchGradeNm},
+		#{openDt},
+		#{director},
+		#{actor},
+		#{showTm},
+		#{grade},
+		#{audiCnt},
+		#{movieInfo}
+		)
+	</insert>
+	
+	<delete id="deleteMovie" parameterType="Integer">
+		delete from Movie where
+		MovieCd=#{MovieCd}
+	</delete>
+
+
+</mapper>
