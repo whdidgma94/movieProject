@@ -62,7 +62,7 @@ create table reservation(
 );
 
 create table seats(
-	theaterNo int not null,
+	theaterNo int primary key not null,
     seatNum varchar(10) not null,
     checkSeat boolean default true,
     foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
