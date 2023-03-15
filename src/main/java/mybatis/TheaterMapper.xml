@@ -15,17 +15,33 @@
 		select * from theater
 	</select>
 
-	<select id="getOneTheater" parameterType="Integer" resultType="theater">
+	<select id="getOneTheater" parameterType="Integer"
+		resultType="theater">
 		select * from theater where theaterNo = #{theaterNo}
 	</select>
 
-	<select id="checkSeatCnt" resultType="Integer" parameterType="Integer">
+	<select id="checkSeatCnt" resultType="Integer"
+		parameterType="Integer">
 		select seatCnt from theater where theaterNo=#{theaterNo}
 	</select>
 
+	<insert id="insertTheater" parameterType="theater">
+		INSERT INTO theater
+		(theaterNo, theaterName, theaterLocation,seatCnt )
+		VALUES(
+		#{theaterNo},
+		#{theaterName},
+		#{theaterLocation},
+		#{seatCnt}
+		)
+	</insert>
 	<update id="updateTheater" parameterType="Integer">
 		update theater
-		set seatCnt=#{seatCnt} where theaterNo=#{theaterNo}
+		set
+		seatCnt=#{seatCnt} where theaterNo=#{theaterNo}
 	</update>
-
+	<delete id="deleteTheater" parameterType="Integer">
+		delete from theater where
+		theaterNo=#tTheaterNo}
+	</delete>
 </mapper>

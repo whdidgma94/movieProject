@@ -47,8 +47,8 @@
 	</insert>
 
 	<delete id="deleteMovie" parameterType="Integer">
-		delete from Movie where
-		MovieCd=#{MovieCd}
+		delete from movie where
+		movieCd=#{movieCd}
 	</delete>
 
 
