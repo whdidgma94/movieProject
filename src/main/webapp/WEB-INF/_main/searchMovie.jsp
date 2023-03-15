@@ -41,7 +41,7 @@
 				},
 				success : function(response) {
 					if (response == "null") {
-						alert("일치하는 결과가 없습니다");
+						swal('입력 오류','일치하는 결과가 없습니다','error');
 					} else {
 						history.go(0);
 					}
@@ -65,7 +65,7 @@
 					},
 					success : function(response) {
 						if (response == "null") {
-							alert("일치하는 결과가 없습니다");
+							swal('입력 오류','일치하는 결과가 없습니다','error');
 						} else {
 							history.go(0);
 						}
