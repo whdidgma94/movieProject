@@ -26,6 +26,11 @@
 		resultType="movie">
 		select * from movie where movieCd = #{movieCd}
 	</select>
+	
+	<select id="getSearchMovie" parameterType="String"
+		resultType="movie">
+		select * from movie where movieCd = #{movieCd}
+	</select>
 
 	<insert id="insertMovie" parameterType="movie">
 		INSERT INTO movie
