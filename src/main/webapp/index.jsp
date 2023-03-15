@@ -3,7 +3,6 @@
 <%@ include file="header.jsp"%>
 <body>
 	<h1>index</h1>
-
 	<script>
         window.addEventListener('load', ()=>{
 		var today = new Date();

@@ -128,9 +128,20 @@ input[type="button"] {
   cursor: pointer;
   border-radius: 5px;
 }
-input[type="button"]#idCheckBtn{
+input[type="button"]#checkBtn{
   float:right;
 }
 input[type="radio"] {
   margin-right: 10px;
+}
+table td:not(:last-child) {
+  white-space: nowrap;
+}
+.email-wrapper {
+  display: flex;
+}
+
+.email-wrapper input[type="text"],
+.email-wrapper select {
+  flex: 1;
 }

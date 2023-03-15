@@ -18,14 +18,21 @@ public class MemberJoinController implements Controller{
 		if(request.getParameter("id")==null) {
 			return "memberJoin";
 		}
+		
+		String address1 = request.getParameter("address1");
+		String address2 = request.getParameter("address2");
+		String address = address1+" "+address2;
+		String email_id = request.getParameter("email_id");
+		String email_domain = request.getParameter("email_domain");
+		String email = email_id+"@"+email_domain;
 		MemberVO m = new MemberVO();
 		m.setMemberName(request.getParameter("memberName"));
 		m.setId(request.getParameter("id"));
 		m.setPw(request.getParameter("pw"));
 		m.setBirthDay(request.getParameter("age"));
-		m.setEmail(request.getParameter("email"));
+		m.setEmail(email);
 		m.setBirthDay(request.getParameter("birthDay"));
-		m.setAddress(request.getParameter("address"));
+		m.setAddress(address);
 		m.setFavoriteGenre(request.getParameter("favoriteGenre"));
 		m.setGender(request.getParameter("gender"));
 		int check = MemberDAO.getInstance().addMemberVO(m);

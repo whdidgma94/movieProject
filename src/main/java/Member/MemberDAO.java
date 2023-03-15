@@ -33,7 +33,6 @@ public class MemberDAO {
 	      
 	   public int addMemberVO(MemberVO memberVO) {
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
-		   System.out.println(memberVO.getMemberName());
 		   int cnt=session.insert("mapper.member.memberInsert", memberVO);
 		   session.close();
 		   return cnt;
