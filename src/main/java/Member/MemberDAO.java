@@ -11,7 +11,7 @@ public class MemberDAO {
 	static public MemberDAO getInstance() {
 		return instance;
 	}
-	public boolean memberLogin(MemberVO memberVO) {	
+		public boolean memberLogin(MemberVO memberVO) {	
 		   SqlSession session= MybatisConfig.getInstance().openSession(true);
 		   String userId=session.selectOne("mapper.member.memberLogin", memberVO);
 		   session.close();

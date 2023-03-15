@@ -4,6 +4,8 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
 import FrontController.Controller;
 import Member.MemberDAO;
 import Member.MemberVO;
@@ -38,7 +40,9 @@ public class MemberJoinController implements Controller{
 		int check = MemberDAO.getInstance().addMemberVO(m);
 		String ctx = request.getContextPath();
 		if(check>0) {
-			return "redirect:"+ctx+"/memberLogin.do";
+			HttpSession session = request.getSession();
+			session.setAttribute("log", m.getId());
+			return "redirect:"+ctx+"/memberGenreSelect.do";
 		}else {
 			return "redirect:"+ctx+"/memberJoin.do";
 		}		
