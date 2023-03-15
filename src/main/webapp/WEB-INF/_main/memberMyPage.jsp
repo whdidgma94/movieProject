@@ -86,6 +86,7 @@
 				<td>${member.gender}</td>
 				<td></td>
 			</tr>
+			<tr> <td colspan="3"> <button>개인정보 변경</button> </td> </tr>
 		</table>
 	</c:if>
 </body>
