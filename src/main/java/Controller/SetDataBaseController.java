@@ -21,26 +21,21 @@ public class SetDataBaseController implements Controller {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String movieList = request.getParameter("movieList");
-		System.out.println(movieList);
 		MovieVO mvo = new MovieVO();
 		try {
 			JSONParser jp = new JSONParser();
-			for (int i = 0; i < 10; i++) {
 				JSONObject jb = (JSONObject) jp.parse(movieList);
 				mvo.setMovieCd(Integer.parseInt((String) jb.get("movieCd")));
 				mvo.setMovieNm((String) jb.get("movieNm"));
 				mvo.setOpenDt((String) jb.get("openDt"));
 				mvo.setAudiCnt(Integer.parseInt((String) jb.get("audiAcc")));
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		String movie = request.getParameter("movie");
-		System.out.println(movie);
 
 		try {
 			JSONParser jp2 = new JSONParser();
-			for (int i = 0; i < 10; i++) {
 				JSONObject jb2 = (JSONObject) jp2.parse(movie);
 				JSONArray audits = (JSONArray) jb2.get("audits");
 				JSONObject watchGradeNm = (JSONObject) audits.get(0);
@@ -51,7 +46,7 @@ public class SetDataBaseController implements Controller {
 				JSONArray actors = (JSONArray) jb2.get("actors");
 				String actor = "";
 				if (actors != null && actors.size() > 0) {
-					for(int j=0;j<actors.size();i++) {
+					for(int j=0;j<actors.size();j++) {
 						JSONObject act = (JSONObject) actors.get(j);
 						String actorNm = (String) act.get("peopleNm");
 						actor+=actorNm;
@@ -66,13 +61,13 @@ public class SetDataBaseController implements Controller {
 				JSONObject showType = (JSONObject) showTypes.get(0);
 				String showType2 = null;
 				if (showTypes != null && showTypes.size() > 0) {
-					showType2 = (String) jb2.get("showTypeGroupNm")+","+(String) jb2.get("showTypeNm");
+					showType2 = (String) showType.get("showTypeGroupNm")+","+(String) showType.get("showTypeNm");
 					mvo.setShowTypeNm(showType2);
 				}
 				JSONArray genres = (JSONArray) jb2.get("genres");
-				String gr = null;
+				String gr = "";
 				if (genres != null && genres.size() > 0) {
-					for(int j=0;j<genres.size();i++) {
+					for(int j=0;j<genres.size();j++) {
 						JSONObject genre = (JSONObject) genres.get(j);
 						String genreNm = (String) genre.get("genreNm");
 						gr+=genreNm;
@@ -80,13 +75,13 @@ public class SetDataBaseController implements Controller {
 							gr+=",";
 						}
 					}
-					mvo.setActor(gr);
+					mvo.setGenreNm(gr);
 				}
-			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		MovieDAO.getInstance().insertMovie(mvo);
+		System.out.println(mvo.getActor());
 		return null;
 	}
 
