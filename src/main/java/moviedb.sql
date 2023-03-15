@@ -11,7 +11,6 @@ create table movie(
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
 	audiCnt int,							# 누적 관객수
-    movieInfo varchar(10000) not null 		# 영화 정보
 );
 
 create table member(
