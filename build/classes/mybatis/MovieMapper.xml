@@ -16,7 +16,6 @@
 		<result property="showTypeNm" column="showTypeNm" />
 		<result property="grade" column="grade" />
 		<result property="audiCnt" column="audiCnt" />
-		<result property="movieInfo" column="movieInfo" />
 	</resultMap>
 
 	<select id="getAllMovie" resultMap="movie">
@@ -31,7 +30,7 @@
 	<insert id="insertMovie" parameterType="movie">
 		INSERT INTO movie
 		(movieCd, movieNm, genreNm, watchGradeNm,openDt, director,
-		actor,showTm,showTypeNm,grade,audiCnt,movieInfo)
+		actor,showTm,showTypeNm,grade,audiCnt)
 		VALUES(
 		#{movieCd},
 		#{movieNm},
@@ -43,8 +42,7 @@
 		#{showTm},
 		#{showTypeNm},
 		#{grade},
-		#{audiCnt},
-		#{movieInfo}
+		#{audiCnt}
 		)
 	</insert>
 
