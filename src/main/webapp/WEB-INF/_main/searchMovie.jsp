@@ -7,9 +7,6 @@
 			src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
 			id="searchImg">
 	</div>
-	<div>
-		${searchList.get(0).movieNm }	
-	</div>
 	<table>
 		<c:if test="${searchList eq null }">
 			<tr>
@@ -23,9 +20,8 @@
 				<c:if test="${(status.index)%3 eq 0}">
 					<tr>
 				</c:if>
-				<td id="searchList"><img alt=""
-					id="${searchList.get(status.index).movieCd}"
-					src="${ctx }/img/logo.png" /><br /> <strong>${searchList.get(status.index).movieNm  }</strong></td>
+				<td id="searchList"><img alt="" id="${searchList.movieCd}"
+					src="${ctx }/img/logo.png" /><br /> <strong>${searchList.movieNm  }</strong></td>
 				<c:if test="${(status.index)%3 eq 2}">
 					</tr>
 				</c:if>
