@@ -10,7 +10,7 @@ create table movie(
     showTm int not null,					# 상영 시간
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
-	audiCnt int,							# 누적 관객수
+	audiCnt int								# 누적 관객수
 );
 
 create table member(
