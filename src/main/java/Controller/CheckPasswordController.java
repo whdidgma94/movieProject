@@ -11,17 +11,22 @@ import FrontController.Controller;
 import Member.MemberDAO;
 import Member.MemberVO;
 
-public class MemberMyPageController implements Controller{
+public class CheckPasswordController implements Controller{
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
+		request.setCharacterEncoding("utf-8");
+		HttpSession session = request.getSession();	
 		String id = (String) session.getAttribute("log");
+		String pw = request.getParameter("password");
 		MemberVO member = MemberDAO.getInstance().getOneUser(id);
-		session.setAttribute("member", member);
-		return "memberMyPage";
+		if(member.getPw().equals(pw)) {
+			response.getWriter().print(1);
+		}else {
+			response.getWriter().print(0);
+		}
+		return null;
 	}
-	
 
 }

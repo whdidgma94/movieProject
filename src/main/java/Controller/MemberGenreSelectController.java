@@ -27,11 +27,11 @@ public class MemberGenreSelectController implements Controller{
 		for(String gen:genreList) {
 			genre+=gen+",";
 		}
-		
 		MemberVO member = MemberDAO.getInstance().getOneUser(id);
 		member.setFavoriteGenre(genre.substring(0,genre.length()-1));
 		MemberDAO.getInstance().InsertFavoriteGenre(member);
-		return "_main";
+		String ctx = request.getContextPath();
+		return "redirect:"+ctx+"/memberMyPage.do";
 	}
 	
 }
