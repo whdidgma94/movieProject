@@ -13,6 +13,7 @@
 		<result property="director" column="director" />
 		<result property="actor" column="actor" />
 		<result property="showTm" column="showTm" />
+		<result property="showTypeNm" column="showTypeNm" />
 		<result property="grade" column="grade" />
 		<result property="audiCnt" column="audiCnt" />
 		<result property="movieInfo" column="movieInfo" />
@@ -30,7 +31,7 @@
 	<insert id="insertMovie" parameterType="movie">
 		INSERT INTO movie
 		(movieCd, movieNm, genreNm, watchGradeNm,openDt, director,
-		actor,showTm,,grade,audiCnt,movieInfo)
+		actor,showTm,showTypeNm,grade,audiCnt,movieInfo)
 		VALUES(
 		#{movieCd},
 		#{movieNm},
@@ -40,12 +41,13 @@
 		#{director},
 		#{actor},
 		#{showTm},
+		#{showTypeNm},
 		#{grade},
 		#{audiCnt},
 		#{movieInfo}
 		)
 	</insert>
-	
+
 	<delete id="deleteMovie" parameterType="Integer">
 		delete from Movie where
 		MovieCd=#{MovieCd}
