@@ -7,6 +7,7 @@ import Controller.MemberIdConfirmController;
 import Controller.MemberJoinController;
 import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
+import Controller.SetDataBaseController;
 
 
 public class HandlerMapping {
@@ -19,6 +20,7 @@ public class HandlerMapping {
 		  mappings.put("/memberLogin.do", new MemberLoginController());
 		  mappings.put("/_main.do", new MainController());
 		  mappings.put("/memberLogout.do", new MemberLogoutController());
+		  mappings.put("/setDataBase.do", new SetDataBaseController());
 	 }
 	 public Controller getController(String key) { 
 		  return mappings.get(key);
