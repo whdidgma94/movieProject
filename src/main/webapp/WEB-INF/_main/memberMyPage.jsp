@@ -2,6 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
 <body>
-	
+	<h1>마이페이지</h1>
 </body>
 </html>

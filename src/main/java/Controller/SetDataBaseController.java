@@ -81,7 +81,6 @@ public class SetDataBaseController implements Controller {
 			e.printStackTrace();
 		}
 		MovieDAO.getInstance().insertMovie(mvo);
-		System.out.println(mvo.getActor());
 		return null;
 	}
 
