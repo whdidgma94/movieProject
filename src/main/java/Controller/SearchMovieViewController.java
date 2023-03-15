@@ -13,7 +13,9 @@ public class SearchMovieViewController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		String inputVal = request.getParameter("inputVal");
+		
 		return null;
 	}
 

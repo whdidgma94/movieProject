@@ -24,9 +24,9 @@ public class MovieDAO {
 		session.close();
 		return list;
 	}
-	public List<MovieVO> getSearchMovie() {
+	public List<MovieVO> getSearchMovie(String inputVal) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		List<MovieVO> list = session.selectList("mapper.movie.getSearchMovie");
+		List<MovieVO> list = session.selectList("mapper.movie.getSearchMovie", inputVal);
 		session.close();
 		return list;
 	}

@@ -29,7 +29,7 @@
 	
 	<select id="getSearchMovie" parameterType="String"
 		resultType="movie">
-		select * from movie where movieCd = #{movieCd}
+		select * from movie where movieNm like CONCAT('%', #{inputVal}, '%')
 	</select>
 
 	<insert id="insertMovie" parameterType="movie">
