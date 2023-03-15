@@ -2,6 +2,7 @@ package FrontController;
 
 import java.util.HashMap;
 
+import Controller.CheckPasswordController;
 import Controller.MainController;
 import Controller.MemberGenreSelectController;
 import Controller.MemberIdConfirmController;
@@ -25,6 +26,7 @@ public class HandlerMapping {
 		  mappings.put("/setDataBase.do", new SetDataBaseController());
 		  mappings.put("/memberGenreSelect.do", new MemberGenreSelectController());
 		  mappings.put("/memberMyPage.do", new MemberMyPageController());
+		  mappings.put("/checkPassword.do", new CheckPasswordController());
 	 }
 	 public Controller getController(String key) { 
 		  return mappings.get(key);
