@@ -22,6 +22,11 @@ public class SearchMovieViewController implements Controller {
 		List<MovieVO> searchList = MovieDAO.getInstance().getSearchMovie(inputVal);
 		HttpSession session = request.getSession();
 		session.setAttribute("searchList", searchList);
+		if(searchList.size()==0) {
+			response.getWriter().print("null");
+		}else {
+			response.getWriter().print("notNull");
+		}
 		return null;
 	}
 

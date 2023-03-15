@@ -40,8 +40,8 @@
 					inputVal : searchInput.val()
 				},
 				success : function(response) {
-					if (response == null) {
-						$("#result").text("일치하는 결과가 없습니다");
+					if (response == "null") {
+						alert("일치하는 결과가 없습니다");
 					} else {
 						history.go(0);
 					}
@@ -64,8 +64,8 @@
 						inputVal : searchInput.val()
 					},
 					success : function(response) {
-						if (response == null) {
-							$("#result").text("일치하는 결과가 없습니다");
+						if (response == "null") {
+							alert("일치하는 결과가 없습니다");
 						} else {
 							history.go(0);
 						}
