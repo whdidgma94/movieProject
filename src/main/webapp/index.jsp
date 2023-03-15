@@ -27,7 +27,7 @@ window.addEventListener('load', ()=>{
 	          success: function(response) {
 	          },
 	          error : function() {
-	            alert("error2");
+	            alert("error");
 	          }
 	        });
 	      });   
