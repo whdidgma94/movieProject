@@ -12,10 +12,10 @@
 		<tr><td>생년월일</td> <td><input type="date" name="birthDay" id="today" size="15"></td> </tr>
 		<tr> <td>주소</td>
 			<td>
-				<input type="text" id="postcode" placeholder="우편번호">
+				<input type="text" id="postcode" placeholder="우편번호" readonly>
 				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" id="checkBtn"><br>
-				<input type="text" id="roadAddress" placeholder="도로명주소" name="address1">
-				<input type="text" id="jibunAddress" placeholder="지번주소">
+				<input type="text" id="roadAddress" placeholder="도로명주소" name="address1" readonly>
+				<input type="text" id="jibunAddress" placeholder="지번주소" readonly>
 				<span id="guide" style="color:#999;display:none"></span>
 				<input type="text" id="detailAddress" placeholder="상세주소" name="address2">
 			</td>
@@ -27,7 +27,7 @@
 			    <input type="text" name="email_id" value="" placeholder="이메일"/> @ 
 			    <input type="text" name="email_domain" value="" placeholder="도메인"/> 
 			    <select class="select" title="이메일 도메인 주소 선택" onclick="setEmailDomain(this.value);return false;">
-			      <option value="">-선택-</option>
+			      <option value="">직접입력</option>
 			      <option value="naver.com">naver.com</option>
 			      <option value="gmail.com">gmail.com</option>
 			      <option value="hanmail.net">hanmail.net</option>

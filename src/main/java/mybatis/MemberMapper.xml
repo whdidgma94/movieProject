@@ -48,7 +48,7 @@
      <update id="memberUpdate" parameterType="member">
          update member
          set pw=#{pw}, email=#{email}, address=#{address}, favoriteGenre=#{favoriteGenre}  
-         where id=#{id} 	 
+         where id=#{id}
     </update>
     
       <delete id="memberDelete" parameterType="String">  

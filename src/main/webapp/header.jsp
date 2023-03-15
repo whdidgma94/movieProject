@@ -21,7 +21,7 @@
 	crossorigin="anonymous"></script>
 <script src="https://kit.fontawesome.com/116a85af51.js"
 	crossorigin="anonymous"></script>
-<script>
+<!-- <script>
         window.addEventListener('load', ()=>{
 		var today = new Date();
 		var targetDate = new Date(today.setDate(today.getDate()-1)).toISOString().substring(0,10).replace(/-/g,'');
@@ -47,7 +47,7 @@
                 	});
           });                    
         })
-      </script>
+      </script> -->
 </head>
 <body>
 	<div class="top">
