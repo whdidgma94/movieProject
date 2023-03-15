@@ -13,6 +13,7 @@ create table movie(
 	audiCnt int								# 누적 관객수
 );
 
+select * from movie;
 create table member(
 	memberNo int primary key auto_increment,	# 회원 식별번호
     memberName varchar(20) not null, 			# 회원 이름
