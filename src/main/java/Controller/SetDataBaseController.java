@@ -6,10 +6,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
 import FrontController.Controller;
+import Movie.MovieDAO;
 import Movie.MovieVO;
 
 public class SetDataBaseController implements Controller {
@@ -29,7 +31,6 @@ public class SetDataBaseController implements Controller {
 				mvo.setMovieNm((String) jb.get("movieNm"));
 				mvo.setOpenDt((String) jb.get("openDt"));
 				mvo.setAudiCnt(Integer.parseInt((String) jb.get("audiAcc")));
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -41,14 +42,16 @@ public class SetDataBaseController implements Controller {
 			JSONParser jp2 = new JSONParser();
 			for (int i = 0; i < 10; i++) {
 				JSONObject jb2 = (JSONObject) jp2.parse(movie);
-				mvo.setGenreNm((String) jb2.get("genreNm"));
-				mvo.setWatchGradeNm((String) jb2.get("watchGradeNm"));
+				JSONArray audits =  (JSONArray) jb2.get("audits");
+				JSONObject watchGradeNm = (JSONObject) audits.get(1);
 				mvo.setDirector((String) jb2.get("directors.peopleNm"));
 				mvo.setActor((String) jb2.get("actors.peopleNm"));
 				mvo.setShowTm(Integer.parseInt((String) jb2.get("showTm")));
 				mvo.setShowTypeNm((String) jb2.get("showTypeNm"));
-				mvo.setMovieInfo((String) jb2.get("movieNm"));
-
+				mvo.setMovieInfo((String) jb2.get("movieNm"));	
+				System.out.println((String) jb2.get("genres[0]"));
+				mvo.setGenreNm((String) jb2.get("genres[0]"));
+				MovieDAO.getInstance().insertMovie(mvo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();

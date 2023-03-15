@@ -23,7 +23,7 @@ create table member(
     address varchar(50) not null,				# 주소
     email varchar(30) not null, 				# 이메일
     favoriteGenre varchar(20),					# 선호 장르
-    gender varchar(20) not null	 				# 성별
+    gender varchar(100) not null	 				# 성별
 );
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
@@ -63,7 +63,7 @@ create table reservation(
     foreign key (memberId) references member(id),
     foreign key (screeningNo) references screening(screeningNo)
 );
- SELECT * FROM reservation
+ SELECT * FROM reservation;
 create table seats(
 	theaterNo int primary key not null,
     seatNum varchar(10) not null,
