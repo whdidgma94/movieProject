@@ -1,0 +1,52 @@
+@charset "UTF-8";
+body {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 10px;
+  margin-bottom: 20px;
+}
+
+td {
+  padding: 10px;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  margin-right: 5px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  cursor: pointer;
+}
+
+input[type="checkbox"]:checked::before {
+  content: '\2713';
+  position: absolute;
+  top: -2px;
+  left: 3px;
+  font-size: 16px;
+  color: black;
+}
+
+input[type="checkbox"]:hover {
+  border-color: #000;
+}
+
+label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+label:hover {
+  text-decoration: underline;
+}

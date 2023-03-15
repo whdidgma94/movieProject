@@ -27,11 +27,11 @@
         select id from member where id=#{id}        
     </select>
     
-    	<select id="getOneMember" parameterType="String" resultMap="member">
+    <select id="getOneMember" parameterType="String" resultMap="member">
     	 SELECT * FROM member where id=#{id} 
-    	</select>
+    </select>
     
-        <insert id="memberInsert" parameterType="member">
+    <insert id="memberInsert" parameterType="member">
         INSERT INTO member (memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
        VALUES(
         #{memberName},
@@ -45,10 +45,16 @@
         )       
     </insert>
     
+    <update id="insertGenre" parameterType="member">
+         update member
+         set favoriteGenre=#{favoriteGenre}  
+         where id=#{id}
+    </update>
+    
      <update id="memberUpdate" parameterType="member">
          update member
          set pw=#{pw}, email=#{email}, address=#{address}, favoriteGenre=#{favoriteGenre}  
-         where id=#{id} 	 
+         where id=#{id}
     </update>
     
       <delete id="memberDelete" parameterType="String">  

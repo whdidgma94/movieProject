@@ -5,30 +5,36 @@
 	<h1>index</h1>
 
 	<script>
-        window.addEventListener('load', ()=>{
-		var today = new Date();
-		var targetDate = new Date(today.setDate(today.getDate()-1)).toISOString().substring(0,10).replace(/-/g,'');
+window.addEventListener('load', ()=>{
+	  var today = new Date();
+	  var targetDate = new Date(today.setDate(today.getDate()-1)).toISOString().substring(0,10).replace(/-/g,'');
+	  
+	  let url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=7532377ec0b85020c332a47475218ba2&targetDt="+targetDate
+	  $.getJSON(url, function(data) {
+	    let movieList = data.boxOfficeResult.dailyBoxOfficeList;
+	    for ( let i =0;i<10;i++) {
+	      let url2 = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd="+movieList[i].movieCd;
+	      console.log(url2);
+	      $.getJSON(url2, function(data) {
+	        let movie = data.movieInfoResult.movieInfo;
+	        $.ajax({
+	          type: "POST",
+	          url: "${ctx}/setDataBase.do",
+	          data: {
+	        	  movieList : JSON.stringify(movieList[i]),
+	        	  movie: JSON.stringify(movie)
+	        	},
+	          success: function(response) {
+	          },
+	          error : function() {
+	            alert("error");
+	          }
+	        });
+	      });   
+	    }
+	  }); 
+	});
 
-        let url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=7532377ec0b85020c332a47475218ba2&targetDt="+targetDate
-
-          $.getJSON(url, function(data) {
-                  let movieList = data.boxOfficeResult.dailyBoxOfficeList;
-                });
-          });                    
-                    $("#boxoffice").on("click",".movie", function(){
-                    let d = $(this);
-                    let movieCd = d.attr("id");
-                    let url = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=7532377ec0b85020c332a47475218ba2&movieCd="+movieCd;
-                    $.getJSON(url,function(res){
-                        let movie = res.movieInfoResult.movieInfo;
-                        d.append("<hr>");
-                        d.append("개봉일 : "+movie.openDt+"<br>");
-                        d.append("감독 : "+movie.directors[0].peopleNm+"<br>");
-                        d.append("주연 : "+movie.actors[0].peopleNm+", "+movie.actors[1].peopleNm+", "+movie.actors[2].peopleNm);
-                        d.append("<hr>");
-
-                    })
-                });
-        </script>
+      </script>
 </body>
 </html>

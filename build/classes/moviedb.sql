@@ -6,12 +6,11 @@ create table movie(
     watchGradeNm varchar(20), 				# 관람 등급
 	openDt varchar(20) not null,			# 영화 개봉일	
 	director varchar(20) not null,			# 감독 이름
-    actor varchar(100) not null,			# 출연진 이름
+    actor varchar(100),						# 출연진 이름
     showTm int not null,					# 상영 시간
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
-	audiCnt int,							# 누적 관객수
-    movieInfo varchar(10000) not null 		# 영화 정보
+	audiCnt int								# 누적 관객수
 );
 
 create table member(
@@ -23,7 +22,7 @@ create table member(
     address varchar(50) not null,				# 주소
     email varchar(30) not null, 				# 이메일
     favoriteGenre varchar(20),					# 선호 장르
-    gender varchar(20) not null	 				# 성별
+    gender varchar(100) not null	 				# 성별
 );
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
@@ -63,7 +62,7 @@ create table reservation(
     foreign key (memberId) references member(id),
     foreign key (screeningNo) references screening(screeningNo)
 );
- SELECT * FROM reservation
+ SELECT * FROM reservation;
 create table seats(
 	theaterNo int primary key not null,
     seatNum varchar(10) not null,

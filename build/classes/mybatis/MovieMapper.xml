@@ -13,9 +13,9 @@
 		<result property="director" column="director" />
 		<result property="actor" column="actor" />
 		<result property="showTm" column="showTm" />
+		<result property="showTypeNm" column="showTypeNm" />
 		<result property="grade" column="grade" />
 		<result property="audiCnt" column="audiCnt" />
-		<result property="movieInfo" column="movieInfo" />
 	</resultMap>
 
 	<select id="getAllMovie" resultMap="movie">
@@ -26,11 +26,16 @@
 		resultType="movie">
 		select * from movie where movieCd = #{movieCd}
 	</select>
+	
+	<select id="getSearchMovie" parameterType="String"
+		resultType="movie">
+		select * from movie where movieCd = #{movieCd}
+	</select>
 
 	<insert id="insertMovie" parameterType="movie">
 		INSERT INTO movie
 		(movieCd, movieNm, genreNm, watchGradeNm,openDt, director,
-		actor,showTm,,grade,audiCnt,movieInfo)
+		actor,showTm,showTypeNm,grade,audiCnt)
 		VALUES(
 		#{movieCd},
 		#{movieNm},
@@ -40,15 +45,15 @@
 		#{director},
 		#{actor},
 		#{showTm},
+		#{showTypeNm},
 		#{grade},
-		#{audiCnt},
-		#{movieInfo}
+		#{audiCnt}
 		)
 	</insert>
-	
+
 	<delete id="deleteMovie" parameterType="Integer">
-		delete from Movie where
-		MovieCd=#{MovieCd}
+		delete from movie where
+		movieCd=#{movieCd}
 	</delete>
 
 

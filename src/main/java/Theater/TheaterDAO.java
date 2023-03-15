@@ -39,5 +39,15 @@ public class TheaterDAO {
 		session.update("mapper.theater.updateTheater", theaterNo);
 		session.close();
 	}
+	public void insertTheater(TheaterVO theaterVO) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.insert("mapper.Theater.insertTheater", theaterVO);
+		session.close();
+	}
 
+	public void deleteTheater(int theaterNo) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.delete("mapper.theater.deleteTheater", theaterNo);
+		session.close();
+	}
 }
