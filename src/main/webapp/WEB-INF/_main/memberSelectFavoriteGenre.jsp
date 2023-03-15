@@ -4,7 +4,7 @@
 <link href="${ctx}/css/selectGenreStyle.css" rel="stylesheet" type="text/css">
 <body class="selGenre">
 	<h1>선호장르 선택</h1>
-	<form action="${ctx}/memberGenreSelect.do" method="post">
+	<form action="${ctx}/memberGenreSelect.do" method="get">
 		<table class="table table-bordered">
 		<tr> 
 			<td>

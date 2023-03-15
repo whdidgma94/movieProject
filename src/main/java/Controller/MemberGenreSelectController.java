@@ -17,7 +17,10 @@ public class MemberGenreSelectController implements Controller{
 		if(request.getParameter("genre")==null) {
 			return "memberSelectFavoriteGenre";
 		}
-		System.out.println(request.getParameter("genre"));
+		String[] genre = request.getParameterValues("genre");
+		for(String gen:genre) {
+			System.out.println(gen);
+		}
 		return null;
 	}
 	
