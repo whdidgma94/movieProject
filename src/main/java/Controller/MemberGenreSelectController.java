@@ -5,8 +5,11 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import FrontController.Controller;
+import Member.MemberDAO;
+import Member.MemberVO;
 
 public class MemberGenreSelectController implements Controller{
 
@@ -17,11 +20,18 @@ public class MemberGenreSelectController implements Controller{
 		if(request.getParameter("genre")==null) {
 			return "memberSelectFavoriteGenre";
 		}
-		String[] genre = request.getParameterValues("genre");
-		for(String gen:genre) {
-			System.out.println(gen);
+		HttpSession session = request.getSession();	
+		String id = (String) session.getAttribute("log");
+		String[] genreList = request.getParameterValues("genre");
+		String genre = "";
+		for(String gen:genreList) {
+			genre+=gen+",";
 		}
-		return null;
+		
+		MemberVO member = MemberDAO.getInstance().getOneUser(id);
+		member.setFavoriteGenre(genre.substring(0,genre.length()-1));
+		MemberDAO.getInstance().InsertFavoriteGenre(member);
+		return "_main";
 	}
 	
 }
