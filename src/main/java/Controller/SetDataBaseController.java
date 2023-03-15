@@ -82,11 +82,11 @@ public class SetDataBaseController implements Controller {
 					}
 					mvo.setActor(gr);
 				}
-				MovieDAO.getInstance().insertMovie(mvo);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		MovieDAO.getInstance().insertMovie(mvo);
 		return null;
 	}
 
