@@ -46,9 +46,9 @@ public class MovieDAO {
 		return list;
 	}
 	
-	public List<MovieVO> genreMovieList(String genre) {
+	public List<MovieVO> genreMovieList(String genreNm) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		List<MovieVO> list = session.selectList("mapper.movie.genreMovieList", genre);
+		List<MovieVO> list = session.selectList("mapper.movie.genreMovieList", genreNm);
 		session.close();
 		return list;
 	}

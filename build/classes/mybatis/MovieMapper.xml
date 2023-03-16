@@ -34,10 +34,13 @@
 	</select>
 
 	<select id="movieRankList" resultMap="movie">
-		select * from movie order by audiCnt desc;
+		select * from movie order
+		by audiCnt desc;
 	</select>
-	<select id="genreMovieList" parameterType="String" resultMap="movie">
-		select * from movie where genre=#{genre}
+	<select id="genreMovieList" parameterType="String"
+		resultMap="movie">
+		select * from movie where genreNm like CONCAT('%',
+		#{genreNm}, '%')
 	</select>
 	<select id="getGenreList" resultType="String">
 		select genreNm from movie
