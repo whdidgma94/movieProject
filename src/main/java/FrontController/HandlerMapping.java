@@ -12,6 +12,7 @@ import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
 import Controller.MovieReviewController;
+import Controller.MovieRankController;
 import Controller.SearchMovieController;
 import Controller.SetDataBaseController;
 import Controller.SearchMovieViewController;
@@ -35,6 +36,7 @@ public class HandlerMapping {
 		mappings.put("/checkPassword.do", new CheckPasswordController());
 		mappings.put("/movieReview.do", new MovieReviewController());
 		mappings.put("/addReview.do", new AddReviewController());
+		mappings.put("/movieRank.do", new MovieRankController());
 	}
 
 	public Controller getController(String key) {

@@ -26,10 +26,15 @@
 		resultType="movie">
 		select * from movie where movieCd = #{movieCd}
 	</select>
-	
+
 	<select id="getSearchMovie" parameterType="String"
 		resultType="movie">
-		select * from movie where movieNm like CONCAT('%', #{inputVal}, '%')
+		select * from movie where movieNm like CONCAT('%',
+		#{inputVal}, '%')
+	</select>
+
+	<select id="movieRankList" resultType="movie">
+		select * from movie order by audiCnt desc;
 	</select>
 
 	<insert id="insertMovie" parameterType="movie">
