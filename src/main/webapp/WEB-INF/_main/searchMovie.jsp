@@ -2,18 +2,14 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
 <body>
-	<div class="search">
-		<input type="text" id="search" placeholder="입력"> <img
-			src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
-			id="searchImg">
+	<div class="search-wrapper" align="center">
+		<div class="search">
+			<input type="text" id="search" placeholder="입력"> <img
+				src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+				id="searchImg">
+		</div>
 	</div>
 	<table>
-		<c:if test="${searchList eq null }">
-			<tr>
-				<td colspan="3" id="result"></td>
-			</tr>
-			<hr>
-		</c:if>
 		<c:if test="${searchList ne null }">
 			<c:forEach var="searchList" items="${searchList}" begin="0"
 				end="${searchList.size() }" step="1" varStatus="status">
@@ -33,6 +29,10 @@
 
 		$("#searchImg").click(function() {
 			const query = searchInput.val();
+			if (query == "") {
+				swal('입력 오류', '검색어를 입력해 주세요', 'error');
+				return;
+			}
 			$.ajax({
 				type : "POST",
 				url : "${ctx}/searchViewMovie.do",
@@ -41,7 +41,7 @@
 				},
 				success : function(response) {
 					if (response == "null") {
-						swal('입력 오류','일치하는 결과가 없습니다','error');
+						swal('입력 오류', '일치하는 결과가 없습니다', 'error');
 					} else {
 						history.go(0);
 					}
@@ -57,6 +57,10 @@
 			if (event.which === 13) {
 				event.preventDefault();
 				const query = searchInput.val();
+				if (query == "") {
+					swal('입력 오류', '검색어를 입력해 주세요', 'error');
+					return;
+				}
 				$.ajax({
 					type : "POST",
 					url : "${ctx}/searchViewMovie.do",
@@ -65,7 +69,7 @@
 					},
 					success : function(response) {
 						if (response == "null") {
-							swal('입력 오류','일치하는 결과가 없습니다','error');
+							swal('입력 오류', '일치하는 결과가 없습니다', 'error');
 						} else {
 							history.go(0);
 						}

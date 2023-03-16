@@ -6,7 +6,7 @@ create table movie(
     watchGradeNm varchar(20), 				# 관람 등급
 	openDt varchar(20) not null,			# 영화 개봉일	
 	director varchar(20) not null,			# 감독 이름
-    actor varchar(100),						# 출연진 이름
+    actor varchar(500),						# 출연진 이름
     showTm int not null,					# 상영 시간
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
