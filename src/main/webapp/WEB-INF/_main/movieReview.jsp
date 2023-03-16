@@ -9,7 +9,6 @@
     	  movieCdElement.change(function() {
     		    var movieCd = $(this).val();
     		    selectedMovieCd = movieCd;
-    		    console.log("selectedMovieCd:", selectedMovieCd);
     		    showReviews(selectedMovieCd);
     		});
       }
@@ -22,29 +21,23 @@
     	    data: {
     	      movieCd: selectedMovieCd
     	    },
-    	    success: function() {
+    	    success: function(res) {
+    	    	var list = JSON.parse(res).reviewList;
     	    	  var cardsDiv = document.getElementById("cards");
     	    	  cardsDiv.innerHTML = "";   	    	  
-    	    	  var reviewList1 = [];
-    	    	  <c:forEach items="${reviewList}" var="review">   	    	  	
-    	    	  		<c:forEach items="${movieList}" var="movie">
-		                	<c:if test="${movie.movieCd == review.movieCd}">
-		                	reviewList1.push({
-		    	    	          movieCd: '${review.movieCd}',
-		    	    	          grade: '${review.grade}',
-		    	    	          contents: '${review.contents}',
-		    	    	          movieNm: '${movie.movieNm}'
-		    	    	    	});
-		                	console.log("${movie.movieNm}"+1);
-		                	</c:if>
-		            	</c:forEach>
-    	    	  </c:forEach>
-    	    	  for (var i = 0; i < reviewList1.length; i++) {
-    	    	    var review = reviewList1[i];
-    	    	    console.log(review.movieNm);
+    	    	  var reviewList = [];
+    	    	  for(let i = 0 ; i < list.length;i++){
+	                		reviewList.push({
+	    	    	          movieCd: list[i].movieCd,
+	    	    	          grade: list[i].grade,
+	    	    	          contents: list[i].contents
+	    	    	    	});
+    	    	  }
+    	    	  for (var i = 0; i < reviewList.length; i++) {
+    	    	    var review = reviewList[i];
     	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
-    	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
-    	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>" + review.grade + "</h6>";
+    	    	    cardHtml += "<h5 class='card-title'>" +review.movieCd + "</h5>";
+    	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
     	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
     	    	    cardHtml += "</div></div>";
     	    	    cardsDiv.innerHTML += cardHtml;

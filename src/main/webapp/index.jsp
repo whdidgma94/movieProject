@@ -33,7 +33,6 @@ window.addEventListener('load', ()=>{
 	    }
 	  }); 
 	});
-
       </script>
 </body>
 </html>
