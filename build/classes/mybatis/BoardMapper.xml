@@ -14,7 +14,8 @@
 	<select id="getAllBoard" resultMap="board">
 		select * from board
 	</select>
-	<select id="getMovieCdBoard"  parameterType="Integer" resultMap="board">
+	<select id="getMovieCdBoard" parameterType="Integer"
+		resultMap="board">
 		select * from board where movieCd = #{movieCd}
 	</select>
 	<select id="getOneBoard" parameterType="Integer"
