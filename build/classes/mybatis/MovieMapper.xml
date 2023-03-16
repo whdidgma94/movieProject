@@ -36,8 +36,11 @@
 	<select id="movieRankList" resultMap="movie">
 		select * from movie order by audiCnt desc;
 	</select>
-	<select id="movieGenreList" parameterType="String" resultMap="movie">
+	<select id="genreMovieList" parameterType="String" resultMap="movie">
 		select * from movie where genre=#{genre}
+	</select>
+	<select id="getGenreList" resultType="String">
+		select genreNm from movie
 	</select>
 
 	<insert id="insertMovie" parameterType="movie">
