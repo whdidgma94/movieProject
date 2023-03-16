@@ -3,40 +3,57 @@
 <%@ include file="../../header.jsp" %>
 <script>
     var selectedMovieCd = "all";
-    window.addEventListener('DOMContentLoaded', function() {
-    	var movieCdElement = document.querySelectorAll("select[name='movieCd']")[1];
-    	if (movieCdElement) {
-    		  movieCdElement.addEventListener("change", function() {
-    		    var movieCd = this.value;
+    $(document).ready(function() {
+      var movieCdElement = $("select[name='reviewSelect']");
+      if (movieCdElement) {
+    	  movieCdElement.change(function() {
+    		    var movieCd = $(this).val();
     		    selectedMovieCd = movieCd;
     		    console.log("selectedMovieCd:", selectedMovieCd);
     		    showReviews(selectedMovieCd);
-    		  });
-    		}
+    		});
+      }
+      showReviews(selectedMovieCd);
     });
     function showReviews(selectedMovieCd) {
-    	  var reviews = ${sessionScope.reviewList};
-    	  var filteredReviews = [];
-    	  if (selectedMovieCd === "all") {
-    	    filteredReviews = reviews;
-    	  } else {
-    	    for (var i = 0; i < reviews.length; i++) {
-    	      if (reviews[i].movieCd === selectedMovieCd) {
-    	        filteredReviews.push(reviews[i]);
-    	      }
+    	  $.ajax({
+    	    url: "${ctx}/getReviews.do",
+    	    type: "GET",
+    	    data: {
+    	      movieCd: selectedMovieCd
+    	    },
+    	    success: function() {
+    	    	  var cardsDiv = document.getElementById("cards");
+    	    	  cardsDiv.innerHTML = "";   	    	  
+    	    	  var reviewList1 = [];
+    	    	  <c:forEach items="${reviewList}" var="review">   	    	  	
+    	    	  		<c:forEach items="${movieList}" var="movie">
+		                	<c:if test="${movie.movieCd == review.movieCd}">
+		                	reviewList1.push({
+		    	    	          movieCd: '${review.movieCd}',
+		    	    	          grade: '${review.grade}',
+		    	    	          contents: '${review.contents}',
+		    	    	          movieNm: '${movie.movieNm}'
+		    	    	    	});
+		                	console.log("${movie.movieNm}"+1);
+		                	</c:if>
+		            	</c:forEach>
+    	    	  </c:forEach>
+    	    	  for (var i = 0; i < reviewList1.length; i++) {
+    	    	    var review = reviewList1[i];
+    	    	    console.log(review.movieNm);
+    	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
+    	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
+    	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>" + review.grade + "</h6>";
+    	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
+    	    	    cardHtml += "</div></div>";
+    	    	    cardsDiv.innerHTML += cardHtml;
+    	    	  }
+    	    	},
+    	    error: function(xhr, status, error) {
+    	      console.log("Error: " + error);
     	    }
-    	  }
-    	  var cardsDiv = document.getElementById("cards");
-    	  cardsDiv.innerHTML = "";
-    	  for (var i = 0; i < filteredReviews.length; i++) {
-    	    var review = filteredReviews[i];
-    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
-    	    cardHtml += "<h5 class='card-title'>" + review.movieNm + "</h5>";
-    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>" + review.grade + "</h6>";
-    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
-    	    cardHtml += "</div></div>";
-    	    cardsDiv.innerHTML += cardHtml;
-    	  }
+    	  });
     	}
 </script>
 <body>
@@ -80,7 +97,7 @@
 		<div class="row my-5">
 			<div class="col-12">
 				<label for="movieCd">영화선택&emsp;</label>
-       			<select class="form-control" id="movieCd" name="movieCd">
+       			<select class="form-control" id="movieCd" name="reviewSelect">
        				<option value="all">모든영화</option>
 		            <c:forEach items="${movieList}" var="movie">
 		                <option value="${movie.movieCd}" ${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>

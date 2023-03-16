@@ -74,10 +74,10 @@ create table seats(
 
 INSERT INTO board (writerId, movieCd, grade, contents) VALUES
     ('123', 20197654, 4, '재미있었습니다.'),
-    ('123', 20208962, 3, '기대했던 것보단 별로였네요.'),
-    ('123', 20226270, 5, '진짜 대박영화입니다.'),
-    ('123', 20228555, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
-    ('123', 20230081, 2, '이게 뭐냐 싶은 영화였습니다.');
+    ('123', 20197654, 3, '기대했던 것보단 별로였네요.'),
+    ('123', 20197654, 5, '진짜 대박영화입니다.'),
+    ('123', 20197654, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
+    ('123', 20197654, 2, '이게 뭐냐 싶은 영화였습니다.');
     select*from board;
 insert into theater(theaterName, theaterLocation, seats) values("강남관", "강남", 25);
 insert into theater(theaterName, theaterLocation, seats) values("서초관", "서초", 25);

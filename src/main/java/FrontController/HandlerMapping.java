@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 import Controller.AddReviewController;
 import Controller.CheckPasswordController;
+import Controller.GetReviewsController;
 import Controller.MainController;
 import Controller.MemberGenreSelectController;
 import Controller.MemberIdConfirmController;
@@ -39,6 +40,7 @@ public class HandlerMapping {
 		mappings.put("/addReview.do", new AddReviewController());
 		mappings.put("/movieRank.do", new MovieRankController());
 		mappings.put("/recommandMovie.do", new RecommandMovieController());
+		mappings.put("/getReviews.do", new GetReviewsController());
 	}
 
 	public Controller getController(String key) {

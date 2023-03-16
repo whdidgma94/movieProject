@@ -25,5 +25,12 @@ public class BoardDAO {
 			session.close();
 			return list;
 		}
+		
+		public List<BoardVO> getMovieCdBoard(int movieCd) {
+			SqlSession session = MybatisConfig.getInstance().openSession(true);
+			List<BoardVO> list = session.selectList("mapper.board.getMovieCdBoard", movieCd);
+			session.close();
+			return list;
+		}
 	
 }
