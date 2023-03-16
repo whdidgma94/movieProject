@@ -6,7 +6,7 @@ create table movie(
     watchGradeNm varchar(20), 				# 관람 등급
 	openDt varchar(20) not null,			# 영화 개봉일	
 	director varchar(20) not null,			# 감독 이름
-    actor varchar(100),						# 출연진 이름
+    actor varchar(500),						# 출연진 이름
     showTm int not null,					# 상영 시간
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
@@ -29,6 +29,7 @@ insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, 
 values
 ('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
 SELECT * FROM member;
+
 create table board(
 	boardNo int primary key auto_increment,		# 댓글 번호
     writerId varchar(20) not null, 				# 작성자 아이디
@@ -70,6 +71,7 @@ create table seats(
     checkSeat boolean default true,
     foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
 );
+
 
 insert into theater(theaterName, theaterLocation, seats) values("강남관", "강남", 25);
 insert into theater(theaterName, theaterLocation, seats) values("서초관", "서초", 25);
