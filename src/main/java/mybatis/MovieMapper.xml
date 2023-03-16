@@ -33,8 +33,11 @@
 		#{inputVal}, '%')
 	</select>
 
-	<select id="movieRankList" resultType="movie">
+	<select id="movieRankList" resultMap="movie">
 		select * from movie order by audiCnt desc;
+	</select>
+	<select id="movieGenreList" parameterType="String" resultMap="movie">
+		select * from movie where genre=#{genre}
 	</select>
 
 	<insert id="insertMovie" parameterType="movie">
