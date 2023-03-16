@@ -14,7 +14,7 @@ public class BoardDAO {
 	
 		public int addBoard(BoardVO boardVO) {
 			SqlSession session = MybatisConfig.getInstance().openSession(true);
-			int cnt = session.insert("mapper.board.boardInsert", boardVO);
+			int cnt = session.insert("mapper.board.insertBoard", boardVO);
 			session.close();
 			return cnt;
 		}
