@@ -42,16 +42,24 @@
 		
 		<div class="row my-5">
 			<div class="col-12">
-				<h3>${movieTitle} 리뷰</h3>
+				<label for="movieCd">영화선택&emsp;</label>
+       			<select class="form-control" id="movieCd" name="movieCd">
+       				<option value="all">모든영화</option>
+		            <c:forEach items="${movieList}" var="movie">
+		                <option value="${movie.movieCd}" ${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>
+		            </c:forEach>
+      				</select>
 				<c:forEach var="review" items="${reviewList}">
-					<div class="card my-3">
-						<div class="card-header">${review.writerId}</div>
-						<div class="card-body">
-							<p class="card-text">${review.contents}</p>
-							<p class="card-text">평점 : ${review.grade}</p>
+					<c:if test="${review.movieCd == selectedMovieCd || selectedMovieCd == 'all'}">
+						<div class="card my-3">
+							<div class="card-header">${review.writerId}</div>
+							<div class="card-body">
+								<p class="card-text">${review.contents}</p>
+								<p class="card-text">평점 : ${review.grade}</p>
+							</div>
+							<div class="card-footer text-muted">${review.regDate}</div>
 						</div>
-						<div class="card-footer text-muted">${review.regDate}</div>
-					</div>
+					</c:if>
 				</c:forEach>
 			</div>
 		</div>

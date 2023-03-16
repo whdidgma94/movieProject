@@ -1,5 +1,6 @@
 package Board;
 
+import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import Util.MybatisConfig;
 
@@ -16,6 +17,13 @@ public class BoardDAO {
 			int cnt = session.insert("mapper.board.boardInsert", boardVO);
 			session.close();
 			return cnt;
-		}	
+		}
+		
+		public List<BoardVO> getAllBoard() {
+			SqlSession session = MybatisConfig.getInstance().openSession(true);
+			List<BoardVO> list = session.selectList("mapper.board.getAllBoard");
+			session.close();
+			return list;
+		}
 	
 }

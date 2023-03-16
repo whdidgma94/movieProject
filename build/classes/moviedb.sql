@@ -72,6 +72,11 @@ create table seats(
     foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
 );
 
+
+insert into theater(theaterName, theaterLocation, seats) values("강남관", "강남", 25);
+insert into theater(theaterName, theaterLocation, seats) values("서초관", "서초", 25);
+insert into theater(theaterName, theaterLocation, seats) values("송파관", "송파", 25);
+insert into member(memberName, id, pw, birthDay, address, favoriteGenre, gender) values("관리자", "admin", "admin", "0000-00-00", "admin", "admin", "admin");
 insert into theater(theaterName, theaterLocation, seatCnt) values("강남관", "강남", 25);
 insert into theater(theaterName, theaterLocation, seatCnt) values("서초관", "서초", 25);
 insert into theater(theaterName, theaterLocation, seatCnt) values("송파관", "송파", 25);
