@@ -60,7 +60,6 @@ public class MovieDAO {
 		return list;
 	}
 
-
 	public void insertMovie(MovieVO movieVO) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		session.insert("mapper.movie.insertMovie", movieVO);
