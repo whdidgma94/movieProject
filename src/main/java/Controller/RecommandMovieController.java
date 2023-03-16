@@ -10,9 +10,8 @@ import javax.servlet.http.HttpSession;
 import FrontController.Controller;
 import Member.MemberDAO;
 import Member.MemberVO;
-import Movie.MovieDAO;
 
-public class RecommandMovieController implements Controller{
+public class RecommandMovieController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
@@ -22,12 +21,13 @@ public class RecommandMovieController implements Controller{
 		String log = (String) session.getAttribute("log");
 		MemberVO mvo = MemberDAO.getInstance().getOneUser(log);
 		String genre = mvo.getFavoriteGenre();
-		if(genre.contains(",")) {
-		String[] GenreArr = genre.split(",");
-		}else{
-			MovieDAO.getInstance().movieGenreList(genre);
+		if(genre.equals("기타")) {
+			request.setAttribute("genre", null);
+		} else {
+			request.setAttribute("genre", genre);
+			
 		}
-		
+
 		return "recommandMovie";
 	}
 
