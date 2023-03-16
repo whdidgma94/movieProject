@@ -15,6 +15,7 @@ import Controller.MovieReviewController;
 import Controller.MovieRankController;
 import Controller.SearchMovieController;
 import Controller.SetDataBaseController;
+import Controller.RecommandMovieController;
 import Controller.SearchMovieViewController;
 
 public class HandlerMapping {
@@ -37,6 +38,7 @@ public class HandlerMapping {
 		mappings.put("/movieReview.do", new MovieReviewController());
 		mappings.put("/addReview.do", new AddReviewController());
 		mappings.put("/movieRank.do", new MovieRankController());
+		mappings.put("/recommandMovie.do", new RecommandMovieController());
 	}
 
 	public Controller getController(String key) {

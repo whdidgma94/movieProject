@@ -51,7 +51,7 @@
 	});
 
 	$("#movieRank").mouseover(function() {
-	    $("#subBar").html("<div>일간 박스오피스 순위</div><div>주간 박스오피스 순위</div><div>월간 박스오피스 순위</div>");
+	    $("#subBar").html("<div>일간 박스오피스 순위</div><div>주간 박스오피스 순위</div>");
 	});
 
 	$("#memberManage").mouseover(function() {
@@ -88,7 +88,7 @@
 		</div>
 	</div>
 	<div class="nav justify-content-around contentsbar">
-		<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
+		<div class="col-2 py-3" id="recommendMovie" onclick="location.href='${ctx}/recommandMovie.do'">추천영화</div>
 		<div class="col-2 py-3" id="searchMovie"
 			onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
 		<div class="col-2 py-3" id="bookMovie" onclick="location.href=#">예매하기</div>

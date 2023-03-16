@@ -82,17 +82,17 @@
 		})
 
 		const searchWrapper = document.querySelector('.search-wrapper');
-		const searchWrapperTop = searchWrapper.offsetTop; // 검색창의 초기 위치 (상단 15%)
+		const searchWrapperTop = searchWrapper.offsetTop;
 
 		window.addEventListener('scroll', function() {
-			const currentScroll = window.pageYOffset; // 현재 스크롤 위치
+			const currentScroll = window.pageYOffset; 
 
 			if (currentScroll >= searchWrapperTop) {
 				searchWrapper.style.position = 'fixed';
 				searchWrapper.style.top = 0;
 			} else {
 				searchWrapper.style.position = 'absolute';
-				searchWrapper.style.top = '15%';
+				searchWrapper.style.top = '20%';
 			}
 		});
 
