@@ -16,7 +16,7 @@ public class RecommandMovieController implements Controller{
 		request.setCharacterEncoding("UTF-8");
 		
 		
-		return null;
+		return "recommandMovie";
 	}
 
 }
