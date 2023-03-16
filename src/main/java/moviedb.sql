@@ -6,13 +6,14 @@ create table movie(
     watchGradeNm varchar(20), 				# 관람 등급
 	openDt varchar(20) not null,			# 영화 개봉일	
 	director varchar(20) not null,			# 감독 이름
-    actor varchar(100),						# 출연진 이름
+    actor varchar(500),						# 출연진 이름
     showTm int not null,					# 상영 시간
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
 	audiCnt int								# 누적 관객수
 );
 
+select * from movie;
 create table member(
 	memberNo int primary key auto_increment,	# 회원 식별번호
     memberName varchar(20) not null, 			# 회원 이름
@@ -28,6 +29,7 @@ insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, 
 values
 ('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
 SELECT * FROM member;
+
 create table board(
 	boardNo int primary key auto_increment,		# 댓글 번호
     writerId varchar(20) not null, 				# 작성자 아이디
@@ -70,7 +72,17 @@ create table seats(
     foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
 );
 
+INSERT INTO board (writerId, movieCd, grade, contents) VALUES
+    ('123', 20197654, 4, '재미있었습니다.'),
+    ('123', 20197654, 3, '기대했던 것보단 별로였네요.'),
+    ('123', 20197654, 5, '진짜 대박영화입니다.'),
+    ('123', 20197654, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
+    ('123', 20197654, 2, '이게 뭐냐 싶은 영화였습니다.');
+    select*from board;
 insert into theater(theaterName, theaterLocation, seats) values("강남관", "강남", 25);
 insert into theater(theaterName, theaterLocation, seats) values("서초관", "서초", 25);
 insert into theater(theaterName, theaterLocation, seats) values("송파관", "송파", 25);
 insert into member(memberName, id, pw, birthDay, address, favoriteGenre, gender) values("관리자", "admin", "admin", "0000-00-00", "admin", "admin", "admin");
+insert into theater(theaterName, theaterLocation, seatCnt) values("강남관", "강남", 25);
+insert into theater(theaterName, theaterLocation, seatCnt) values("서초관", "서초", 25);
+insert into theater(theaterName, theaterLocation, seatCnt) values("송파관", "송파", 25);

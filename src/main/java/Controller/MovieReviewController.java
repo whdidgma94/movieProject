@@ -8,26 +8,23 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Board.BoardDAO;
+import Board.BoardVO;
 import FrontController.Controller;
 import Movie.MovieDAO;
 import Movie.MovieVO;
 
-public class SearchMovieViewController implements Controller {
+public class MovieReviewController implements Controller{
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.setCharacterEncoding("UTF-8");
-		String inputVal = request.getParameter("inputVal");
-		List<MovieVO> searchList = MovieDAO.getInstance().getSearchMovie(inputVal);
 		HttpSession session = request.getSession();
-		session.setAttribute("searchList", searchList);
-		if(searchList.size()==0) {
-			response.getWriter().print("null");
-		}else {
-			response.getWriter().print("notNull");
-		}
-		return null;
+		List<MovieVO> movieList = MovieDAO.getInstance().getAllMovie();
+		List<BoardVO> reviewList = BoardDAO.getInstance().getAllBoard();
+		request.setAttribute("movieList", movieList);
+		session.setAttribute("reviewList", reviewList);
+		return "movieReview";
 	}
 
 }

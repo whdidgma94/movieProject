@@ -53,6 +53,10 @@ public class SetDataBaseController implements Controller {
 					if (j != actors.size() - 1) {
 						actor += ",";
 					}
+					if (j == 4) {
+						actor = actor.substring(0, actor.length() - 1);
+						break;
+					}
 				}
 				mvo.setActor(actor);
 			}
