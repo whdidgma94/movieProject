@@ -67,6 +67,7 @@ public class RecommandMovieController implements Controller {
 				}
 			}
 		}
+		
 		request.setAttribute("genreMap", genreMap);
 
 		return "recommandMovie";
