@@ -14,7 +14,6 @@ window.addEventListener('load', ()=>{
 	    let movieList = data.boxOfficeResult.dailyBoxOfficeList;
 	    for ( let i =0;i<10;i++) {
 	      let url2 = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd="+movieList[i].movieCd;
-	      console.log(url2);
 	      $.getJSON(url2, function(data) {
 	        let movie = data.movieInfoResult.movieInfo;
 	        $.ajax({

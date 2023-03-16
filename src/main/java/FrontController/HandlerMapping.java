@@ -10,6 +10,7 @@ import Controller.MemberJoinController;
 import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
+import Controller.MovieRankController;
 import Controller.SearchMovieController;
 import Controller.SetDataBaseController;
 import Controller.SearchMovieViewController;
@@ -31,6 +32,7 @@ public class HandlerMapping {
 		mappings.put("/searchMovie.do", new SearchMovieController());
 		mappings.put("/searchViewMovie.do", new SearchMovieViewController());
 		mappings.put("/checkPassword.do", new CheckPasswordController());
+		mappings.put("/movieRank.do", new MovieRankController());
 	}
 
 	public Controller getController(String key) {

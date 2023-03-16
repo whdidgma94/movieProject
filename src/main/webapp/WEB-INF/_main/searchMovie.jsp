@@ -29,10 +29,6 @@
 
 		$("#searchImg").click(function() {
 			const query = searchInput.val();
-			if (query == "") {
-				swal('입력 오류', '검색어를 입력해 주세요', 'error');
-				return;
-			}
 			$.ajax({
 				type : "POST",
 				url : "${ctx}/searchViewMovie.do",
@@ -57,10 +53,6 @@
 			if (event.which === 13) {
 				event.preventDefault();
 				const query = searchInput.val();
-				if (query == "") {
-					swal('입력 오류', '검색어를 입력해 주세요', 'error');
-					return;
-				}
 				$.ajax({
 					type : "POST",
 					url : "${ctx}/searchViewMovie.do",
@@ -88,6 +80,42 @@
 			alert("hi");
 			var num = $(this).attr("id");
 		})
+
+		const searchWrapper = document.querySelector('.search-wrapper');
+		const searchWrapperTop = searchWrapper.offsetTop; // 검색창의 초기 위치 (상단 15%)
+
+		window.addEventListener('scroll', function() {
+			const currentScroll = window.pageYOffset; // 현재 스크롤 위치
+
+			if (currentScroll >= searchWrapperTop) {
+				searchWrapper.style.position = 'fixed';
+				searchWrapper.style.top = 0;
+			} else {
+				searchWrapper.style.position = 'absolute';
+				searchWrapper.style.top = '15%';
+			}
+		});
+
+		function animateScrollTop() {
+			const currentScroll = window.pageYOffset;
+			const targetScroll = searchWrapperTop;
+			const distance = targetScroll - currentScroll;
+			const step = distance / 30;
+
+			if (distance > 0) {
+				window.scrollTo(0, currentScroll + step);
+				if (currentScroll + step < targetScroll) {
+					window.requestAnimationFrame(animateScrollTop);
+				}
+			}
+		}
+
+		searchWrapper.addEventListener('click', function() {
+			if (window.pageYOffset >= searchWrapperTop) {
+				return;
+			}
+			animateScrollTop();
+		});
 	</script>
 </body>
 </html>

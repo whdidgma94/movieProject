@@ -154,17 +154,20 @@ table td:not(:last-child) {
 	flex: 1;
 }
 
-.search-wrapper{
-	position:fixed;
-	top:18%;
-	width:100%;
+.search-wrapper {
+	position: relative;
+	top: 0;
+	width: 100%;
 	display: flex;
 	justify-content: center;
+	padding: 10px;
 }
+
 .search {
 	position: relative;
 	width: 400px;
 }
+
 #search {
 	width: 100%;
 	border: 1px solid #bbb;

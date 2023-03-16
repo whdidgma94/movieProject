@@ -50,7 +50,7 @@
 		<div class="col-2 py-3" onclick="location.href=#">추천영화</div>
 		<div class="col-2 py-3" onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
 		<div class="col-2 py-3" onclick="location.href=#">예매하기</div>
-		<div class="col-2 py-3" onclick="location.href=#">영화순위</div>
+		<div class="col-2 py-3" onclick="location.href='${ctx}/movieRank.do'">영화순위</div>
 		<div class="col-2 py-3" onclick="location.href=#">영화리뷰</div>
 		<c:if test="${log == 'admin'}">
 			<div class="col-2 py-3" onclick="location.href=#">회원관리</div>
