@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
 <body>
-<div></div>
 	<h1>영화 순위</h1>
 	<table>
 		<tr>
