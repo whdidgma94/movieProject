@@ -9,14 +9,20 @@ import javax.servlet.http.HttpServletResponse;
 import FrontController.Controller;
 import Movie.MovieDAO;
 
-public class MovieContentController implements Controller{
+public class MovieContentController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		int movieCd = Integer.parseInt((String)request.getAttribute("movieCd"));
-		request.setAttribute("vo", MovieDAO.getInstance().getOneMovie(movieCd));		
+		int movieCd = 0;
+		if (request.getParameter("movieCd") != null) {
+			movieCd = Integer.parseInt((String) request.getParameter("movieCd"));
+		} else {
+			System.out.println(request.getParameter("movieCd"));
+		}
+
+		request.setAttribute("vo", MovieDAO.getInstance().getOneMovie(movieCd));
 		return "movieContent";
 	}
 
