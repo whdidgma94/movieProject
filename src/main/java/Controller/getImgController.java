@@ -1,37 +1,31 @@
 package Controller;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+//네이버 검색 API 예제 - 블로그 검색
+import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+
 import FrontController.Controller;
 
-public class SearchMovieViewController implements Controller {
+public class getImgController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		HttpSession session = request.getSession();
-		request.setCharacterEncoding("UTF-8");
-		String data = request.getParameter("inputVal");
-		String clientId = "h0TEopSBA8P6j0SDM4NV";
-		String clientSecret = "B5neLh3HSS";
+		String data = request.getParameter("data");
+		String clientId = "h0TEopSBA8P6j0SDM4NV"; // 애플리케이션 클라이언트 아이디
+		String clientSecret = "B5neLh3HSS"; // 애플리케이션 클라이언트 시크릿
 		String text = null;
 		try {
 			text = URLEncoder.encode(data, "UTF-8");
@@ -39,7 +33,7 @@ public class SearchMovieViewController implements Controller {
 			throw new RuntimeException("검색어 인코딩 실패", e);
 		}
 
-		String apiURL = "https://openapi.naver.com/v1/search/movie?query=" + text;
+		String apiURL = "https://openapi.naver.com/v1/search/movie?query=" + text; // JSON 결과
 
 		URL url = new URL(apiURL);
 		HttpURLConnection con = (HttpURLConnection) url.openConnection();
@@ -60,33 +54,19 @@ public class SearchMovieViewController implements Controller {
 		}
 		br.close();
 		JSONParser jp = new JSONParser();
-		JSONObject jb = null;
+		JSONObject jb=null;
 		try {
 			jb = (JSONObject) jp.parse(rp.toString());
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
-		JSONArray searchList = (JSONArray) jb.get("items");
-		List<String> imgList = new ArrayList<String>();
-		if (searchList.size() == 0) {
-			response.getWriter().print("null");
-		} else {
-			response.getWriter().print("notNull");
+		JSONArray infoArray = (JSONArray) jb.get("items");
+		for(int i=0;i<infoArray.size();i++) {
+			JSONObject itemObject = (JSONObject) infoArray.get(i);
+			System.out.println(itemObject.get("image"));
+			request.setAttribute("info", itemObject.get("image"));
 		}
-		for (int i = 0; i < searchList.size(); i++) {
-			JSONObject jo = (JSONObject) searchList.get(i);
-			String imageUrl = jo.get("image").toString();
-			String fileName = imageUrl.substring(imageUrl.lastIndexOf("/") + 1);
-			String[] tmp = fileName.split("_");
-			tmp[1]="P100";
-			fileName=tmp[0]+"_"+tmp[1]+"_"+tmp[2];
-			imageUrl=imageUrl.substring(0,imageUrl.lastIndexOf("/")+1);
-			imageUrl+=fileName;
-			imgList.add(imageUrl);
-		}
-		session.setAttribute("imgList", imgList);
-		session.setAttribute("searchList", searchList);
 		return null;
 	}
-
+	
 }

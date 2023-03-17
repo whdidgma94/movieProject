@@ -42,6 +42,20 @@
         right: 10px;
         cursor: pointer;
     }
+    button{
+	    background-color: #4CAF50;
+	    border: none;
+	    border-radius:10px;
+	    color: white;
+	    padding: 10px 20px;
+	    text-align: center;
+	    text-decoration: none;
+	    display: inline-block;
+	    font-size: 16px;
+	    margin: 4px 2px;
+	    cursor: pointer;
+    }
+    
 </style>
 <body>
 	<h1>마이페이지</h1>
@@ -77,7 +91,7 @@
                     <th>선호 장르</th>
                     <td>${member.favoriteGenre}</td>
                     <td>
-                        <button onclick="showPopup()">선호장르 변경</button>
+                        <button onclick="showPopup('genre')">선호장르 변경</button>
                     </td>
                 </tr>
             </c:if>
@@ -86,12 +100,12 @@
 				<td>${member.gender}</td>
 				<td></td>
 			</tr>
-			<tr> <td colspan="3"> <button>개인정보 변경</button> </td> </tr>
+			<tr> <td colspan="3"> <button onclick="showPopup('profile')">개인정보 변경</button> </td> </tr>
 		</table>
 	</c:if>
 </body>
 <script>
-	function showPopup() {
+	function showPopup(sel) {
 	    swal({
 	        title: "비밀번호를 입력하세요",
 	        content: {
@@ -106,11 +120,11 @@
 	        },
 	    })
 	    .then((value) => {
-	        checkPw(value);
+	        checkPw(value,sel);
 	    });
 	}
 	
-	function checkPw(pw){
+	function checkPw(pw,sel){
 		$.ajax({
 			url: "checkPassword.do",
 			type: "POST",
@@ -120,8 +134,12 @@
 			success: function(response) {
 				if(response == 1){
 					swal('','','success')
-					.then(function(){		
-						location.href = "memberGenreSelect.do";
+					.then(function(){
+						if(sel=='genre'){
+							location.href = "memberGenreSelect.do";
+						}else if(sel=='profile'){
+							location.href = "memberUpdate.do";
+						}
 					});
 				}else{
 					swal('입력오류','비밀번호를 확인해 주세요','error');

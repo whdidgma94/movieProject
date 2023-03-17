@@ -1,10 +1,10 @@
 package Controller;
 
 import java.io.IOException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -48,7 +48,7 @@ public class RecommandMovieController implements Controller {
 			}
 		}
 		String[] genres = null;
-		Map<String, MovieVO> genreMap = new HashMap<String, MovieVO>();
+		LinkedHashMap<String, MovieVO> genreMap = new LinkedHashMap<String, MovieVO>();
 		if (genre.contains(",")) {
 			genres = genre.split(",");
 		} else {
@@ -60,16 +60,19 @@ public class RecommandMovieController implements Controller {
 				List<MovieVO> lists = MovieDAO.getInstance().genreMovieList(g);
 				for (MovieVO vo : lists) {
 					if (vo.getGenreNm().contains(g)) {
-						if (!genreMap.containsKey(g)) {
-							genreMap.put(g, vo);
+						if (!genreMap.containsValue(vo)) {
+							genreMap.put(vo.getGenreNm(), vo);
 						}
 					}
 				}
 			}
 		}
-		
+		List<String> imgList = new ArrayList<String>();
+		for (MovieVO vo : genreMap.values()) {	
+			imgList.add(MovieDAO.getInstance().getImgUrl(vo.getMovieNm()));
+		}
+		request.setAttribute("imgList", imgList);
 		request.setAttribute("genreMap", genreMap);
-
 		return "recommandMovie";
 	}
 }

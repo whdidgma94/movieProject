@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div>나의 선호 장르</div><div>인기 순위</div><div>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div>인기 순위</div><div onclick='location.href=\"${ctx}/movieContent.do\"'>개봉 예정작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {
@@ -47,7 +47,7 @@
 	});
 
 	$("#movieReview").mouseover(function() {
-	    $("#subBar").html("<div>최신 리뷰</div><div>별점 높은 리뷰</div><div>내가 작성한 리뷰</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addReview.do\"'>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div onclick='location.href=\"${ctx}/movieMyReview.do\"'>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {
@@ -66,7 +66,7 @@
 </head>
 <body>
 	<div class="top">
-		<img alt="logo" src="${ctx}/img/logo.png">
+		<img alt="logo" src="${ctx}/img/logo.png" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">
 		<c:if test="${log != null}">
 			<div class="curLog">${log}님로그인중</div>
 		</c:if>
@@ -88,12 +88,11 @@
 		</div>
 	</div>
 	<div class="nav justify-content-around contentsbar">
-		<div class="col-2 py-3" id="recommendMovie" onclick="location.href='${ctx}/recommandMovie.do'">추천영화</div>
+		<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
 		<div class="col-2 py-3" id="searchMovie"
 			onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
 		<div class="col-2 py-3" id="bookMovie" onclick="location.href=#">예매하기</div>
-		<div class="col-2 py-3" id="movieReview"
-			onclick="location.href='${ctx}/movieReview.do'">영화리뷰</div>
+		<div class="col-2 py-3" id="movieReview">영화리뷰</div>
 		<div class="col-2 py-3" id="movieRank"
 			onclick="location.href='${ctx}/movieRank.do'">영화순위</div>
 		<c:if test="${log == 'admin'}">

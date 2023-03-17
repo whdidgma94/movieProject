@@ -14,29 +14,22 @@ import FrontController.Controller;
 import Movie.MovieDAO;
 import Movie.MovieVO;
 
-public class AddReviewController implements Controller{
+public class MovieMyReviewController implements Controller{
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-		String ctx = request.getContextPath();
-		List<MovieVO> movieList = MovieDAO.getInstance().getAllMovie();
-		request.setAttribute("movieList", movieList);
 		HttpSession session = request.getSession();
+		String ctx = request.getContextPath();
 		if(session.getAttribute("log")==null) {
 			return "redirect:"+ctx+"/memberLogin.do";
 		}
-		if(request.getParameter("movieCd")==null) {
-			return "movieReviewInsert";
-		}
-		String writerId = (String)session.getAttribute("log");
-		int movieCd = Integer.parseInt(request.getParameter("movieCd"));
-		int grade = Integer.parseInt(request.getParameter("grade"));
-		String contents = request.getParameter("contents");
-		BoardVO vo = new BoardVO(writerId,movieCd,grade,contents);
-		BoardDAO.getInstance().addBoard(vo);
-		return "redirect:"+ctx+"/movieReview.do";
+		List<MovieVO> movieList = MovieDAO.getInstance().getAllMovie();
+		List<BoardVO> reviewList = BoardDAO.getInstance().getAllBoard();
+		request.setAttribute("movieList", movieList);
+		session.setAttribute("reviewList", reviewList);
+		return "movieMyReview";
 	}
 
 }

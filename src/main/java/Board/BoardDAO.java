@@ -32,5 +32,11 @@ public class BoardDAO {
 			session.close();
 			return list;
 		}
+		public int removeBoard(int reviewNm) {
+			SqlSession session = MybatisConfig.getInstance().openSession(true);
+			int cnt = session.insert("mapper.board.deleteBoard", reviewNm);
+			session.close();
+			return cnt;
+		}
 	
 }

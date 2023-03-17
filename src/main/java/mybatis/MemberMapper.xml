@@ -51,12 +51,16 @@
          where id=#{id}
     </update>
     
-     <update id="memberUpdate" parameterType="member">
+     <update id="memberUpdate1" parameterType="member">
          update member
-         set pw=#{pw}, email=#{email}, address=#{address}, favoriteGenre=#{favoriteGenre}  
+         set memberName=#{memberName}, pw=#{pw}, email=#{email}, address=#{address}
          where id=#{id}
     </update>
-    
+    <update id="memberUpdate2" parameterType="member">
+         update member
+         set memberName=#{memberName}, pw=#{pw}, email=#{email}
+         where id=#{id}
+    </update>
       <delete id="memberDelete" parameterType="String">  
         delete from member where id=#{id} 
     </delete>

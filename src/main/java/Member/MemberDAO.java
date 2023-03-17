@@ -54,9 +54,15 @@ public class MemberDAO {
 		return memberVO;
 	}
 
-	public int userUpdate(MemberVO memberVO) {
+	public int memberUpdate1(MemberVO memberVO) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		int cnt = session.update("mapper.member.memberUpdate", memberVO);
+		int cnt = session.update("mapper.member.memberUpdate1", memberVO);
+		session.close();
+		return cnt;
+	}
+	public int memberUpdate2(MemberVO memberVO) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		int cnt = session.update("mapper.member.memberUpdate2", memberVO);
 		session.close();
 		return cnt;
 	}
