@@ -47,7 +47,7 @@
 	});
 
 	$("#movieReview").mouseover(function() {
-	    $("#subBar").html("<div>최신 리뷰</div><div>별점 높은 리뷰</div><div onclik='location.href=#'>내가 작성한 리뷰</div>");
+	    $("#subBar").html("<div class=\"col-2 py-3\" onclick='location.href=\"${ctx}/addReview.do\"'>리뷰 작성</div><div class=\"col-2 py-3\" id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div class=\"col-2 py-3\" onclick='location.href=\"${ctx}/movieMyReview.do\"'>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {
@@ -92,8 +92,7 @@
 		<div class="col-2 py-3" id="searchMovie"
 			onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
 		<div class="col-2 py-3" id="bookMovie" onclick="location.href=#">예매하기</div>
-		<div class="col-2 py-3" id="movieReview"
-			onclick="location.href='${ctx}/movieReview.do'">영화리뷰</div>
+		<div class="col-2 py-3" id="movieReview">영화리뷰</div>
 		<div class="col-2 py-3" id="movieRank"
 			onclick="location.href='${ctx}/movieRank.do'">영화순위</div>
 		<c:if test="${log == 'admin'}">

@@ -13,7 +13,9 @@ import Controller.MemberJoinController;
 import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
+import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
+import Controller.MovieReviewRemoveController;
 import Controller.MovieRankController;
 import Controller.SearchMovieController;
 import Controller.SetDataBaseController;
@@ -43,6 +45,8 @@ public class HandlerMapping {
 		mappings.put("/recommandMovie.do", new RecommandMovieController());
 		mappings.put("/getReviews.do", new GetReviewsController());
 		mappings.put("/apiSearch.do", new ApiSearch());
+		mappings.put("/movieMyReview.do", new MovieMyReviewController());
+		mappings.put("/movieReviewRemove.do", new MovieReviewRemoveController());
 	}
 
 	public Controller getController(String key) {
