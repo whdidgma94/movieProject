@@ -60,14 +60,13 @@ public class RecommandMovieController implements Controller {
 				List<MovieVO> lists = MovieDAO.getInstance().genreMovieList(g);
 				for (MovieVO vo : lists) {
 					if (vo.getGenreNm().contains(g)) {
-						if (!genreMap.containsKey(g)) {
-							genreMap.put(g, vo);
+						if (!genreMap.containsValue(vo)) {
+							genreMap.put(vo.getGenreNm(), vo);
 						}
 					}
 				}
 			}
 		}
-		
 		request.setAttribute("genreMap", genreMap);
 
 		return "recommandMovie";

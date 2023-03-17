@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/memberLogin.do\"'>나의 선호 장르</div><div>인기 순위</div><div>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div>인기 순위</div><div>개봉 예정작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {
@@ -88,7 +88,7 @@
 		</div>
 	</div>
 	<div class="nav justify-content-around contentsbar">
-		<div class="col-2 py-3" id="recommendMovie" onclick="location.href='${ctx}/recommandMovie.do'">추천영화</div>
+		<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
 		<div class="col-2 py-3" id="searchMovie"
 			onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
 		<div class="col-2 py-3" id="bookMovie" onclick="location.href=#">예매하기</div>

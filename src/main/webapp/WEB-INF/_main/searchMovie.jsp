@@ -3,6 +3,7 @@
 <%@ include file="../../header.jsp"%>
 
 <body>
+<h1></h1>
 	<div class="search-wrapper" align="center">
 		<div class="search">
 			<input type="text" id="search" placeholder="입력"> <img
@@ -17,17 +18,17 @@
 				<c:if test="${(status.index)%3 eq 0}">
 					<tr>
 				</c:if>
-				<td id="searchList"><img alt="" id="${searchList.movieCd}"
-					src="${ctx }/img/logo.png" /><br /> <strong>${searchList.movieNm  }</strong></td>
+				<td id="searchList"><img alt="" id="${searchList.title}"
+					src="${searchList.image}" /><br /> <strong>${searchList.title}</strong></td>
 				<c:if test="${(status.index)%3 eq 2}">
 					</tr>
 				</c:if>
 			</c:forEach>
+			 <% session.removeAttribute("searchList"); %>
 		</c:if>
 	</table>
 	<script>
 		const searchInput = $('#search');
-
 		$("#searchImg").click(function() {
 			const query = searchInput.val();
 			$.ajax({
@@ -56,7 +57,7 @@
 				const query = searchInput.val();
 				$.ajax({
 					type : "POST",
-					url : "${ctx}/searchViewMovie.do",
+					url : "${ctx}/searchMovieView.do",
 					data : {
 						inputVal : searchInput.val()
 					},

@@ -35,7 +35,7 @@ public class HandlerMapping {
 		mappings.put("/memberGenreSelect.do", new MemberGenreSelectController());
 		mappings.put("/memberMyPage.do", new MemberMyPageController());
 		mappings.put("/searchMovie.do", new SearchMovieController());
-		mappings.put("/searchViewMovie.do", new SearchMovieViewController());
+		mappings.put("/searchMovieView.do", new SearchMovieViewController());
 		mappings.put("/checkPassword.do", new CheckPasswordController());
 		mappings.put("/movieReview.do", new MovieReviewController());
 		mappings.put("/addReview.do", new AddReviewController());

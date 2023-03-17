@@ -66,6 +66,6 @@ public class ApiSearch implements Controller {
 			System.out.println(itemObject.get("image"));
 			request.setAttribute("info", itemObject.get("image"));
 		}
-		return "test";
+		return null;
 	}
 }
