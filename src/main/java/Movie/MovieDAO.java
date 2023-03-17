@@ -38,7 +38,12 @@ public class MovieDAO {
 		session.close();
 		return resVO;
 	}
-
+	public String getMovieName(int movieCd) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		String movieNm = session.selectOne("mapper.movie.getMovieName", movieCd);
+		session.close();
+		return movieNm;
+	}
 	public List<MovieVO> movieRankList() {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		List<MovieVO> list = session.selectList("mapper.movie.movieRankList");
