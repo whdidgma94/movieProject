@@ -18,7 +18,7 @@
 				<c:if test="${(status.index)%3 eq 0}">
 					<tr>
 				</c:if>
-				<td id="searchList"><img alt="" id="${searchList.title}"
+				<td id="searchList"><img alt="" id="${searchList.title}" onclick="location.href='${searchList.link}'"
 					src="${searchList.image}" /><br /> <strong>${searchList.title}</strong></td>
 				<c:if test="${(status.index)%3 eq 2}">
 					</tr>
@@ -81,8 +81,6 @@
 		searchInput.on('keydown', handleSearch);
 
 		$("td#searchList>img").click(function() {
-			alert("hi");
-			var num = $(this).attr("id");
 		})
 
 		const searchWrapper = document.querySelector('.search-wrapper');
