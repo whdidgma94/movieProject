@@ -39,7 +39,7 @@ create table board(
     foreign key (writerId) references member(id) on delete cascade,
     foreign key (movieCd) references movie(movieCd) on delete cascade
 );
-
+SELECT * FROM board;
 create table theater(
 	theaterNo int primary key auto_increment,	# 영화관 식별번호
     theaterName varchar(20) not null,			# 영화관 이름

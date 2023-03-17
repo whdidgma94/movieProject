@@ -47,7 +47,7 @@
 	});
 
 	$("#movieReview").mouseover(function() {
-	    $("#subBar").html("<div>최신 리뷰</div><div>별점 높은 리뷰</div><div>내가 작성한 리뷰</div>");
+	    $("#subBar").html("<div>최신 리뷰</div><div>별점 높은 리뷰</div><div onclik='location.href=#'>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {

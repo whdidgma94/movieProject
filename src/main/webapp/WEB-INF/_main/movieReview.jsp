@@ -26,19 +26,27 @@
     	    	  var cardsDiv = document.getElementById("cards");
     	    	  cardsDiv.innerHTML = "";   	    	  
     	    	  var reviewList = [];
-    	    	  for(let i = 0 ; i < list.length;i++){
-	                		reviewList.push({
-	    	    	          movieCd: list[i].movieCd,
-	    	    	          grade: list[i].grade,
-	    	    	          contents: list[i].contents
-	    	    	    	});
-    	    	  }
+    	          for (let i = 0; i < list.length; i++) {	              
+    	    	  <c:forEach items="${movieList}" var="movie">
+    	    	  		if(${movie.movieCd}==list[i].movieCd){
+    	               reviewList.push({
+   	                      movieCd: list[i].movieCd,
+   	                      grade: list[i].grade,
+   	                      contents: list[i].contents,
+   	                      movieNm: "${movie.movieNm}",
+   	                      writerId: list[i].writerId
+    	               });
+    	    	  		}
+	           	  </c:forEach>  
+    	          }
+
     	    	  for (var i = 0; i < reviewList.length; i++) {
     	    	    var review = reviewList[i];
     	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
-    	    	    cardHtml += "<h5 class='card-title'>" +review.movieCd + "</h5>";
+    	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
     	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
     	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
+    	    	    cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
     	    	    cardHtml += "</div></div>";
     	    	    cardsDiv.innerHTML += cardHtml;
     	    	  }
@@ -55,7 +63,6 @@
 		<c:if test="${not empty sessionScope.log}">
 			<div class="row">
 				<div class="col-12 col-md-8 offset-md-2">
-	
 					<form action="${ctx}/addReview.do" method="post">
 						<div class="form-inline">
 						    <div class="form-group mr-3">
