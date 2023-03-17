@@ -3,7 +3,7 @@ package FrontController;
 import java.util.HashMap;
 
 import Controller.AddReviewController;
-import Controller.ApiSearch;
+import Controller.getImgController;
 import Controller.CheckPasswordController;
 import Controller.GetReviewsController;
 import Controller.MainController;
@@ -13,6 +13,7 @@ import Controller.MemberJoinController;
 import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
+import Controller.MovieContentController;
 import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
@@ -44,9 +45,10 @@ public class HandlerMapping {
 		mappings.put("/movieRank.do", new MovieRankController());
 		mappings.put("/recommandMovie.do", new RecommandMovieController());
 		mappings.put("/getReviews.do", new GetReviewsController());
-		mappings.put("/apiSearch.do", new ApiSearch());
+		mappings.put("/apiSearch.do", new getImgController());
 		mappings.put("/movieMyReview.do", new MovieMyReviewController());
 		mappings.put("/movieReviewRemove.do", new MovieReviewRemoveController());
+		mappings.put("/movieContent.do", new MovieContentController());
 	}
 
 	public Controller getController(String key) {

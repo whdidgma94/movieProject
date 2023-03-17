@@ -1,8 +1,10 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -48,7 +50,7 @@ public class RecommandMovieController implements Controller {
 			}
 		}
 		String[] genres = null;
-		Map<String, MovieVO> genreMap = new HashMap<String, MovieVO>();
+		LinkedHashMap<String, MovieVO> genreMap = new LinkedHashMap<String, MovieVO>();
 		if (genre.contains(",")) {
 			genres = genre.split(",");
 		} else {
@@ -67,8 +69,12 @@ public class RecommandMovieController implements Controller {
 				}
 			}
 		}
+		List<String> imgList = new ArrayList<String>();
+		for (MovieVO vo : genreMap.values()) {	
+			imgList.add(MovieDAO.getInstance().getImgUrl(vo.getMovieNm()));
+		}
+		request.setAttribute("imgList", imgList);
 		request.setAttribute("genreMap", genreMap);
-
 		return "recommandMovie";
 	}
 }
