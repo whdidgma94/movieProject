@@ -79,10 +79,6 @@ INSERT INTO board (writerId, movieCd, grade, contents) VALUES
     ('123', 20197654, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
     ('123', 20197654, 2, '이게 뭐냐 싶은 영화였습니다.');
     select*from board;
-insert into theater(theaterName, theaterLocation, seats) values("강남관", "강남", 25);
-insert into theater(theaterName, theaterLocation, seats) values("서초관", "서초", 25);
-insert into theater(theaterName, theaterLocation, seats) values("송파관", "송파", 25);
-insert into member(memberName, id, pw, birthDay, address, favoriteGenre, gender) values("관리자", "admin", "admin", "0000-00-00", "admin", "admin", "admin");
 insert into theater(theaterName, theaterLocation, seatCnt) values("강남관", "강남", 25);
 insert into theater(theaterName, theaterLocation, seatCnt) values("서초관", "서초", 25);
 insert into theater(theaterName, theaterLocation, seatCnt) values("송파관", "송파", 25);
