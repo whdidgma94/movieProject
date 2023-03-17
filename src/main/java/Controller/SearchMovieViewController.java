@@ -17,10 +17,10 @@ public class SearchMovieViewController implements Controller {
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
 		request.setCharacterEncoding("UTF-8");
 		String inputVal = request.getParameter("inputVal");
 		List<MovieVO> searchList = MovieDAO.getInstance().getSearchMovie(inputVal);
-		HttpSession session = request.getSession();
 		session.setAttribute("searchList", searchList);
 		if(searchList.size()==0) {
 			response.getWriter().print("null");
