@@ -32,6 +32,9 @@
 		select * from movie where movieNm like CONCAT('%',
 		#{inputVal}, '%')
 	</select>
+	<select id="getMovieName" parameterType="Integer" resultType="String" >
+		select movieNm from movie where movieCd=#{movieCd}
+	</select>
 
 	<select id="movieRankList" resultMap="movie">
 		select * from movie order
