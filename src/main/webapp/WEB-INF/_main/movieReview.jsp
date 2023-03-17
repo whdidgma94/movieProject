@@ -59,7 +59,7 @@
 </script>
 <body>
 	<div class="container">
-		<h1 class="text-center my-5">영화 리뷰</h1>	
+		<h1 class="text-center my-5">TOP10 영화 리뷰</h1>	
 		<div class="row my-5">
 			<div class="col-12">
 				<label for="movieCd">영화선택&emsp;</label>

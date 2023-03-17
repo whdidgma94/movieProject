@@ -4,7 +4,7 @@
 <link href="${ctx}/css/selectGenreStyle.css" rel="stylesheet" type="text/css">
 <body class="selGenre">
 	<h1>선호장르 선택</h1>
-	<form action="${ctx}/memberGenreSelect.do" method="get">
+	<form action="${ctx}/memberGenreSelect.do" method="get" id="form">
 		<table class="table table-bordered">
 		<tr> 
 			<td>
@@ -54,13 +54,14 @@
 				<input type="checkbox" name="genre" value="기타">기타
 			</td> 
 		</tr>
+		<tr> <td><input type="button" value="선택완료" onclick="selectBtn()"></td> </tr>
 		</table>
-		<button>선택완료</button>
+		
 	</form>
 	<script>
 	const checkboxes = document.querySelectorAll('input[name="genre"]');
 	const maxChecked = 3;
-
+	const minChecked = 1;
 	for (let i = 0; i < checkboxes.length; i++) {
 	  checkboxes[i].addEventListener('change', function() {
 	    const checkedCount = document.querySelectorAll('input[name="genre"]:checked').length;
@@ -70,6 +71,17 @@
 	      swal('입력 오류','최대 3종류의 장르만 선택 할 수 있습니다','error');
 	    }
 	  });
+	}
+	function selectBtn(){
+		const checkedCount = document.querySelectorAll('input[name="genre"]:checked').length;
+		if(checkedCount<minChecked){
+			 swal('입력 오류','최소 1종류의 장르를 선택 해야 합니다','error');
+		}else{
+			swal('장르 선택 완료!','선호장르 선택이 완료되었습니다','success')
+			.then(function(){		
+				$("#form").submit();
+			});
+		}
 	}
 	</script>
 </body>
