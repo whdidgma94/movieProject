@@ -13,6 +13,7 @@ import Controller.MemberJoinController;
 import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
+import Controller.MemberUpdateController;
 import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
@@ -47,6 +48,7 @@ public class HandlerMapping {
 		mappings.put("/apiSearch.do", new ApiSearch());
 		mappings.put("/movieMyReview.do", new MovieMyReviewController());
 		mappings.put("/movieReviewRemove.do", new MovieReviewRemoveController());
+		mappings.put("/memberUpdate.do", new MemberUpdateController());
 	}
 
 	public Controller getController(String key) {

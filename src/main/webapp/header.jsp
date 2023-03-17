@@ -47,7 +47,7 @@
 	});
 
 	$("#movieReview").mouseover(function() {
-	    $("#subBar").html("<div class=\"col-2 py-3\" onclick='location.href=\"${ctx}/addReview.do\"'>리뷰 작성</div><div class=\"col-2 py-3\" id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div class=\"col-2 py-3\" onclick='location.href=\"${ctx}/movieMyReview.do\"'>내가 작성한 리뷰</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addReview.do\"'>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div onclick='location.href=\"${ctx}/movieMyReview.do\"'>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {
@@ -66,7 +66,7 @@
 </head>
 <body>
 	<div class="top">
-		<img alt="logo" src="${ctx}/img/logo.png">
+		<img alt="logo" src="${ctx}/img/logo.png" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">
 		<c:if test="${log != null}">
 			<div class="curLog">${log}님로그인중</div>
 		</c:if>
