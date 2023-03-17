@@ -1,5 +1,13 @@
-/mybatis/
 /Board/
 /Controller/
 /FrontController/
+/Member/
 /Movie/
+/Reservation/
+/Screening/
+/Seats/
+/Theater/
+/Util/
+/moviedb.sql
+/moviedb_model.mwb
+/mybatis/

@@ -120,8 +120,5 @@
     animateScrollTop();
   });
 	</script>
-	<%
-    session.removeAttribute("searchList");
-%>
 </body>
 </html>
