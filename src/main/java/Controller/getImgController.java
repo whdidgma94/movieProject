@@ -18,7 +18,7 @@ import org.json.simple.parser.ParseException;
 
 import FrontController.Controller;
 
-public class ApiSearch implements Controller {
+public class getImgController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
@@ -68,4 +68,5 @@ public class ApiSearch implements Controller {
 		}
 		return null;
 	}
+	
 }

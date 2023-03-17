@@ -3,7 +3,7 @@
 <%@ include file="../../header.jsp"%>
 
 <body>
-<h1></h1>
+	<h1></h1>
 	<div class="search-wrapper" align="center">
 		<div class="search">
 			<input type="text" id="search" placeholder="입력"> <img
@@ -24,7 +24,9 @@
 					</tr>
 				</c:if>
 			</c:forEach>
-			 <% session.removeAttribute("searchList"); %>
+			<%
+			session.removeAttribute("searchList");
+			%>
 		</c:if>
 	</table>
 	<script>
@@ -83,43 +85,41 @@
 			var num = $(this).attr("id");
 		})
 
-	  const searchWrapper = document.querySelector('.search-wrapper');
-  const searchWrapperTop = searchWrapper.offsetTop; // 검색창의 초기 위치 (상단 15%)
+		const searchWrapper = document.querySelector('.search-wrapper');
+		const searchWrapperTop = searchWrapper.offsetTop;
 
-  window.addEventListener('scroll', function() {
-    const currentScroll = window.pageYOffset; // 현재 스크롤 위치
+		window.addEventListener('scroll', function() {
+			const currentScroll = window.pageYOffset;
 
-    if (currentScroll >= searchWrapperTop) {
-      searchWrapper.style.position = 'fixed';
-      searchWrapper.style.top = 0;
-    } else {
-      searchWrapper.style.position = 'absolute';
-      searchWrapper.style.top = '20%';
-    }
-  });
+			if (currentScroll >= searchWrapperTop) {
+				searchWrapper.style.position = 'fixed';
+				searchWrapper.style.top = 0;
+			} else {
+				searchWrapper.style.position = 'absolute';
+				searchWrapper.style.top = '20%';
+			}
+		});
 
-  function animateScrollTop() {
-    const currentScroll = window.pageYOffset;
-    const targetScroll = searchWrapperTop;
-    const distance = targetScroll - currentScroll;
-    const step = distance / 30; // 30번에 걸쳐 이동
+		function animateScrollTop() {
+			const currentScroll = window.pageYOffset;
+			const targetScroll = searchWrapperTop;
+			const distance = targetScroll - currentScroll;
+			const step = distance / 30;
 
-    if (distance > 0) {
-      // 스크롤이 검색창 위쪽에 있을 때만 실행
-      window.scrollTo(0, currentScroll + step);
-      if (currentScroll + step < targetScroll) {
-        window.requestAnimationFrame(animateScrollTop);
-      }
-    }
-  }
+			if (distance > 0) {
+				window.scrollTo(0, currentScroll + step);
+				if (currentScroll + step < targetScroll) {
+					window.requestAnimationFrame(animateScrollTop);
+				}
+			}
+		}
 
-  searchWrapper.addEventListener('click', function() {
-    if (window.pageYOffset >= searchWrapperTop) {
-      // 이미 검색창이 상단에 고정된 상태인 경우
-      return;
-    }
-    animateScrollTop();
-  });
+		searchWrapper.addEventListener('click', function() {
+			if (window.pageYOffset >= searchWrapperTop) {
+				return;
+			}
+			animateScrollTop();
+		});
 	</script>
 </body>
 </html>
