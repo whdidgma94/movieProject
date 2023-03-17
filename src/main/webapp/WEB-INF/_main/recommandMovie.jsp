@@ -28,9 +28,9 @@
 				</tr>
 				<tr>
 					<td><img style="cursor: pointer;"
-						id="${genreMap.value.movieNm }" class="content" alt=""
+						id="${genreMap.value.movieCd }" class="content" alt=""
 						src="${imgList.get(status.index) }"></td>
-					<td style="cursor: pointer;" class="content" id="${genreMap.value.movieNm }">${genreMap.value.movieNm }</td>
+					<td style="cursor: pointer;" class="content" id="${genreMap.value.movieCd }">${genreMap.value.movieNm }</td>
 					<td>${genreMap.value.genreNm }</td>
 					<td>${genreMap.value.director}</td>
 					<td>${genreMap.value.actor}</td>
@@ -47,7 +47,7 @@
 	</table>
 	<script>
 	$(".content").click(function(){
-		location.href="${ctx}/movieContent.do?movieNm="+$(this).attr("id");
+		location.href="${ctx}/movieContent.do?movieCd="+$(this).attr("id");
 	})
 	
 	</script>

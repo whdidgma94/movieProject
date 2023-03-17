@@ -94,8 +94,8 @@ public class MovieDAO {
 
 	public String getImgUrl(String movieNm) {
 
-		String clientId = "h0TEopSBA8P6j0SDM4NV"; // 애플리케이션 클라이언트 아이디
-		String clientSecret = "B5neLh3HSS"; // 애플리케이션 클라이언트 시크릿
+		String clientId = "h0TEopSBA8P6j0SDM4NV"; 
+		String clientSecret = "B5neLh3HSS";
 		String text = null;
 		try {
 			text = URLEncoder.encode(movieNm, "UTF-8");
@@ -115,7 +115,6 @@ public class MovieDAO {
 		try {
 			con = (HttpURLConnection) url.openConnection();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		try {
@@ -129,7 +128,6 @@ public class MovieDAO {
 		try {
 			responseCode = con.getResponseCode();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		BufferedReader br = null;
