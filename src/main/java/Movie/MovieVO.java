@@ -12,12 +12,13 @@ public class MovieVO {
 	private String showTypeNm;
 	private double grade;
 	private int audiCnt;
+	private int ranking;
 
 	public MovieVO() {
 	}
 
 	public MovieVO(int movieCd, String movieNm, String genreNm, String watchGradeNm, String openDt, String director,
-			String actor, int showTm, String showTypeNm, double grade, int audiCnt) {
+			String actor, int showTm, String showTypeNm, double grade, int audiCnt, int ranking) {
 		super();
 		this.movieCd = movieCd;
 		this.movieNm = movieNm;
@@ -30,12 +31,12 @@ public class MovieVO {
 		this.showTypeNm = showTypeNm;
 		this.grade = grade;
 		this.audiCnt = audiCnt;
+		this.ranking = ranking;
 	}
 
 	public String getShowTypeNm() {
 		return showTypeNm;
 	}
-
 
 	public void setShowTypeNm(String showTypeNm) {
 		this.showTypeNm = showTypeNm;
@@ -97,6 +98,14 @@ public class MovieVO {
 		this.actor = actor;
 	}
 
+	public int getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
+	}
+
 	public int getShowTm() {
 		return showTm;
 	}
@@ -120,6 +129,5 @@ public class MovieVO {
 	public void setAudiCnt(int audiCnt) {
 		this.audiCnt = audiCnt;
 	}
-
 
 }

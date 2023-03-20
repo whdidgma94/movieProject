@@ -29,6 +29,7 @@ public class SetDataBaseController implements Controller {
 			mvo.setMovieNm((String) jb.get("movieNm"));
 			mvo.setOpenDt((String) jb.get("openDt"));
 			mvo.setAudiCnt(Integer.parseInt((String) jb.get("audiAcc")));
+			mvo.setRanking(Integer.parseInt((String) jb.get("rank")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

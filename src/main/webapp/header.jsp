@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div>인기 순위</div><div onclick='location.href=\"${ctx}/movieContent.do\"'>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div onclick='location.href=\"${ctx}/movieContent.do\"'>개봉 예정작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {
@@ -47,7 +47,7 @@
 	});
 
 	$("#movieRank").mouseover(function() {
-	    $("#subBar").html("<div>일간 박스오피스 순위</div><div>리뷰 많은순</div><div>평점 높은순</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/movieRank.do?type=box\"'>일간 박스오피스 순위</div><div onclick='location.href=\"${ctx}/movieRank.do?type=review\"'>리뷰 많은순</div><div onclick='location.href=\"${ctx}/movieRank.do?type=grade\"'>평점 높은순</div>");
 	});
 
 	$("#memberManage").mouseover(function() {
@@ -91,7 +91,7 @@
 			onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
 		<div class="col-2 py-3" id="movieReview">영화리뷰</div>
 		<div class="col-2 py-3" id="movieRank"
-			onclick="location.href='${ctx}/movieRank.do'">영화순위</div>
+			onclick="location.href=#">영화순위</div>
 		<c:if test="${log == 'admin'}">
 			<div class="col-2 py-3" id="memberManage">회원관리</div>
 			<div class="col-2 py-3" id="noticeManage">공지관리</div>

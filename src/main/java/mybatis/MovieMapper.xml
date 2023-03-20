@@ -16,6 +16,7 @@
 		<result property="showTypeNm" column="showTypeNm" />
 		<result property="grade" column="grade" />
 		<result property="audiCnt" column="audiCnt" />
+		<result property="ranking" column="ranking" />
 	</resultMap>
 
 	<select id="getAllMovie" resultMap="movie">
@@ -32,13 +33,26 @@
 		select * from movie where movieNm like CONCAT('%',
 		#{inputVal}, '%')
 	</select>
-	<select id="getMovieName" parameterType="Integer" resultType="String" >
+	<select id="getMovieName" parameterType="Integer"
+		resultType="String">
 		select movieNm from movie where movieCd=#{movieCd}
 	</select>
 
 	<select id="movieRankList" resultMap="movie">
 		select * from movie order
-		by audiCnt desc;
+		by ranking
+	</select>
+	<select id="movieRankByReview" resultMap="movie">
+		SELECT movie.*
+		FROM movie
+		LEFT JOIN board ON movie.movieCd = board.movieCd
+		GROUP BY movie.movieCd
+		ORDER BY COUNT(board.movieCd) DESC;
+
+	</select>
+	<select id="movieRankByGrade" resultMap="movie">
+		select * from movie
+		order by grade desc
 	</select>
 	<select id="genreMovieList" parameterType="String"
 		resultMap="movie">
@@ -52,7 +66,7 @@
 	<insert id="insertMovie" parameterType="movie">
 		INSERT INTO movie
 		(movieCd, movieNm, genreNm, watchGradeNm,openDt, director,
-		actor,showTm,showTypeNm,grade,audiCnt)
+		actor,showTm,showTypeNm,grade,audiCnt,ranking)
 		VALUES(
 		#{movieCd},
 		#{movieNm},
@@ -64,7 +78,8 @@
 		#{showTm},
 		#{showTypeNm},
 		#{grade},
-		#{audiCnt}
+		#{audiCnt},
+		#{ranking}
 		)
 	</insert>
 

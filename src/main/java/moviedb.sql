@@ -10,7 +10,8 @@ create table movie(
     showTm int not null,					# 상영 시간
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double,							# 평점
-	audiCnt int								# 누적 관객수
+	audiCnt int,							# 누적 관객수
+	ranking int								# 순위
 );
 
 select * from movie;
@@ -50,30 +51,6 @@ create table theater(
     seatCnt int not null						# 가용 좌석 수
     );
 
-CREATE TABLE screening (
-screeningNo INT NOT NULL primary key AUTO_INCREMENT,	# 상영 정보 식별번호
-movieCd INT NOT NULL,									# 영화 식별번호
-theaterNo INT NOT NULL,									# 영화관 식별번호
-startTime varchar(20) not NULL,							# 상영 시작 시간
-FOREIGN KEY (movieCd) REFERENCES movie(movieCd) on update cascade on delete cascade,
-FOREIGN KEY (theaterNo) REFERENCES theater(theaterNo) on update cascade on delete cascade
-);
-
-create table reservation(
-	reserveNo int primary key auto_increment,	# 예약 식별번호
-    memberId varchar(20) not null,				# 예약자 아이디
-    screeningNo int not null,					# 예약 정보(상영 정보)
-    seatNumber varchar(20) not null,			# 예약 좌석
-    foreign key (memberId) references member(id),
-    foreign key (screeningNo) references screening(screeningNo)
-);
- SELECT * FROM reservation;
-create table seats(
-	theaterNo int primary key not null,
-    seatNum varchar(10) not null,
-    checkSeat boolean default true,
-    foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
-);
 create table notice(
 	noticeNo int primary key auto_increment,
 	title varchar(50) not null,
@@ -87,4 +64,7 @@ INSERT INTO board (writerId, movieCd, grade, contents) VALUES
     ('123', 20197654, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
     ('123', 20197654, 2, '이게 뭐냐 싶은 영화였습니다.');
     select*from board;
-
+SELECT movie.movieCd, COUNT(board.movieCd) AS board_cnt
+FROM movie
+LEFT JOIN board ON movie.movieCd = board.movieCd
+GROUP BY movie.movieCd;

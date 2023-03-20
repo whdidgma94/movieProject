@@ -65,6 +65,20 @@ public class MovieDAO {
 		session.close();
 		return list;
 	}
+	
+	public List<MovieVO> movieRankByReview(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<MovieVO> list = session.selectList("mapper.movie.movieRankByReview");
+		session.close();
+		return list;
+	}
+	
+	public List<MovieVO> movieRankByGrade(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<MovieVO> list = session.selectList("mapper.movie.movieRankByGrade");
+		session.close();
+		return list;
+	}
 
 	public List<MovieVO> genreMovieList(String genreNm) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
