@@ -26,6 +26,7 @@ public class MovieRankController implements Controller {
 		}else if(type.equals("grade")) {
 			movieRankList = MovieDAO.getInstance().movieRankByGrade();
 		}
+		request.setAttribute("type", type);
 		request.setAttribute("movieRankList", movieRankList);
 		return "movieRank";
 	}
