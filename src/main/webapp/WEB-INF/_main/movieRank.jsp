@@ -15,6 +15,9 @@
                     <c:if test="${type eq 'grade'}">
                     	<th class="text-nowrap">평점</th>
                     </c:if>
+                    <c:if test="${type eq 'review'}">
+                    	<th class="text-nowrap">리뷰갯수</th>
+                    </c:if>
                 </tr>
             </thead>
             <tbody>
@@ -28,6 +31,9 @@
                             <td>${movieRankList.actor}</td>
                             <td class="text-nowrap">${movieRankList.openDt}</td>
                             <c:if test="${type eq 'grade'}">
+                            	<td class="text-nowrap">${movieRankList.grade}</td>
+                            </c:if>
+                            <c:if test="${type eq 'review'}">
                             	<td class="text-nowrap">${movieRankList.grade}</td>
                             </c:if>
                         </tr>
