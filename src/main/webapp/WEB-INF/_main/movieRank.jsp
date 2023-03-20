@@ -19,6 +19,9 @@
                     <c:if test="${type eq 'review'}">
                     	<th class="text-nowrap">리뷰갯수</th>
                     </c:if>
+                    <c:if test="${type eq 'box'}">
+                    	<th class="text-nowrap">전일 관객수</th>
+                    </c:if>
                 </tr>
             </thead>
             <tbody>
@@ -36,6 +39,9 @@
                             </c:if>
                             <c:if test="${type eq 'review'}">
                             	<td class="text-nowrap">${movieRankList.grade}</td>
+                            </c:if>
+                            <c:if test="${type eq 'box'}">
+                            	<td class="text-nowrap">${movieRankList.audiCnt}</td>
                             </c:if>
                         </tr>
                     </c:forEach>
