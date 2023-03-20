@@ -27,7 +27,7 @@
 		resultType="board">
 		select * from board where writerId = #{writerId}
 	</select>
-
+	
 	<select id="getMovieBoard" parameterType="Integer"
 		resultType="board">
 		select * from board where movieCd = #{movieCd}

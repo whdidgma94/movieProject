@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -19,14 +20,19 @@ public class MovieRankController implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		String type = request.getParameter("type");
 		List<MovieVO> movieRankList = null;
-		if(type.equals("box")) {
+		List<Integer> reviewCnt = new ArrayList<Integer>();
+		if (type.equals("box")) {
 			movieRankList = MovieDAO.getInstance().movieRankList();
-		}else if(type.equals("review")) {
+		} else if (type.equals("review")) {
 			movieRankList = MovieDAO.getInstance().movieRankByReview();
-		}else if(type.equals("grade")) {
+			for (MovieVO m : movieRankList) {
+				reviewCnt.add(MovieDAO.getInstance().movieReviewCnt(m.getMovieCd()));
+			}
+		} else if (type.equals("grade")) {
 			movieRankList = MovieDAO.getInstance().movieRankByGrade();
 		}
 		request.setAttribute("type", type);
+		request.setAttribute("reviewCnt", reviewCnt);
 		request.setAttribute("movieRankList", movieRankList);
 		return "movieRank";
 	}
