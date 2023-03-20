@@ -19,6 +19,8 @@ import Controller.MovieContentController;
 import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
+import Controller.NoticeRemoveController;
+import Controller.NoticeViewController;
 import Controller.MovieRankController;
 import Controller.SearchMovieController;
 import Controller.SetDataBaseController;
@@ -53,6 +55,8 @@ public class HandlerMapping {
 		mappings.put("/memberUpdate.do", new MemberUpdateController());
 		mappings.put("/movieContent.do", new MovieContentController());
 		mappings.put("/addNotice.do", new AddNoticeController());
+		mappings.put("/noticeView.do", new NoticeViewController());
+		mappings.put("/noticeRemove.do", new NoticeRemoveController());
 	}
 
 	public Controller getController(String key) {

@@ -54,7 +54,7 @@
 	    $("#subBar").html("<div>회원 목록 조회</div><div>회원 정보 수정</div><div>회원 삭제</div>");
 	});
 	$("#noticeManage").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addNotice.do\"'>공지사항 작성</div><div>공지사항 삭제</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addNotice.do\"'>공지사항 작성</div><div onclick='location.href=\"${ctx}/noticeRemove.do\"'>공지사항 삭제</div>");
 	});
 		});
 	
