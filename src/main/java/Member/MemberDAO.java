@@ -1,5 +1,7 @@
 package Member;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import Util.MybatisConfig;
 
@@ -28,6 +30,13 @@ public class MemberDAO {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		session.selectOne("mapper.member.insertGenre", member);
 		session.close();
+	}
+	
+	public List<MemberVO> getAllMember(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<MemberVO> memberList = session.selectList("mapper.member.getAllMember");
+		session.close();
+		return memberList;
 	}
 
 	public boolean checkValidId(String id) {
@@ -67,9 +76,9 @@ public class MemberDAO {
 		return cnt;
 	}
 
-	public int removeUser(String id) {
+	public int deleteMember(int memberNo) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		int cnt = session.insert("mapper.user.memberDelete", id);
+		int cnt = session.insert("mapper.member.memberDelete", memberNo);
 		session.close();
 		return cnt;
 	}

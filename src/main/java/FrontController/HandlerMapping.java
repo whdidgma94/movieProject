@@ -4,6 +4,9 @@ import java.util.HashMap;
 
 import Controller.AddNoticeController;
 import Controller.AddReviewController;
+import Controller.AdminMemberDeleteController;
+import Controller.AdminMemberListController;
+import Controller.AdminMemberUpdateController;
 import Controller.getImgController;
 import Controller.CheckPasswordController;
 import Controller.GetReviewsController;
@@ -57,6 +60,9 @@ public class HandlerMapping {
 		mappings.put("/addNotice.do", new AddNoticeController());
 		mappings.put("/noticeView.do", new NoticeViewController());
 		mappings.put("/noticeRemove.do", new NoticeRemoveController());
+		mappings.put("/adminMemberList.do", new AdminMemberListController());
+		mappings.put("/adminMemberUpdate.do", new AdminMemberUpdateController());
+		mappings.put("/adminMemberDelete.do", new AdminMemberDeleteController());
 	}
 
 	public Controller getController(String key) {

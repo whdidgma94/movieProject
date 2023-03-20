@@ -29,7 +29,10 @@
 				type: "POST",
 				data: {noticeNo: noticeNo},
 				success: function(result) {
-					location.reload();
+					swal("삭제 완료!", "공지 삭제가 완료 되었습니다","success")
+					.then(function(){		
+						location.reload();
+					});
 				},
 				error: function(xhr, status, error) {
 					alert("공지 삭제 중 오류가 발생했습니다.");

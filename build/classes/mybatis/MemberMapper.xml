@@ -15,8 +15,9 @@
   <result property="gender" column="gender"/>
 </resultMap>
   
-  	<select id="selectAllMembers" resultMap="member">
+  	<select id="getAllMember" resultMap="member">
   		SELECT * FROM member
+  		where id != "admin"
 	</select>
   
     <select id="memberLogin" parameterType="member" resultType="String">
@@ -61,8 +62,8 @@
          set memberName=#{memberName}, pw=#{pw}, email=#{email}
          where id=#{id}
     </update>
-      <delete id="memberDelete" parameterType="String">  
-        delete from member where id=#{id} 
+      <delete id="memberDelete" parameterType="Integer">  
+        delete from member where memberNo=#{memberNo} 
     </delete>
     
 </mapper>
