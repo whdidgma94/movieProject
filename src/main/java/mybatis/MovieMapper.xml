@@ -52,7 +52,7 @@
 		ORDER BY COUNT(board.movieCd) DESC;
 
 	</select>
-	<select id="movieReviewCnt" resultMap="Integer">
+	<select id="movieReviewCnt" resultType="Integer">
 		SELECT movie.*
 		FROM
 		movie
@@ -62,7 +62,7 @@
 	</select>
 	<select id="movieRankByGrade" resultMap="movie">
 		select * from movie
-		order by grade desc
+		order by grade DESC
 	</select>
 	<select id="genreMovieList" parameterType="String"
 		resultMap="movie">
