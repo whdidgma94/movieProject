@@ -79,6 +79,13 @@ public class MovieDAO {
 		session.close();
 		return list;
 	}
+	
+	public int movieReviewCnt(){
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		int cnt = session.selectOne("mapper.movie.movieReviewCnt");
+		session.close();
+		return cnt;
+	}
 
 	public List<MovieVO> genreMovieList(String genreNm) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);

@@ -52,6 +52,14 @@
 		ORDER BY COUNT(board.movieCd) DESC;
 
 	</select>
+	<select id="movieReviewCnt" resultMap="Integer">
+		SELECT movie.*
+		FROM
+		movie
+		LEFT JOIN board ON movie.movieCd = board.movieCd
+		GROUP BY
+		movie.movieCd
+	</select>
 	<select id="movieRankByGrade" resultMap="movie">
 		select * from movie
 		order by grade desc
