@@ -1,19 +1,18 @@
-/* 모달창 스타일 */
 .modal {
-  display: none; /* 모달창 초기에는 안 보이도록 합니다. */
-  position: fixed; /* 모달창이 항상 화면에 고정되도록 설정합니다. */
-  z-index: 1; /* 다른 요소보다 모달창이 위에 보이도록 z-index 값을 설정합니다. */
+  display: none;
+  position: fixed; 
+  z-index: 1; 
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  overflow: auto; /* 모달창의 내용이 화면 크기보다 크면 스크롤바가 나타나도록 합니다. */
-  background-color: rgba(0,0,0,0.4); /* 배경은 반투명하게 합니다. */
+  overflow: auto; 
+  background-color: rgba(0,0,0,0.4); 
 }
 
 .modal-content {
   background-color: #fefefe;
-  margin: 15% auto; /* 모달창이 화면 중앙에 위치하도록 margin 값을 설정합니다. */
+  margin: 15% auto; 
   padding: 20px;
   border: 1px solid #888;
   width: 50%;

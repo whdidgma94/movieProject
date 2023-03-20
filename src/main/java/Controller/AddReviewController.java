@@ -39,7 +39,6 @@ public class AddReviewController implements Controller{
 		BoardDAO.getInstance().addBoard(vo);
 		
 		for(MovieVO m : movieList) {
-			System.out.println(m.getMovieCd());
 			m.setGrade(BoardDAO.getInstance().getAvgGrade(m.getMovieCd()));
 			MovieDAO.getInstance().updateMovie(m);
 		}

@@ -18,7 +18,6 @@ public class MovieRankController implements Controller {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		String type = request.getParameter("type");
-		System.out.println(type);
 		List<MovieVO> movieRankList = null;
 		if(type.equals("box")) {
 			movieRankList = MovieDAO.getInstance().movieRankList();

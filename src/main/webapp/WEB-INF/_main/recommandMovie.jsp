@@ -57,54 +57,33 @@
 			</c:forEach>
 		</c:if>
 	</table>
+
 	<script type="text/javascript">
-		
-	var modal = document.getElementById("modal");
-	var modalContent = document.querySelector(".modal-content");
-	var closeBtn = document.querySelector(".close");
-	var movieInfo = document.getElementById("movieInfo");
-
-	var imageElements = document.querySelectorAll(".content img");
-	var titleElements = document.querySelectorAll(".content td:nth-child(2)");
-
-	for (var i = 0; i < imageElements.length; i++) {
-	  console.log("event listener added");
-	  imageElements[i].addEventListener("click", showModal);
-	  titleElements[i].addEventListener("click", showModal);
-	}
-
-	function showModal(event) {
-	  var movieCd = event.currentTarget.parentElement.querySelector("td:nth-child(2)").id;
-	  var movieNm = event.currentTarget.parentElement.querySelector("td:nth-child(2)").textContent;
-	  var genreNm = event.currentTarget.parentElement.querySelector("td:nth-child(3)").textContent;
-	  var director = event.currentTarget.parentElement.querySelector("td:nth-child(4)").textContent;
-	  var actor = event.currentTarget.parentElement.querySelector("td:nth-child(5)").textContent;
-	  var openDt = event.currentTarget.parentElement.querySelector("td:nth-child(6)").textContent;
-
-	  var imgSrc = event.currentTarget.src;
-	  movieInfo.innerHTML = `
-	    <img src="${imgSrc}">
-	    <h2>${movieNm}</h2>
-	    <p><strong>장르:</strong> ${genreNm}</p>
-	    <p><strong>감독:</strong> ${director}</p>
-	    <p><strong>출연진:</strong> ${actor}</p>
-	    <p><strong>개봉일:</strong> ${openDt}</p>
-	  `;
-
-	  modal.style.display = "block";
-	}
-
-	function closeModal() {
-	  modal.style.display = "none";
-	}
-
-	window.addEventListener("click", function(event) {
-	  if (event.target == modal) {
-	    closeModal();
-	  }
-	});
-
-	closeBtn.addEventListener("click", closeModal);
+	
+	$(document).ready(function() {
+		  $(".content").click(function() {
+		    var movieCd = $(this).attr('id');
+		    $.ajax({
+		      type: "GET",
+		      url: "movieContent.do?movieCd=" + movieCd,
+		      success: function(data) {
+		        $("#movieInfo").html(data);
+		        $("#modal").show();
+		      },
+		      error: function() {
+		        alert("Error occurred while fetching movie information.");
+		      }
+		    });
+		  });
+		  $(".close").click(function() {
+		    $("#modal").hide();
+		  });
+		  window.addEventListener("click", function(event) {
+			  if (event.target == modal) {
+				  $("#modal").hide();
+			  }
+			});
+		});
 
 	</script>
 </body>
