@@ -6,12 +6,11 @@
 	<div id="modal" class="modal">
 		<div class="modal-content">
 			<span style= class="close">&times;</span>
-			<p>모달 내용</p>
+			<p>${vo.movieNm }</p>
 		</div>
 	</div>
 	<script type="text/javascript">
 		var modal = document.getElementById("modal");
-		var btn = document.getElementById("open-modal");
 		var span = document.getElementsByClassName("close")[0];
 
 		btn.onclick = function() {
