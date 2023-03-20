@@ -37,7 +37,7 @@
 								<td class="text-nowrap">${movieRankList.grade}</td>
 							</c:if>
 							<c:if test="${type eq 'review'}">
-								<td class="text-nowrap">${movieRankList.grade}</td>
+								<td class="text-nowrap">${reviewCnt.get(status.index)}</td>
 							</c:if>
 							<c:if test="${type eq 'box'}">
 								<td class="text-nowrap">${movieRankList.audiCnt}</td>
