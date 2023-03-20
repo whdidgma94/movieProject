@@ -44,9 +44,11 @@
 	</select>
 	<select id="movieRankByReview" resultMap="movie">
 		SELECT movie.*
-		FROM movie
+		FROM
+		movie
 		LEFT JOIN board ON movie.movieCd = board.movieCd
-		GROUP BY movie.movieCd
+		GROUP BY
+		movie.movieCd
 		ORDER BY COUNT(board.movieCd) DESC;
 
 	</select>
@@ -82,6 +84,23 @@
 		#{ranking}
 		)
 	</insert>
+	<update id="updateMovie" parameterType="movie">
+		UPDATE movie
+		SET
+		movieNm = #{movieNm},
+		genreNm = #{genreNm},
+		watchGradeNm = #{watchGradeNm},
+		openDt = #{openDt},
+		director = #{director},
+		actor = #{actor},
+		showTm = #{showTm},
+		showTypeNm = #{showTypeNm},
+		grade = #{grade},
+		audiCnt = #{audiCnt},
+		ranking = #{ranking}
+		WHERE movieCd = #{movieCd}
+	</update>
+
 
 	<delete id="deleteMovie" parameterType="Integer">
 		delete from movie where

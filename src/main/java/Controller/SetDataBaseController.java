@@ -34,7 +34,7 @@ public class SetDataBaseController implements Controller {
 			e.printStackTrace();
 		}
 		String movie = request.getParameter("movie");
-
+		
 		try {
 			JSONParser jp2 = new JSONParser();
 			JSONObject jb2 = (JSONObject) jp2.parse(movie);

@@ -3,10 +3,7 @@
 /FrontController/
 /Member/
 /Movie/
-/Reservation/
-/Screening/
-/Seats/
-/Theater/
+/Notice/
 /Util/
 /moviedb.sql
 /moviedb_model.mwb

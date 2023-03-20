@@ -22,6 +22,7 @@ public class AddReviewController implements Controller{
 		request.setCharacterEncoding("utf-8");
 		String ctx = request.getContextPath();
 		List<MovieVO> movieList = MovieDAO.getInstance().getAllMovie();
+	
 		request.setAttribute("movieList", movieList);
 		HttpSession session = request.getSession();
 		if(session.getAttribute("log")==null) {
@@ -36,6 +37,12 @@ public class AddReviewController implements Controller{
 		String contents = request.getParameter("contents");
 		BoardVO vo = new BoardVO(writerId,movieCd,grade,contents);
 		BoardDAO.getInstance().addBoard(vo);
+		
+		for(MovieVO m : movieList) {
+			System.out.println(m.getMovieCd());
+			m.setGrade(BoardDAO.getInstance().getAvgGrade(m.getMovieCd()));
+			MovieDAO.getInstance().updateMovie(m);
+		}
 		return "redirect:"+ctx+"/movieReview.do";
 	}
 

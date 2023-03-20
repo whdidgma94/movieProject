@@ -9,8 +9,8 @@ create table movie(
     actor varchar(500),						# 출연진 이름
     showTm int not null,					# 상영 시간
     showTypeNm varchar(20) not null,		# 상영 형태
-	grade double,							# 평점
-	audiCnt int,							# 누적 관객수
+	grade double default 0,					# 평점
+	audiCnt int default 0,					# 누적 관객수
 	ranking int								# 순위
 );
 
