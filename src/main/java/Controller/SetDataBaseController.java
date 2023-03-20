@@ -28,12 +28,13 @@ public class SetDataBaseController implements Controller {
 			mvo.setMovieCd(Integer.parseInt((String) jb.get("movieCd")));
 			mvo.setMovieNm((String) jb.get("movieNm"));
 			mvo.setOpenDt((String) jb.get("openDt"));
-			mvo.setAudiCnt(Integer.parseInt((String) jb.get("audiAcc")));
+			mvo.setAudiCnt(Integer.parseInt((String) jb.get("audiCnt")));
+			mvo.setRanking(Integer.parseInt((String) jb.get("rank")));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		String movie = request.getParameter("movie");
-
+		
 		try {
 			JSONParser jp2 = new JSONParser();
 			JSONObject jb2 = (JSONObject) jp2.parse(movie);

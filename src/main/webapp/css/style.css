@@ -202,3 +202,15 @@ textarea {
 	height: 42px;
 	font-size: 15px;
 }
+.cinema-link {
+  color: #F15F5F;
+  font-family: 'Roboto', sans-serif;
+  font-size: 28px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.cinema-link:hover {
+  color: #FFA07A;
+  cursor: pointer;
+}

@@ -26,6 +26,16 @@ public class BoardDAO {
 			return list;
 		}
 		
+		public double getAvgGrade(int movieCd) {
+			SqlSession session = MybatisConfig.getInstance().openSession(true);
+			double avg = 0;
+			if(session.selectOne("mapper.board.getAvgGrade", movieCd)==null) {
+				return 0;
+			}
+			avg = session.selectOne("mapper.board.getAvgGrade", movieCd);
+			session.close();
+			return avg;
+		}
 		public List<BoardVO> getMovieCdBoard(int movieCd) {
 			SqlSession session = MybatisConfig.getInstance().openSession(true);
 			List<BoardVO> list = session.selectList("mapper.board.getMovieCdBoard", movieCd);
@@ -34,7 +44,7 @@ public class BoardDAO {
 		}
 		public int removeBoard(int reviewNm) {
 			SqlSession session = MybatisConfig.getInstance().openSession(true);
-			int cnt = session.insert("mapper.board.deleteBoard", reviewNm);
+			int cnt = session.delete("mapper.board.deleteBoard", reviewNm);
 			session.close();
 			return cnt;
 		}

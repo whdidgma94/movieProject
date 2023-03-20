@@ -2,7 +2,11 @@ package FrontController;
 
 import java.util.HashMap;
 
+import Controller.AddNoticeController;
 import Controller.AddReviewController;
+import Controller.AdminMemberDeleteController;
+import Controller.AdminMemberListController;
+import Controller.AdminMemberUpdateController;
 import Controller.getImgController;
 import Controller.CheckPasswordController;
 import Controller.GetReviewsController;
@@ -18,6 +22,8 @@ import Controller.MovieContentController;
 import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
+import Controller.NoticeRemoveController;
+import Controller.NoticeViewController;
 import Controller.MovieRankController;
 import Controller.SearchMovieController;
 import Controller.SetDataBaseController;
@@ -51,6 +57,12 @@ public class HandlerMapping {
 		mappings.put("/movieReviewRemove.do", new MovieReviewRemoveController());
 		mappings.put("/memberUpdate.do", new MemberUpdateController());
 		mappings.put("/movieContent.do", new MovieContentController());
+		mappings.put("/addNotice.do", new AddNoticeController());
+		mappings.put("/noticeView.do", new NoticeViewController());
+		mappings.put("/noticeRemove.do", new NoticeRemoveController());
+		mappings.put("/adminMemberList.do", new AdminMemberListController());
+		mappings.put("/adminMemberUpdate.do", new AdminMemberUpdateController());
+		mappings.put("/adminMemberDelete.do", new AdminMemberDeleteController());
 	}
 
 	public Controller getController(String key) {

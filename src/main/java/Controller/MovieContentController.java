@@ -18,9 +18,7 @@ public class MovieContentController implements Controller {
 		int movieCd = 0;
 		if (request.getParameter("movieCd") != null) {
 			movieCd = Integer.parseInt((String) request.getParameter("movieCd"));
-		} else {
-			System.out.println(request.getParameter("movieCd"));
-		}
+		} 
 
 		request.setAttribute("vo", MovieDAO.getInstance().getOneMovie(movieCd));
 		return "movieContent";
