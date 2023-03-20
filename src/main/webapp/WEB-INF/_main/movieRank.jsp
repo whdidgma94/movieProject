@@ -26,7 +26,7 @@
 			<tbody>
 				<c:if test="${movieRankList ne null }">
 					<c:forEach var="movieRankList" items="${movieRankList}" begin="0"
-						end="${movieRankList.size() }" step="1" varStatus="status">
+						end="${movieRankList.size() }" step="1" varStatus="status">						
 						<tr>
 							<td class="text-nowrap">${status.count }</td>
 							<td>${movieRankList.movieNm }</td>
