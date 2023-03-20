@@ -52,13 +52,9 @@
 		ORDER BY COUNT(board.movieCd) DESC;
 
 	</select>
-	<select id="movieReviewCnt" resultType="Integer">
-		SELECT movie.*
-		FROM
-		movie
-		LEFT JOIN board ON movie.movieCd = board.movieCd
-		GROUP BY
-		movie.movieCd
+	<select id="movieReviewCnt" parameterType="Integer"
+		resultType="Integer">
+		select count(*) from board where movieCd =#{movieCD}
 	</select>
 	<select id="movieRankByGrade" resultMap="movie">
 		select * from movie
@@ -95,16 +91,20 @@
 	<update id="updateMovie" parameterType="movie">
 		UPDATE movie
 		SET
-		movieNm = #{movieNm},
+		movieNm =
+		#{movieNm},
 		genreNm = #{genreNm},
 		watchGradeNm = #{watchGradeNm},
-		openDt = #{openDt},
+		openDt
+		= #{openDt},
 		director = #{director},
 		actor = #{actor},
-		showTm = #{showTm},
+		showTm =
+		#{showTm},
 		showTypeNm = #{showTypeNm},
 		grade = #{grade},
-		audiCnt = #{audiCnt},
+		audiCnt =
+		#{audiCnt},
 		ranking = #{ranking}
 		WHERE movieCd = #{movieCd}
 	</update>

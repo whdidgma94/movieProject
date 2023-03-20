@@ -80,9 +80,9 @@ public class MovieDAO {
 		return list;
 	}
 	
-	public int movieReviewCnt(){
+	public int movieReviewCnt(int movieCd){
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		int cnt = session.selectOne("mapper.movie.movieReviewCnt");
+		int cnt = session.selectOne("mapper.movie.movieReviewCnt",movieCd);
 		session.close();
 		return cnt;
 	}
