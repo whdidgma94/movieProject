@@ -6,13 +6,15 @@
         <h1 class="mt-3 mb-5">영화 순위</h1>
         <table class="table table-striped">
             <thead>
-                <tr>
-                    <th class="text-nowrap">순위</th>
+                <tr style="text-align:center;">
+                    <th class="text-nowrap">순위 ${type }</th>
                     <th>영화 제목</th>
                     <th>감독</th>
                     <th>배우</th>
                     <th class="text-nowrap">개봉일</th>
+                    <c:if test="${type eq grade }">
                     <th class="text-nowrap">평점</th>
+                    </c:if>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +27,9 @@
                             <td>${movieRankList.director}</td>
                             <td>${movieRankList.actor}</td>
                             <td class="text-nowrap">${movieRankList.openDt}</td>
+                            <c:if test="${type eq grade }">
                             <td class="text-nowrap">${movieRankList.grade}</td>
+                            </c:if>
                         </tr>
                     </c:forEach>
                 </c:if>
