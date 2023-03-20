@@ -120,7 +120,9 @@
 	        },
 	    })
 	    .then((value) => {
-	        checkPw(value,sel);
+	    	if(value!=null){
+	        	checkPw(value,sel);
+	        }
 	    });
 	}
 	

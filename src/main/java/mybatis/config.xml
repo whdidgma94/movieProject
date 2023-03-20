@@ -11,7 +11,7 @@
       <typeAlias type="Reservation.ReservationVO"  alias="reservation" />   
       <typeAlias type="Screening.ScreeningVO"  alias="screening" />   
       <typeAlias type="Theater.TheaterVO"  alias="theater" />   
-       
+       <typeAlias type="Notice.NoticeVO"  alias="notice" />   
   </typeAliases> 
   
   <environments default="development">
@@ -33,5 +33,6 @@
     <mapper resource="mybatis/ReservationMapper.xml"/>
     <mapper resource="mybatis/ScreeningMapper.xml"/>
     <mapper resource="mybatis/TheaterMapper.xml"/>
+    <mapper resource="mybatis/NoticeMapper.xml"/>
   </mappers>
 </configuration>
