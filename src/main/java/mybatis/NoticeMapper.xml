@@ -26,8 +26,8 @@
 	</insert>
 
 	<delete id="deleteNotice" parameterType="Integer">
-		delete from movie notice
-		noticeNo=#{noticeNo}
+		delete from notice
+		where noticeNo=#{noticeNo}
 	</delete>
 
 </mapper>

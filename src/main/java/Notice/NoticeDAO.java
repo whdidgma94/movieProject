@@ -18,12 +18,16 @@ public class NoticeDAO {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		session.insert("mapper.notice.insertNotice", notice);
 		session.close();
-		System.out.println("DAO");
 	}
 	public List<NoticeVO> getAllNotice(){
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		List<NoticeVO> list = session.selectList("mapper.notice.getAllNotice");
 		session.close();
 		return list;
+	}
+	public void removeNotice(int noticeNo) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.insert("mapper.notice.deleteNotice", noticeNo);
+		session.close();
 	}
 }
