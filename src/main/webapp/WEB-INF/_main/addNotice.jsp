@@ -17,7 +17,7 @@
 							</div>
 						<div class="form-group">
 							<label for="contents">내용</label>
-							<textarea class="form-control" id="contents" name="contents" rows="10" style="resize:none;" required></textarea>
+							<textarea class="form-control" id="content" name="content" rows="10" style="resize:none;" required></textarea>
 						</div>
 						<div class="text-center">
 							<button type="button" class="btn btn-primary" onclick="submitForm()">등록</button>

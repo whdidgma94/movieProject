@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import FrontController.Controller;
+import Notice.NoticeDAO;
+import Notice.NoticeVO;
 
 public class AddNoticeController implements Controller{
 
@@ -17,7 +19,13 @@ public class AddNoticeController implements Controller{
 		if(request.getParameter("title")==null) {
 			return "addNotice";
 		}
-		return null;
+		NoticeVO notice = new NoticeVO();
+		notice.setTitle(request.getParameter("title"));
+		notice.setContent(request.getParameter("content"));
+		NoticeDAO.getInstance().addNotice(notice);
+		String ctx = request.getContextPath();
+		System.out.println("controller");
+		return "redirect:"+ctx+"/_main.do";
 	}
 
 }
