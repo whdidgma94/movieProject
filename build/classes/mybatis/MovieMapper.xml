@@ -58,7 +58,7 @@
 	</select>
 	<select id="movieRankByGrade" resultMap="movie">
 		select * from movie
-		order by grade desc
+		order by grade DESC
 	</select>
 	<select id="genreMovieList" parameterType="String"
 		resultMap="movie">
