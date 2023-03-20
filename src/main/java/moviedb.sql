@@ -23,11 +23,14 @@ create table member(
     address varchar(50) not null,				# 주소
     email varchar(30) not null, 				# 이메일
     favoriteGenre varchar(20),					# 선호 장르
-    gender varchar(100) not null	 				# 성별
+    gender varchar(100) not null	 			# 성별
 );
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
 ('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
+insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
+values
+('123', '123', '123', '1995-01-01', '서울특별시 강남구', '123@gmail.com', '로맨스', '남성');
 SELECT * FROM member;
 
 create table board(
@@ -71,7 +74,12 @@ create table seats(
     checkSeat boolean default true,
     foreign key (theaterNo) references theater(theaterNo) on delete cascade on update cascade
 );
-
+create table notice(
+	noticeNo int primary key auto_increment,
+	title varchar(50) not null,
+	content varchar(500) not null,
+	day varchar(20) not null
+);
 INSERT INTO board (writerId, movieCd, grade, contents) VALUES
     ('123', 20197654, 4, '재미있었습니다.'),
     ('123', 20197654, 3, '기대했던 것보단 별로였네요.'),
@@ -79,6 +87,4 @@ INSERT INTO board (writerId, movieCd, grade, contents) VALUES
     ('123', 20197654, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
     ('123', 20197654, 2, '이게 뭐냐 싶은 영화였습니다.');
     select*from board;
-insert into theater(theaterName, theaterLocation, seatCnt) values("강남관", "강남", 25);
-insert into theater(theaterName, theaterLocation, seatCnt) values("서초관", "서초", 25);
-insert into theater(theaterName, theaterLocation, seatCnt) values("송파관", "송파", 25);
+

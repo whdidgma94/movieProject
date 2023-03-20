@@ -42,31 +42,29 @@
 	    $("#subBar").html("<div>영화제목 검색</div><div>배우 이름 검색</div><div>감독 이름 검색</div>");
 	});
 
-	$("#bookMovie").mouseover(function() {
-	    $("#subBar").html("<div>상영관별 예매</div><div>영화별 예매</div>");
-	});
-
 	$("#movieReview").mouseover(function() {
 	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addReview.do\"'>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div onclick='location.href=\"${ctx}/movieMyReview.do\"'>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {
-	    $("#subBar").html("<div>일간 박스오피스 순위</div><div>주간 박스오피스 순위</div>");
+	    $("#subBar").html("<div>일간 박스오피스 순위</div><div>리뷰 많은순</div><div>평점 높은순</div>");
 	});
 
 	$("#memberManage").mouseover(function() {
 	    $("#subBar").html("<div>회원 목록 조회</div><div>회원 정보 수정</div><div>회원 삭제</div>");
 	});
+	$("#noticeManage").mouseover(function() {
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addNotice.do\"'>공지사항 작성</div><div>공지사항 삭제</div>");
+	});
 		});
 	
-
-
 	</script>
 
 </head>
 <body>
 	<div class="top">
-		<img alt="logo" src="${ctx}/img/logo.png" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">
+		<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">JJOTTE Cinema</h2>
+
 		<c:if test="${log != null}">
 			<div class="curLog">${log}님로그인중</div>
 		</c:if>
@@ -91,13 +89,12 @@
 		<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
 		<div class="col-2 py-3" id="searchMovie"
 			onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
-		<div class="col-2 py-3" id="bookMovie" onclick="location.href=#">예매하기</div>
 		<div class="col-2 py-3" id="movieReview">영화리뷰</div>
 		<div class="col-2 py-3" id="movieRank"
 			onclick="location.href='${ctx}/movieRank.do'">영화순위</div>
 		<c:if test="${log == 'admin'}">
-			<div class="col-2 py-3" id="memberManage" onclick="location.href=#">회원관리</div>
-			<div class="col-2 py-3" onclick="location.href=#">차량추가</div>
+			<div class="col-2 py-3" id="memberManage">회원관리</div>
+			<div class="col-2 py-3" id="noticeManage">공지관리</div>
 		</c:if>
 	</div>
 	<div class="nav justify-content-around contentsbar" id="subBar"

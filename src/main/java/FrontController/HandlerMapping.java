@@ -2,6 +2,7 @@ package FrontController;
 
 import java.util.HashMap;
 
+import Controller.AddNoticeController;
 import Controller.AddReviewController;
 import Controller.getImgController;
 import Controller.CheckPasswordController;
@@ -51,6 +52,7 @@ public class HandlerMapping {
 		mappings.put("/movieReviewRemove.do", new MovieReviewRemoveController());
 		mappings.put("/memberUpdate.do", new MemberUpdateController());
 		mappings.put("/movieContent.do", new MovieContentController());
+		mappings.put("/addNotice.do", new AddNoticeController());
 	}
 
 	public Controller getController(String key) {
