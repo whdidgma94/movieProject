@@ -13,12 +13,17 @@ public class MovieVO {
 	private double grade;
 	private int audiCnt;
 	private int ranking;
+	private boolean adult;
+	private String poster_path;
+	private boolean video;
+	private String overview;
 
 	public MovieVO() {
 	}
 
 	public MovieVO(int movieCd, String movieNm, String genreNm, String watchGradeNm, String openDt, String director,
-			String actor, int showTm, String showTypeNm, double grade, int audiCnt, int ranking) {
+			String actor, int showTm, String showTypeNm, double grade, int audiCnt, int ranking, boolean adult,
+			String poster_path, boolean video, String overview) {
 		super();
 		this.movieCd = movieCd;
 		this.movieNm = movieNm;
@@ -32,14 +37,10 @@ public class MovieVO {
 		this.grade = grade;
 		this.audiCnt = audiCnt;
 		this.ranking = ranking;
-	}
-
-	public String getShowTypeNm() {
-		return showTypeNm;
-	}
-
-	public void setShowTypeNm(String showTypeNm) {
-		this.showTypeNm = showTypeNm;
+		this.adult = adult;
+		this.poster_path = poster_path;
+		this.video = video;
+		this.overview = overview;
 	}
 
 	public int getMovieCd() {
@@ -98,20 +99,20 @@ public class MovieVO {
 		this.actor = actor;
 	}
 
-	public int getRanking() {
-		return ranking;
-	}
-
-	public void setRanking(int ranking) {
-		this.ranking = ranking;
-	}
-
 	public int getShowTm() {
 		return showTm;
 	}
 
 	public void setShowTm(int showTm) {
 		this.showTm = showTm;
+	}
+
+	public String getShowTypeNm() {
+		return showTypeNm;
+	}
+
+	public void setShowTypeNm(String showTypeNm) {
+		this.showTypeNm = showTypeNm;
 	}
 
 	public double getGrade() {
@@ -129,5 +130,46 @@ public class MovieVO {
 	public void setAudiCnt(int audiCnt) {
 		this.audiCnt = audiCnt;
 	}
+
+	public int getRanking() {
+		return ranking;
+	}
+
+	public void setRanking(int ranking) {
+		this.ranking = ranking;
+	}
+
+	public boolean isAdult() {
+		return adult;
+	}
+
+	public void setAdult(boolean adult) {
+		this.adult = adult;
+	}
+
+	public String getPoster_path() {
+		return poster_path;
+	}
+
+	public void setPoster_path(String poster_path) {
+		this.poster_path = poster_path;
+	}
+
+	public boolean isVideo() {
+		return video;
+	}
+
+	public void setVideo(boolean video) {
+		this.video = video;
+	}
+
+	public String getOverview() {
+		return overview;
+	}
+
+	public void setOverview(String overview) {
+		this.overview = overview;
+	}
+
 
 }

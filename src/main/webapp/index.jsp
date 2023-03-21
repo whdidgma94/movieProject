@@ -5,34 +5,37 @@
 	<h1>index</h1>
 
 	<script>
-window.addEventListener('load', ()=>{
-	  var today = new Date();
-	  var targetDate = new Date(today.setDate(today.getDate()-1)).toISOString().substring(0,10).replace(/-/g,'');
-	  
-	  let url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=7532377ec0b85020c332a47475218ba2&targetDt="+targetDate
-	  $.getJSON(url, function(data) {
-	    let movieList = data.boxOfficeResult.dailyBoxOfficeList;
-	    for ( let i =0;i<10;i++) {
-	      let url2 = "http://www.kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieInfo.json?key=f5eef3421c602c6cb7ea224104795888&movieCd="+movieList[i].movieCd;
-	      $.getJSON(url2, function(data) {
-	        let movie = data.movieInfoResult.movieInfo;
-	        $.ajax({
-	          type: "POST",
-	          url: "${ctx}/setDataBase.do",
-	          data: {
-	        	  movieList : JSON.stringify(movieList[i]),
-	        	  movie: JSON.stringify(movie)
-	        	},
-	          success: function(response) {
-	          },
-	          error : function() {
-	            alert("error");
-	          }
-	        });
-	      });   
-	    }
-	  }); 
-	});
+	  let page = 1;
+      const base_url = "https://image.tmdb.org/t/p/w300/";
+      
+      function postMovie(page){
+          const url = "https://api.themoviedb.org/3/movie/upcoming?api_key=a699dda4efd374eb3d9a01da4dacc267&language=ko-KR&page="+page;
+          fetch(url).then(res => res.json()).then(function(res){
+              const movies = res.results;
+              movies.map(function(movie){
+            	  $.ajax({
+          	          type: "POST",
+          	          url: "${ctx}/setDataBase.do",
+          	          data: {
+          	        	  movie: JSON.stringify(movie)
+          	        	},
+          	          success: function(response) {
+          	          },
+          	          error : function() {
+          	            alert("error");
+          	          }
+          	        });
+              });
+          })
+          .catch(error => console.log(error));
+      };
+      
+	
+      window.addEventListener('load', ()=>{
+		for(let i = 1;i<=1;i++){
+			postMovie(i);
+		}    	  
+      });
       </script>
 </body>
 </html>
