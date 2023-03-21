@@ -18,6 +18,11 @@ create table movie(
 	overview varchar(30000)
 );
 
+create table genres(
+	genreId int,
+	genreName varchar(20)
+)
+
 select * from movie;
 create table member(
 	memberNo int primary key auto_increment,	# 회원 식별번호

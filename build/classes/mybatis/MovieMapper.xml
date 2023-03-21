@@ -96,6 +96,7 @@
 		#{overview}
 		)
 	</insert>
+	
 	<update id="updateMovie" parameterType="movie">
 		UPDATE movie
 		SET
