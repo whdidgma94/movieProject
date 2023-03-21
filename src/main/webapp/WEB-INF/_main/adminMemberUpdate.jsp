@@ -16,6 +16,9 @@
 							<p class="card-text">이메일 : ${member.email}</p>
 							<p class="card-text">좋아하는 장르 : ${member.favoriteGenre}</p>
 							<p class="card-text">성별 : ${member.gender}</p>
+							<form action="${ctx}/adminMemberUpdate.do">
+								<button class="btn btn-secondary" name="memberId" value="${member.id}">수정하기</button>
+							</form>
 						</div>
 					</div>
 				</div>
