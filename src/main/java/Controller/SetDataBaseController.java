@@ -34,8 +34,8 @@ public class SetDataBaseController implements Controller {
 			for (int i = 0; i < genres.size(); i++) {
 				String genreName = GenreDAO.getInstance().getGenreName(Integer.parseInt(genres.get(i) + ""));
 				genresNm += genreName;
-				if(i!=genres.size()-1)
-				genresNm+=",";
+				if (i != genres.size() - 1)
+					genresNm += ",";
 			}
 			mvo.setGenreNm(genresNm);
 			mvo.setWatchGradeNm(movie);
