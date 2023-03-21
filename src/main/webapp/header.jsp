@@ -56,10 +56,32 @@
 	$("#noticeManage").mouseover(function() {
 	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addNotice.do\"'>공지사항 작성</div><div onclick='location.href=\"${ctx}/noticeRemove.do\"'>공지사항 삭제</div><div onclick='location.href=\"${ctx}/adminReview.do\"'>리뷰 관리</div>");
 	});
+	$(".content").click(function() {
+		var movieCd = $(this).attr('id');
+	});
+	$(".close").click(function() {
+		$("#modal").hide();
+	});
+	window.addEventListener("click", function(event) {
+		if (event.target == modal) {
+			$("#modal").hide();
+		}
+	});
 		});
-	
-	</script>
-
+	function showModal(movieCd){
+		$.ajax({
+			type : "GET",
+			url : "movieContent.do?movieCd=" + movieCd,
+			success : function(data) {
+				$("#movieInfo").html(data);
+				$("#modal").show();
+			},
+			error : function() {
+				alert("Error");
+			}
+		});		
+	}
+</script>
 </head>
 <body>
 	<div class="header">
@@ -102,3 +124,10 @@
 			style="margin-bottom: 20px"></div>
 	</div>
 	<div class="head-bottom">1</div>
+	
+	<div id="modal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p id="movieInfo"></p>
+		</div>
+	</div>

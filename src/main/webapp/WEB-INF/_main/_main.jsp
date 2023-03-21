@@ -6,33 +6,36 @@
 		<div class="row">
 			<div class="col-md-6">
 				<h2 class="text-center">공지사항</h2>
-				<c:forEach items="${noticeList}" var="notice">
-					<div class="card mb-4">
-						<div class="card-body">
-							<h5 class="card-title">${notice.title}</h5>
-							<p class="card-text">${notice.day}</p>
-							<form action="${ctx}/noticeView.do" method="post">
-								<button class="btn btn-primary" name="noticeNo" value="${notice.noticeNo}"> 자세히 보기</button>							
-							</form>
+				<div class="notice-scroll" style="height: 78vh">
+					<c:forEach items="${noticeList}" var="notice">
+						<div class="card mb-4">
+							<div class="card-body">
+								<h5 class="card-title">${notice.title}</h5>
+								<p class="card-text">${notice.day}</p>
+								<form action="${ctx}/noticeView.do" method="post">
+									<button class="btn btn-primary" name="noticeNo" value="${notice.noticeNo}"> 자세히 보기</button>							
+								</form>
+							</div>
 						</div>
-					</div>
-				</c:forEach>
+					</c:forEach>
+				</div>
 			</div>
 			<div class="col-md-6">
 				<h2 class="text-center">현재 상영작</h2>
 				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 				  <div class="carousel-inner">
-				  
-				    <div class="carousel-item active">
-				      <img src="https://picsum.photos/id/237/600/400" class="d-block w-100" alt="...">
+				    <c:forEach items="${movieList}" var="movie" varStatus="status">
+				    <c:if test="${status.index == 0}">
+				    	<div class="carousel-item active">
+				    </c:if>
+				    <c:if test="${status.index != 0}">
+				    	<div class="carousel-item">
+				    </c:if>
+				      <img src="https://image.tmdb.org/t/p/original/4IjRR2OW2itjQWQnmlUzvwLz9DQ.jpg" 
+				      style="object-fit: contain; max-height: 78vh; cursor: pointer;" 
+				      onclick="location.href='${ctx}/영화정보.do?movieCd=${movie.movieCd}'"class="d-block w-100" alt="...">
 				    </div>
-				    <div class="carousel-item">
-				      <img src="https://picsum.photos/id/238/600/400" class="d-block w-100" alt="...">
-				    </div>
-				    <div class="carousel-item">
-				      <img src="https://picsum.photos/id/239/600/400" class="d-block w-100" alt="...">
-				    </div>
-				    
+				    </c:forEach>				    
 				  </div>
 				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -47,6 +50,7 @@
 		</div>
 	</div>
 </body>
+
 <script>
 $(document).ready(function(){
   $('.carousel').carousel({

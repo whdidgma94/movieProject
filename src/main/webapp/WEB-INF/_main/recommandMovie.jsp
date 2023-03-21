@@ -10,7 +10,7 @@
 		<h1>영화 목록</h1>
 	</c:if>
 	<c:if test="${genreMap ne null}">
-		<h1>${log }님의선호영화</h1>
+		<h1>${log }님의 선호영화</h1>
 	</c:if>
 	<br>
 	<div id="modal" class="modal">
@@ -42,7 +42,7 @@
 						id="${genreMap.value.movieCd }" class="content" alt=""
 						src="${imgList.get(status.index) }"></td>
 					<td style="cursor: pointer;" class="content"
-						id="${genreMap.value.movieCd }">${genreMap.value.movieNm }</td>
+						id="${genreMap.value.movieCd}">${genreMap.value.movieNm }</td>
 					<td>${genreMap.value.genreNm }</td>
 					<td>${genreMap.value.director}</td>
 					<td>${genreMap.value.actor}</td>
@@ -58,33 +58,31 @@
 		</c:if>
 	</table>
 
-<script type="text/javascript">
-	
-	$(document).ready(function() {
-	  $(".content").click(function() {
-	    var movieCd = $(this).attr('id');
-	    $.ajax({
-	      type: "GET",
-	      url: "movieContent.do?movieCd=" + movieCd,
-	      success: function(data) {
-	        $("#movieInfo").html(data);
-	        $("#modal").show();
-	      },
-	      error: function() {
-	        alert("Error");
-	      }
-	    });
-	  });
-	  $(".close").click(function() {
-	    $("#modal").hide();
-	  });
-	  window.addEventListener("click", function(event) {
-		  if (event.target == modal) {
-			  $("#modal").hide();
-		  }
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$(".content").click(function() {
+				var movieCd = $(this).attr('id');
+				$.ajax({
+					type : "GET",
+					url : "movieContent.do?movieCd=" + movieCd,
+					success : function(data) {
+						$("#movieInfo").html(data);
+						$("#modal").show();
+					},
+					error : function() {
+						alert("Error");
+					}
+				});
+			});
+			$(".close").click(function() {
+				$("#modal").hide();
+			});
+			window.addEventListener("click", function(event) {
+				if (event.target == modal) {
+					$("#modal").hide();
+				}
+			});
 		});
-	});
-
-</script>
+	</script>
 </body>
 </html>

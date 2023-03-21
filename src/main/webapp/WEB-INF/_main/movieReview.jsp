@@ -1,6 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
+<style>
+.card:hover {
+    background-color: #f7f7f7;
+}
+</style>
 <script>
     var selectedMovieCd = "all";
     $(document).ready(function() {
@@ -40,16 +45,19 @@
 	           	  </c:forEach>  
     	          }
 
-    	    	  for (var i = 0; i < reviewList.length; i++) {
-    	    	    var review = reviewList[i];
-    	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
-    	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
-    	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
-    	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
-    	    	    cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
-    	    	    cardHtml += "</div></div>";
-    	    	    cardsDiv.innerHTML += cardHtml;
-    	    	  }
+    	          for (var i = 0; i < reviewList.length; i++) {
+    	        	  var review = reviewList[i];
+    	        	  var cardHtml = "<div class='card mb-3' onclick='showModal("+review.movieCd+")'><div class='card-body'>";
+    	        	  cardHtml += "<div class='row'><div class='col-3'>";
+    	        	  cardHtml += "<img src=\"https:\/\/image.tmdb.org/t/p/original/4IjRR2OW2itjQWQnmlUzvwLz9DQ.jpg\" style=\"width: 100px; height: auto;\" alt=\"...\">";
+    	        	  cardHtml += "</div><div class='col-9'>";
+    	        	  cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
+    	        	  cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
+    	        	  cardHtml += "<p class='card-text'>" + review.contents + "</p>";
+    	        	  cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
+    	        	  cardHtml += "</div></div></div></div>";
+    	        	  cardsDiv.innerHTML += cardHtml;
+    	        	}
     	    	},
     	    error: function(xhr, status, error) {
     	      console.log("Error: " + error);
