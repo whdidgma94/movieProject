@@ -58,33 +58,33 @@
 		</c:if>
 	</table>
 
-	<script type="text/javascript">
+<script type="text/javascript">
 	
 	$(document).ready(function() {
-		  $(".content").click(function() {
-		    var movieCd = $(this).attr('id');
-		    $.ajax({
-		      type: "GET",
-		      url: "movieContent.do?movieCd=" + movieCd,
-		      success: function(data) {
-		        $("#movieInfo").html(data);
-		        $("#modal").show();
-		      },
-		      error: function() {
-		        alert("Error occurred while fetching movie information.");
-		      }
-		    });
-		  });
-		  $(".close").click(function() {
-		    $("#modal").hide();
-		  });
-		  window.addEventListener("click", function(event) {
-			  if (event.target == modal) {
-				  $("#modal").hide();
-			  }
-			});
+	  $(".content").click(function() {
+	    var movieCd = $(this).attr('id');
+	    $.ajax({
+	      type: "GET",
+	      url: "movieContent.do?movieCd=" + movieCd,
+	      success: function(data) {
+	        $("#movieInfo").html(data);
+	        $("#modal").show();
+	      },
+	      error: function() {
+	        alert("Error");
+	      }
+	    });
+	  });
+	  $(".close").click(function() {
+	    $("#modal").hide();
+	  });
+	  window.addEventListener("click", function(event) {
+		  if (event.target == modal) {
+			  $("#modal").hide();
+		  }
 		});
+	});
 
-	</script>
+</script>
 </body>
 </html>
