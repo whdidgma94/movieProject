@@ -3,30 +3,32 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <properties resource="mybatis/db.properties"/> 
-  <typeAliases>
-      <typeAlias type="Member.MemberVO" alias="member"/>
-      <typeAlias type="Board.BoardVO"  alias="board" />   
-      <typeAlias type="Movie.MovieVO"  alias="movie" />   
-       <typeAlias type="Notice.NoticeVO"  alias="notice" />   
-  </typeAliases> 
-  
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="${driver}"/>
-        <property name="url" value="${url}"/>
-        <property name="username" value="${username}"/>
-        <property name="password" value="${password}"/>
-      </dataSource>
-    </environment>
-  </environments>
-  
-  <mappers>
-    <mapper resource="mybatis/MemberMapper.xml"/>
-    <mapper resource="mybatis/BoardMapper.xml"/>
-    <mapper resource="mybatis/MovieMapper.xml"/>
-    <mapper resource="mybatis/NoticeMapper.xml"/>
-  </mappers>
+	<properties resource="mybatis/db.properties" />
+	<typeAliases>
+		<typeAlias type="Member.MemberVO" alias="member" />
+		<typeAlias type="Board.BoardVO" alias="board" />
+		<typeAlias type="Movie.MovieVO" alias="movie" />
+		<typeAlias type="Movie.GenreVO" alias="genre" />
+		<typeAlias type="Notice.NoticeVO" alias="notice" />
+	</typeAliases>
+
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+
+	<mappers>
+		<mapper resource="mybatis/MemberMapper.xml" />
+		<mapper resource="mybatis/BoardMapper.xml" />
+		<mapper resource="mybatis/MovieMapper.xml" />
+		<mapper resource="mybatis/GenreMapper.xml" />
+		<mapper resource="mybatis/NoticeMapper.xml" />
+	</mappers>
 </configuration>

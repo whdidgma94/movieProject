@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.genre">
+
+	<resultMap id="genre" type="Movie.GenreVO">
+		<id property="genreId" column="genreId" />
+		<result property="genreName" column="genreName" />
+	</resultMap>
+
+	<insert id="insertGenre" parameterType="genre">
+		INSERT INTO
+		genres(genreId, genreName)
+		SELECT #{genreId}, #{genreName}
+		WHERE NOT
+		EXISTS (
+		SELECT 1 FROM genres
+		WHERE genreId = #{genreId} AND genreName =
+		#{genreName}
+		)
+
+	</insert>
+
+	<select id="getGenreName" parameterType="Integer"
+		resultType="String">
+		select genreName from genres where genreId=#{genreId}
+	</select>
+
+
+</mapper>
