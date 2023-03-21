@@ -27,8 +27,9 @@
 				<c:if test="${movieRankList ne null }">
 					<c:forEach var="movieRankList" items="${movieRankList}" begin="0"
 						end="${movieRankList.size() }" step="1" varStatus="status">						
+						<c:if test="${(type == 'grade' && movieRankList.grade != 0) || (type == 'review' && reviewCnt.get(status.index) != 0) || (type == 'box' && movieRankList.audiCnt != 0)}">
 						<tr>
-							<td class="text-nowrap">${status.count }</td>
+							<td class="text-nowrap">${status.count}</td>
 							<td>${movieRankList.movieNm }</td>
 							<td>${movieRankList.director}</td>
 							<td>${movieRankList.actor}</td>
@@ -43,6 +44,7 @@
 								<td class="text-nowrap">${movieRankList.audiCnt}</td>
 							</c:if>
 						</tr>
+						</c:if>
 					</c:forEach>
 				</c:if>
 			</tbody>

@@ -9,7 +9,14 @@
 h1 {
 	text-align: center;
 }
-
+.header{
+	position: fixed;
+	z-index:9999;
+	width:100%;
+}
+.head-bottom{
+	margin-bottom:130px;
+}
 .top {
 	background-color: white;
 	padding: 10px;
