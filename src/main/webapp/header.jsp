@@ -54,48 +54,80 @@
 	    $("#subBar").html("<div onclick='location.href=\"${ctx}/adminMemberList.do\"'>회원 목록 조회</div><div onclick='location.href=\"${ctx}/adminMemberUpdate.do\"'>회원 정보 수정</div><div onclick='location.href=\"${ctx}/adminMemberDelete.do\"'>회원 삭제</div>");
 	});
 	$("#noticeManage").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addNotice.do\"'>공지사항 작성</div><div onclick='location.href=\"${ctx}/noticeRemove.do\"'>공지사항 삭제</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addNotice.do\"'>공지사항 작성</div><div onclick='location.href=\"${ctx}/noticeRemove.do\"'>공지사항 삭제</div><div onclick='location.href=\"${ctx}/adminReview.do\"'>리뷰 관리</div>");
+	});
+	$(".content").click(function() {
+		var movieCd = $(this).attr('id');
+	});
+	$(".close").click(function() {
+		$("#modal").hide();
+	});
+	window.addEventListener("click", function(event) {
+		if (event.target == modal) {
+			$("#modal").hide();
+		}
 	});
 		});
-	
-	</script>
-
+	function showModal(movieCd){
+		$.ajax({
+			type : "GET",
+			url : "movieContent.do?movieCd=" + movieCd,
+			success : function(data) {
+				$("#movieInfo").html(data);
+				$("#modal").show();
+			},
+			error : function() {
+				alert("Error");
+			}
+		});		
+	}
+</script>
 </head>
 <body>
-	<div class="top">
-		<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">JJOTTE Cinema</h2>
-
-		<c:if test="${log != null}">
-			<div class="curLog">${log}님로그인중</div>
-		</c:if>
-		<div class="dropdown">
-			<button class="btn btn-primary dropdown-toggle" type="button"
-				data-toggle="dropdown" id="dropdownBtn">
-				<i class="fa-solid fa-user"></i>
-			</button>
-			<div class="dropdown-menu dropdown-menu-right">
-				<c:if test="${log == null}">
-					<a class="dropdown-item" href="${ctx}/memberLogin.do">로그인</a>
-					<a class="dropdown-item" href="${ctx}/memberJoin.do">회원가입</a>
-				</c:if>
-				<c:if test="${log != null}">
-					<a class="dropdown-item" href="${ctx}/memberLogout.do">로그아웃</a>
-					<a class="dropdown-item" href="${ctx}/memberMyPage.do">마이페이지</a>
-				</c:if>
+	<div class="header">
+		<div class="top">
+			<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">JJOTTE Cinema</h2>
+	
+			<c:if test="${log != null}">
+				<div class="curLog">${log}님로그인중</div>
+			</c:if>
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button"
+					data-toggle="dropdown" id="dropdownBtn">
+					<i class="fa-solid fa-user"></i>
+				</button>
+				<div class="dropdown-menu dropdown-menu-right">
+					<c:if test="${log == null}">
+						<a class="dropdown-item" href="${ctx}/memberLogin.do">로그인</a>
+						<a class="dropdown-item" href="${ctx}/memberJoin.do">회원가입</a>
+					</c:if>
+					<c:if test="${log != null}">
+						<a class="dropdown-item" href="${ctx}/memberLogout.do">로그아웃</a>
+						<a class="dropdown-item" href="${ctx}/memberMyPage.do">마이페이지</a>
+					</c:if>
+				</div>
 			</div>
 		</div>
+		<div class="nav justify-content-around contentsbar">
+			<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
+			<div class="col-2 py-3" id="searchMovie"
+				onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
+			<div class="col-2 py-3" id="movieReview">영화리뷰</div>
+			<div class="col-2 py-3" id="movieRank"
+				onclick="location.href=#">영화순위</div>
+			<c:if test="${log == 'admin'}">
+				<div class="col-2 py-3" id="memberManage">회원관리</div>
+				<div class="col-2 py-3" id="noticeManage">게시물관리</div>
+			</c:if>
+		</div>
+		<div class="nav justify-content-around contentsbar" id="subBar"
+			style="margin-bottom: 20px"></div>
 	</div>
-	<div class="nav justify-content-around contentsbar">
-		<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
-		<div class="col-2 py-3" id="searchMovie"
-			onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
-		<div class="col-2 py-3" id="movieReview">영화리뷰</div>
-		<div class="col-2 py-3" id="movieRank"
-			onclick="location.href=#">영화순위</div>
-		<c:if test="${log == 'admin'}">
-			<div class="col-2 py-3" id="memberManage">회원관리</div>
-			<div class="col-2 py-3" id="noticeManage">공지관리</div>
-		</c:if>
+	<div class="head-bottom">1</div>
+	
+	<div id="modal" class="modal">
+		<div class="modal-content">
+			<span class="close">&times;</span>
+			<p id="movieInfo"></p>
+		</div>
 	</div>
-	<div class="nav justify-content-around contentsbar" id="subBar"
-		style="margin-bottom: 20px"></div>

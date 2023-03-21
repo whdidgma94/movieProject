@@ -7,6 +7,7 @@ import Controller.AddReviewController;
 import Controller.AdminMemberDeleteController;
 import Controller.AdminMemberListController;
 import Controller.AdminMemberUpdateController;
+import Controller.AdminReviewController;
 import Controller.getImgController;
 import Controller.CheckPasswordController;
 import Controller.GetReviewsController;
@@ -63,6 +64,7 @@ public class HandlerMapping {
 		mappings.put("/adminMemberList.do", new AdminMemberListController());
 		mappings.put("/adminMemberUpdate.do", new AdminMemberUpdateController());
 		mappings.put("/adminMemberDelete.do", new AdminMemberDeleteController());
+		mappings.put("/adminReview.do", new AdminReviewController());
 	}
 
 	public Controller getController(String key) {

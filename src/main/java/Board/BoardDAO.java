@@ -42,6 +42,12 @@ public class BoardDAO {
 			session.close();
 			return list;
 		}
+		public List<BoardVO> getMemberIdBoard(String memberId) {
+			SqlSession session = MybatisConfig.getInstance().openSession(true);
+			List<BoardVO> list = session.selectList("mapper.board.getMemberBoard", memberId);
+			session.close();
+			return list;
+		}
 		public int removeBoard(int reviewNm) {
 			SqlSession session = MybatisConfig.getInstance().openSession(true);
 			int cnt = session.delete("mapper.board.deleteBoard", reviewNm);

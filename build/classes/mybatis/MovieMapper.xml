@@ -17,6 +17,10 @@
 		<result property="grade" column="grade" />
 		<result property="audiCnt" column="audiCnt" />
 		<result property="ranking" column="ranking" />
+		<result property="adult" column="adult" />
+		<result property="poster_path" column="poster_path" />
+		<result property="video" column="video" />
+		<result property="overview" column="overview" />
 	</resultMap>
 
 	<select id="getAllMovie" resultMap="movie">
@@ -72,7 +76,7 @@
 	<insert id="insertMovie" parameterType="movie">
 		INSERT INTO movie
 		(movieCd, movieNm, genreNm, watchGradeNm,openDt, director,
-		actor,showTm,showTypeNm,grade,audiCnt,ranking)
+		actor,showTm,showTypeNm,grade,audiCnt,ranking,adult,poster_path,video,overview)
 		VALUES(
 		#{movieCd},
 		#{movieNm},
@@ -85,9 +89,14 @@
 		#{showTypeNm},
 		#{grade},
 		#{audiCnt},
-		#{ranking}
+		#{ranking},
+		#{adult},
+		#{poster_path},
+		#{video},
+		#{overview}
 		)
 	</insert>
+	
 	<update id="updateMovie" parameterType="movie">
 		UPDATE movie
 		SET

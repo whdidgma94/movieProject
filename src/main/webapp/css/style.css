@@ -9,7 +9,14 @@
 h1 {
 	text-align: center;
 }
-
+.header{
+	position: fixed;
+	z-index:999;
+	width:100%;
+}
+.head-bottom{
+	margin-bottom:130px;
+}
 .top {
 	background-color: white;
 	padding: 10px;
@@ -213,4 +220,20 @@ textarea {
 .cinema-link:hover {
   color: #FFA07A;
   cursor: pointer;
+}
+.notice-scroll {
+  overflow-y: scroll;
+}
+.notice-scroll::-webkit-scrollbar {
+    width: 10px;
+    background-color: #F5F5F5;
+}
+ 
+.notice-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: #9B9B9B;
+}
+.modal{
+	margin-top:300px;
+	z-index:9999;
 }

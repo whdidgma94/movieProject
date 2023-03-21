@@ -22,16 +22,21 @@ public class GetReviewsController implements Controller{
 		response.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String movieCd = request.getParameter("movieCd");
+		String memberId = request.getParameter("memberId");
 		List<BoardVO> reviewList = null;
-		if(movieCd.equals("all")) {
-			reviewList = BoardDAO.getInstance().getAllBoard();
-		}else {
-			int movieCdInt = Integer.parseInt(movieCd);
-			reviewList = BoardDAO.getInstance().getMovieCdBoard(movieCdInt);
+		if (memberId != null) {
+			reviewList = BoardDAO.getInstance().getMemberIdBoard(memberId);
+		} else {
+			if (movieCd.equals("all")) {
+				reviewList = BoardDAO.getInstance().getAllBoard();
+			} else {
+				int movieCdInt = Integer.parseInt(movieCd);
+				reviewList = BoardDAO.getInstance().getMovieCdBoard(movieCdInt);
+			}
 		}
-		if(reviewList.size()==0) {
+		if (reviewList.size() == 0) {
 			session.removeAttribute("reviewList");
-		}else {
+		} else {
 			session.setAttribute("reviewList", reviewList);
 		}
 		String jsonList = new Gson().toJson(reviewList);

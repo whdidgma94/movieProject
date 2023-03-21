@@ -11,8 +11,17 @@ create table movie(
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double default 0,					# 평점
 	audiCnt int default 0,					# 전일 관객수
-	ranking int								# 순위
+	ranking int	,							# 순위
+	adult boolean default false,
+	poster_path vachar(50) not null,
+	video boolean,
+	overview varchar(30000)
 );
+
+create table genres(
+	genreId int,
+	genreName varchar(20)
+)
 
 select * from movie;
 create table member(
