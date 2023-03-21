@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import FrontController.Controller;
+import Movie.MovieDAO;
 import Notice.NoticeDAO;
 
 public class MainController implements Controller{
@@ -18,6 +19,7 @@ public class MainController implements Controller{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		session.setAttribute("noticeList", NoticeDAO.getInstance().getAllNotice());
+		session.setAttribute("movieList", MovieDAO.getInstance().getAllMovie());
 		return "_main";
 	}
 
