@@ -40,7 +40,7 @@
     	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
     	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
     	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
-    	    	    cardHtml += "<button onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
+    	    	    cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
     	    	    cardHtml += "</div></div>";
     	    	    cardsDiv.innerHTML += cardHtml;
     	    	  }

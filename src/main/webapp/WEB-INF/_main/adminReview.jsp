@@ -57,7 +57,7 @@
   	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
   	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
   	    	    cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
-  	    	    cardHtml += "<button onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
+  	    	    cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
   	    	    cardHtml += "</div></div>";
   	    	    cardsDiv.innerHTML += cardHtml;
   	    	  }
@@ -101,7 +101,7 @@
     	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
     	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
     	    	    cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
-    	    	    cardHtml += "<button onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
+    	    	    cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
     	    	    cardHtml += "</div></div>";
     	    	    cardsDiv.innerHTML += cardHtml;
     	    	  }
@@ -131,25 +131,27 @@
     }
 </script>
 <body>
-	<h1>리뷰 관리</h1>
-	<div class="row">
-		<div class="col">
-			<select class="form-control" id="movieCd" name="reviewSelectMovie">
-				<option value="all">영화별 리뷰</option>
-				<c:forEach items="${movieList}" var="movie">
-					<option value="${movie.movieCd}" ${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>
-				</c:forEach>
-			</select>
+		<div class="container">
+		<h1 class="my-4 text-center">리뷰 관리</h1>
+		<div class="row mb-4">
+			<div class="col-sm-6">
+				<select class="form-control" id="movieCd" name="reviewSelectMovie">
+					<option value="all">영화별 리뷰</option>
+					<c:forEach items="${movieList}" var="movie">
+						<option value="${movie.movieCd}" ${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>
+					</c:forEach>
+				</select>
+			</div>
+			<div class="col-sm-6">
+				<select class="form-control" id="member" name="reviewSelectMember">
+					<option value="all">사용자별 리뷰</option>
+					<c:forEach items="${memberList}" var="member">
+						<option value="${member.id}" ${member.id == selectedMemberId ? "selected" : ""}>${member.memberName}</option>
+					</c:forEach>
+				</select>
+			</div>
 		</div>
-		<div class="col">
-			<select class="form-control" id="member" name="reviewSelectMember">
-				<option value="all">사용자별 리뷰</option>
-				<c:forEach items="${memberList}" var="member">
-					<option value="${member.id}" ${member.id == selectedMemberId ? "selected" : ""}>${member.memberName}</option>
-				</c:forEach>
-			</select>
-		</div>
+		<div id="cards"></div>
 	</div>
-	<div id="cards"></div>
 </body>
 </html>
