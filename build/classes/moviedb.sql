@@ -11,17 +11,17 @@ create table movie(
     showTypeNm varchar(20) not null,		# 상영 형태
 	grade double default 0,					# 평점
 	audiCnt int default 0,					# 전일 관객수
-	ranking int	,							# 순위
+	ranking int,							# 순위
 	adult boolean default false,
-	poster_path vachar(50) not null,
+	poster_path varchar(50) not null,
 	video boolean,
-	overview varchar(30000)
+	overview varchar(5000)
 );
 
 create table genres(
 	genreId int,
 	genreName varchar(20)
-)
+);
 
 select * from movie;
 create table member(
@@ -33,8 +33,14 @@ create table member(
     address varchar(50) not null,				# 주소
     email varchar(30) not null, 				# 이메일
     favoriteGenre varchar(20),					# 선호 장르
-    gender varchar(100) not null	 			# 성별
+    gender varchar(100) not null,				# 성별
+    movieWatch varchar(1500),					# 본영화
+    movieLike varchar(1500),					# 좋아요한 영화
+    foreign key (movieWatch) references movie(movieCd),
+    foreign key (movieLike) references movie(movieCd)
 );
+drop table member;
+drop table board;
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
 ('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
@@ -53,12 +59,6 @@ create table board(
     foreign key (movieCd) references movie(movieCd) on delete cascade
 );
 SELECT * FROM board;
-create table theater(
-	theaterNo int primary key auto_increment,	# 영화관 식별번호
-    theaterName varchar(20) not null,			# 영화관 이름
-    theaterLocation varchar(100) not null,	 	# 영화관 위치정보
-    seatCnt int not null						# 가용 좌석 수
-    );
 
 create table notice(
 	noticeNo int primary key auto_increment,
@@ -67,11 +67,11 @@ create table notice(
 	day varchar(20) not null
 );
 INSERT INTO board (writerId, movieCd, grade, contents) VALUES
-    ('123', 20197654, 4, '재미있었습니다.'),
-    ('123', 20197654, 3, '기대했던 것보단 별로였네요.'),
-    ('123', 20197654, 5, '진짜 대박영화입니다.'),
-    ('123', 20197654, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
-    ('123', 20197654, 2, '이게 뭐냐 싶은 영화였습니다.');
+    ('123', 493529, 4, '재미있었습니다.'),
+    ('123', 594767, 3, '기대했던 것보단 별로였네요.'),
+    ('123', 603692, 5, '진짜 대박영화입니다.'),
+    ('123', 631842, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
+    ('123', 937278, 2, '이게 뭐냐 싶은 영화였습니다.');
     select*from board;
 SELECT movie.movieCd, COUNT(board.movieCd) AS board_cnt
 FROM movie

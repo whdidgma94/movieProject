@@ -12,6 +12,7 @@ import org.json.simple.parser.JSONParser;
 
 import FrontController.Controller;
 import Movie.GenreDAO;
+import Movie.MovieDAO;
 import Movie.MovieVO;
 
 public class SetDataBaseController implements Controller {
@@ -38,12 +39,12 @@ public class SetDataBaseController implements Controller {
 					genresNm += ",";
 			}
 			mvo.setGenreNm(genresNm);
-			mvo.setWatchGradeNm(movie);
+			mvo.setWatchGradeNm("test");
 			mvo.setOpenDt((String) jb.get("release_date"));
-			mvo.setDirector(movie);
-			mvo.setActor(movie);
+			mvo.setDirector("test");
+			mvo.setActor("test");
 			mvo.setShowTm(0);
-			mvo.setShowTypeNm(movie);
+			mvo.setShowTypeNm("test");
 			mvo.setAdult((boolean) jb.get("adult"));
 			mvo.setPoster_path((String) jb.get("poster_path"));
 			mvo.setVideo((boolean) jb.get("video"));
@@ -51,7 +52,7 @@ public class SetDataBaseController implements Controller {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-//		MovieDAO.getInstance().insertMovie(mvo);
+		MovieDAO.getInstance().insertMovie(mvo);
 		return null;
 	}
 }

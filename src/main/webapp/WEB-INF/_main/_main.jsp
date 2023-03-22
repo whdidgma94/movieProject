@@ -31,9 +31,9 @@
 				    <c:if test="${status.index != 0}">
 				    	<div class="carousel-item">
 				    </c:if>
-				      <img src="https://image.tmdb.org/t/p/original/4IjRR2OW2itjQWQnmlUzvwLz9DQ.jpg" 
+				      <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" 
 				      style="object-fit: contain; max-height: 78vh; cursor: pointer;" 
-				      onclick="location.href='${ctx}/영화정보.do?movieCd=${movie.movieCd}'"class="d-block w-100" alt="...">
+				      onclick="showModal(${movie.movieCd})" class="d-block w-100" alt="...">
 				    </div>
 				    </c:forEach>				    
 				  </div>
