@@ -56,9 +56,9 @@ public class Util {
 			JSONObject obj = (JSONObject) parser.parse(sb.toString());
 
 			JSONArray objArray = (JSONArray) obj.get("results");
-			
+
 			movieList = new ArrayList<HashMap<String, Object>>();
-			
+
 			for (int i = 0; i < objArray.size(); i++) {
 				HashMap<String, Object> movieMap = new HashMap<>();
 				JSONObject jb = (JSONObject) objArray.get(i);
@@ -71,7 +71,11 @@ public class Util {
 					movieMap.put("subject", setSubject);
 					movieMap.put("adult", jb.get("adult"));
 					movieMap.put("poster_path", jb.get("poster_path"));
-					movieMap.put("backdrop_path", jb.get("backdrop_path"));
+					if (jb.get("backdrop_path") == null) {
+						movieMap.put("backdrop_path", jb.get("poster_path"));
+					} else {
+						movieMap.put("backdrop_path", jb.get("backdrop_path"));
+					}
 					movieMap.put("overview", jb.get("overview"));
 
 					movieList.add(movieMap);
@@ -165,7 +169,7 @@ public class Util {
 
 		String base_url = "https://api.themoviedb.org/3/movie/";
 		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267";
-		String language = "&language=ko-KR"; 
+		String language = "&language=ko-KR";
 
 		String apiUrl = base_url + movieCd + "/videos" + api_key + language;
 

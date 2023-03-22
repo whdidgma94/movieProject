@@ -42,12 +42,19 @@ public class SetDataBaseController implements Controller {
 				vo.setMovieCd(Integer.parseInt(movieList.get(i).get("movieCd").toString()));
 				vo.setMovieNm(movieList.get(i).get("movieNm").toString());
 				String genreNm = movieList.get(i).get("genreNm").toString();
-				String[] genres = genreNm.replace("[", "").replace("]", "").split(",");
-				genreNm = "";
-				for (int k = 0; k < genres.length; k++) {
-					genreNm += GenreDAO.getInstance().getGenreName(Integer.parseInt(genres[k]));
-					if (k != genres.length - 1)
-						genreNm += ",";
+				genreNm = genreNm.replace("[", "").replace("]", "").trim();
+				System.out.println(genreNm);
+				if (!genreNm.equals("")) {
+					String[] genres = genreNm.split(",");
+					genreNm = "";
+					for (int k = 0; k < genres.length; k++) {
+						System.out.println(genres[k]);
+						genreNm += GenreDAO.getInstance().getGenreName(Integer.parseInt(genres[k]));
+						if (k != genres.length - 1)
+							genreNm += ",";
+					}
+				} else {
+					genreNm = " ";
 				}
 				vo.setGenreNm(genreNm);
 				vo.setOpenDt(movieList.get(i).get("openDt").toString());
