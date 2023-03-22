@@ -1,6 +1,7 @@
 package Controller;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import FrontController.Controller;
 import Movie.MovieDAO;
+import Util.Util;
 
 public class MovieContentController implements Controller {
 
@@ -19,6 +21,9 @@ public class MovieContentController implements Controller {
 		if (request.getParameter("movieCd") != null) {
 			movieCd = Integer.parseInt((String) request.getParameter("movieCd"));
 		} 
+		List<String> imageList = Util.getInstance().getMovieImageList(movieCd);
+		request.setAttribute("imageList", imageList);
+		System.out.println(imageList.size());
 		request.setAttribute("vo", MovieDAO.getInstance().getOneMovie(movieCd));
 		return "movieContent";
 	}

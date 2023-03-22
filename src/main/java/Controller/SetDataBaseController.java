@@ -28,7 +28,7 @@ public class SetDataBaseController implements Controller {
 		for (int i = 1; i < 3; i++) {
 			setMovieDb(i);
 		}
-		return null;
+		return "_main";
 	}
 
 	public void setMovieDb(int pagenum) {
