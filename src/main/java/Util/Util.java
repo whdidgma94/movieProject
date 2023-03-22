@@ -92,10 +92,9 @@ public class Util {
 	}
 
 	public List<CreditVO> getCreditList(int movieCd) {
-		String base_url = "https://api.themoviedb.org/3/movie/"; // 영화 검색 기본 url
-		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267"; // api 키
-		String language = "&language=ko-KR"; // 언어 옵션
-
+		String base_url = "https://api.themoviedb.org/3/movie/"; 
+		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267"; 
+		String language = "&language=ko-KR"; 
 		String apiUrl = base_url + movieCd + "/credits" + api_key + language;
 
 		List<CreditVO> creditList = null;
@@ -106,14 +105,11 @@ public class Util {
 
 			conn.setRequestMethod("GET");
 			conn.setRequestProperty("Content-Type", "application/json");
-			conn.setDoOutput(true); // 서버로 받는 값이 있다
 
-			// 데이터 읽기
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 			StringBuilder sb = new StringBuilder();
 			String line = null;
 
-			// 읽을 수 있을 때 까지
 			while ((line = br.readLine()) != null) {
 				sb.append(line);
 			}
@@ -133,9 +129,10 @@ public class Util {
 				if (jb.get("name") != null && jb.get("profile_path") != null && jb.get("character") != null
 						&& !jb.get("name").equals("") && !jb.get("profile_path").equals("")
 						&& !jb.get("character").equals("")) {
+					vo.setId(Integer.parseInt(jb.get("id").toString()));
 					vo.setName(jb.get("name").toString());
 					vo.setProfile_path(jb.get("profile_path").toString());
-					vo.setCharacter(jb.get("character").toString());
+					vo.setCharac(jb.get("character").toString());
 				}
 
 				creditList.add(vo);
@@ -148,6 +145,7 @@ public class Util {
 					if (jb.get("name") != null && jb.get("profile_path") != null && jb.get("job") != null
 							&& !jb.get("name").equals("") && !jb.get("profile_path").equals("")
 							&& !jb.get("job").equals("")) {
+						vo.setId(Integer.parseInt(jb.get("id").toString()));
 						vo.setName(jb.get("name").toString());
 						vo.setProfile_path(jb.get("profile_path").toString());
 						vo.setJob(jb.get("job").toString());

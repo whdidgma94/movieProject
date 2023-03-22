@@ -1,21 +1,30 @@
 package Credit;
 
 public class CreditVO {
-
+	private int id;
 	private String name;
 	private String profile_path;
-	private String character;
+	private String charac;
 	private String job;
 
 	public CreditVO() {
 	}
 
-	public CreditVO(String name, String profile_path, String character, String job) {
+	public CreditVO(int id, String name, String profile_path, String charac, String job) {
 		super();
+		this.id = id;
 		this.name = name;
 		this.profile_path = profile_path;
-		this.character = character;
+		this.charac= charac;
 		this.job = job;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -34,12 +43,12 @@ public class CreditVO {
 		this.profile_path = profile_path;
 	}
 
-	public String getCharacter() {
-		return character;
+	public String getCharac() {
+		return charac;
 	}
 
-	public void setCharacter(String character) {
-		this.character = character;
+	public void setCharac(String charac) {
+		this.charac = charac;
 	}
 
 	public String getJob() {

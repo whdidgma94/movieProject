@@ -18,10 +18,11 @@ create table genres(
 );
 
 create table credits(
-	name varchar(30),
-	profile_path varchar(50),
-	caracter varchar(30),
-	job varchar(30)
+	id int,
+	name varchar(100),
+	profile_path varchar(100),
+	charac varchar(100),
+	job varchar(100)
 );
 
 select * from movie;
@@ -78,3 +79,4 @@ SELECT movie.movieCd, COUNT(board.movieCd) AS board_cnt
 FROM movie
 LEFT JOIN board ON movie.movieCd = board.movieCd
 GROUP BY movie.movieCd;
+select * from credits

@@ -67,11 +67,6 @@ public class RecommandMovieController implements Controller {
 				}
 			}
 		}
-		List<String> imgList = new ArrayList<String>();
-		for (MovieVO vo : genreMap.values()) {	
-			imgList.add(MovieDAO.getInstance().getImgUrl(vo.getMovieNm()));
-		}
-		request.setAttribute("imgList", imgList);
 		request.setAttribute("genreMap", genreMap);
 		return "recommandMovie";
 	}

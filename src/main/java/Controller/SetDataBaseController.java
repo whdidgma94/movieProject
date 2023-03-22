@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Credit.CreditDAO;
+import Credit.CreditVO;
 import FrontController.Controller;
 import Movie.GenreDAO;
 import Movie.GenreVO;
@@ -39,16 +41,16 @@ public class SetDataBaseController implements Controller {
 
 			for (int i = 0; i < movieList.size(); i++) {
 				MovieVO vo = new MovieVO();
-				vo.setMovieCd(Integer.parseInt(movieList.get(i).get("movieCd").toString()));
+				int movieCd = Integer.parseInt(movieList.get(i).get("movieCd").toString());
+				vo.setMovieCd(movieCd);
+				setCreditDb(movieCd);
 				vo.setMovieNm(movieList.get(i).get("movieNm").toString());
 				String genreNm = movieList.get(i).get("genreNm").toString();
 				genreNm = genreNm.replace("[", "").replace("]", "").trim();
-				System.out.println(genreNm);
 				if (!genreNm.equals("")) {
 					String[] genres = genreNm.split(",");
 					genreNm = "";
 					for (int k = 0; k < genres.length; k++) {
-						System.out.println(genres[k]);
 						genreNm += GenreDAO.getInstance().getGenreName(Integer.parseInt(genres[k]));
 						if (k != genres.length - 1)
 							genreNm += ",";
@@ -72,9 +74,20 @@ public class SetDataBaseController implements Controller {
 	}
 
 	public void setGenreDb() {
+		GenreDAO gdao = GenreDAO.getInstance();
 		List<GenreVO> genreList = Util.getInstance().getGenreList();
 		for (GenreVO g : genreList) {
-			GenreDAO.getInstance().insertGenre(g);
+			gdao.insertGenre(g);
+		}
+	}
+
+	public void setCreditDb(int movieCd) {
+		CreditDAO cdao = CreditDAO.getInstance();
+		List<CreditVO> creditList = Util.getInstance().getCreditList(movieCd);
+		for (CreditVO c : creditList) {
+			if (cdao.getOneCredit(c.getId()) == null) {
+				cdao.insertCredit(c);
+			}
 		}
 	}
 }

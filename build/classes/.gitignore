@@ -1,7 +1,11 @@
+/Board/
+/Controller/
+/Credit/
+/FrontController/
+/Member/
+/Movie/
 /Notice/
 /Util/
-/Credit.class
-/Credit/
-/Movie/
-/Controller/
+/moviedb.sql
+/moviedb_model.mwb
 /mybatis/
