@@ -38,8 +38,6 @@ create table member(
     gender varchar(100) not null,				# 성별
    	movieCheck json								# 영화 좋아요
 );
-drop table member;
-drop table board;
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
 ('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
