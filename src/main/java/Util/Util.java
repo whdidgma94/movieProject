@@ -92,9 +92,9 @@ public class Util {
 	}
 
 	public List<CreditVO> getCreditList(int movieCd) {
-		String base_url = "https://api.themoviedb.org/3/movie/"; 
-		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267"; 
-		String language = "&language=ko-KR"; 
+		String base_url = "https://api.themoviedb.org/3/movie/";
+		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267";
+		String language = "&language=ko-KR";
 		String apiUrl = base_url + movieCd + "/credits" + api_key + language;
 
 		List<CreditVO> creditList = null;
@@ -120,7 +120,7 @@ public class Util {
 			JSONArray objArray = (JSONArray) obj.get("cast");
 			JSONArray objArray2 = (JSONArray) obj.get("crew");
 
-			creditList = new ArrayList<>();
+			creditList = new ArrayList<CreditVO>();
 
 			for (int i = 0; i < objArray.size(); i++) {
 				JSONObject jb = (JSONObject) objArray.get(i);
@@ -159,6 +159,63 @@ public class Util {
 		}
 
 		return creditList;
+
+	}
+
+	public List<String> getMovieImageList(int movieCd) {
+		String base_url = "https://api.themoviedb.org/3/movie/";
+		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267";
+		String apiUrl = base_url + movieCd + "/images" + api_key;
+
+		List<String> imageList = null;
+
+		try {
+			URL url = new URL(apiUrl);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+			conn.setRequestMethod("GET");
+			conn.setRequestProperty("Content-Type", "application/json");
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			StringBuilder sb = new StringBuilder();
+			String line = null;
+
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+			JSONParser parser = new JSONParser();
+			JSONObject obj = (JSONObject) parser.parse(sb.toString());
+
+			JSONArray objArray = (JSONArray) obj.get("posters");
+			JSONArray objArray2 = (JSONArray) obj.get("backdrops");
+
+			imageList = new ArrayList<String>();
+
+			for (int i = 0; i < objArray.size(); i++) {
+				JSONObject jb = (JSONObject) objArray.get(i);
+				if (jb.get("iso_639_1") != null) {
+					if (jb.get("iso_639_1").toString().equals("ko")) {
+						imageList.add(jb.get("file_path").toString());
+					}
+				}
+			}
+			for (int i = 0; i < objArray2.size(); i++) {
+				JSONObject jb = (JSONObject) objArray2.get(i);
+
+				if (jb.get("iso_639_1") != null) {
+					if (jb.get("iso_639_1").toString().equals("ko")) {
+						imageList.add(jb.get("file_path").toString());
+					}
+				} else {
+					imageList.add(jb.get("file_path").toString());
+				}
+			}
+			conn.disconnect();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return imageList;
 
 	}
 
