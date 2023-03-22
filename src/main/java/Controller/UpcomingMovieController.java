@@ -18,7 +18,7 @@ public class UpcomingMovieController implements Controller{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		List<MovieVO> movieList = MovieDAO.getInstance().getUpcomingMovie();
-		
+		request.setAttribute("movieList", movieList);
 		return "upcomingMovie";
 	}
 
