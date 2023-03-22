@@ -35,8 +35,7 @@ create table member(
     email varchar(30) not null, 				# 이메일
     favoriteGenre varchar(20),					# 선호 장르
     gender varchar(100) not null,				# 성별
-    movieWatch varchar(500),					# 본영화
-    movieLike varchar(500)						# 좋아요한 영화
+   	movieCheck json								# 영화 좋아요
 );
 drop table member;
 drop table board;
