@@ -28,6 +28,7 @@ import Controller.NoticeViewController;
 import Controller.MovieRankController;
 import Controller.SearchMovieController;
 import Controller.SetDataBaseController;
+import Controller.UpcomingMovieController;
 import Controller.RecommandMovieController;
 import Controller.SearchMovieViewController;
 
@@ -65,6 +66,7 @@ public class HandlerMapping {
 		mappings.put("/adminMemberUpdate.do", new AdminMemberUpdateController());
 		mappings.put("/adminMemberDelete.do", new AdminMemberDeleteController());
 		mappings.put("/adminReview.do", new AdminReviewController());
+		mappings.put("/upcomingMovie.do", new UpcomingMovieController());
 	}
 
 	public Controller getController(String key) {

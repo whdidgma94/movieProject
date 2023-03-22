@@ -31,6 +31,9 @@
 		select * from movie where movieNm like CONCAT('%',
 		#{inputVal}, '%')
 	</select>
+	<select id="getUpcomingMovie" resultType="movie">
+		select * from movie where subject = 'upcoming'
+	</select>
 	<select id="getMovieName" parameterType="Integer"
 		resultType="String">
 		select movieNm from movie where movieCd=#{movieCd}
