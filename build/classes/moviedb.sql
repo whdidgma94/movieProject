@@ -3,25 +3,26 @@ create table movie(
 	movieCd int primary key,				# 영화 식별번호
     movieNm varchar(100) not null,			# 영화 이름 
     genreNm varchar(50) not null,			# 영화 장르
-    watchGradeNm varchar(20), 				# 관람 등급
 	openDt varchar(20) not null,			# 영화 개봉일	
-	director varchar(20) not null,			# 감독 이름
-    actor varchar(500),						# 출연진 이름
-    showTm int not null,					# 상영 시간
-    showTypeNm varchar(20) not null,		# 상영 형태
+	subject varchar(20),					# 구분
 	grade double default 0,					# 평점
-	audiCnt int default 0,					# 전일 관객수
-	ranking int	,							# 순위
-	adult boolean default false,
-	poster_path vachar(50) not null,
-	video boolean,
-	overview varchar(30000)
+	adult boolean default false,			
+	poster_path varchar(50) not null,
+	backdrop_path varchar(50) not null,
+	overview varchar(10000) not null
 );
 
 create table genres(
 	genreId int,
 	genreName varchar(20)
-)
+);
+
+create table credits(
+	name varchar(30),
+	profile_path varchar(50),
+	caracter varchar(30),
+	job varchar(30)
+);
 
 select * from movie;
 create table member(
@@ -53,12 +54,6 @@ create table board(
     foreign key (movieCd) references movie(movieCd) on delete cascade
 );
 SELECT * FROM board;
-create table theater(
-	theaterNo int primary key auto_increment,	# 영화관 식별번호
-    theaterName varchar(20) not null,			# 영화관 이름
-    theaterLocation varchar(100) not null,	 	# 영화관 위치정보
-    seatCnt int not null						# 가용 좌석 수
-    );
 
 create table notice(
 	noticeNo int primary key auto_increment,
