@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div onclick='location.href=\"${ctx}/movieContent.do\"'>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {

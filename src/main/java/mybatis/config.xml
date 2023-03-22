@@ -9,6 +9,7 @@
 		<typeAlias type="Board.BoardVO" alias="board" />
 		<typeAlias type="Movie.MovieVO" alias="movie" />
 		<typeAlias type="Movie.GenreVO" alias="genre" />
+		<typeAlias type="Credit.CreditVO" alias="credit" />
 		<typeAlias type="Notice.NoticeVO" alias="notice" />
 	</typeAliases>
 
@@ -29,6 +30,7 @@
 		<mapper resource="mybatis/BoardMapper.xml" />
 		<mapper resource="mybatis/MovieMapper.xml" />
 		<mapper resource="mybatis/GenreMapper.xml" />
+		<mapper resource="mybatis/CreditMapper.xml" />
 		<mapper resource="mybatis/NoticeMapper.xml" />
 	</mappers>
 </configuration>

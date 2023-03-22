@@ -20,22 +20,30 @@
 					</c:forEach>
 				</div>
 			</div>
+			<c:set var="firstNowPlayingMovie" value="" />
+			<c:forEach items="${movieList}" var="movie">
+			    <c:if test="${movie.subject == 'now_playing' and empty firstNowPlayingMovie}">
+			        <c:set var="firstNowPlayingMovie" value="${movie.movieCd}" />
+			    </c:if>
+			</c:forEach>
 			<div class="col-md-6">
 				<h2 class="text-center">현재 상영작</h2>
 				<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 				  <div class="carousel-inner">
 				    <c:forEach items="${movieList}" var="movie" varStatus="status">
-				    <c:if test="${status.index == 0}">
-				    	<div class="carousel-item active">
+				    <c:if test="${movie.subject == 'now_playing'}">
+				        <c:if test="${movie.movieCd == firstNowPlayingMovie}">
+				          <div class="carousel-item active">
+				        </c:if>
+				        <c:if test="${movie.movieCd != firstNowPlayingMovie}">
+				          <div class="carousel-item">
+				        </c:if>
+				          <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" 
+				               style="object-fit: contain; max-height: 78vh; cursor: pointer;" 
+				               onclick="showModal(${movie.movieCd})" class="d-block w-100" alt="...">
+				        </div>
 				    </c:if>
-				    <c:if test="${status.index != 0}">
-				    	<div class="carousel-item">
-				    </c:if>
-				      <img src="https://image.tmdb.org/t/p/original/4IjRR2OW2itjQWQnmlUzvwLz9DQ.jpg" 
-				      style="object-fit: contain; max-height: 78vh; cursor: pointer;" 
-				      onclick="location.href='${ctx}/영화정보.do?movieCd=${movie.movieCd}'"class="d-block w-100" alt="...">
-				    </div>
-				    </c:forEach>				    
+				    </c:forEach>
 				  </div>
 				  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>

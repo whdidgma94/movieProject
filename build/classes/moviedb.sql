@@ -3,25 +3,27 @@ create table movie(
 	movieCd int primary key,				# 영화 식별번호
     movieNm varchar(100) not null,			# 영화 이름 
     genreNm varchar(50) not null,			# 영화 장르
-    watchGradeNm varchar(20), 				# 관람 등급
 	openDt varchar(20) not null,			# 영화 개봉일	
-	director varchar(20) not null,			# 감독 이름
-    actor varchar(500),						# 출연진 이름
-    showTm int not null,					# 상영 시간
-    showTypeNm varchar(20) not null,		# 상영 형태
+	subject varchar(20),					# 구분
 	grade double default 0,					# 평점
-	audiCnt int default 0,					# 전일 관객수
-	ranking int	,							# 순위
-	adult boolean default false,
-	poster_path vachar(50) not null,
-	video boolean,
-	overview varchar(30000)
+	adult boolean default false,			
+	poster_path varchar(50) not null,
+	backdrop_path varchar(50) not null,
+	overview varchar(10000) not null
 );
 
 create table genres(
 	genreId int,
 	genreName varchar(20)
-)
+);
+
+create table credits(
+	id int,
+	name varchar(100),
+	profile_path varchar(100),
+	charac varchar(100),
+	job varchar(100)
+);
 
 select * from movie;
 create table member(
@@ -33,7 +35,8 @@ create table member(
     address varchar(50) not null,				# 주소
     email varchar(30) not null, 				# 이메일
     favoriteGenre varchar(20),					# 선호 장르
-    gender varchar(100) not null	 			# 성별
+    gender varchar(100) not null,				# 성별
+   	movieCheck json								# 영화 좋아요
 );
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
@@ -53,12 +56,6 @@ create table board(
     foreign key (movieCd) references movie(movieCd) on delete cascade
 );
 SELECT * FROM board;
-create table theater(
-	theaterNo int primary key auto_increment,	# 영화관 식별번호
-    theaterName varchar(20) not null,			# 영화관 이름
-    theaterLocation varchar(100) not null,	 	# 영화관 위치정보
-    seatCnt int not null						# 가용 좌석 수
-    );
 
 create table notice(
 	noticeNo int primary key auto_increment,
@@ -67,13 +64,14 @@ create table notice(
 	day varchar(20) not null
 );
 INSERT INTO board (writerId, movieCd, grade, contents) VALUES
-    ('123', 20197654, 4, '재미있었습니다.'),
-    ('123', 20197654, 3, '기대했던 것보단 별로였네요.'),
-    ('123', 20197654, 5, '진짜 대박영화입니다.'),
-    ('123', 20197654, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
-    ('123', 20197654, 2, '이게 뭐냐 싶은 영화였습니다.');
+    ('123', 493529, 4, '재미있었습니다.'),
+    ('123', 594767, 3, '기대했던 것보단 별로였네요.'),
+    ('123', 603692, 5, '진짜 대박영화입니다.'),
+    ('123', 631842, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
+    ('123', 937278, 2, '이게 뭐냐 싶은 영화였습니다.');
     select*from board;
 SELECT movie.movieCd, COUNT(board.movieCd) AS board_cnt
 FROM movie
 LEFT JOIN board ON movie.movieCd = board.movieCd
 GROUP BY movie.movieCd;
+select * from credits

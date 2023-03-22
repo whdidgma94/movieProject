@@ -4,42 +4,29 @@ public class MovieVO {
 	private int movieCd;
 	private String movieNm;
 	private String genreNm;
-	private String watchGradeNm;
 	private String openDt;
-	private String director;
-	private String actor;
-	private int showTm;
-	private String showTypeNm;
+	String subject;
 	private double grade;
-	private int audiCnt;
-	private int ranking;
 	private boolean adult;
 	private String poster_path;
-	private boolean video;
+	private String backdrop_path;
 	private String overview;
 
 	public MovieVO() {
 	}
 
-	public MovieVO(int movieCd, String movieNm, String genreNm, String watchGradeNm, String openDt, String director,
-			String actor, int showTm, String showTypeNm, double grade, int audiCnt, int ranking, boolean adult,
-			String poster_path, boolean video, String overview) {
+	public MovieVO(int movieCd, String movieNm, String genreNm, String openDt, String subject, double grade,
+			boolean adult, String poster_path, String backdrop_path, String overview) {
 		super();
 		this.movieCd = movieCd;
 		this.movieNm = movieNm;
 		this.genreNm = genreNm;
-		this.watchGradeNm = watchGradeNm;
 		this.openDt = openDt;
-		this.director = director;
-		this.actor = actor;
-		this.showTm = showTm;
-		this.showTypeNm = showTypeNm;
+		this.subject = subject;
 		this.grade = grade;
-		this.audiCnt = audiCnt;
-		this.ranking = ranking;
 		this.adult = adult;
 		this.poster_path = poster_path;
-		this.video = video;
+		this.backdrop_path = backdrop_path;
 		this.overview = overview;
 	}
 
@@ -67,14 +54,6 @@ public class MovieVO {
 		this.genreNm = genreNm;
 	}
 
-	public String getWatchGradeNm() {
-		return watchGradeNm;
-	}
-
-	public void setWatchGradeNm(String watchGradeNm) {
-		this.watchGradeNm = watchGradeNm;
-	}
-
 	public String getOpenDt() {
 		return openDt;
 	}
@@ -83,36 +62,12 @@ public class MovieVO {
 		this.openDt = openDt;
 	}
 
-	public String getDirector() {
-		return director;
+	public String getSubject() {
+		return subject;
 	}
 
-	public void setDirector(String director) {
-		this.director = director;
-	}
-
-	public String getActor() {
-		return actor;
-	}
-
-	public void setActor(String actor) {
-		this.actor = actor;
-	}
-
-	public int getShowTm() {
-		return showTm;
-	}
-
-	public void setShowTm(int showTm) {
-		this.showTm = showTm;
-	}
-
-	public String getShowTypeNm() {
-		return showTypeNm;
-	}
-
-	public void setShowTypeNm(String showTypeNm) {
-		this.showTypeNm = showTypeNm;
+	public void setSubject(String subject) {
+		this.subject = subject;
 	}
 
 	public double getGrade() {
@@ -121,22 +76,6 @@ public class MovieVO {
 
 	public void setGrade(double grade) {
 		this.grade = grade;
-	}
-
-	public int getAudiCnt() {
-		return audiCnt;
-	}
-
-	public void setAudiCnt(int audiCnt) {
-		this.audiCnt = audiCnt;
-	}
-
-	public int getRanking() {
-		return ranking;
-	}
-
-	public void setRanking(int ranking) {
-		this.ranking = ranking;
 	}
 
 	public boolean isAdult() {
@@ -155,12 +94,12 @@ public class MovieVO {
 		this.poster_path = poster_path;
 	}
 
-	public boolean isVideo() {
-		return video;
+	public String getBackdrop_path() {
+		return backdrop_path;
 	}
 
-	public void setVideo(boolean video) {
-		this.video = video;
+	public void setBackdrop_path(String backdrop_path) {
+		this.backdrop_path = backdrop_path;
 	}
 
 	public String getOverview() {

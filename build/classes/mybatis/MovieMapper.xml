@@ -8,18 +8,12 @@
 		<id property="movieCd" column="movieCd" />
 		<result property="movieNm" column="movieNm" />
 		<result property="genreNm" column="genreNm" />
-		<result property="watchGradeNm" column="watchGradeNm" />
 		<result property="openDt" column="openDt" />
-		<result property="director" column="director" />
-		<result property="actor" column="actor" />
-		<result property="showTm" column="showTm" />
-		<result property="showTypeNm" column="showTypeNm" />
+		<result property="subject" column="subject" />
 		<result property="grade" column="grade" />
-		<result property="audiCnt" column="audiCnt" />
-		<result property="ranking" column="ranking" />
 		<result property="adult" column="adult" />
 		<result property="poster_path" column="poster_path" />
-		<result property="video" column="video" />
+		<result property="backdrop_path" column="backdrop_path" />
 		<result property="overview" column="overview" />
 	</resultMap>
 
@@ -36,6 +30,9 @@
 		resultType="movie">
 		select * from movie where movieNm like CONCAT('%',
 		#{inputVal}, '%')
+	</select>
+	<select id="getUpcomingMovie" resultType="movie">
+		select * from movie where subject = 'upcoming'
 	</select>
 	<select id="getMovieName" parameterType="Integer"
 		resultType="String">
@@ -58,7 +55,7 @@
 	</select>
 	<select id="movieReviewCnt" parameterType="Integer"
 		resultType="Integer">
-		select count(*) from board where movieCd =#{movieCD}
+		select count(*) from board where movieCd =#{movieCd}
 	</select>
 	<select id="movieRankByGrade" resultMap="movie">
 		select * from movie
@@ -75,49 +72,21 @@
 
 	<insert id="insertMovie" parameterType="movie">
 		INSERT INTO movie
-		(movieCd, movieNm, genreNm, watchGradeNm,openDt, director,
-		actor,showTm,showTypeNm,grade,audiCnt,ranking,adult,poster_path,video,overview)
+		(movieCd, movieNm, genreNm, openDt, subject,
+		grade,adult,poster_path,backdrop_path,overview)
 		VALUES(
 		#{movieCd},
 		#{movieNm},
 		#{genreNm},
-		#{watchGradeNm},
 		#{openDt},
-		#{director},
-		#{actor},
-		#{showTm},
-		#{showTypeNm},
+		#{subject},
 		#{grade},
-		#{audiCnt},
-		#{ranking},
 		#{adult},
 		#{poster_path},
-		#{video},
+		#{backdrop_path},
 		#{overview}
 		)
 	</insert>
-	
-	<update id="updateMovie" parameterType="movie">
-		UPDATE movie
-		SET
-		movieNm =
-		#{movieNm},
-		genreNm = #{genreNm},
-		watchGradeNm = #{watchGradeNm},
-		openDt
-		= #{openDt},
-		director = #{director},
-		actor = #{actor},
-		showTm =
-		#{showTm},
-		showTypeNm = #{showTypeNm},
-		grade = #{grade},
-		audiCnt =
-		#{audiCnt},
-		ranking = #{ranking}
-		WHERE movieCd = #{movieCd}
-	</update>
-
 
 	<delete id="deleteMovie" parameterType="Integer">
 		delete from movie where

@@ -39,7 +39,8 @@
    	                      grade: list[i].grade,
    	                      contents: list[i].contents,
    	                      movieNm: "${movie.movieNm}",
-   	                      writerId: list[i].writerId
+   	                      writerId: list[i].writerId,
+   	                      movieImg: "${movie.poster_path}"
     	               });
     	    	  		}
 	           	  </c:forEach>  
@@ -49,7 +50,7 @@
     	        	  var review = reviewList[i];
     	        	  var cardHtml = "<div class='card mb-3' onclick='showModal("+review.movieCd+")'><div class='card-body'>";
     	        	  cardHtml += "<div class='row'><div class='col-3'>";
-    	        	  cardHtml += "<img src=\"https:\/\/image.tmdb.org/t/p/original/4IjRR2OW2itjQWQnmlUzvwLz9DQ.jpg\" style=\"width: 100px; height: auto;\" alt=\"...\">";
+    	        	  cardHtml += "<img src=\"https:\/\/image.tmdb.org/t/p/original"+review.movieImg+"\" style=\"width: 100px; height: auto;\" alt=\"...\">";
     	        	  cardHtml += "</div><div class='col-9'>";
     	        	  cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
     	        	  cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
