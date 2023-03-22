@@ -38,9 +38,9 @@ tr.movie:hover th {
 					<c:forEach var="movieRankList" items="${movieRankList}" begin="0"
 						end="${movieRankList.size() }" step="1" varStatus="status">						
 						<c:if test="${(type == 'grade' && movieRankList.grade != 0) || (type == 'review' && reviewCnt.get(status.index) != 0) || (type == 'box' && movieRankList.audiCnt != 0)}">
-						<tr class="movie" style="cursor: pointer;" onclick="location.href='${ctx}/영화정보.do?movieCd=${movieRankList.movieCd}'">
+						<tr class="movie" style="cursor: pointer;" onclick="showModal(${movieRankList.movieCd})">
 							<td class="text-nowrap">${status.count}</td>
-							<td><img src="https://image.tmdb.org/t/p/original/4IjRR2OW2itjQWQnmlUzvwLz9DQ.jpg" style="width: 100px; height: auto;" alt="..."></td>
+							<td><img src="https://image.tmdb.org/t/p/original${movieRankList.poster_path}" style="width: 100px; height: auto;" alt="..."></td>
 							<td>${movieRankList.movieNm }</td>
 							<td>${movieRankList.director}</td>
 							<td>${movieRankList.actor}</td>
