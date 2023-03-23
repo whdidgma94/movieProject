@@ -22,17 +22,13 @@
 			<td>${vo.openDt}</td>
 		</tr>
 		<tr>
-<<<<<<< Updated upstream
 			<td colspan="2"><button class="btn btn-primary">자세히보기</button></td>
-=======
-			<td colspan="2"><button class="btn btn-primary" onclick="location.href='${ctx}/movieDetail.do'">자세히보기</button> </td>
->>>>>>> Stashed changes
 		</tr>
 	</table>
 </body>
 <script>
 	$(".btn").click(function() {
-		window.location.href = "${ctx}/movieContentView.do";
+		window.location.href = "${ctx}/movieContentView.do?movieCd=${vo.movieCd}";
 	})
 </script>
 </html>

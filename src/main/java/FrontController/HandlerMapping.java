@@ -8,7 +8,6 @@ import Controller.AdminMemberDeleteController;
 import Controller.AdminMemberListController;
 import Controller.AdminMemberUpdateController;
 import Controller.AdminReviewController;
-import Controller.getImgController;
 import Controller.CheckPasswordController;
 import Controller.GetReviewsController;
 import Controller.MainController;
@@ -20,11 +19,7 @@ import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
 import Controller.MemberUpdateController;
 import Controller.MovieContentController;
-<<<<<<< Updated upstream
 import Controller.MovieContentViewController;
-=======
-import Controller.MovieDetailController;
->>>>>>> Stashed changes
 import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
@@ -61,7 +56,6 @@ public class HandlerMapping {
 		mappings.put("/movieRank.do", new MovieRankController());
 		mappings.put("/recommandMovie.do", new RecommandMovieController());
 		mappings.put("/getReviews.do", new GetReviewsController());
-		mappings.put("/apiSearch.do", new getImgController());
 		mappings.put("/movieMyReview.do", new MovieMyReviewController());
 		mappings.put("/movieReviewRemove.do", new MovieReviewRemoveController());
 		mappings.put("/memberUpdate.do", new MemberUpdateController());
@@ -74,11 +68,7 @@ public class HandlerMapping {
 		mappings.put("/adminMemberDelete.do", new AdminMemberDeleteController());
 		mappings.put("/adminReview.do", new AdminReviewController());
 		mappings.put("/upcomingMovie.do", new UpcomingMovieController());
-<<<<<<< Updated upstream
 		mappings.put("/movieContentView.do", new MovieContentViewController());
-=======
-		mappings.put("/movieDetail.do", new MovieDetailController());
->>>>>>> Stashed changes
 	}
 
 	public Controller getController(String key) {
