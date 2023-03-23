@@ -11,6 +11,7 @@
 		<typeAlias type="Movie.GenreVO" alias="genre" />
 		<typeAlias type="Credit.CreditVO" alias="credit" />
 		<typeAlias type="Notice.NoticeVO" alias="notice" />
+		<typeAlias type="Member.MemberPickVO" alias="memberPick" />
 	</typeAliases>
 
 	<environments default="development">
@@ -32,5 +33,6 @@
 		<mapper resource="mybatis/GenreMapper.xml" />
 		<mapper resource="mybatis/CreditMapper.xml" />
 		<mapper resource="mybatis/NoticeMapper.xml" />
+		<mapper resource="mybatis/MemberPickMapper.xml" />
 	</mappers>
 </configuration>

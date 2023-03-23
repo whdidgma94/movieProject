@@ -11,7 +11,13 @@ create table movie(
 	backdrop_path varchar(50) not null,
 	overview varchar(10000) not null
 );
-
+CREATE TABLE memberPick(
+	memberId varchar(20) primary key,
+	movieLike integer[],
+	movieSeen integer[],
+	foreign key (memberId) references member(id) on delete cascade
+	
+)
 create table genres(
 	genreId int,
 	genreName varchar(20)

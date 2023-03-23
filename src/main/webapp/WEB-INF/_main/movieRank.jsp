@@ -19,8 +19,7 @@ tr.movie:hover th {
 					<th class="text-nowrap">순위</th>
 					<th>포스터</th>
 					<th>영화 제목</th>
-					<th>감독</th>
-					<th>배우</th>
+
 					<th class="text-nowrap">개봉일</th>
 					<c:if test="${type eq 'grade'}">
 						<th class="text-nowrap">평점</th>
@@ -42,17 +41,12 @@ tr.movie:hover th {
 							<td class="text-nowrap">${status.count}</td>
 							<td><img src="https://image.tmdb.org/t/p/original${movieRankList.poster_path}" style="width: 100px; height: auto;" alt="..."></td>
 							<td>${movieRankList.movieNm }</td>
-							<td>${movieRankList.director}</td>
-							<td>${movieRankList.actor}</td>
 							<td class="text-nowrap">${movieRankList.openDt}</td>
 							<c:if test="${type eq 'grade'}">
 								<td class="text-nowrap">${movieRankList.grade}</td>
 							</c:if>
 							<c:if test="${type eq 'review'}">
 								<td class="text-nowrap">${reviewCnt.get(status.index)}</td>
-							</c:if>
-							<c:if test="${type eq 'box'}">
-								<td class="text-nowrap">${movieRankList.audiCnt}</td>
 							</c:if>
 						</tr>
 						</c:if>
