@@ -133,6 +133,7 @@ public class Util {
 					vo.setName(jb.get("name").toString());
 					vo.setProfile_path(jb.get("profile_path").toString());
 					vo.setCharac(jb.get("character").toString());
+					vo.setJob("Actor");
 				}
 
 				creditList.add(vo);

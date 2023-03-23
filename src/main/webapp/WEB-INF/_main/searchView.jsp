@@ -3,56 +3,43 @@
 <%@ include file="../../header.jsp"%>
 
 <body>
-	<h1></h1>
-	<div class="search-wrapper" align="center">
-		<div class="search">
-			<input type="text" id="search" placeholder="입력"> <img
-				src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
-				id="searchImg">
+
+	<div class="container">
+		<div class="search-wrapper">
+			<div class="search">
+				<input type="text" id="search" placeholder="입력"> <img
+					src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+					id="searchImg">
+			</div>
+		</div>
+		<div class="row">
+			<c:if test="${searchList ne null }">
+				<c:forEach items="${searchList}" var="search">
+					<div class="col-md-3 col-sm-6 mb-4">
+						<div class="card" style="height: 600px; cursor: pointer;"
+							onclick="showModal(${search.movieCd})">
+							<img
+								src="https://image.tmdb.org/t/p/original${search.poster_path}"
+								class="card-img-top" alt="${search.movieNm} 포스터">
+							<div class="card-body">
+								<h5 class="card-title">${search.movieNm}</h5>
+								<p class="card-text">${search.genreNm}</p>
+								<p class="card-text">${search.openDt}</p>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
+				<%
+				session.removeAttribute("searchList");
+				%>
+			</c:if>
 		</div>
 	</div>
-	<table>
-		<c:if test="${searchList ne null }">
-			<c:forEach var="searchList" items="${searchList}" begin="0"
-				end="${searchList.size() }" step="1" varStatus="status">
-				<c:if test="${(status.index)%3 eq 0}">
-					<tr>
-				</c:if>
-				<td id="searchList"><img alt="" id="${searchList.title}" onclick="location.href='${searchList.link}'"
-					src="${searchList.image}" /><br /> <strong>${searchList.title}</strong></td>
-				<c:if test="${(status.index)%3 eq 2}">
-					</tr>
-				</c:if>
-			</c:forEach>
-			<%
-			session.removeAttribute("searchList");
-			%>
-		</c:if>
-	</table>
-	<script>
-		const searchInput = $('#search');
-		$("#searchImg").click(function() {
-			const query = searchInput.val();
-			$.ajax({
-				type : "POST",
-				url : "${ctx}/searchViewMovie.do",
-				data : {
-					inputVal : searchInput.val()
-				},
-				success : function(response) {
-					if (response == "null") {
-						swal('입력 오류', '일치하는 결과가 없습니다', 'error');
-					} else {
-						history.go(0);
-					}
-					searchInput.val("");
-				},
-				error : function() {
-					alert("error");
-				}
-			});
-		});
 
+
+</body>
+<script>
+		const searchInput = $('#search');
 		function handleSearch(event) {
 			if (event.which === 13) {
 				event.preventDefault();
@@ -66,6 +53,8 @@
 					success : function(response) {
 						if (response == "null") {
 							swal('입력 오류', '일치하는 결과가 없습니다', 'error');
+						} else if (response == "notValid") {
+							swal('입력 오류', '검색어를 입력하세요', 'error');
 						} else {
 							history.go(0);
 						}
@@ -77,7 +66,30 @@
 				});
 			}
 		}
-
+		$("#searchImg").click(function() {
+			const query = searchInput.val();
+			$.ajax({
+				type : "POST",
+				url : "${ctx}/searchMovieView.do",
+				data : {
+					inputVal : searchInput.val()
+				},
+				success : function(response) {
+					if (response == "null") {
+						swal('입력 오류', '일치하는 결과가 없습니다', 'error');
+					} else if (response == "notValid") {
+						swal('입력 오류', '검색어를 입력하세요', 'error');
+					} else {
+						history.go(0);
+					}
+					searchInput.val("");
+				},
+				error : function() {
+					alert("error");
+				}
+			});
+		});
+		
 		searchInput.on('keydown', handleSearch);
 
 		$("td#searchList>img").click(function() {
@@ -119,5 +131,4 @@
 			animateScrollTop();
 		});
 	</script>
-</body>
 </html>

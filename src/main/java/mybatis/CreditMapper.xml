@@ -16,7 +16,8 @@
 		INSERT INTO
 		credits(id,
 		name, profile_path, charac, job)
-		values(#{id}, #{name}, #{profile_path}, #{charac}, #{job})
+		values(#{id}, #{name},
+		#{profile_path}, #{charac}, #{job})
 	</insert>
 
 	<select id="getOneCredit" parameterType="Integer"
@@ -24,5 +25,17 @@
 		select * from credits where id=#{id}
 	</select>
 
+	<select id="getDirectorInfo" parameterType="String"
+		resultMap="credit">
+		select * from credits where job = "Director" and name like
+		CONCAT('%',
+		#{inputVal}, '%')
+	</select>
 
+	<select id="getActorInfo" parameterType="String"
+		resultMap="credit">
+		select * from credits where job = "Actor" and name like
+		CONCAT('%',
+		#{inputVal}, '%')
+	</select>
 </mapper>

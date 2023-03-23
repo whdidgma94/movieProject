@@ -39,7 +39,7 @@
 	});
 
 	$("#searchMovie").mouseover(function() {
-	    $("#subBar").html("<div>영화제목 검색</div><div>배우 이름 검색</div><div>감독 이름 검색</div>");
+	    $("#subBar").html("<div onclick='location.href=\"${ctx}/searchView.do?type=Movie\"'>영화제목 검색</div><div onclick='location.href=\"${ctx}/searchView.do?type=Actor\"'>배우 이름 검색</div><div onclick='location.href=\"${ctx}/searchView.do?type=Director\"'>감독 이름 검색</div>");
 	});
 
 	$("#movieReview").mouseover(function() {
@@ -111,7 +111,7 @@
 		<div class="nav justify-content-around contentsbar">
 			<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
 			<div class="col-2 py-3" id="searchMovie"
-				onclick="location.href='${ctx}/searchMovie.do'">영화검색</div>
+				onclick="location.href=#">영화검색</div>
 			<div class="col-2 py-3" id="movieReview">영화리뷰</div>
 			<div class="col-2 py-3" id="movieRank"
 				onclick="location.href=#">영화순위</div>

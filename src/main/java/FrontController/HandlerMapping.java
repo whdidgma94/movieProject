@@ -26,10 +26,11 @@ import Controller.MovieReviewRemoveController;
 import Controller.NoticeRemoveController;
 import Controller.NoticeViewController;
 import Controller.MovieRankController;
-import Controller.SearchMovieController;
+import Controller.SearchViewController;
 import Controller.SetDataBaseController;
 import Controller.UpcomingMovieController;
 import Controller.RecommandMovieController;
+import Controller.SearchPeopleViewController;
 import Controller.SearchMovieViewController;
 
 public class HandlerMapping {
@@ -46,8 +47,9 @@ public class HandlerMapping {
 		mappings.put("/setDataBase.do", new SetDataBaseController());
 		mappings.put("/memberGenreSelect.do", new MemberGenreSelectController());
 		mappings.put("/memberMyPage.do", new MemberMyPageController());
-		mappings.put("/searchMovie.do", new SearchMovieController());
+		mappings.put("/searchView.do", new SearchViewController());
 		mappings.put("/searchMovieView.do", new SearchMovieViewController());
+		mappings.put("/searchPeopleView.do", new SearchPeopleViewController());
 		mappings.put("/checkPassword.do", new CheckPasswordController());
 		mappings.put("/movieReview.do", new MovieReviewController());
 		mappings.put("/addReview.do", new AddReviewController());
