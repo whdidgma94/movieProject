@@ -8,11 +8,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Credit.CreditDAO;
+import Credit.CreditVO;
 import FrontController.Controller;
-import Movie.MovieDAO;
-import Movie.MovieVO;
 
-public class SearchMovieViewController implements Controller {
+public class SearchPeopleViewController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
@@ -24,7 +24,8 @@ public class SearchMovieViewController implements Controller {
 			response.getWriter().print("notValid");
 			return null;
 		}
-		List<MovieVO> searchList = MovieDAO.getInstance().getSearchMovie(data);
+		String type = request.getParameter("type");
+		List<CreditVO> searchList = CreditDAO.getInstance().getPeopleInfo(data, type);
 		HttpSession session = request.getSession();
 		session.setAttribute("searchList", searchList);
 		return null;

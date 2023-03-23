@@ -54,6 +54,7 @@ public class RecommandMovieController implements Controller {
 			genres = new String[1];
 			genres[0] = genre;
 		}
+		
 		for (String g : genres) {
 			if (genreSet.contains(g)) {
 				List<MovieVO> lists = MovieDAO.getInstance().genreMovieList(g);
