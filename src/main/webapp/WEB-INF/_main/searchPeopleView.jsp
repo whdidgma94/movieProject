@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
+<style>
+.card:hover {
+	transform: scale(1.1);
+	transition: transform 0.5s;
+}
+</style>
 
 <body>
 
@@ -90,9 +96,6 @@
 	});
 
 	searchInput.on('keydown', handleSearch);
-
-	$("td#searchList>img").click(function() {
-	})
 
 	const searchWrapper = document.querySelector('.search-wrapper');
 	const searchWrapperTop = searchWrapper.offsetTop;
