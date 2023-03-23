@@ -20,7 +20,11 @@ import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
 import Controller.MemberUpdateController;
 import Controller.MovieContentController;
+<<<<<<< Updated upstream
 import Controller.MovieContentViewController;
+=======
+import Controller.MovieDetailController;
+>>>>>>> Stashed changes
 import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
@@ -70,7 +74,11 @@ public class HandlerMapping {
 		mappings.put("/adminMemberDelete.do", new AdminMemberDeleteController());
 		mappings.put("/adminReview.do", new AdminReviewController());
 		mappings.put("/upcomingMovie.do", new UpcomingMovieController());
+<<<<<<< Updated upstream
 		mappings.put("/movieContentView.do", new MovieContentViewController());
+=======
+		mappings.put("/movieDetail.do", new MovieDetailController());
+>>>>>>> Stashed changes
 	}
 
 	public Controller getController(String key) {

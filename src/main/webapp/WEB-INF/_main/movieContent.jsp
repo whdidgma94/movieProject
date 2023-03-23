@@ -22,7 +22,11 @@
 			<td>${vo.openDt}</td>
 		</tr>
 		<tr>
+<<<<<<< Updated upstream
 			<td colspan="2"><button class="btn btn-primary">자세히보기</button></td>
+=======
+			<td colspan="2"><button class="btn btn-primary" onclick="location.href='${ctx}/movieDetail.do'">자세히보기</button> </td>
+>>>>>>> Stashed changes
 		</tr>
 	</table>
 </body>
