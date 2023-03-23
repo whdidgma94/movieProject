@@ -90,7 +90,8 @@
 	</insert>
 	<update id="updateMovie" parameterType="movie">
 		UPDATE movie
-		SET grade=#{grade}
+		SET
+		grade=#{grade}
 		WHERE movieCd=#{movieCd}
 
 	</update>
