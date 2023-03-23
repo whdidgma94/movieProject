@@ -17,6 +17,8 @@ import Controller.MemberIdConfirmController;
 import Controller.MemberJoinController;
 import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
+import Controller.MemberMovieLikeController;
+import Controller.MemberMovieSeenController;
 import Controller.MemberMyPageController;
 import Controller.MemberUpdateController;
 import Controller.MovieContentController;
@@ -71,6 +73,8 @@ public class HandlerMapping {
 		mappings.put("/adminReview.do", new AdminReviewController());
 		mappings.put("/upcomingMovie.do", new UpcomingMovieController());
 		mappings.put("/movieContentView.do", new MovieContentViewController());
+		mappings.put("/memberMovieLike.do", new MemberMovieLikeController());
+		mappings.put("/memberMovieSeen.do", new MemberMovieSeenController());
 	}
 
 	public Controller getController(String key) {
