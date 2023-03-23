@@ -8,12 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import FrontController.Controller;
 
-public class MemberMovieSeenController implements Controller{
+public class MemberMovieSeenController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+
 		return null;
 	}
 
