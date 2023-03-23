@@ -20,6 +20,7 @@ import Controller.MemberLogoutController;
 import Controller.MemberMyPageController;
 import Controller.MemberUpdateController;
 import Controller.MovieContentController;
+import Controller.MovieContentViewController;
 import Controller.MovieMyReviewController;
 import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
@@ -69,6 +70,7 @@ public class HandlerMapping {
 		mappings.put("/adminMemberDelete.do", new AdminMemberDeleteController());
 		mappings.put("/adminReview.do", new AdminReviewController());
 		mappings.put("/upcomingMovie.do", new UpcomingMovieController());
+		mappings.put("/movieContentView.do", new MovieContentViewController());
 	}
 
 	public Controller getController(String key) {

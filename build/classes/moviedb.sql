@@ -75,3 +75,4 @@ FROM movie
 LEFT JOIN board ON movie.movieCd = board.movieCd
 GROUP BY movie.movieCd;
 select * from credits
+select * from movie;
