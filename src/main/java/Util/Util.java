@@ -339,12 +339,11 @@ public class Util {
 			for (int i = 0; i < objArray.size(); i++) {
 				HashMap<String, Object> movieMap = new HashMap<>();
 				jb = (JSONObject) objArray.get(i);
-				String movieNm = (String)jb.get("movieNm");
-					movieMap = getMovieInfo(movieNm);
-					movieMap.put("rank", jb.get("rank"));
-					movieMap.put("movieNm", jb.get("movieNm"));
-					
-					movieList.add(movieMap);
+				String movieNm = (String) jb.get("movieNm");
+				movieMap = getMovieInfo(movieNm);
+				movieMap.put("rank", jb.get("rank"));
+
+				movieList.add(movieMap);
 
 			}
 			conn.disconnect();
