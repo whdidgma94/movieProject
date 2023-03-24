@@ -266,10 +266,23 @@ textarea {
 }
 
 .modal {
-	margin-top: 200px;
 	z-index: 9999;
+	width: 500px;
+	height: 300px;
 }
+div#modal.modal{
+	margin-top:250px;
+	margin-left:30%;
+	padding:10px;
+	position:center;
+	width: 800px;
+  height: 500px;
+}
+.modal-content{
+	background: rgb(140,119,119);
+background: linear-gradient(0deg, rgba(140,119,119,1) 15%, rgba(49,109,159,1) 100%);
 
+}
 .card:hover {
 	transform: scale(1.1);
 	transition: transform 0.5s;

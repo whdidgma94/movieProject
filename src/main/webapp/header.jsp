@@ -134,7 +134,7 @@
 
 	<div id="modal" class="modal">
 		<div class="modal-content">
-			<span class="close">&times;</span>
+			<span class="close" style="background-color:#316d9f;">&times;</span>
 			<p id="movieInfo"></p>
 		</div>
 	</div>
