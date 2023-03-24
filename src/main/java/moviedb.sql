@@ -11,12 +11,7 @@ create table movie(
 	backdrop_path varchar(50) not null,
 	overview varchar(10000) not null
 );
-CREATE TABLE memberPick(
-	memberId varchar(20) primary key,
-	movieLike varchar(500),
-	movieSeen varchar(500),
-	foreign key (memberId) references member(id) on delete cascade
-);
+
 create table genres(
 	genreId int,
 	genreName varchar(20)
@@ -42,6 +37,12 @@ create table member(
     favoriteGenre varchar(20),					# 선호 장르
     gender varchar(100) not null,				# 성별
    	movieCheck json								# 영화 좋아요
+);
+CREATE TABLE memberPick(
+	memberId varchar(20) primary key,
+	movieLike varchar(500),
+	movieSeen varchar(500),
+	foreign key (memberId) references member(id) on delete cascade
 );
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
