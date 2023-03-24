@@ -8,6 +8,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Board.BoardDAO;
+import Board.BoardVO;
 import Credit.CreditDAO;
 import Credit.CreditVO;
 import FrontController.Controller;
@@ -91,4 +93,12 @@ public class SetDataBaseController implements Controller {
 		}
 	}
 
+	public void setBoardDb() {
+		List<BoardVO> list = BoardDAO.getInstance().getAllBoard();
+		for (BoardVO b : list) {
+			MovieVO m = MovieDAO.getInstance().getOneMovie(b.getMovieCd());
+			m.setGrade(BoardDAO.getInstance().getAvgGrade(m.getMovieCd()));
+			MovieDAO.getInstance().updateMovie(m);
+		}
+	}
 }
