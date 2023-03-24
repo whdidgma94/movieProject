@@ -44,6 +44,12 @@ create table member(
     gender varchar(100) not null,				# 성별
    	movieCheck json								# 영화 좋아요
 );
+CREATE TABLE memberPick(
+	memberId varchar(20) primary key,
+	movieLike varchar(500),
+	movieSeen varchar(500),
+	foreign key (memberId) references member(id) on delete cascade
+);
 insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
 values
 ('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');

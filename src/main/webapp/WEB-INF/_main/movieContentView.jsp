@@ -2,14 +2,112 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+	font-family: sans-serif;
+	margin: 0;
+	padding: 0;
+	height: 100vh;
+	background-color: #f5f5f5;
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: #fff;
+	border-radius: 10px;
+	padding: 30px;
+	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* 제목 */
+h2 {
+	margin: 0;
+	margin-bottom: 20px;
+}
+
+/* 선택 이미지 리스트 */
+.select-img {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-left: 20px;
+}
+
+/* 선택 이미지 리스트 내부 */
+.select-img img {
+	height: 100px;
+	width: 100px;
+	margin-bottom: 10px;
+	border-radius: 5px;
+	cursor: pointer;
+	transition: all 0.3s ease-in-out;
+}
+
+/* 선택 이미지 리스트 내부 :hover 상태 */
+.select-img img:hover {
+	opacity: 0.7;
+}
+
+/* 페이지 이동 버튼 */
+.pagination {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+/* 페이지 이동 버튼 활성화 */
+.pagination .active a {
+	background-color: #007bff;
+	border-color: #007bff;
+}
+
+/* 찜하기/봤어요 버튼 */
+.btns {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.btn-primary {
+	margin-right: 10px;
+}
+
+/* 테이블 레이아웃 */
+.table-wrapper {
+	width: 100%;
+}
+
+table {
+	width: 100%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+}
+
+table th {
+	font-weight: bold;
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #dee2e6;
+}
+
+table td {
+	padding: 10px;
+	text-align: left;
+	border: 1px solid #dee2e6;
+}
+</style>
 <body>
-	<main
-		style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+	<main>
 		<h2>${vo.movieNm }</h2>
 
 		<div class="img-wrapper">
-			<div class="main-img" style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-				<img style="width: 600px; height: 700px; margin-bottom: 20px" alt=""
+			<div class="main-img"
+				style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+				<img
+					style="width: 600px; height: 700px; margin-bottom: 20pxp; border-radius: 5px;"
+					alt=""
 					src="https://image.tmdb.org/t/p/original${imageList.get(0) }">
 			</div>
 			<div class="select-img">
@@ -23,8 +121,10 @@
 
 					<c:forEach var="image" items="${imageList }" varStatus="status"
 						begin="0" end="9">
-						<img alt="" src="https://image.tmdb.org/t/p/original${image }"
-							style="height: 100px; width: 100px">
+						<li class="page-item" style="margin-top: 10px"><img
+							class="page-link" alt=""
+							src="https://image.tmdb.org/t/p/original${image }"
+							style="height: 100px; width: 100px"></li>
 					</c:forEach>
 					<li class="page-item"><a class="page-link" href="#"
 						aria-label="Next"> <span aria-hidden="true">»</span> <span
@@ -41,7 +141,7 @@
 			<table>
 				<tr>
 					<th>장르</th>
-					<td>장르명</td>
+					<td>${vo.genreNm }</td>
 				</tr>
 				<tr>
 					<th>감독</th>
@@ -59,12 +159,25 @@
 <script>
   const selectImgs = document.querySelectorAll('.select-img img');
   const mainImg = document.querySelector('.main-img img');
+  const preBtn = document.querySelector('.preBtn');
+  const nextBtn = document.querySelector('.nextBtn');
+  let index = 0;
   selectImgs.forEach(img => {
     img.addEventListener('click', () => {
       mainImg.src = img.src;
     });
   });
-  
+  const lastIndex = selectImgs.length - 1;
+
+  preBtn.addEventListener('click', () => {
+    index = index === 0 ? lastIndex : index - 1;
+    mainImg.src = selectImgs[index].src;
+  });
+
+  nextBtn.addEventListener('click', () => {
+    index = index === lastIndex ? 0 : index + 1;
+    mainImg.src = selectImgs[index].src;
+  });
   
 </script>
 </html>
