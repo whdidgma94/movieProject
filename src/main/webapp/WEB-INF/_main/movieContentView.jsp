@@ -9,14 +9,6 @@
 
 
 <style>
-body {
-	font-family: sans-serif;
-	margin: 0;
-	padding: 0;
-	height: 100vh;
-	background-color: #f5f5f5;
-}
-
 main {
 	display: flex;
 	flex-direction: column;
@@ -30,10 +22,6 @@ main {
 h2 {
 	margin: 0;
 	margin-bottom: 20px;
-}
-
-.main {
-	display: flex;
 }
 
 .img-wrapper {
@@ -150,11 +138,53 @@ table td {
 .rating-text {
 	margin-left: 10px;
 }
+
+#overlay {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.8);
+	z-index: 999;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.5s;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#overlay.show {
+	visibility: visible;
+	opacity: 1;
+}
+
+.stop-scrolling {
+	/* height: 100%; */
+	overflow: hidden;
+}
+
+.youtube {
+	width: 60%;
+	height: 60%;
+}
+
+iframe {
+	display: block;
+	width: 100%;
+}
+
+.noVideo {
+	color: white;
+}
 </style>
 <body class="mainView">
 	<main>
 		<h2>${vo.movieNm }</h2>
-		<div>
+		<div style="display: flex">
 			<div class="img-wrapper">
 				<div class="main-img"
 					style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
@@ -215,6 +245,8 @@ table td {
 							<button class="btn btn-danger" onclick="movieSeen(${vo.movieCd})">봤어요
 								취소</button>
 						</c:if>
+						<button class="btn btn-danger" onclick="preview(${vo.movieCd})">예고편
+							보기</button>
 					</div>
 				</c:if>
 				<table>
@@ -238,6 +270,11 @@ table td {
 			</div>
 		</div>
 	</main>
+	<div id="overlay">
+		<div class="youtube">
+			<img class="close" src="#">
+		</div>
+	</div>
 </body>
 
 <script>
@@ -245,6 +282,10 @@ const selectImgs = document.querySelectorAll('.select-img img');
 const mainImg = document.querySelector('.main-img img');
 const preBtn = document.querySelector('.preBtn');
 const nextBtn = document.querySelector('.nextBtn');
+const youtube = document.querySelector(".youtube");
+const overlay = document.querySelector("#overlay");
+const closeButton = document.querySelector(".close");
+let currentScrollY = "";
 let selectedImg = selectImgs[0];
 selectedImg.classList.add('selected');
 
@@ -358,5 +399,31 @@ links.forEach(link => {
 		})	
 
 	}
+  
+  function preview(movieCd){
+	  console.log(movieCd);
+	  const movieUrl = "https://api.themoviedb.org/3/movie/"+movieCd+"/videos?api_key=a699dda4efd374eb3d9a01da4dacc267";
+      fetch(movieUrl)
+          .then(res => res.json())
+          .then(function(res){
+              let output = "";
+              
+              if(res.results.length > 0){
+                  const youtubeId = res.results[0].key;//첫번재 영상만 사용하기 하자. 값이 없을 경우도 있음.
+                  output = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1"></iframe>`; 
+              } else {
+                  output = `<h3 class="noVideo">재생할 예고편이 없습니다.</h3>`;
+                  console.log(output);
+              }
+              
+              youtube.innerHTML = output;
+              overlay.classList.add("show");
+              
+              overlay.setAttribute("style", `background-image: url(${posterImage}); background-size: auto; background-repeat: no-repeat;`)
+              //배경 body 스크롤 중지
+              document.body.classList.add("stop-scrolling");
+          })
+  } 
+
 </script>
 </html>
