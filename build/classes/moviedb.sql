@@ -17,8 +17,7 @@ CREATE TABLE memberPick(
 	movieLike varchar(500),
 	movieSeen varchar(500),
 	foreign key (memberId) references member(id) on delete cascade
-	
-)
+);
 create table genres(
 	genreId int,
 	genreName varchar(20)

@@ -12,7 +12,7 @@ import FrontController.Controller;
 import Member.MemberPickDAO;
 import Member.MemberPickVO;
 
-public class MemberMovieLikeController implements Controller{
+public class MemberMovieLikeController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
@@ -22,7 +22,7 @@ public class MemberMovieLikeController implements Controller{
 		String id = (String)session.getAttribute("log");		
 		int movieCd = Integer.parseInt((String)request.getAttribute("movieCd"));
 		MemberPickVO vo = MemberPickDAO.getInstance().getMemberPick(id);
-		if(vo==null) {
+		if (vo == null) {
 			vo = new MemberPickVO();
 			vo.setMemberId(id);
 			vo.setMovieLike(""+movieCd);

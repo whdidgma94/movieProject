@@ -11,7 +11,7 @@ import FrontController.Controller;
 import Member.MemberPickDAO;
 import Member.MemberPickVO;
 
-public class MemberMovieSeenController implements Controller{
+public class MemberMovieSeenController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)
