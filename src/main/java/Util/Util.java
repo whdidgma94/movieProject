@@ -15,7 +15,6 @@ import org.json.simple.parser.JSONParser;
 
 import Credit.CreditVO;
 import Movie.GenreVO;
-import Movie.MovieVO;
 
 public class Util {
 	private static Util instance = new Util();
@@ -340,11 +339,11 @@ public class Util {
 				HashMap<String, Object> movieMap = new HashMap<>();
 				jb = (JSONObject) objArray.get(i);
 				String movieNm = (String) jb.get("movieNm");
+				movieNm = movieNm.replace(" ", "%20");
 				movieMap = getMovieInfo(movieNm);
-				movieMap.put("rank", jb.get("rank"));
-
+				movieMap.put("audiCnt", jb.get("audiCnt"));
+				System.out.println(movieMap.get("movieNm")+","+ movieMap.get("movieCd"));
 				movieList.add(movieMap);
-
 			}
 			conn.disconnect();
 
@@ -357,7 +356,7 @@ public class Util {
 	public HashMap<String, Object> getMovieInfo(String movieNm) {
 		String base_url = "https://api.themoviedb.org/3/search/movie";
 		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267";
-		String language = "&language=ko-kr";
+		String language = "&language=ko-kr&region=KR";
 		String query = "&query=" + movieNm;
 		String apiUrl = base_url + api_key + language + query;
 		HashMap<String, Object> movieMap = null;
@@ -381,7 +380,8 @@ public class Util {
 			for (int i = 0; i < objArray.size(); i++) {
 				jb = (JSONObject) objArray.get(i);
 				if (!jb.get("overview").equals("")) {
-					if (jb.get("title").equals(movieNm)) {
+					movieNm = movieNm.replace("%20", " ");
+					if (movieNm.contains(jb.get("title").toString())) {
 						movieMap.put("movieCd", jb.get("id"));
 						movieMap.put("movieNm", jb.get("title"));
 						movieMap.put("genreNm", jb.get("genre_ids"));

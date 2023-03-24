@@ -3,11 +3,11 @@
 <%@ include file="../../header.jsp"%>
 <style>
 tr.movie:hover {
-    background-color: #f7f7f7;
+	background-color: #f7f7f7;
 }
-tr.movie:hover td,
-tr.movie:hover th {
-    color: #333;
+
+tr.movie:hover td, tr.movie:hover th {
+	color: #333;
 }
 </style>
 <body>
@@ -35,20 +35,27 @@ tr.movie:hover th {
 			<tbody>
 				<c:if test="${movieRankList ne null }">
 					<c:forEach var="movieRankList" items="${movieRankList}" begin="0"
-						end="${movieRankList.size() }" step="1" varStatus="status">						
-						<c:if test="${(type == 'grade' && movieRankList.grade != 0) || (type == 'review' && reviewCnt.get(status.index) != 0) || (type == 'box' && movieRankList.audiCnt != 0)}">
-						<tr class="movie" style="cursor: pointer;" onclick="showModal(${movieRankList.movieCd})">
-							<td class="text-nowrap">${status.count}</td>
-							<td><img src="https://image.tmdb.org/t/p/original${movieRankList.poster_path}" style="width: 100px; height: auto;" alt="..."></td>
-							<td>${movieRankList.movieNm }</td>
-							<td class="text-nowrap">${movieRankList.openDt}</td>
-							<c:if test="${type eq 'grade'}">
-								<td class="text-nowrap">${movieRankList.grade}</td>
-							</c:if>
-							<c:if test="${type eq 'review'}">
-								<td class="text-nowrap">${reviewCnt.get(status.index)}</td>
-							</c:if>
-						</tr>
+						end="${movieRankList.size() }" step="1" varStatus="status">
+						<c:if
+							test="${(type == 'grade' && movieRankList.grade != 0) || (type == 'review' && reviewCnt.get(status.index) != 0) || (type == 'box' && audiCnt.get(status.index) != 0)}">
+							<tr class="movie" style="cursor: pointer;"
+								onclick="showModal(${movieRankList.movieCd})">
+								<td class="text-nowrap">${status.count}</td>
+								<td><img
+									src="https://image.tmdb.org/t/p/original${movieRankList.poster_path}"
+									style="width: 100px; height: auto;" alt="..."></td>
+								<td>${movieRankList.movieNm }</td>
+								<td class="text-nowrap">${movieRankList.openDt}</td>
+								<c:if test="${type eq 'box'}">
+									<td class="text-nowrap">${audiCnt.get(status.index)}</td>
+								</c:if>
+								<c:if test="${type eq 'grade'}">
+									<td class="text-nowrap">${movieRankList.grade}</td>
+								</c:if>
+								<c:if test="${type eq 'review'}">
+									<td class="text-nowrap">${reviewCnt.get(status.index)}</td>
+								</c:if>
+							</tr>
 						</c:if>
 					</c:forEach>
 				</c:if>
