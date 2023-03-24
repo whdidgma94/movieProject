@@ -11,6 +11,7 @@ create table movie(
 	backdrop_path varchar(50) not null,
 	overview varchar(10000) not null
 );
+drop table memberPick;
 CREATE TABLE memberPick(
 	memberId varchar(20) primary key,
 	movieLike integer[],
