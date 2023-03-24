@@ -8,7 +8,7 @@
 }
 </style>
 
-<body class="main">
+<body class="mainView">
 
 	<div class="container">
 		<div class="search-wrapper">

@@ -5,7 +5,7 @@
 	type="text/css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<body class="main">
+<body class="mainView">
 	<div class="container">
 	<c:if test="${genreMap eq null}">
 		<h1>영화 목록</h1>

@@ -148,10 +148,10 @@ table td {
 	margin-left: 10px;
 }
 </style>
-<body class="main">
+<body class="mainView">
 	<main>
 		<h2>${vo.movieNm }</h2>
-		<div class="main">
+		<div>
 			<div class="img-wrapper">
 				<div class="main-img"
 					style="display: flex; justify-content: center; align-items: center; flex-direction: column;">

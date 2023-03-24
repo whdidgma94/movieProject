@@ -7,7 +7,7 @@
   background-color: #f7f7f7;
 }
 </style>
-<body class="main">
+<body class="mainView">
 	<div class="container">
 		<h1 class="text-center my-5">회원정보 수정</h1>
 		<div class="row">

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
 <link href="${ctx}/css/selectGenreStyle.css" rel="stylesheet" type="text/css">
-<body class="selGenre main">
+<body class="selGenre mainView">
 	<h1>선호장르 선택</h1>
 	<form action="${ctx}/memberGenreSelect.do" method="get" id="form">
 		<table class="table table-bordered">
