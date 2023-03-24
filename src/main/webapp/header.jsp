@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이름</title>
+<title>JJOTTE Cinema</title>
 <link href="${ctx}/css/style.css" rel="stylesheet" type="text/css">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet"
