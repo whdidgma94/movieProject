@@ -28,12 +28,12 @@
     </insert>
     <update id="updateMemberPickLike" parameterType="memberPick">
          update memberPick
-         set memberLike=#{memberLike}
+         set movieLike=#{movieLike}
          where memberId=#{memberId}
     </update>
     <update id="updateMemberPickSeen" parameterType="memberPick">
          update memberPick
-         set memberSeen=#{memberSeen}
+         set movieSeen=#{movieSeen}
          where memberId=#{memberId}
     </update>
 </mapper>

@@ -20,13 +20,18 @@ public class MemberMovieLikeController implements Controller {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("log");		
-		int movieCd = Integer.parseInt((String)request.getAttribute("movieCd"));
+		int movieCd = Integer.parseInt(request.getParameter("movieCd"));
 		MemberPickVO vo = MemberPickDAO.getInstance().getMemberPick(id);
 		if (vo == null) {
 			vo = new MemberPickVO();
 			vo.setMemberId(id);
 			vo.setMovieLike(""+movieCd);
 			MemberPickDAO.getInstance().addMemberPickLike(vo);
+			return null;
+		}
+		if(vo.getMovieLike() == null) {
+			vo.setMovieLike(""+movieCd);
+			MemberPickDAO.getInstance().updateMemberPickLike(vo);
 			return null;
 		}
 		String[] likeList = vo.getMovieLike().split(",");
@@ -38,7 +43,12 @@ public class MemberMovieLikeController implements Controller {
 			}
 		}
 		if(idx==-1) {
-			String movieLike = vo.getMovieLike()+","+movieCd;
+			String movieLike="";
+			if(vo.getMovieLike().length()==0) {
+				movieLike = ""+movieCd;
+			}else {
+				movieLike = vo.getMovieLike()+","+movieCd;
+			}
 			vo.setMovieLike(movieLike);
 			MemberPickDAO.getInstance().updateMemberPickLike(vo);			
 		}else {
@@ -47,7 +57,7 @@ public class MemberMovieLikeController implements Controller {
 				if(i!=idx) {
 					movieLike+=likeList[i];
 				}
-				if(i!=likeList.length-1) {
+				if(i!=likeList.length-1&&i!=likeList.length-2) {
 					movieLike+=",";
 				}
 			}

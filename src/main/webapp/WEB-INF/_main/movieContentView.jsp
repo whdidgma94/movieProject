@@ -133,10 +133,22 @@ table td {
 				</ul>
 			</div>
 		</div>
+		<c:if test="${log ne null}">
 		<div class="btns">
-			<button class="btn btn-primary">찜하기</button>
-			<button class="btn btn-primary">봤어요</button>
-		</div>
+			<c:if test="${like}">
+			<button class="btn btn-primary" onclick="movieLike(${vo.movieCd})">좋아요</button>
+			</c:if>
+			<c:if test="${not like}">
+			<button class="btn btn-danger" onclick="movieLike(${vo.movieCd})">좋아요 취소</button>
+			</c:if>	
+			<c:if test="${seen}">
+			<button class="btn btn-primary" onclick="movieSeen(${vo.movieCd})">봤어요</button>
+			</c:if>
+			<c:if test="${not seen}">
+			<button class="btn btn-danger" onclick="movieSeen(${vo.movieCd})">봤어요 취소</button>
+			</c:if>			
+		</div>		
+		</c:if>
 		<div class="table-wrapper">
 			<table>
 				<tr>
@@ -178,6 +190,53 @@ table td {
     index = index === lastIndex ? 0 : index + 1;
     mainImg.src = selectImgs[index].src;
   });
-  
+  function movieLike(movieCd){  
+	let query = {
+		movieCd : movieCd
+	};
+	$.ajax({
+		type : "post",
+		url : "memberMovieLike.do",
+		data : query,
+		success : function(data) {
+			if(${like}){
+				swal("좋아요!","해당 영화를 좋아요 했습니다.","success")
+				.then(function(){               
+					location.href = "${ctx}/movieContentView.do?movieCd=${vo.movieCd}"
+				});				
+			}else{
+				swal("좋아요 취소!","해당 영화의 좋아요를 취소 했습니다.","success")
+				.then(function(){               
+					location.href = "${ctx}/movieContentView.do?movieCd=${vo.movieCd}"
+				});		
+			}
+		}
+	})	
+
+}
+  function movieSeen(movieCd){  
+		let query = {
+			movieCd : movieCd
+		};
+		$.ajax({
+			type : "post",
+			url : "memberMovieSeen.do",
+			data : query,
+			success : function(data) {
+				if(${seen}){
+					swal("봤어요!","해당 영화를 봤어요 했습니다.","success")
+					.then(function(){               
+						location.href = "${ctx}/movieContentView.do?movieCd=${vo.movieCd}"
+					});					
+				}else{
+					swal("봤어요 취소!","해당 영화의 봤어요를 취소 했습니다.","success")
+					.then(function(){               
+						location.href = "${ctx}/movieContentView.do?movieCd=${vo.movieCd}"
+					});	
+				}
+			}
+		})	
+
+	}
 </script>
 </html>
