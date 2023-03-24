@@ -3,7 +3,8 @@
 <%@ include file="../../header.jsp" %>
 <style>
 .card:hover {
-    background-color: #f7f7f7;
+  transform: scale(1.0);
+  background-color: #f7f7f7;
 }
 </style>
 <script>

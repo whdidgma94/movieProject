@@ -1,6 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
+<style>
+.card:hover {
+  transform: scale(1.0);
+  background-color: #f7f7f7;
+}
+</style>
 <body>
 	<div class="container">
 		<h1 class="text-center my-5">회원 목록</h1>

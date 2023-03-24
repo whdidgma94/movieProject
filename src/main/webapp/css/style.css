@@ -9,19 +9,31 @@
 h1 {
 	text-align: center;
 }
-
+h2{
+	color:white;
+	
+}
+.text-center{
+	font-size: 25px;
+}
+.main{
+background: rgb(5,37,65);
+background: linear-gradient(0deg, rgba(5,37,65,1) 0%, rgba(0,0,0,1) 72%);
+}
 .header {
 	position: fixed;
 	z-index: 999;
 	width: 100%;
 }
-
+.curLog{
+	color:white;
+}
 .head-bottom {
-	margin-bottom: 130px;
+	margin-bottom: 180px;
 }
 
 .top {
-	background-color: white;
+	background-color: black;
 	padding: 10px;
 	display: flex;
 	justify-content: space-between;
@@ -53,7 +65,7 @@ h1 {
 }
 
 .dropdown-item {
-	color: black;
+	color: white;
 	font-weight: 400;
 	display: block;
 	width: 100%;
@@ -68,8 +80,7 @@ h1 {
 }
 
 .contentsbar {
-	background-color: #F8F9FA;
-	border-bottom: 1px solid #DEE2E6;
+	background-color: #f7f4e3;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -80,14 +91,13 @@ h1 {
 .contentsbar div {
 	padding: 10px;
 	text-align: center;
-	color: #343A40;
+	color:white;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 }
 
 .contentsbar div:hover {
-	background-color: #E9ECEF;
-	color: #007bff;
+	background-color: gray;
 }
 
 .contentsbar>div.active {
@@ -202,11 +212,17 @@ textarea {
 }
 
 .cinema-link {
-	color: #F15F5F;
+	color: red;
 	font-family: 'Roboto', sans-serif;
-	font-size: 28px;
-	font-weight: bold;
+	font-size: 40px;
+	font-weight: 1000;
 	text-decoration: none;
+	margin-left: 43.5%;
+	margin-right: auto;
+	margin-top: 15px;
+	margin-bottom: 10px;
+	
+	
 }
 
 .cinema-link:hover {
@@ -219,8 +235,7 @@ textarea {
 }
 
 .notice-scroll::-webkit-scrollbar {
-	width: 10px;
-	background-color: #F5F5F5;
+	display:none;
 }
 
 .notice-scroll::-webkit-scrollbar-thumb {
@@ -236,4 +251,14 @@ textarea {
   transform: scale(1.1);
   transition: transform 0.5s;
   
+}
+.card-body{
+	background-color: black;
+	color:white;
+}
+.card-body:hover{
+	background-color: gray;
+}
+.head-bottom{
+	color:#f7f4e3;
 }

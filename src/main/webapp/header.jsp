@@ -86,7 +86,7 @@
 <body>
 	<div class="header">
 		<div class="top">
-			<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">JJOTTE Cinema</h2>
+			<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">JJOTTE Movie</h2>
 	
 			<c:if test="${log != null}">
 				<div class="curLog">${log}님로그인중</div>
