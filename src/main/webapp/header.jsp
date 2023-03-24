@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick=checkLog()>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {
@@ -81,6 +81,13 @@
 			}
 		});		
 	}
+	function checkLog(){
+		if(${log==null}){
+			location.href="${ctx}/memberLogin.do"
+		}else{
+			location.href="${ctx}/recommandMovie.do"
+		}
+	}
 </script>
 </head>
 <body>
@@ -104,18 +111,17 @@
 					<c:if test="${log != null}">
 						<a class="dropdown-item" href="${ctx}/memberLogout.do">로그아웃</a>
 						<a class="dropdown-item" href="${ctx}/memberMyPage.do">마이페이지</a>
-						<a class="dropdown-item" href="${ctx}/memberMyMovie.do">관심있는 영화</a>
+						<a class="dropdown-item" href="${ctx}/memberMyMovie.do">관심있는
+							영화</a>
 					</c:if>
 				</div>
 			</div>
 		</div>
 		<div class="nav justify-content-around contentsbar">
 			<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
-			<div class="col-2 py-3" id="searchMovie"
-				onclick="location.href=#">영화검색</div>
+			<div class="col-2 py-3" id="searchMovie" onclick="location.href=#">영화검색</div>
 			<div class="col-2 py-3" id="movieReview">영화리뷰</div>
-			<div class="col-2 py-3" id="movieRank"
-				onclick="location.href=#">영화순위</div>
+			<div class="col-2 py-3" id="movieRank" onclick="location.href=#">영화순위</div>
 			<c:if test="${log == 'admin'}">
 				<div class="col-2 py-3" id="memberManage">회원관리</div>
 				<div class="col-2 py-3" id="noticeManage">게시물관리</div>
@@ -125,7 +131,7 @@
 			style="margin-bottom: 20px"></div>
 	</div>
 	<div class="head-bottom">1</div>
-	
+
 	<div id="modal" class="modal">
 		<div class="modal-content">
 			<span class="close">&times;</span>

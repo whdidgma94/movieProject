@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<head>
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+</head>
+
+
 <style>
 body {
 	font-family: sans-serif;
@@ -21,13 +27,31 @@ main {
 	box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
 }
 
-/* 제목 */
 h2 {
 	margin: 0;
 	margin-bottom: 20px;
 }
 
-/* 선택 이미지 리스트 */
+.main {
+	display: flex;
+}
+
+.img-wrapper {
+	width: 60% margin: 20px;
+}
+
+.btns {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 10px 0;
+	font-size: 16px;
+}
+.grade{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 .select-img {
 	display: flex;
 	flex-direction: column;
@@ -36,7 +60,6 @@ h2 {
 	margin-left: 20px;
 }
 
-/* 선택 이미지 리스트 내부 */
 .select-img img {
 	height: 100px;
 	width: 100px;
@@ -46,36 +69,34 @@ h2 {
 	transition: all 0.3s ease-in-out;
 }
 
-/* 선택 이미지 리스트 내부 :hover 상태 */
 .select-img img:hover {
 	opacity: 0.7;
 }
 
-/* 페이지 이동 버튼 */
 .pagination {
 	margin-top: 0;
 	margin-bottom: 0;
 }
 
-/* 페이지 이동 버튼 활성화 */
 .pagination .active a {
 	background-color: #007bff;
 	border-color: #007bff;
 }
 
-/* 찜하기/봤어요 버튼 */
 .btns {
-	margin-top: 20px;
+	display: flex;
+	justify-content:space-around;
 	margin-bottom: 20px;
+	margin-top: 20px;
 }
 
 .btn-primary {
 	margin-right: 10px;
 }
 
-/* 테이블 레이아웃 */
-.table-wrapper {
-	width: 100%;
+.content-wrapper {
+	width: 40%;
+	margin-left:10px;
 }
 
 table {
@@ -97,99 +118,192 @@ table td {
 	text-align: left;
 	border: 1px solid #dee2e6;
 }
+
+.selected {
+	border: none;
+	filter: brightness(90%);
+	transform: scale(1.05);
+}
+
+.checked {
+	color: #f7d400;
+	font-size: 24px;
+	font-family: 'Font Awesome 5 Free';
+}
+
+.fa-star.half, .fa-star.checked.half {
+	color: #f7d400;
+	font-size: 24px;
+}
+
+.grade {
+	display: flex;
+	align-items: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #777;
+}
+
+.rating-text {
+	margin-left: 10px;
+}
 </style>
 <body class="main">
 	<main>
 		<h2>${vo.movieNm }</h2>
+		<div class="main">
+			<div class="img-wrapper">
+				<div class="main-img"
+					style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+					<img
+						style="width: 600px; height: 700px; margin-bottom: 20pxp; border-radius: 5px;"
+						alt=""
+						src="https://image.tmdb.org/t/p/original${imageList.get(0) }">
+				</div>
+				<div class="select-img">
+					<ul class="pagination"
+						style="width: 100%; display: flex; justify-content: center; align-items: center">
+						<li class="page-item"><a class="page-link preBtn" href="#"
+							aria-label="Previous"> <span aria-hidden="true">«</span> <span
+								class="sr-only preBtn">Previous</span>
 
-		<div class="img-wrapper">
-			<div class="main-img"
-				style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-				<img
-					style="width: 600px; height: 700px; margin-bottom: 20pxp; border-radius: 5px;"
-					alt=""
-					src="https://image.tmdb.org/t/p/original${imageList.get(0) }">
+						</a></li>
+
+						<c:forEach var="image" items="${imageList }" varStatus="status"
+							begin="0" end="7">
+							<li class="page-item" style="margin-top: 10px"><img
+								class="page-link" alt=""
+								src="https://image.tmdb.org/t/p/original${image }"
+								style="height: 100px; width: 100px"></li>
+						</c:forEach>
+						<li class="page-item"><a class="page-link nextBtn" href="#"
+							aria-label="Next"> <span aria-hidden="true">»</span> <span
+								class="sr-only nextBtn">Next</span>
+						</a></li>
+					</ul>
+				</div>
 			</div>
-			<div class="select-img">
-				<ul class="pagination"
-					style="width: 100%; display: flex; justify-content: center; align-items: center">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous"> <span aria-hidden="true">«</span> <span
-							class="sr-only preBtn">Previous</span>
+			<div class="content-wrapper">
+				<div class="grade">
+					<span class="fa fa-star checked"></span> <span
+						class="fa fa-star checked"></span> <span
+						class="fa fa-star checked"></span> <span
+						class="fa fa-star checked"></span> <span
+						class="fa fa-star checked"></span> <span class="rating-text">평점:
+						${vo.grade}점</span>
+				</div>
 
-					</a></li>
 
-					<c:forEach var="image" items="${imageList }" varStatus="status"
-						begin="0" end="9">
-						<li class="page-item" style="margin-top: 10px"><img
-							class="page-link" alt=""
-							src="https://image.tmdb.org/t/p/original${image }"
-							style="height: 100px; width: 100px"></li>
-					</c:forEach>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next"> <span aria-hidden="true">»</span> <span
-							class="sr-only nextBtn">Next</span>
-					</a></li>
-				</ul>
+				<c:if test="${log ne null}">
+					<div class="btns">
+						<c:if test="${like}">
+							<button class="btn btn-primary"
+								onclick="movieLike(${vo.movieCd})">좋아요</button>
+						</c:if>
+						<c:if test="${not like}">
+							<button class="btn btn-danger" onclick="movieLike(${vo.movieCd})">좋아요
+								취소</button>
+						</c:if>
+						<c:if test="${seen}">
+							<button class="btn btn-primary"
+								onclick="movieSeen(${vo.movieCd})">봤어요</button>
+						</c:if>
+						<c:if test="${not seen}">
+							<button class="btn btn-danger" onclick="movieSeen(${vo.movieCd})">봤어요
+								취소</button>
+						</c:if>
+					</div>
+				</c:if>
+				<table>
+					<tr>
+						<th>장르</th>
+						<td>${vo.genreNm }</td>
+					</tr>
+					<tr>
+						<th>감독</th>
+						<td>감독명</td>
+					</tr>
+					<tr>
+						<th>출연</th>
+						<td>출연진</td>
+					</tr>
+					<tr><th>줄거리</th><td>${vo.overview }</td></tr>
+				</table>
 			</div>
-		</div>
-		<c:if test="${log ne null}">
-		<div class="btns">
-			<c:if test="${like}">
-			<button class="btn btn-primary" onclick="movieLike(${vo.movieCd})">좋아요</button>
-			</c:if>
-			<c:if test="${not like}">
-			<button class="btn btn-danger" onclick="movieLike(${vo.movieCd})">좋아요 취소</button>
-			</c:if>	
-			<c:if test="${seen}">
-			<button class="btn btn-primary" onclick="movieSeen(${vo.movieCd})">봤어요</button>
-			</c:if>
-			<c:if test="${not seen}">
-			<button class="btn btn-danger" onclick="movieSeen(${vo.movieCd})">봤어요 취소</button>
-			</c:if>			
-		</div>		
-		</c:if>
-		<div class="table-wrapper">
-			<table>
-				<tr>
-					<th>장르</th>
-					<td>${vo.genreNm }</td>
-				</tr>
-				<tr>
-					<th>감독</th>
-					<td>감독명</td>
-				</tr>
-				<tr>
-					<th>출연</th>
-					<td>출연진</td>
-				</tr>
-			</table>
 		</div>
 	</main>
 </body>
 
 <script>
-  const selectImgs = document.querySelectorAll('.select-img img');
-  const mainImg = document.querySelector('.main-img img');
-  const preBtn = document.querySelector('.preBtn');
-  const nextBtn = document.querySelector('.nextBtn');
-  let index = 0;
-  selectImgs.forEach(img => {
-    img.addEventListener('click', () => {
-      mainImg.src = img.src;
-    });
-  });
-  const lastIndex = selectImgs.length - 1;
+const selectImgs = document.querySelectorAll('.select-img img');
+const mainImg = document.querySelector('.main-img img');
+const preBtn = document.querySelector('.preBtn');
+const nextBtn = document.querySelector('.nextBtn');
+let selectedImg = selectImgs[0];
+selectedImg.classList.add('selected');
 
-  preBtn.addEventListener('click', () => {
-    index = index === 0 ? lastIndex : index - 1;
-    mainImg.src = selectImgs[index].src;
-  });
+function setRatingStars(rating) {
+    let starIcons = document.querySelectorAll(".grade .fa-star");
 
-  nextBtn.addEventListener('click', () => {
-    index = index === lastIndex ? 0 : index + 1;
-    mainImg.src = selectImgs[index].src;
+    rating = Math.round(parseFloat(rating) * 2) / 2;
+    let fullStars = Math.floor(rating);
+    let halfStars = Math.ceil(rating - fullStars);
+    let emptyStars = 5 - fullStars - halfStars;
+
+    for (let i = 0; i < fullStars; i++) {
+        starIcons[i].classList.add("checked");
+    }
+
+    if (halfStars > 0.5) {
+        starIcons[fullStars].classList.add("checked", "half");
+    }
+
+    for (let i = 0; i < emptyStars; i++) {
+        starIcons[fullStars + halfStars + i].classList.remove("checked");
+    }
+}
+
+let rating = parseFloat("${vo.grade}");
+setRatingStars(rating);
+
+
+selectImgs.forEach((img) => {
+  img.addEventListener('click', () => {
+    mainImg.src = img.src;
+    selectedImg.classList.remove('selected');
+    img.classList.add('selected');
+    selectedImg = img;
   });
+});
+
+preBtn.addEventListener('click', () => {
+  const currentIndex = [...selectImgs].indexOf(selectedImg);
+  selectedImg.classList.remove('selected');
+  selectedImg =
+    currentIndex === 0
+      ? selectImgs[selectImgs.length - 1]
+      : selectImgs[currentIndex - 1];
+  mainImg.src = selectedImg.src;
+  selectedImg.classList.add('selected');
+});
+
+nextBtn.addEventListener('click', () => {
+  const currentIndex = [...selectImgs].indexOf(selectedImg);
+  selectedImg.classList.remove('selected');
+  selectedImg =
+    currentIndex === selectImgs.length - 1
+      ? selectImgs[0]
+      : selectImgs[currentIndex + 1];
+  mainImg.src = selectedImg.src;
+  selectedImg.classList.add('selected');
+});
+const links = document.querySelectorAll("a[href='#']");
+links.forEach(link => {
+  link.addEventListener('click', e => {
+    e.preventDefault();
+  });
+});
+
   function movieLike(movieCd){  
 	let query = {
 		movieCd : movieCd
