@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
 
-<body>
+<body class="main">
 
 	<div class="container">
 		<div class="search-wrapper">

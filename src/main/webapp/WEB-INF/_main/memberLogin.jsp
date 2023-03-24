@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
-<body>
+<body class="main">
 	<h1>로그인</h1>
 	<form action="${ctx}/memberLogin.do" method="post">
 	<table class="table table-bordered">

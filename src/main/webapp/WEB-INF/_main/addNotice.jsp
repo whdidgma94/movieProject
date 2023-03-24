@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
 
-<body>
+<body class="main">
 	<h1>공지 작성</h1>
 	<c:if test="${sessionScope.log == 'admin'}">
 		<div class="container">

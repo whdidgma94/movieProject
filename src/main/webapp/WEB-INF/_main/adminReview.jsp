@@ -136,7 +136,7 @@
     	  });
     }
 </script>
-<body>
+<body class="main">
 		<div class="container">
 		<h1 class="my-4 text-center">리뷰 관리</h1>
 		<div class="row mb-4">

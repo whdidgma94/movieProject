@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<body>
+<body class="main">
 	<h1>개인정보 변경</h1>
 	<form action="${ctx}/memberUpdate.do" method="post" id="form">
 		<table>

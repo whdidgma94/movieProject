@@ -10,7 +10,7 @@ tr.movie:hover td, tr.movie:hover th {
 	color: #333;
 }
 </style>
-<body>
+<body class="main">
 	<div class="container">
 		<h1 class="mt-3 mb-5">영화 순위 ${type}</h1>
 		<table class="table table-bordered">

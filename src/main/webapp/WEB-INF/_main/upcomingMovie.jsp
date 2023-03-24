@@ -2,7 +2,7 @@
 pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
 
-<body>
+<body class="main">
 	<div class="container">
 		<h1 class="text-center">개봉 예정작</h1>
 		<div class="row">

@@ -6,28 +6,44 @@
 	padding: 0;
 }
 
+html {
+	height: 100%;
+}
+
 h1 {
 	text-align: center;
+	color: white;
 }
-h2{
-	color:white;
-	
+
+h2 {
+	color: white;
 }
-.text-center{
+
+div {
+	color: white;
+}
+
+.text-center {
 	font-size: 25px;
 }
-.main{
-background: rgb(5,37,65);
-background: linear-gradient(0deg, rgba(5,37,65,1) 0%, rgba(0,0,0,1) 72%);
+
+.main {
+	background: rgb(5, 37, 65);
+	background: linear-gradient(0deg, rgba(5, 37, 65, 1) 0%,
+		rgba(0, 0, 0, 1) 72%);
+	height: 100%;
 }
+
 .header {
 	position: fixed;
 	z-index: 999;
 	width: 100%;
 }
-.curLog{
-	color:white;
+
+.curLog {
+	color: white;
 }
+
 .head-bottom {
 	margin-bottom: 180px;
 }
@@ -38,6 +54,10 @@ background: linear-gradient(0deg, rgba(5,37,65,1) 0%, rgba(0,0,0,1) 72%);
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+}
+
+td {
+	color: white;
 }
 
 .curLog {
@@ -80,7 +100,7 @@ background: linear-gradient(0deg, rgba(5,37,65,1) 0%, rgba(0,0,0,1) 72%);
 }
 
 .contentsbar {
-	background-color: #f7f4e3;
+	background-color: black;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -91,7 +111,7 @@ background: linear-gradient(0deg, rgba(5,37,65,1) 0%, rgba(0,0,0,1) 72%);
 .contentsbar div {
 	padding: 10px;
 	text-align: center;
-	color:white;
+	color: white;
 	cursor: pointer;
 	transition: all 0.2s ease-in-out;
 }
@@ -221,8 +241,6 @@ textarea {
 	margin-right: auto;
 	margin-top: 15px;
 	margin-bottom: 10px;
-	
-	
 }
 
 .cinema-link:hover {
@@ -235,7 +253,7 @@ textarea {
 }
 
 .notice-scroll::-webkit-scrollbar {
-	display:none;
+	display: none;
 }
 
 .notice-scroll::-webkit-scrollbar-thumb {
@@ -247,18 +265,21 @@ textarea {
 	margin-top: 200px;
 	z-index: 9999;
 }
+
 .card:hover {
-  transform: scale(1.1);
-  transition: transform 0.5s;
-  
+	transform: scale(1.1);
+	transition: transform 0.5s;
 }
-.card-body{
+
+.card-body {
 	background-color: black;
-	color:white;
+	color: white;
 }
-.card-body:hover{
+
+.card-body:hover {
 	background-color: gray;
 }
-.head-bottom{
-	color:#f7f4e3;
+
+.head-bottom {
+	color: #f7f4e3;
 }

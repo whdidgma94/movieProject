@@ -98,7 +98,7 @@ table td {
 	border: 1px solid #dee2e6;
 }
 </style>
-<body>
+<body class="main">
 	<main>
 		<h2>${vo.movieNm }</h2>
 
