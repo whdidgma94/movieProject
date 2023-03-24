@@ -20,17 +20,40 @@ public class MemberMovieLikeController implements Controller{
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("log");		
-		int movieCd = 123;
-		//int movieCd = Integer.parseInt((String)request.getAttribute("movieCd"));
+		int movieCd = Integer.parseInt((String)request.getAttribute("movieCd"));
 		MemberPickVO vo = MemberPickDAO.getInstance().getMemberPick(id);
 		if(vo==null) {
 			vo = new MemberPickVO();
-			vo.setMemberId("123");
+			vo.setMemberId(id);
 			vo.setMovieLike(""+movieCd);
 			MemberPickDAO.getInstance().addMemberPickLike(vo);
 			return null;
 		}
-		
+		String[] likeList = vo.getMovieLike().split(",");
+		int idx = -1;
+		for(int i = 0 ; i < likeList.length ; i++) {
+			if(likeList[i].equals(movieCd+"")) {
+				idx=i;
+				break;
+			}
+		}
+		if(idx==-1) {
+			String movieLike = vo.getMovieLike()+","+movieCd;
+			vo.setMovieLike(movieLike);
+			MemberPickDAO.getInstance().updateMemberPickLike(vo);			
+		}else {
+			String movieLike="";
+			for(int i = 0 ; i < likeList.length ; i++) {
+				if(i!=idx) {
+					movieLike+=likeList[i];
+				}
+				if(i!=likeList.length-1) {
+					movieLike+=",";
+				}
+			}
+			vo.setMovieLike(movieLike);
+			MemberPickDAO.getInstance().updateMemberPickLike(vo);
+		}
 		return null;
 	}
 

@@ -31,5 +31,15 @@ public class MemberPickDAO {
 		session.selectOne("mapper.memberPick.addMemberPickSeen", vo);
 		session.close();
 	}
-	
+
+	public void updateMemberPickLike(MemberPickVO vo) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.selectOne("mapper.memberPick.updateMemberPickLike", vo);
+		session.close();	
+	}
+	public void updateMemberPickSeen(MemberPickVO vo) {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.selectOne("mapper.memberPick.updateMemberPickSeen", vo);
+		session.close();	
+	}
 }

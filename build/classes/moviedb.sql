@@ -14,8 +14,8 @@ create table movie(
 drop table memberPick;
 CREATE TABLE memberPick(
 	memberId varchar(20) primary key,
-	movieLike integer[],
-	movieSeen integer[],
+	movieLike varchar(500),
+	movieSeen varchar(500),
 	foreign key (memberId) references member(id) on delete cascade
 	
 )

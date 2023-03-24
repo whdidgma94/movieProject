@@ -104,12 +104,12 @@
 					<c:if test="${log != null}">
 						<a class="dropdown-item" href="${ctx}/memberLogout.do">로그아웃</a>
 						<a class="dropdown-item" href="${ctx}/memberMyPage.do">마이페이지</a>
+						<a class="dropdown-item" href="${ctx}/memberMyMovie.do">관심있는 영화</a>
 					</c:if>
 				</div>
 			</div>
 		</div>
 		<div class="nav justify-content-around contentsbar">
-			<div class="col-2 py-3" onclick="location.href='${ctx}/memberMovieLike.do'">테스트중</div>
 			<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
 			<div class="col-2 py-3" id="searchMovie"
 				onclick="location.href=#">영화검색</div>

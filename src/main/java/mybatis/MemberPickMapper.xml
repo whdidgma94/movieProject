@@ -26,4 +26,14 @@
         #{movieSeen}
         )       
     </insert>
+    <update id="updateMemberPickLike" parameterType="memberPick">
+         update memberPick
+         set memberLike=#{memberLike}
+         where memberId=#{memberId}
+    </update>
+    <update id="updateMemberPickSeen" parameterType="memberPick">
+         update memberPick
+         set memberSeen=#{memberSeen}
+         where memberId=#{memberId}
+    </update>
 </mapper>
