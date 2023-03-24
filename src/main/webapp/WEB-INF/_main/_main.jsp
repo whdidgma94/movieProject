@@ -10,7 +10,7 @@
 	background-color :gray;
 }
 </style>
-<body class="main">
+<body class="mainView">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">

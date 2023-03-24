@@ -26,8 +26,12 @@ div {
 .text-center {
 	font-size: 25px;
 }
-
-.main {
+main{
+	background: rgb(5, 37, 65);
+	background: linear-gradient(0deg, rgba(5, 37, 65, 1) 0%,
+		rgba(0, 0, 0, 1) 72%);
+}
+.mainView {
 	background: rgb(5, 37, 65);
 	background: linear-gradient(0deg, rgba(5, 37, 65, 1) 0%,
 		rgba(0, 0, 0, 1) 72%);

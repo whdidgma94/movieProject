@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="ctx" value="${pageContext.request.contextPath}" />
-<body class="main">
+<body class="mainView">
 	<table class="table table-borderless">
 		<tr>
 			<td colspan="2"><img

@@ -67,7 +67,7 @@
     	  });
     	}
 </script>
-<body class="main">
+<body class="mainView">
 	<div class="container">
 		<h1 class="text-center my-5">TOP10 영화 리뷰</h1>	
 		<div class="row my-5">

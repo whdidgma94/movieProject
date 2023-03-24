@@ -57,7 +57,7 @@
     }
     
 </style>
-<body class="main">
+<body class="mainView">
 	<h1>마이페이지</h1>
 	<c:if test="${not empty member}">
 		<table>
