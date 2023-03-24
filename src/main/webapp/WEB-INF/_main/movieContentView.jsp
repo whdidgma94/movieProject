@@ -37,7 +37,8 @@ h2 {
 }
 
 .img-wrapper {
-	width: 60% margin: 20px;
+	width: 60%;
+	margin: 20px;
 }
 
 .btns {
@@ -47,11 +48,13 @@ h2 {
 	padding: 10px 0;
 	font-size: 16px;
 }
-.grade{
+
+.grade {
 	display: flex;
 	justify-content: center;
 	align-items: center;
 }
+
 .select-img {
 	display: flex;
 	flex-direction: column;
@@ -85,7 +88,7 @@ h2 {
 
 .btns {
 	display: flex;
-	justify-content:space-around;
+	justify-content: space-around;
 	margin-bottom: 20px;
 	margin-top: 20px;
 }
@@ -96,7 +99,7 @@ h2 {
 
 .content-wrapper {
 	width: 40%;
-	margin-left:10px;
+	margin-left: 10px;
 }
 
 table {
@@ -227,7 +230,10 @@ table td {
 						<th>출연</th>
 						<td>출연진</td>
 					</tr>
-					<tr><th>줄거리</th><td>${vo.overview }</td></tr>
+					<tr>
+						<th>줄거리</th>
+						<td>${vo.overview }</td>
+					</tr>
 				</table>
 			</div>
 		</div>
