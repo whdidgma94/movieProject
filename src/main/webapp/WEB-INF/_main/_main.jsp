@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
-<body>
+<style>
+.card:hover {
+  transform: scale(1.0);
+  background-color: gray;
+}
+.card-body:hover{
+	background-color :gray;
+}
+</style>
+<body class="main">
 	<div class="container">
 		<div class="row">
 			<div class="col-md-6">
@@ -39,7 +48,7 @@
 				          <div class="carousel-item">
 				        </c:if>
 				          <img src="https://image.tmdb.org/t/p/original${movie.poster_path}" 
-				               style="object-fit: contain; max-height: 78vh; cursor: pointer;" 
+				               style="object-fit: contain; max-height: 75vh; cursor: pointer;" 
 				               onclick="showModal(${movie.movieCd})" class="d-block w-100" alt="...">
 				        </div>
 				    </c:if>

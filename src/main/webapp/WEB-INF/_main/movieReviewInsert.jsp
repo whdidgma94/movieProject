@@ -9,8 +9,8 @@
 	<c:if test="${not empty sessionScope.log}">
 		<div class="container">
 			<div class="row justify-content-center">
-		<div>봤어요 한 영화만 리뷰 작성이 가능 합니다</div>
 				<div class="col-12 col-md-8 mt-5">
+					<div style="text-align: center;">봤어요 한 영화만 리뷰 작성이 가능 합니다</div>
 					<form class="bg-light p-3" action="${ctx}/addReview.do" method="post">
 						<div class="form-group">
 							<label for="movieCd">영화선택</label>

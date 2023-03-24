@@ -3,7 +3,12 @@
 <%@ include file="../../header.jsp" %>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
-
+<style>
+.card:hover {
+  transform: scale(1.0);
+  background-color: #f7f7f7;
+}
+</style>
 <body>
 	<div class="container">
 		<h1 class="text-center my-5">회원 삭제</h1>
