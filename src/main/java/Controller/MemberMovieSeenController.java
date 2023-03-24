@@ -19,13 +19,18 @@ public class MemberMovieSeenController implements Controller {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
 		String id = (String)session.getAttribute("log");		
-		int movieCd = Integer.parseInt((String)request.getAttribute("movieCd"));
+		int movieCd = Integer.parseInt(request.getParameter("movieCd"));
 		MemberPickVO vo = MemberPickDAO.getInstance().getMemberPick(id);
-		if(vo==null) {
+		if (vo == null) {
 			vo = new MemberPickVO();
 			vo.setMemberId(id);
 			vo.setMovieSeen(""+movieCd);
 			MemberPickDAO.getInstance().addMemberPickSeen(vo);
+			return null;
+		}
+		if(vo.getMovieSeen() == null) {
+			vo.setMovieSeen(""+movieCd);
+			MemberPickDAO.getInstance().updateMemberPickSeen(vo);
 			return null;
 		}
 		String[] seenList = vo.getMovieSeen().split(",");
@@ -37,7 +42,12 @@ public class MemberMovieSeenController implements Controller {
 			}
 		}
 		if(idx==-1) {
-			String movieSeen = vo.getMovieSeen()+","+movieCd;
+			String movieSeen="";
+			if(vo.getMovieSeen().length()==0) {
+				movieSeen = ""+movieCd;
+			}else {
+				movieSeen = vo.getMovieSeen()+","+movieCd;
+			}
 			vo.setMovieSeen(movieSeen);
 			MemberPickDAO.getInstance().updateMemberPickSeen(vo);			
 		}else {
@@ -46,7 +56,7 @@ public class MemberMovieSeenController implements Controller {
 				if(i!=idx) {
 					movieSeen+=seenList[i];
 				}
-				if(i!=seenList.length-1) {
+				if(i!=seenList.length-1&&i!=seenList.length-2) {
 					movieSeen+=",";
 				}
 			}
