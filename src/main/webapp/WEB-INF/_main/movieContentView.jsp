@@ -302,7 +302,6 @@ const nextBtn = document.querySelector('.nextBtn');
 const youtube = document.querySelector(".youtube");
 const overlay = document.querySelector("#overlay");
 const closeButton = document.querySelector(".close");
-let currentScrollY = "";
 let selectedImg = selectImgs[0];
 selectedImg.classList.add('selected');
 
@@ -455,7 +454,6 @@ links.forEach(link => {
 				        output.classList.add("output");
 				     	youtube.appendChild(output);
 				      }
-
 				      overlay.classList.add("show");
 			},
 			error : function() {
