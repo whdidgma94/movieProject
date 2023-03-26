@@ -4,14 +4,14 @@
 
 <body class="mainView">
 
-	<div class="container">
-		<div class="search-wrapper">
-			<div class="search">
-				<input type="text" id="search" placeholder="입력"> <img
-					src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
-					id="searchImg">
-			</div>
+	<div class="search-wrapper">
+		<div class="search">
+			<input type="text" id="search" placeholder="입력"> <img
+				src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png"
+				id="searchImg">
 		</div>
+	</div>
+	<div class="container">
 		<div class="row">
 			<c:if test="${searchList ne null }">
 				<c:forEach items="${searchList}" var="search">
