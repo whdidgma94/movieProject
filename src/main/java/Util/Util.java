@@ -135,9 +135,8 @@ public class Util {
 					vo.setProfile_path(jb.get("profile_path").toString());
 					vo.setCharac(jb.get("character").toString());
 					vo.setJob("Actor");
+					creditList.add(vo);
 				}
-
-				creditList.add(vo);
 			}
 
 			for (int i = 0; i < objArray2.size(); i++) {
@@ -150,9 +149,9 @@ public class Util {
 						vo.setId(Integer.parseInt(jb.get("id").toString()));
 						vo.setName(jb.get("name").toString());
 						vo.setProfile_path(jb.get("profile_path").toString());
-						vo.setJob(jb.get("job").toString());
+						vo.setJob("Director");
+						creditList.add(vo);
 					}
-					creditList.add(vo);
 				}
 			}
 			conn.disconnect();
@@ -226,7 +225,6 @@ public class Util {
 
 		String base_url = "https://api.themoviedb.org/3/movie/";
 		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267";
-		String language = "&language=ko-KR";
 
 		String apiUrl = base_url + movieCd + "/videos" + api_key;
 
@@ -342,7 +340,7 @@ public class Util {
 				movieNm = movieNm.replace(" ", "%20");
 				movieMap = getMovieInfo(movieNm);
 				movieMap.put("audiCnt", jb.get("audiCnt"));
-				System.out.println(movieMap.get("movieNm")+","+ movieMap.get("movieCd"));
+				System.out.println(movieMap.get("movieNm") + "," + movieMap.get("movieCd"));
 				movieList.add(movieMap);
 			}
 			conn.disconnect();

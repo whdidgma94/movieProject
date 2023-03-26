@@ -10,6 +10,7 @@
 
 <style>
 main {
+	max-width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -25,7 +26,7 @@ h2 {
 }
 
 .img-wrapper {
-	width: 60%;
+	width: 50%;
 	margin: 20px;
 }
 
@@ -76,7 +77,7 @@ h2 {
 
 .btns {
 	display: flex;
-	justify-content: space-around;
+	justify-content: flex-start;
 	margin-bottom: 20px;
 	margin-top: 20px;
 }
@@ -88,26 +89,6 @@ h2 {
 .content-wrapper {
 	width: 40%;
 	margin-left: 10px;
-}
-
-table {
-	width: 100%;
-	margin-top: 20px;
-	margin-bottom: 20px;
-	border-collapse: collapse;
-}
-
-table th {
-	font-weight: bold;
-	padding: 10px;
-	text-align: left;
-	border: 1px solid #dee2e6;
-}
-
-table td {
-	padding: 10px;
-	text-align: left;
-	border: 1px solid #dee2e6;
 }
 
 .selected {
@@ -129,6 +110,7 @@ table td {
 
 .grade {
 	display: flex;
+	justify-content: flex-start;
 	align-items: center;
 	font-size: 20px;
 	font-weight: bold;
@@ -175,7 +157,6 @@ table td {
 	margin: 8px auto;
 }
 
-/* 이건 테스크탑 기준 - 모바일은 따로 설정할 필요가 있다. */
 .youtube {
 	width: 60%;
 	height: 60%;
@@ -189,20 +170,32 @@ iframe {
 .noVideo {
 	color: white;
 }
+
+.peopleList {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+	max-width: 100%;
+}
+
+.peopleView {
+	display: flex;
+	flex-direction: column;
+	margin: 5px;
+}
 </style>
 <body class="mainView">
 	<main>
-		<h2>${vo.movieNm }</h2>
-		<div style="display: flex">
+		<div style="display: flex;max-width: 100%">
 			<div class="img-wrapper">
 				<div class="main-img"
 					style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
 					<img
-						style="width: 600px; height: 700px; margin-bottom: 20pxp; border-radius: 5px;"
+						style="width: 800px; height: 900px; margin-bottom: 20pxp; border-radius: 5px;"
 						alt=""
 						src="https://image.tmdb.org/t/p/original${imageList.get(0) }">
 				</div>
-				<div class="select-img">
+				<div class="select-img" style="margin-top: 40px">
 					<ul class="pagination"
 						style="width: 100%; display: flex; justify-content: center; align-items: center">
 						<li class="page-item"><a class="page-link preBtn" href="#"
@@ -226,6 +219,9 @@ iframe {
 				</div>
 			</div>
 			<div class="content-wrapper">
+				<h2>
+					<strong>${vo.movieNm }</strong>
+				</h2>
 				<div class="grade">
 					<span class="fa fa-star checked"></span> <span
 						class="fa fa-star checked"></span> <span
@@ -254,24 +250,37 @@ iframe {
 					<button class="btn btn-primary" onclick="preview(${vo.movieCd})">예고편
 						보기</button>
 				</div>
-				<table>
-					<tr>
-						<th>장르</th>
-						<td>${vo.genreNm }</td>
-					</tr>
-					<tr>
-						<th>감독</th>
-						<td>감독명</td>
-					</tr>
-					<tr>
-						<th>출연</th>
-						<td>출연진</td>
-					</tr>
-					<tr>
-						<th>줄거리</th>
-						<td>${vo.overview }</td>
-					</tr>
-				</table>
+				<div>
+					<span style="font-size: 20px;"><strong>${vo.genreNm }</strong></span>
+					<hr>
+				</div>
+				<div>
+					<span>${vo.overview }</span>
+					<hr>
+				</div>
+				<span style="font-size: 30px;"><strong>감독</strong></span>
+				<hr color="white" style="border: double;">
+				<div class="peopleList" style="margin-bottom: 20px">
+					<c:forEach var="director" items="${directorList}"
+						varStatus="status">
+						<div class="peopleView">
+							<img width="150px" height="250px" alt=""
+								src="https://image.tmdb.org/t/p/original${director.profile_path }">
+							<span>${director.name }</span>
+						</div>
+					</c:forEach>
+				</div>
+				<span style="font-size: 30px;"><strong>출연</strong></span>
+				<hr color="white" style="border: double;">
+				<div class="peopleList" style="margin-bottom: 20px">
+					<c:forEach var="actor" items="${actorList}" varStatus="status">
+						<div class="peopleView">
+							<img width="150px" height="250px" alt=""
+								src="https://image.tmdb.org/t/p/original${actor.profile_path }">
+							<span>${actor.name }</span> <span>${actor.charac } 역</span>
+						</div>
+					</c:forEach>
+				</div>
 			</div>
 		</div>
 	</main>
@@ -427,11 +436,11 @@ links.forEach(link => {
 			data : {"movieCd" : movieCd},
 			success : function(data) {
 			 	  if (data.length > 0) {
-				        let youtubeId = "https://www.youtube.com/embed/" + data;
+				        let youtubeUrl = "https://www.youtube.com/embed/" + data;
 				        iframe = document.createElement("iframe");
 				    	iframe.width = "100%";
 				    	iframe.height = "100%";
-				    	iframe.src = youtubeId;
+				    	iframe.src = youtubeUrl;
 				    	iframe.title = "YouTube video player";
 				    	iframe.frameborder = 0;
 				    	iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";

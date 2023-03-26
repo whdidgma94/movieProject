@@ -26,11 +26,13 @@ div {
 .text-center {
 	font-size: 25px;
 }
-main{
+
+main {
 	background: rgb(5, 37, 65);
 	background: linear-gradient(0deg, rgba(5, 37, 65, 1) 0%,
 		rgba(0, 0, 0, 1) 72%);
 }
+
 .mainView {
 	background: rgb(5, 37, 65);
 	background: linear-gradient(0deg, rgba(5, 37, 65, 1) 0%,
@@ -270,19 +272,22 @@ textarea {
 	width: 500px;
 	height: 300px;
 }
-div#modal.modal{
-	margin-top:250px;
-	margin-left:30%;
-	padding:10px;
-	position:center;
-	width: 800px;
-  height: 500px;
-}
-.modal-content{
-	background: rgb(140,119,119);
-background: linear-gradient(0deg, rgba(140,119,119,1) 15%, rgba(49,109,159,1) 100%);
 
+div#modal.modal {
+	margin-top: 250px;
+	margin-left: 30%;
+	padding: 10px;
+	position: center;
+	width: 800px;
+	height: 500px;
 }
+
+.modal-content {
+	background: rgb(140, 119, 119);
+	background: linear-gradient(0deg, rgba(140, 119, 119, 1) 15%,
+		rgba(49, 109, 159, 1) 100%);
+}
+
 .card:hover {
 	transform: scale(1.1);
 	transition: transform 0.5s;
@@ -299,4 +304,24 @@ background: linear-gradient(0deg, rgba(140,119,119,1) 15%, rgba(49,109,159,1) 10
 
 .head-bottom {
 	color: #f7f4e3;
+}
+
+::-webkit-scrollbar {
+	width: 15px;
+	height: 15px;
+}
+
+::-webkit-scrollbar-track {
+	background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+	background-color: #00bcd4;
+	border-radius: 5px;
+	border: 3px solid #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color: #008ba3;
+	border: 3px solid #d3d3d3;
 }
