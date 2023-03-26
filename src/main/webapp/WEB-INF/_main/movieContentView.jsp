@@ -463,7 +463,9 @@ links.forEach(link => {
 	  
 	}
   function closeVideo() {
-	  youtube.removeChild(youtube.firstChild);
+	  while (youtube.firstChild) {
+	    youtube.removeChild(youtube.firstChild);
+	  }
 	  overlay.classList.remove("show");
 	}
 
