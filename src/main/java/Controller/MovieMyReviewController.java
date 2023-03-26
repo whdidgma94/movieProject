@@ -21,10 +21,6 @@ public class MovieMyReviewController implements Controller{
 			throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		HttpSession session = request.getSession();
-		String ctx = request.getContextPath();
-		if(session.getAttribute("log")==null) {
-			return "redirect:"+ctx+"/memberLogin.do";
-		}
 		List<MovieVO> movieList = MovieDAO.getInstance().getAllMovie();
 		List<BoardVO> reviewList = BoardDAO.getInstance().getAllBoard();
 		request.setAttribute("movieList", movieList);

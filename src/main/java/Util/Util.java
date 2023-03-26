@@ -228,7 +228,7 @@ public class Util {
 		String api_key = "?api_key=a699dda4efd374eb3d9a01da4dacc267";
 		String language = "&language=ko-KR";
 
-		String apiUrl = base_url + movieCd + "/videos" + api_key + language;
+		String apiUrl = base_url + movieCd + "/videos" + api_key;
 
 		try {
 			URL url = new URL(apiUrl);

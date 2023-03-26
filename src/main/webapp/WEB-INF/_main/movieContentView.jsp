@@ -113,7 +113,7 @@ table td {
 .selected {
 	border: none;
 	filter: brightness(90%);
-	transform: scale(1.05);
+	transform: scale(1.2);
 }
 
 .checked {
@@ -147,6 +147,7 @@ table td {
 	height: 100%;
 	background: rgba(0, 0, 0, 0.8);
 	z-index: 999;
+	/* 시작시 보이지 않게 처리 */
 	visibility: hidden;
 	opacity: 0;
 	transition: all 0.5s;
@@ -157,16 +158,24 @@ table td {
 	align-items: center;
 }
 
+/* 오버레이를 보여 줄때 사용 */
 #overlay.show {
 	visibility: visible;
 	opacity: 1;
 }
 
-.stop-scrolling {
-	/* height: 100%; */
-	overflow: hidden;
+#close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 36px;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	margin: 8px auto;
 }
 
+/* 이건 테스크탑 기준 - 모바일은 따로 설정할 필요가 있다. */
 .youtube {
 	width: 60%;
 	height: 60%;
@@ -227,28 +236,24 @@ iframe {
 				</div>
 
 
-				<c:if test="${log ne null}">
-					<div class="btns">
-						<c:if test="${like}">
-							<button class="btn btn-primary"
-								onclick="movieLike(${vo.movieCd})">좋아요</button>
-						</c:if>
-						<c:if test="${not like}">
-							<button class="btn btn-danger" onclick="movieLike(${vo.movieCd})">좋아요
-								취소</button>
-						</c:if>
-						<c:if test="${seen}">
-							<button class="btn btn-primary"
-								onclick="movieSeen(${vo.movieCd})">봤어요</button>
-						</c:if>
-						<c:if test="${not seen}">
-							<button class="btn btn-danger" onclick="movieSeen(${vo.movieCd})">봤어요
-								취소</button>
-						</c:if>
-						<button class="btn btn-danger" onclick="preview(${vo.movieCd})">예고편
-							보기</button>
-					</div>
-				</c:if>
+				<div class="btns">
+					<c:if test="${like}">
+						<button class="btn btn-primary" onclick="movieLike(${vo.movieCd})">좋아요</button>
+					</c:if>
+					<c:if test="${not like}">
+						<button class="btn btn-danger" onclick="movieLike(${vo.movieCd})">좋아요
+							취소</button>
+					</c:if>
+					<c:if test="${seen}">
+						<button class="btn btn-primary" onclick="movieSeen(${vo.movieCd})">봤어요</button>
+					</c:if>
+					<c:if test="${not seen}">
+						<button class="btn btn-danger" onclick="movieSeen(${vo.movieCd})">봤어요
+							취소</button>
+					</c:if>
+					<button class="btn btn-primary" onclick="preview(${vo.movieCd})">예고편
+						보기</button>
+				</div>
 				<table>
 					<tr>
 						<th>장르</th>
@@ -272,7 +277,9 @@ iframe {
 	</main>
 	<div id="overlay">
 		<div class="youtube">
-			<img class="close" src="#">
+			<button id="close" onclick="closeVideo()"
+				style="background-color: transparent; border: none; color: #999999; font-size: 24px; cursor: pointer;">&times;</button>
+
 		</div>
 	</div>
 </body>
@@ -351,7 +358,13 @@ links.forEach(link => {
   });
 });
 
-  function movieLike(movieCd){  
+  function movieLike(movieCd){ 
+	  if (${log==null}) {
+		    swal('권한 없음', '로그인 후 이용하세요', 'error').then(function() {
+		      location.href = "${ctx}/memberLogin.do";
+		    });
+		    return;
+		  } 
 	let query = {
 		movieCd : movieCd
 	};
@@ -376,6 +389,12 @@ links.forEach(link => {
 
 }
   function movieSeen(movieCd){  
+	  if (${log==null}) {
+		    swal('권한 없음', '로그인 후 이용하세요', 'error').then(function() {
+		      location.href = "${ctx}/memberLogin.do";
+		    });
+		    return;
+		  } 
 		let query = {
 			movieCd : movieCd
 		};
@@ -399,31 +418,43 @@ links.forEach(link => {
 		})	
 
 	}
+  let iframe = "";
   
-  function preview(movieCd){
-	  console.log(movieCd);
-	  const movieUrl = "https://api.themoviedb.org/3/movie/"+movieCd+"/videos?api_key=a699dda4efd374eb3d9a01da4dacc267";
-      fetch(movieUrl)
-          .then(res => res.json())
-          .then(function(res){
-              let output = "";
-              
-              if(res.results.length > 0){
-                  const youtubeId = res.results[0].key;//첫번재 영상만 사용하기 하자. 값이 없을 경우도 있음.
-                  output = `<iframe width="100%" height="100%" src="https://www.youtube.com/embed/${youtubeId}?autoplay=1"></iframe>`; 
-              } else {
-                  output = `<h3 class="noVideo">재생할 예고편이 없습니다.</h3>`;
-                  console.log(output);
-              }
-              
-              youtube.innerHTML = output;
-              overlay.classList.add("show");
-              
-              overlay.setAttribute("style", `background-image: url(${posterImage}); background-size: auto; background-repeat: no-repeat;`)
-              //배경 body 스크롤 중지
-              document.body.classList.add("stop-scrolling");
-          })
-  } 
+  function preview(movieCd) {
+	  $.ajax({
+			type : "POST",
+			url : "${ctx}/preview.do",
+			data : {"movieCd" : movieCd},
+			success : function(data) {
+			 	  if (data.length > 0) {
+				        let youtubeId = "https://www.youtube.com/embed/" + data;
+				        iframe = document.createElement("iframe");
+				    	iframe.width = "100%";
+				    	iframe.height = "100%";
+				    	iframe.src = youtubeId;
+				    	iframe.title = "YouTube video player";
+				    	iframe.frameborder = 0;
+				    	iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+				    	iframe.allowfullscreen = true;
+				    	youtube.appendChild(iframe);
+				      } else {
+				        let output = `<h3 class="noVideo">재생할 예고편이 없습니다.</h3>`;
+				     	youtube.innerHTML = output;
+				      }
+
+				      overlay.classList.add("show");
+			},
+			error : function() {
+				alert("Error");
+			}
+		});	    
+	  
+	}
+  function closeVideo() {
+	  youtube.removeChild(iframe);
+	  overlay.classList.remove("show");
+	}
+
 
 </script>
 </html>

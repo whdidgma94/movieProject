@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div onclick=checkLog()>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick=checkLog('recommand')>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {
@@ -43,7 +43,7 @@
 	});
 
 	$("#movieReview").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addReview.do\"'>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div onclick='location.href=\"${ctx}/movieMyReview.do\"'>내가 작성한 리뷰</div>");
+	    $("#subBar").html("<div onclick=checkLog('addReview')>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div onclick=checkLog('myReview')>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {
@@ -81,20 +81,29 @@
 			}
 		});		
 	}
-	function checkLog(){
-		if(${log==null}){
-			location.href="${ctx}/memberLogin.do"
-		}else{
-			location.href="${ctx}/recommandMovie.do"
+	function checkLog(type){
+		  if (${log==null}) {
+		    swal('권한 없음', '로그인 후 이용하세요', 'error').then(function() {
+		      location.href = "${ctx}/memberLogin.do";
+		    });
+		    return;
+		  } 
+		  if(type==='recommand'){
+		    location.href="${ctx}/recommandMovie.do";
+		  }else if(type==='myReview'){
+			location.href="${ctx}/movieMyReview.do";
+		  }else if(type==='addReview'){
+			location.href="${ctx}/addReview.do"; 
+		  }
 		}
-	}
 </script>
 </head>
 <body>
 	<div class="header">
 		<div class="top">
-			<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">JJOTTE Movie</h2>
-	
+			<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'"
+				style="cursor: pointer;">JJOTTE Movie</h2>
+
 			<c:if test="${log != null}">
 				<div class="curLog">${log}님로그인중</div>
 			</c:if>
@@ -134,7 +143,7 @@
 
 	<div id="modal" class="modal">
 		<div class="modal-content">
-			<span class="close" style="background-color:#316d9f;">&times;</span>
+			<span class="close" style="background-color: #316d9f;">&times;</span>
 			<p id="movieInfo"></p>
 		</div>
 	</div>
