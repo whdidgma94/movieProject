@@ -181,12 +181,13 @@ iframe {
 .peopleView {
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	margin: 5px;
 }
 </style>
 <body class="mainView">
 	<main>
-		<div style="display: flex;max-width: 100%">
+		<div style="display: flex; max-width: 100%">
 			<div class="img-wrapper">
 				<div class="main-img"
 					style="display: flex; justify-content: center; align-items: center; flex-direction: column;">

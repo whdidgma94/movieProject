@@ -7,7 +7,7 @@
 		<tr>
 			<td colspan="2"><img
 				src="https://image.tmdb.org/t/p/original${vo.backdrop_path}"
-				style="width: 400px; height: auto;"></td>
+				style="width: 400px; height: 200px;"></td>
 		</tr>
 		<tr>
 			<td>제목</td>
