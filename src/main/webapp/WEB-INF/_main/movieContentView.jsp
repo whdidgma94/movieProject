@@ -436,10 +436,14 @@ links.forEach(link => {
 				    	iframe.frameborder = 0;
 				    	iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
 				    	iframe.allowfullscreen = true;
+				    	iframe.classList.add("output");
 				    	youtube.appendChild(iframe);
 				      } else {
-				        let output = `<h3 class="noVideo">재생할 예고편이 없습니다.</h3>`;
-				     	youtube.innerHTML = output;
+				        let output = document.createElement("h3");
+				        output.innerHTML = "<strong>재생할 예고편이 없습니다.</strong>";
+				        output.classList.add("noVideo");
+				        output.classList.add("output");
+				     	youtube.appendChild(output);
 				      }
 
 				      overlay.classList.add("show");
@@ -451,7 +455,7 @@ links.forEach(link => {
 	  
 	}
   function closeVideo() {
-	  youtube.removeChild(iframe);
+	  youtube.removeChild(youtube.firstChild);
 	  overlay.classList.remove("show");
 	}
 
