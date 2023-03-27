@@ -1,21 +1,8 @@
 package Movie;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.ProtocolException;
-import java.net.URL;
-import java.net.URLEncoder;
 import java.util.List;
-
 import org.apache.ibatis.session.SqlSession;
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 
 import Movie.MovieDAO;
 import Util.MybatisConfig;
@@ -51,7 +38,14 @@ public class MovieDAO {
 		session.close();
 		return list;
 	}
-
+	
+	public List<MovieVO> getNowPlayingMovie() {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		List<MovieVO> list = session.selectList("mapper.movie.getNowPlayingMovie");
+		session.close();
+		return list;
+	}
+	
 	public MovieVO getOneMovie(int movieCd) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		MovieVO resVO = session.selectOne("mapper.movie.getOneMovie", movieCd);

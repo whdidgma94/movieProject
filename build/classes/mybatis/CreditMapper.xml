@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.credit">
+
+	<resultMap id="credit" type="Credit.CreditVO">
+		<id property="id" column="id" />
+		<result property="name" column="name" />
+		<result property="profile_path" column="profile_path" />
+		<result property="charac" column="charac" />
+		<result property="job" column="job" />
+	</resultMap>
+
+	<insert id="insertCredit" parameterType="credit">
+		INSERT INTO
+		credits(id,
+		name, profile_path, charac, job)
+		values(#{id}, #{name},
+		#{profile_path}, #{charac}, #{job})
+	</insert>
+
+	<select id="getOneCredit" parameterType="Integer"
+		resultType="credit">
+		select * from credits where id=#{id}
+	</select>
+
+	<select id="getDirectorInfo" parameterType="String"
+		resultMap="credit">
+		select * from credits where job = "Director" and name like
+		CONCAT('%',
+		#{inputVal}, '%')
+	</select>
+
+	<select id="getActorInfo" parameterType="String"
+		resultMap="credit">
+		select * from credits where job = "Actor" and name like
+		CONCAT('%',
+		#{inputVal}, '%')
+	</select>
+</mapper>

@@ -18,6 +18,7 @@ import Controller.MemberLoginController;
 import Controller.MemberLogoutController;
 import Controller.MemberMovieLikeController;
 import Controller.MemberMovieSeenController;
+import Controller.MemberMyMovieController;
 import Controller.MemberMyPageController;
 import Controller.MemberUpdateController;
 import Controller.MovieContentController;
@@ -27,6 +28,8 @@ import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
 import Controller.NoticeRemoveController;
 import Controller.NoticeViewController;
+import Controller.NowPlayingMovieController;
+import Controller.PreviewController;
 import Controller.MovieRankController;
 import Controller.SearchViewController;
 import Controller.SetDataBaseController;
@@ -73,6 +76,9 @@ public class HandlerMapping {
 		mappings.put("/movieContentView.do", new MovieContentViewController());
 		mappings.put("/memberMovieLike.do", new MemberMovieLikeController());
 		mappings.put("/memberMovieSeen.do", new MemberMovieSeenController());
+		mappings.put("/memberMyMovie.do", new MemberMyMovieController());
+		mappings.put("/preview.do", new PreviewController());
+		mappings.put("/nowPlayingMovie.do", new NowPlayingMovieController());
 	}
 
 	public Controller getController(String key) {

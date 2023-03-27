@@ -8,9 +8,8 @@
 }
 </style>
 
-<body>
+<body class="mainView">
 
-	<div class="container">
 		<div class="search-wrapper">
 			<div class="search">
 				<input type="text" id="search" placeholder="입력"> <img
@@ -18,6 +17,7 @@
 					id="searchImg">
 			</div>
 		</div>
+	<div class="container">
 		<div class="row">
 			<c:if test="${searchList ne null }">
 				<c:forEach items="${searchList}" var="search">

@@ -11,13 +11,7 @@ create table movie(
 	backdrop_path varchar(50) not null,
 	overview varchar(10000) not null
 );
-CREATE TABLE memberPick(
-	memberId varchar(20) primary key,
-	movieLike integer[],
-	movieSeen integer[],
-	foreign key (memberId) references member(id) on delete cascade
-	
-)
+
 create table genres(
 	genreId int,
 	genreName varchar(20)
@@ -31,7 +25,6 @@ create table credits(
 	job varchar(100)
 );
 
-select * from movie;
 create table member(
 	memberNo int primary key auto_increment,	# 회원 식별번호
     memberName varchar(20) not null, 			# 회원 이름
@@ -44,13 +37,13 @@ create table member(
     gender varchar(100) not null,				# 성별
    	movieCheck json								# 영화 좋아요
 );
-insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
-values
-('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
-insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
-values
-('123', '123', '123', '1995-01-01', '서울특별시 강남구', '123@gmail.com', '로맨스', '남성');
-SELECT * FROM member;
+CREATE TABLE memberPick(
+	memberId varchar(20) primary key,
+	movieLike varchar(500),
+	movieSeen varchar(500),
+	foreign key (memberId) references member(id) on delete cascade
+);
+
 
 create table board(
 	boardNo int primary key auto_increment,		# 댓글 번호
@@ -61,7 +54,6 @@ create table board(
     foreign key (writerId) references member(id) on delete cascade,
     foreign key (movieCd) references movie(movieCd) on delete cascade
 );
-SELECT * FROM board;
 
 create table notice(
 	noticeNo int primary key auto_increment,
@@ -69,16 +61,4 @@ create table notice(
 	content varchar(500) not null,
 	day varchar(20) not null
 );
-INSERT INTO board (writerId, movieCd, grade, contents) VALUES
-    ('123', 493529, 4, '재미있었습니다.'),
-    ('123', 594767, 3, '기대했던 것보단 별로였네요.'),
-    ('123', 603692, 5, '진짜 대박영화입니다.'),
-    ('123', 631842, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
-    ('123', 937278, 2, '이게 뭐냐 싶은 영화였습니다.');
-    select*from board;
-SELECT movie.movieCd, COUNT(board.movieCd) AS board_cnt
-FROM movie
-LEFT JOIN board ON movie.movieCd = board.movieCd
-GROUP BY movie.movieCd;
-select * from credits
-select * from movie;
+

@@ -10,7 +10,7 @@ import FrontController.Controller;
 import Member.MemberDAO;
 import Member.MemberVO;
 
-public class AdminMemberListController implements Controller{
+public class AdminMemberListController implements Controller {
 
 	@Override
 	public String requestHandler(HttpServletRequest request, HttpServletResponse response)

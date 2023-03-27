@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp" %>
-<body>
+<body class="mainView">
 	<div class="container">
 		<h1 class="text-center my-5">공지삭제</h1>
 		<div class="row">

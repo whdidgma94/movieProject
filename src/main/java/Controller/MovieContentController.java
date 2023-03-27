@@ -23,7 +23,6 @@ public class MovieContentController implements Controller {
 		} 
 		List<String> imageList = Util.getInstance().getMovieImageList(movieCd);
 		request.setAttribute("imageList", imageList);
-		System.out.println(imageList.size());
 		request.setAttribute("vo", MovieDAO.getInstance().getOneMovie(movieCd));
 		return "movieContent";
 	}

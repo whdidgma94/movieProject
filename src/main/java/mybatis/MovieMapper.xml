@@ -35,6 +35,10 @@
 		select * from movie
 		where subject = 'upcoming'
 	</select>
+	<select id="getNowPlayingMovie" resultType="movie">
+		select * from movie
+		where subject = 'now_playing'
+	</select>
 	<select id="getMovieName" parameterType="Integer"
 		resultType="String">
 		select movieNm from movie where movieCd=#{movieCd}

@@ -1,63 +1,69 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../../header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../../header.jsp"%>
 <style>
-	table {
-		border-collapse: collapse;
-		margin: 20px auto;
-	}
-	th, td {
-		padding: 10px;
-		text-align: left;
-		border-bottom: 1px solid #ddd;
-	}
-	th {
-		background-color: #f2f2f2;
-	}
-	.popup {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0,0,0,0.5);
-        display: none;
-        justify-content: center;
-        align-items: center;
-        z-index: 9999;
-  		 }
-    .popup-inner {
-        width: 300px;
-        background-color: white;
-        padding: 20px;
-        border-radius: 5px;
-        text-align: center;
-    }
-    .popup h2 {
-        margin-top: 0;
-    }
-    .close {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        cursor: pointer;
-    }
-    button{
-	    background-color: #4CAF50;
-	    border: none;
-	    border-radius:10px;
-	    color: white;
-	    padding: 10px 20px;
-	    text-align: center;
-	    text-decoration: none;
-	    display: inline-block;
-	    font-size: 16px;
-	    margin: 4px 2px;
-	    cursor: pointer;
-    }
-    
+table {
+	border-collapse: collapse;
+	margin: 20px auto;
+}
+
+th, td {
+	padding: 10px;
+	text-align: left;
+	border-bottom: 1px solid #ddd;
+}
+
+th {
+	border-right: 1px solid #ddd;
+}
+
+.popup {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: none;
+	justify-content: center;
+	align-items: center;
+	z-index: 9999;
+}
+
+.popup-inner {
+	width: 300px;
+	background-color: white;
+	padding: 20px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+.popup h2 {
+	margin-top: 0;
+}
+
+.close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	cursor: pointer;
+}
+
+button {
+	background-color: #4CAF50;
+	border: none;
+	border-radius: 10px;
+	color: white;
+	padding: 10px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 4px 2px;
+	cursor: pointer;
+}
 </style>
-<body>
+<body class="mainView">
 	<h1>마이페이지</h1>
 	<c:if test="${not empty member}">
 		<table>
@@ -87,20 +93,24 @@
 				<td></td>
 			</tr>
 			<c:if test="${not empty member.favoriteGenre}">
-                <tr>
-                    <th>선호 장르</th>
-                    <td>${member.favoriteGenre}</td>
-                    <td>
-                        <button onclick="showPopup('genre')">선호장르 변경</button>
-                    </td>
-                </tr>
-            </c:if>
+				<tr>
+					<th>선호 장르</th>
+					<td>${member.favoriteGenre}</td>
+					<td>
+						<button onclick="showPopup('genre')">선호장르 변경</button>
+					</td>
+				</tr>
+			</c:if>
 			<tr>
 				<th>성별</th>
 				<td>${member.gender}</td>
 				<td></td>
 			</tr>
-			<tr> <td colspan="3"> <button onclick="showPopup('profile')">개인정보 변경</button> </td> </tr>
+			<tr>
+				<td colspan="3">
+					<button onclick="showPopup('profile')">개인정보 변경</button>
+				</td>
+			</tr>
 		</table>
 	</c:if>
 </body>

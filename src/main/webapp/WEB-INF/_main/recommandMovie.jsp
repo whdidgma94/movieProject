@@ -1,11 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ include file="../../header.jsp"%>
-<link href="${ctx}/css/movieContentStyle.css" rel="stylesheet"
-	type="text/css">
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<body>
+<body class="mainView">
 	<div class="container">
 	<c:if test="${genreMap eq null}">
 		<h1>영화 목록</h1>

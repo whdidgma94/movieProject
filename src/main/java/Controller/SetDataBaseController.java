@@ -8,13 +8,17 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import Board.BoardDAO;
+import Board.BoardVO;
 import Credit.CreditDAO;
 import Credit.CreditVO;
 import FrontController.Controller;
+import Member.MemberDAO;
 import Movie.GenreDAO;
 import Movie.GenreVO;
 import Movie.MovieDAO;
 import Movie.MovieVO;
+import Notice.NoticeDAO;
 import Util.Util;
 
 public class SetDataBaseController implements Controller {
@@ -28,6 +32,8 @@ public class SetDataBaseController implements Controller {
 		for (int i = 1; i < 3; i++) {
 			setMovieDb(i);
 		}
+		setDummyData();
+		setBoardDb();
 		return null;
 	}
 
@@ -89,5 +95,20 @@ public class SetDataBaseController implements Controller {
 				cdao.insertCredit(c);
 			}
 		}
+	}
+
+	public void setBoardDb() {
+		List<BoardVO> list = BoardDAO.getInstance().getAllBoard();
+		for (BoardVO b : list) {
+			MovieVO m = MovieDAO.getInstance().getOneMovie(b.getMovieCd());
+			m.setGrade(BoardDAO.getInstance().getAvgGrade(m.getMovieCd()));
+			MovieDAO.getInstance().updateMovie(m);
+		}
+	}
+
+	public void setDummyData() {
+		MemberDAO.getInstance().setDummyData();
+		NoticeDAO.getInstance().setDummyData();
+		BoardDAO.getInstance().setDummyData();
 	}
 }

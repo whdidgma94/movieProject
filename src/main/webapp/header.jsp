@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이름</title>
+<title>JJOTTE Movie</title>
 <link href="${ctx}/css/style.css" rel="stylesheet" type="text/css">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet"
@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/recommandMovie.do\"'>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick=checkLog('recommand')>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div><div onclick='location.href=\"${ctx}/nowPlayingMovie.do\"'>현재 상영작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {
@@ -43,7 +43,7 @@
 	});
 
 	$("#movieReview").mouseover(function() {
-	    $("#subBar").html("<div onclick='location.href=\"${ctx}/addReview.do\"'>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div onclick='location.href=\"${ctx}/movieMyReview.do\"'>내가 작성한 리뷰</div>");
+	    $("#subBar").html("<div onclick=checkLog('addReview')>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">영화 리뷰</div><div onclick=checkLog('myReview')>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {
@@ -59,7 +59,7 @@
 	$(".content").click(function() {
 		var movieCd = $(this).attr('id');
 	});
-	$(".close").click(function() {
+	$("#close").click(function() {
 		$("#modal").hide();
 	});
 	window.addEventListener("click", function(event) {
@@ -81,13 +81,29 @@
 			}
 		});		
 	}
+	function checkLog(type){
+		  if (${log==null}) {
+		    swal('권한 없음', '로그인 후 이용하세요', 'error').then(function() {
+		      location.href = "${ctx}/memberLogin.do";
+		    });
+		    return;
+		  } 
+		  if(type==='recommand'){
+		    location.href="${ctx}/recommandMovie.do";
+		  }else if(type==='myReview'){
+			location.href="${ctx}/movieMyReview.do";
+		  }else if(type==='addReview'){
+			location.href="${ctx}/addReview.do"; 
+		  }
+		}
 </script>
 </head>
 <body>
 	<div class="header">
 		<div class="top">
-			<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'" style="cursor:pointer;">JJOTTE Cinema</h2>
-	
+			<h2 class="cinema-link" onclick="location.href='${ctx}/_main.do'"
+				style="cursor: pointer;">JJOTTE Movie</h2>
+
 			<c:if test="${log != null}">
 				<div class="curLog">${log}님로그인중</div>
 			</c:if>
@@ -104,18 +120,17 @@
 					<c:if test="${log != null}">
 						<a class="dropdown-item" href="${ctx}/memberLogout.do">로그아웃</a>
 						<a class="dropdown-item" href="${ctx}/memberMyPage.do">마이페이지</a>
+						<a class="dropdown-item" href="${ctx}/memberMyMovie.do">관심있는
+							영화</a>
 					</c:if>
 				</div>
 			</div>
 		</div>
 		<div class="nav justify-content-around contentsbar">
-			<div class="col-2 py-3" onclick="location.href='${ctx}/memberMovieLike.do'">테스트중</div>
 			<div class="col-2 py-3" id="recommendMovie" onclick="location.href=#">추천영화</div>
-			<div class="col-2 py-3" id="searchMovie"
-				onclick="location.href=#">영화검색</div>
+			<div class="col-2 py-3" id="searchMovie" onclick="location.href=#">영화검색</div>
 			<div class="col-2 py-3" id="movieReview">영화리뷰</div>
-			<div class="col-2 py-3" id="movieRank"
-				onclick="location.href=#">영화순위</div>
+			<div class="col-2 py-3" id="movieRank" onclick="location.href=#">영화순위</div>
 			<c:if test="${log == 'admin'}">
 				<div class="col-2 py-3" id="memberManage">회원관리</div>
 				<div class="col-2 py-3" id="noticeManage">게시물관리</div>
@@ -125,10 +140,10 @@
 			style="margin-bottom: 20px"></div>
 	</div>
 	<div class="head-bottom">1</div>
-	
+
 	<div id="modal" class="modal">
 		<div class="modal-content">
-			<span class="close">&times;</span>
+			<button id="close" style="background-color: transparent; border: none; color: #999999; font-size: 24px; cursor: pointer;">&times;</button>
 			<p id="movieInfo"></p>
 		</div>
 	</div>
