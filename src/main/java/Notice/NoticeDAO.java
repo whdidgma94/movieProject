@@ -33,7 +33,7 @@ public class NoticeDAO {
 	
 	public void setDummyData() {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
-		session.insert("mapper.member.setDummyData");
+		session.insert("mapper.notice.setDummyData");
 		session.close();
 	}
 }

@@ -43,7 +43,7 @@
 	});
 
 	$("#movieReview").mouseover(function() {
-	    $("#subBar").html("<div onclick=checkLog('addReview')>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">TOP10 영화 리뷰</div><div onclick=checkLog('myReview')>내가 작성한 리뷰</div>");
+	    $("#subBar").html("<div onclick=checkLog('addReview')>리뷰 작성</div><div id=\"movieReview\" onclick=\"location.href='${ctx}/movieReview.do'\">영화 리뷰</div><div onclick=checkLog('myReview')>내가 작성한 리뷰</div>");
 	});
 
 	$("#movieRank").mouseover(function() {
