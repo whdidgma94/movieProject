@@ -28,6 +28,7 @@ import Controller.MovieReviewController;
 import Controller.MovieReviewRemoveController;
 import Controller.NoticeRemoveController;
 import Controller.NoticeViewController;
+import Controller.NowPlayingMovieController;
 import Controller.PreviewController;
 import Controller.MovieRankController;
 import Controller.SearchViewController;
@@ -77,6 +78,7 @@ public class HandlerMapping {
 		mappings.put("/memberMovieSeen.do", new MemberMovieSeenController());
 		mappings.put("/memberMyMovie.do", new MemberMyMovieController());
 		mappings.put("/preview.do", new PreviewController());
+		mappings.put("/nowPlayingMovie.do", new NowPlayingMovieController());
 	}
 
 	public Controller getController(String key) {

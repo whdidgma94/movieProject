@@ -50,7 +50,8 @@
  	                      grade: list[i].grade,
  	                      contents: list[i].contents,
  	                      movieNm: "${movie.movieNm}",
- 	                      writerId: list[i].writerId
+ 	                      writerId: list[i].writerId,
+ 	                     movieImg: "${movie.poster_path}"
   	               });
   	    	  		}
 	           	  </c:forEach>  
@@ -58,13 +59,16 @@
 
   	    	  for (var i = 0; i < reviewList.length; i++) {
   	    	    var review = reviewList[i];
-  	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
-  	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
-  	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
-  	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
-  	    	    cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
-  	    	    cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
-  	    	    cardHtml += "</div></div>";
+	        	  var cardHtml = "<div class='card mb-3'><div class='card-body'>";
+  	        	  cardHtml += "<div class='row'><div class='col-3'>";
+  	        	  cardHtml += "<img src=\"https:\/\/image.tmdb.org/t/p/original"+review.movieImg+"\" style=\"width: 100px; height: auto;\" alt=\"...\">";
+  	        	  cardHtml += "</div><div class='col-9'>";
+  	        	  cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
+  	        	  cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
+  	        	  cardHtml += "<p class='card-text'>" + review.contents + "</p>";
+  	        	  cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
+    	    	  cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
+  	        	  cardHtml += "</div></div></div></div>";
   	    	    cardsDiv.innerHTML += cardHtml;
   	    	  }
   	    	},
@@ -74,49 +78,53 @@
   	  });
   	}
     function showReviewsMovie(selectedMovieCd) {
-    	  $.ajax({
-    	    url: "${ctx}/getReviews.do",
-    	    type: "GET",
-    	    data: {
-    	      movieCd: selectedMovieCd
-    	    },
-    	    success: function(res) {
-    	    	var list = JSON.parse(res).reviewList;
-    	    	  var cardsDiv = document.getElementById("cards");
-    	    	  cardsDiv.innerHTML = "";   	    	  
-    	    	  var reviewList = [];
-    	          for (let i = 0; i < list.length; i++) {	              
-    	    	  <c:forEach items="${movieList}" var="movie">
-    	    	  		if(${movie.movieCd}==list[i].movieCd){
-    	               reviewList.push({
-    	            	  reviewNm: list[i].boardNo,
-   	                      movieCd: list[i].movieCd,
-   	                      grade: list[i].grade,
-   	                      contents: list[i].contents,
-   	                      movieNm: "${movie.movieNm}",
-   	                      writerId: list[i].writerId
-    	               });
-    	    	  		}
+  	  $.ajax({
+  	    url: "${ctx}/getReviews.do",
+  	    type: "GET",
+  	    data: {
+  	      movieCd: selectedMovieCd
+  	    },
+  	    success: function(res) {
+  	    	var list = JSON.parse(res).reviewList;
+  	    	  var cardsDiv = document.getElementById("cards");
+  	    	  cardsDiv.innerHTML = "";   	    	  
+  	    	  var reviewList = [];
+  	          for (let i = 0; i < list.length; i++) {	              
+  	    	  <c:forEach items="${movieList}" var="movie">
+  	    	  		if(${movie.movieCd}==list[i].movieCd){
+  	               reviewList.push({
+  	            		  reviewNm: list[i].boardNo,
+ 	                      movieCd: list[i].movieCd,
+ 	                      grade: list[i].grade,
+ 	                      contents: list[i].contents,
+ 	                      movieNm: "${movie.movieNm}",
+ 	                      writerId: list[i].writerId,
+ 	                      movieImg: "${movie.poster_path}"
+  	               });
+  	    	  		}
 	           	  </c:forEach>  
-    	          }
-					
-    	    	  for (var i = 0; i < reviewList.length; i++) {
-    	    	    var review = reviewList[i];
-    	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
-    	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
-    	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
-    	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
-    	    	    cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
-    	    	    cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
-    	    	    cardHtml += "</div></div>";
-    	    	    cardsDiv.innerHTML += cardHtml;
-    	    	  }
-    	    	},
-    	    error: function(xhr, status, error) {
-    	      console.log("Error: " + error);
-    	    }
-    	  });
-    	}
+  	          }
+
+  	          for (var i = 0; i < reviewList.length; i++) {
+  	        	  var review = reviewList[i];
+  	        	  var cardHtml = "<div class='card mb-3'><div class='card-body'>";
+  	        	  cardHtml += "<div class='row'><div class='col-3'>";
+  	        	  cardHtml += "<img src=\"https:\/\/image.tmdb.org/t/p/original"+review.movieImg+"\" style=\"width: 100px; height: auto;\" alt=\"...\">";
+  	        	  cardHtml += "</div><div class='col-9'>";
+  	        	  cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
+  	        	  cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
+  	        	  cardHtml += "<p class='card-text'>" + review.contents + "</p>";
+  	        	  cardHtml += "<p class='card-text'> 작성자 : " + review.writerId + "</p>";
+    	    	  cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
+  	        	  cardHtml += "</div></div></div></div>";
+  	        	  cardsDiv.innerHTML += cardHtml;
+  	        	}
+  	    	},
+  	    error: function(xhr, status, error) {
+  	      console.log("Error: " + error);
+  	    }
+  	  });
+  	}
     function removeReview(reviewNm){
     	$.ajax({
     	    url: "${ctx}/movieReviewRemove.do",

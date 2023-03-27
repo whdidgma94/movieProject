@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JJOTTE Cinema</title>
+<title>JJOTTE Movie</title>
 <link href="${ctx}/css/style.css" rel="stylesheet" type="text/css">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet"
@@ -35,7 +35,7 @@
 		    }, 200);
 		  });
 	$("#recommendMovie").mouseover(function() {
-	    $("#subBar").html("<div onclick=checkLog('recommand')>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div>");
+	    $("#subBar").html("<div onclick=checkLog('recommand')>나의 선호 장르</div><div onclick='location.href=\"${ctx}/upcomingMovie.do\"'>개봉 예정작</div><div onclick='location.href=\"${ctx}/nowPlayingMovie.do\"'>현재 상영작</div>");
 	});
 
 	$("#searchMovie").mouseover(function() {
