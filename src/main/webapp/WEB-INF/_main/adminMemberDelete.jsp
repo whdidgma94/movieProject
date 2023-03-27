@@ -1,12 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../../header.jsp" %>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
+	pageEncoding="UTF-8"%>
+<%@ include file="../../header.jsp"%>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/sweetalert2@11.1.4/dist/sweetalert2.min.js"></script>
 <style>
 .card:hover {
-  transform: scale(1.0);
-  background-color: #f7f7f7;
+	transform: scale(1.0);
+	background-color: #f7f7f7;
 }
 </style>
 <body class="mainView">
@@ -24,7 +26,8 @@
 							<p class="card-text">이메일 : ${member.email}</p>
 							<p class="card-text">좋아하는 장르 : ${member.favoriteGenre}</p>
 							<p class="card-text">성별 : ${member.gender}</p>
-							<button class="btn btn-danger mt-3 delete-button" onclick="deleteBtn(${member.memberNo})">회원 삭제</button>
+							<button class="btn btn-danger mt-3 delete-button"
+								onclick="deleteBtn(${member.memberNo})">회원 삭제</button>
 						</div>
 					</div>
 				</div>

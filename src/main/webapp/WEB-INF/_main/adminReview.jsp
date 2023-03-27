@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../../header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../../header.jsp"%>
 <style>
 .card:hover {
-  transform: scale(1.0);
-  background-color: #f7f7f7;
+	transform: scale(1.0);
+	background-color: #f7f7f7;
 }
 </style>
 <script>
@@ -137,14 +137,15 @@
     }
 </script>
 <body class="mainView">
-		<div class="container">
+	<div class="container">
 		<h1 class="my-4 text-center">리뷰 관리</h1>
 		<div class="row mb-4">
 			<div class="col-sm-6">
 				<select class="form-control" id="movieCd" name="reviewSelectMovie">
 					<option value="all">영화별 리뷰</option>
 					<c:forEach items="${movieList}" var="movie">
-						<option value="${movie.movieCd}" ${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>
+						<option value="${movie.movieCd}"
+							${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>
 					</c:forEach>
 				</select>
 			</div>
@@ -152,7 +153,8 @@
 				<select class="form-control" id="member" name="reviewSelectMember">
 					<option value="all">사용자별 리뷰</option>
 					<c:forEach items="${memberList}" var="member">
-						<option value="${member.id}" ${member.id == selectedMemberId ? "selected" : ""}>${member.memberName}</option>
+						<option value="${member.id}"
+							${member.id == selectedMemberId ? "selected" : ""}>${member.memberName}</option>
 					</c:forEach>
 				</select>
 			</div>

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../../header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../../header.jsp"%>
 <style>
 .card:hover {
-  transform: scale(1.0);
-  background-color: #f7f7f7;
+	transform: scale(1.0);
+	background-color: #f7f7f7;
 }
 </style>
 <script>
@@ -69,17 +69,18 @@
 </script>
 <body class="mainView">
 	<div class="container">
-		<h1 class="text-center my-5">TOP10 영화 리뷰</h1>	
+		<h1 class="text-center my-5">TOP10 영화 리뷰</h1>
 		<div class="row my-5">
 			<div class="col-12">
-				<label for="movieCd">영화선택&emsp;</label>
-       			<select class="form-control" id="movieCd" name="reviewSelect">
-       				<option value="all">모든영화</option>
-		            <c:forEach items="${movieList}" var="movie">
-		                <option value="${movie.movieCd}" ${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>
-		            </c:forEach>
-      				</select>
-      				<div id="cards"></div>
+				<label for="movieCd">영화선택&emsp;</label> <select class="form-control"
+					id="movieCd" name="reviewSelect">
+					<option value="all">모든영화</option>
+					<c:forEach items="${movieList}" var="movie">
+						<option value="${movie.movieCd}"
+							${movie.movieCd == selectedMovieCd ? "selected" : ""}>${movie.movieNm}</option>
+					</c:forEach>
+				</select>
+				<div id="cards"></div>
 			</div>
 		</div>
 	</div>

@@ -184,6 +184,10 @@ iframe {
 	align-items: center;
 	margin: 5px;
 }
+
+.btn-margin {
+	margin-right: 10px
+}
 </style>
 <body class="mainView">
 	<main>
@@ -235,18 +239,19 @@ iframe {
 
 				<div class="btns">
 					<c:if test="${like}">
-						<button class="btn btn-primary" onclick="movieLike(${vo.movieCd})">좋아요</button>
+						<button class="btn btn-primary "
+							onclick="movieLike(${vo.movieCd})">좋아요</button>
 					</c:if>
 					<c:if test="${not like}">
-						<button class="btn btn-danger" onclick="movieLike(${vo.movieCd})">좋아요
-							취소</button>
+						<button class="btn btn-danger btn-margin"
+							onclick="movieLike(${vo.movieCd})">좋아요 취소</button>
 					</c:if>
 					<c:if test="${seen}">
 						<button class="btn btn-primary" onclick="movieSeen(${vo.movieCd})">봤어요</button>
 					</c:if>
 					<c:if test="${not seen}">
-						<button class="btn btn-danger" onclick="movieSeen(${vo.movieCd})">봤어요
-							취소</button>
+						<button class="btn btn-danger btn-margin"
+							onclick="movieSeen(${vo.movieCd})">봤어요 취소</button>
 					</c:if>
 					<button class="btn btn-primary" onclick="preview(${vo.movieCd})">예고편
 						보기</button>
@@ -441,7 +446,7 @@ links.forEach(link => {
 				    	iframe.width = "100%";
 				    	iframe.height = "100%";
 				    	iframe.src = youtubeUrl;
-				    	iframe.title = "YouTube video player";
+				    	iframe.title = "YouTube";
 				    	iframe.frameborder = 0;
 				    	iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
 				    	iframe.allowfullscreen = true;

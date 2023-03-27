@@ -1,48 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../../header.jsp" %>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	pageEncoding="UTF-8"%>
+<%@ include file="../../header.jsp"%>
+<script
+	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <body class="mainView">
 	<h1>회원가입</h1>
 	<form action="${ctx}/memberJoin.do" method="post" id="form">
-	<table class="table table-bordered">
-		<tr><td>아이디</td><td><input type="text" name="id" onchange="idChange()">&emsp;<input type="button" value="중복확인" onclick="idCheck()" id="checkBtn"></td></tr>
-		<tr><td>비밀번호</td><td><input type="password" name="pw"></td></tr>
-		<tr><td>이름</td><td><input type="text" name="memberName"></td></tr>
-		<tr><td>생년월일</td> <td><input type="date" name="birthDay" id="today" size="15"></td> </tr>
-		<tr> <td>주소</td>
-			<td>
-				<input type="text" id="postcode" placeholder="우편번호" readonly>
-				<input type="button" onclick="execDaumPostcode()" value="우편번호 찾기" id="checkBtn"><br>
-				<input type="text" id="roadAddress" placeholder="도로명주소" name="address1" readonly>
-				<input type="text" id="jibunAddress" placeholder="지번주소" readonly>
-				<span id="guide" style="color:#999;display:none"></span>
-				<input type="text" id="detailAddress" placeholder="상세주소" name="address2">
-			</td>
-		</tr>
-		<tr>
-			<td>이메일</td>
-			<td>
-			  <div class="email-wrapper">
-			    <input type="text" name="email_id" value="" placeholder="이메일"/> @ 
-			    <input type="text" name="email_domain" value="" placeholder="도메인"/> 
-			    <select class="select" title="이메일 도메인 주소 선택" onclick="setEmailDomain(this.value);return false;">
-			      <option value="">직접입력</option>
-			      <option value="naver.com">naver.com</option>
-			      <option value="gmail.com">gmail.com</option>
-			      <option value="hanmail.net">hanmail.net</option>
-			      <option value="hotmail.com">hotmail.com</option>
-			      <option value="korea.com">korea.com</option>
-			      <option value="nate.com">nate.com</option>
-			      <option value="yahoo.com">yahoo.com</option>
-			    </select>
-			  </div>
-			</td>
+		<table class="table table-bordered">
+			<tr>
+				<td>아이디</td>
+				<td><input type="text" name="id" onchange="idChange()">&emsp;<input
+					type="button" value="중복확인" onclick="idCheck()" id="checkBtn"></td>
 			</tr>
-		<tr><td>성별</td><td><input type="radio" name="gender" value="남자" checked>남자 &emsp;<input type="radio" name="gender" value="여자">여자
-	</td></tr>
-	<tr><td colspan="2"><input type="button" onclick="joinBtn()" value="회원가입"></td></tr>
-	</table>
+			<tr>
+				<td>비밀번호</td>
+				<td><input type="password" name="pw"></td>
+			</tr>
+			<tr>
+				<td>이름</td>
+				<td><input type="text" name="memberName"></td>
+			</tr>
+			<tr>
+				<td>생년월일</td>
+				<td><input type="date" name="birthDay" id="today" size="15"></td>
+			</tr>
+			<tr>
+				<td>주소</td>
+				<td><input type="text" id="postcode" placeholder="우편번호"
+					readonly> <input type="button" onclick="execDaumPostcode()"
+					value="우편번호 찾기" id="checkBtn"><br> <input type="text"
+					id="roadAddress" placeholder="도로명주소" name="address1" readonly>
+					<input type="text" id="jibunAddress" placeholder="지번주소" readonly>
+					<span id="guide" style="color: #999; display: none"></span> <input
+					type="text" id="detailAddress" placeholder="상세주소" name="address2">
+				</td>
+			</tr>
+			<tr>
+				<td>이메일</td>
+				<td>
+					<div class="email-wrapper">
+						<input type="text" name="email_id" value="" placeholder="이메일" /> @
+						<input type="text" name="email_domain" value="" placeholder="도메인" />
+						<select class="select" title="이메일 도메인 주소 선택"
+							onclick="setEmailDomain(this.value);return false;">
+							<option value="">직접입력</option>
+							<option value="naver.com">naver.com</option>
+							<option value="gmail.com">gmail.com</option>
+							<option value="hanmail.net">hanmail.net</option>
+							<option value="hotmail.com">hotmail.com</option>
+							<option value="korea.com">korea.com</option>
+							<option value="nate.com">nate.com</option>
+							<option value="yahoo.com">yahoo.com</option>
+						</select>
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<td>성별</td>
+				<td><input type="radio" name="gender" value="남자" checked>남자
+					&emsp;<input type="radio" name="gender" value="여자">여자</td>
+			</tr>
+			<tr>
+				<td colspan="2"><input type="button" onclick="joinBtn()"
+					value="회원가입"></td>
+			</tr>
+		</table>
 	</form>
 	<script>
 	 function setEmailDomain(domain){

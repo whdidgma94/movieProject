@@ -25,7 +25,7 @@
 									</div>
 								</div>
 							</c:if>
-						</c:forEach>						
+						</c:forEach>
 					</c:forEach>
 				</div>
 			</div>
@@ -49,7 +49,7 @@
 									</div>
 								</div>
 							</c:if>
-						</c:forEach>						
+						</c:forEach>
 					</c:forEach>
 				</div>
 			</div>

@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@ include file="../../header.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@ include file="../../header.jsp"%>
 <style>
 .card:hover {
-  transform: scale(1.0);
-  background-color: #f7f7f7;
+	transform: scale(1.0);
+	background-color: #f7f7f7;
 }
 </style>
 <body class="mainView">
@@ -23,7 +23,8 @@
 							<p class="card-text">좋아하는 장르 : ${member.favoriteGenre}</p>
 							<p class="card-text">성별 : ${member.gender}</p>
 							<form action="${ctx}/adminMemberUpdate.do">
-								<button class="btn btn-secondary" name="memberId" value="${member.id}">수정하기</button>
+								<button class="btn btn-secondary" name="memberId"
+									value="${member.id}">수정하기</button>
 							</form>
 						</div>
 					</div>

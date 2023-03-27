@@ -340,7 +340,6 @@ public class Util {
 				movieNm = movieNm.replace(" ", "%20");
 				movieMap = getMovieInfo(movieNm);
 				movieMap.put("audiCnt", jb.get("audiCnt"));
-				System.out.println(movieMap.get("movieNm") + "," + movieMap.get("movieCd"));
 				movieList.add(movieMap);
 			}
 			conn.disconnect();

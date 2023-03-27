@@ -27,8 +27,10 @@
 	</table>
 </body>
 <script>
-	$(".btn").click(function() {
-		window.location.href = "${ctx}/movieContentView.do?movieCd=${vo.movieCd}";
-	})
+	$(".btn")
+			.click(
+					function() {
+						window.location.href = "${ctx}/movieContentView.do?movieCd=${vo.movieCd}";
+					})
 </script>
 </html>

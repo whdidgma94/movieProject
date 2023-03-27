@@ -27,9 +27,6 @@ public class AddReviewController implements Controller {
 
 		request.setAttribute("movieList", movieList);
 		HttpSession session = request.getSession();
-		if (session.getAttribute("log") == null) {
-			return "redirect:" + ctx + "/memberLogin.do";
-		}
 		if (request.getParameter("movieCd") == null) {
 			MemberPickVO memberPickVO = MemberPickDAO.getInstance().getMemberPick((String) session.getAttribute("log"));
 			String[] seenList = null;
