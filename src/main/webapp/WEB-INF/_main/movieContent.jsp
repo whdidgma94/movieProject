@@ -25,6 +25,7 @@
 			<td colspan="2"><button class="btn btn-primary">자세히보기</button></td>
 		</tr>
 	</table>
+	
 </body>
 <script>
 	$(".btn")

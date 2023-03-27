@@ -30,6 +30,8 @@ public class SetDataBaseController implements Controller {
 		for (int i = 1; i < 3; i++) {
 			setMovieDb(i);
 		}
+		setDummyData();
+		setBoardDb();
 		return null;
 	}
 
@@ -100,5 +102,9 @@ public class SetDataBaseController implements Controller {
 			m.setGrade(BoardDAO.getInstance().getAvgGrade(m.getMovieCd()));
 			MovieDAO.getInstance().updateMovie(m);
 		}
+	}
+
+	public void setDummyData() {
+
 	}
 }
