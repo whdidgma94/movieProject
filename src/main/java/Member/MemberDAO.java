@@ -31,8 +31,8 @@ public class MemberDAO {
 		session.selectOne("mapper.member.insertGenre", member);
 		session.close();
 	}
-	
-	public List<MemberVO> getAllMember(){
+
+	public List<MemberVO> getAllMember() {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		List<MemberVO> memberList = session.selectList("mapper.member.getAllMember");
 		session.close();
@@ -69,6 +69,7 @@ public class MemberDAO {
 		session.close();
 		return cnt;
 	}
+
 	public int memberUpdate2(MemberVO memberVO) {
 		SqlSession session = MybatisConfig.getInstance().openSession(true);
 		int cnt = session.update("mapper.member.memberUpdate2", memberVO);
@@ -83,4 +84,9 @@ public class MemberDAO {
 		return cnt;
 	}
 
+	public void setDummyData() {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.insert("mapper.member.setDummyData");
+		session.close();
+	}
 }

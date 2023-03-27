@@ -30,4 +30,10 @@ public class NoticeDAO {
 		session.insert("mapper.notice.deleteNotice", noticeNo);
 		session.close();
 	}
+	
+	public void setDummyData() {
+		SqlSession session = MybatisConfig.getInstance().openSession(true);
+		session.insert("mapper.member.setDummyData");
+		session.close();
+	}
 }

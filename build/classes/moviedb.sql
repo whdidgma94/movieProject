@@ -44,24 +44,6 @@ CREATE TABLE memberPick(
 	foreign key (memberId) references member(id) on delete cascade
 );
 
-insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
-values
-('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성');
-insert into member(memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
-values
-('123', '123', '123', '1995-01-01', '서울특별시 강남구', '123@gmail.com', '로맨스', '남성');
-INSERT INTO member (memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
-VALUES
-    ('김철수', 'kim123', 'password123', '1995-05-12', '서울특별시 강남구', 'kim123@gmail.com', '액션', '남성'),
-    ('이영희', 'lee_yh', '12345678', '1998-02-28', '경기도 고양시 일산동구', 'yeonghee@gmail.com', '로맨스', '여성'),
-    ('박민준', 'parkminjun', 'pw1234', '2001-11-07', '서울특별시 송파구', 'parkmj@gmail.com', '코미디', '남성'),
-    ('홍길동', 'honggd', '1234', '1990-06-30', '서울특별시 마포구', 'honggd@naver.com', '드라마', '남성'),
-    ('김민지', 'minji_kim', 'password!@#', '1992-12-15', '경기도 부천시', 'kimminji92@gmail.com', '판타지', '여성'),
-    ('이지원', 'jwonlee', 'leejwon11', '1997-08-20', '서울특별시 강서구', 'jwonlee@daum.net', '스릴러', '여성'),
-    ('최승우', 'seungwoo', 'abc123', '2000-03-22', '경기도 용인시', 'seungwoo00@naver.com', '애니메이션', '남성'),
-    ('정지수', 'jsjung', 'qweasd123', '1994-09-17', '서울특별시 종로구', 'jsjung94@naver.com', 'SF', '여성'),
-    ('윤지현', 'ji_hyun', 'abcd1234', '1999-12-31', '서울특별시 서초구', 'yoonjihyun@gmail.com', '코미디', '여성'),
-    ('박준혁', 'jh_park', 'pjh9876', '1993-07-06', '경기도 광명시', 'junhyuk_park@daum.net', '액션', '남성');
 
 create table board(
 	boardNo int primary key auto_increment,		# 댓글 번호
@@ -98,6 +80,20 @@ INSERT INTO board (writerId, movieCd, grade, contents) VALUES
     ('seungwoo', 603692, 5, '인생작 입니다.'),
     ('ji_hyun', 631842, 4, '한번 더 보고싶어요.'),
     ('jh_park', 937278, 2, '볼 가치가 없습니다.');
+INSERT INTO member (memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
+VALUES
+('관리자', 'admin', 'admin', '1995-01-01', '서울특별시 강남구', 'admin@gmail.com', '로맨스', '남성'),
+('123', '123', '123', '1995-01-01', '서울특별시 강남구', '123@gmail.com', '로맨스', '남성'),
+    ('김철수', 'kim123', 'password123', '1995-05-12', '서울특별시 강남구', 'kim123@gmail.com', '액션', '남성'),
+    ('이영희', 'lee_yh', '12345678', '1998-02-28', '경기도 고양시 일산동구', 'yeonghee@gmail.com', '로맨스', '여성'),
+    ('박민준', 'parkminjun', 'pw1234', '2001-11-07', '서울특별시 송파구', 'parkmj@gmail.com', '코미디', '남성'),
+    ('홍길동', 'honggd', '1234', '1990-06-30', '서울특별시 마포구', 'honggd@naver.com', '드라마', '남성'),
+    ('김민지', 'minji_kim', 'password!@#', '1992-12-15', '경기도 부천시', 'kimminji92@gmail.com', '판타지', '여성'),
+    ('이지원', 'jwonlee', 'leejwon11', '1997-08-20', '서울특별시 강서구', 'jwonlee@daum.net', '스릴러', '여성'),
+    ('최승우', 'seungwoo', 'abc123', '2000-03-22', '경기도 용인시', 'seungwoo00@naver.com', '애니메이션', '남성'),
+    ('정지수', 'jsjung', 'qweasd123', '1994-09-17', '서울특별시 종로구', 'jsjung94@naver.com', 'SF', '여성'),
+    ('윤지현', 'ji_hyun', 'abcd1234', '1999-12-31', '서울특별시 서초구', 'yoonjihyun@gmail.com', '코미디', '여성'),
+    ('박준혁', 'jh_park', 'pjh9876', '1993-07-06', '경기도 광명시', 'junhyuk_park@daum.net', '액션', '남성');
 
 
 

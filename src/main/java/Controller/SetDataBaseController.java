@@ -13,10 +13,12 @@ import Board.BoardVO;
 import Credit.CreditDAO;
 import Credit.CreditVO;
 import FrontController.Controller;
+import Member.MemberDAO;
 import Movie.GenreDAO;
 import Movie.GenreVO;
 import Movie.MovieDAO;
 import Movie.MovieVO;
+import Notice.NoticeDAO;
 import Util.Util;
 
 public class SetDataBaseController implements Controller {
@@ -105,6 +107,8 @@ public class SetDataBaseController implements Controller {
 	}
 
 	public void setDummyData() {
-
+		MemberDAO.getInstance().setDummyData();
+		NoticeDAO.getInstance().setDummyData();
+		BoardDAO.getInstance().setDummyData();
 	}
 }

@@ -2,68 +2,118 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mapper.member"> 
-  <resultMap id="member" type="Member.MemberVO">
-  <id property="memberNo" column="memberNo"/>
-  <result property="memberName" column="memberName"/>
-  <result property="id" column="id"/>
-  <result property="pw" column="pw"/>
-  <result property="birthDay" column="birthDay"/>
-  <result property="address" column="address"/>
-  <result property="email" column="email"/>
-  <result property="favoriteGenre" column="favoriteGenre"/>
-  <result property="gender" column="gender"/>
-</resultMap>
-  
-  	<select id="getAllMember" resultMap="member">
-  		SELECT * FROM member
-  		where id != "admin"
+<mapper namespace="mapper.member">
+	<resultMap id="member" type="Member.MemberVO">
+		<id property="memberNo" column="memberNo" />
+		<result property="memberName" column="memberName" />
+		<result property="id" column="id" />
+		<result property="pw" column="pw" />
+		<result property="birthDay" column="birthDay" />
+		<result property="address" column="address" />
+		<result property="email" column="email" />
+		<result property="favoriteGenre" column="favoriteGenre" />
+		<result property="gender" column="gender" />
+	</resultMap>
+
+	<select id="getAllMember" resultMap="member">
+		SELECT * FROM member
+		where id
+		!= "admin"
 	</select>
-  
-    <select id="memberLogin" parameterType="member" resultType="String">
-        select id from member where id=#{id} and pw=#{pw}
-    </select>
-    
-       <select id="validId" resultType="String" parameterType="String">
-        select id from member where id=#{id}        
-    </select>
-    
-    <select id="getOneMember" parameterType="String" resultMap="member">
-    	 SELECT * FROM member where id=#{id} 
-    </select>
-    
-    <insert id="memberInsert" parameterType="member">
-        INSERT INTO member (memberName, id, pw, birthDay, address, email, favoriteGenre, gender)
-       VALUES(
-        #{memberName},
-        #{id},
-        #{pw},
-        #{birthDay},
-        #{address},
-        #{email},
-        #{favoriteGenre},
-        #{gender}
-        )       
-    </insert>
-    
-    <update id="insertGenre" parameterType="member">
-         update member
-         set favoriteGenre=#{favoriteGenre}  
-         where id=#{id}
-    </update>
-    
-     <update id="memberUpdate1" parameterType="member">
-         update member
-         set memberName=#{memberName}, pw=#{pw}, email=#{email}, address=#{address}
-         where id=#{id}
-    </update>
-    <update id="memberUpdate2" parameterType="member">
-         update member
-         set memberName=#{memberName}, pw=#{pw}, email=#{email}
-         where id=#{id}
-    </update>
-      <delete id="memberDelete" parameterType="Integer">  
-        delete from member where memberNo=#{memberNo} 
-    </delete>
-    
+
+	<select id="memberLogin" parameterType="member"
+		resultType="String">
+		select id from member where id=#{id} and pw=#{pw}
+	</select>
+
+	<select id="validId" resultType="String" parameterType="String">
+		select id
+		from member where id=#{id}
+	</select>
+
+	<select id="getOneMember" parameterType="String"
+		resultMap="member">
+		SELECT * FROM member where id=#{id}
+	</select>
+
+	<insert id="memberInsert" parameterType="member">
+		INSERT INTO member
+		(memberName, id, pw, birthDay, address, email,
+		favoriteGenre, gender)
+		VALUES(
+		#{memberName},
+		#{id},
+		#{pw},
+		#{birthDay},
+		#{address},
+		#{email},
+		#{favoriteGenre},
+		#{gender}
+		)
+	</insert>
+
+	<update id="insertGenre" parameterType="member">
+		update member
+		set
+		favoriteGenre=#{favoriteGenre}
+		where id=#{id}
+	</update>
+
+	<update id="memberUpdate1" parameterType="member">
+		update member
+		set
+		memberName=#{memberName}, pw=#{pw}, email=#{email},
+		address=#{address}
+		where id=#{id}
+	</update>
+	<update id="memberUpdate2" parameterType="member">
+		update member
+		set
+		memberName=#{memberName}, pw=#{pw}, email=#{email}
+		where id=#{id}
+	</update>
+	<delete id="memberDelete" parameterType="Integer">
+		delete from member where
+		memberNo=#{memberNo}
+	</delete>
+	<insert id="setDummyData">
+		INSERT INTO member (memberName, id, pw, birthDay,
+		address, email,
+		favoriteGenre, gender)
+		VALUES
+		('관리자', 'admin', 'admin',
+		'1995-01-01', '서울특별시 강남구', 'admin@gmail.com',
+		'로맨스', '남성'),
+		('123',
+		'123', '123', '1995-01-01', '서울특별시 강남구', '123@gmail.com', '로맨스',
+		'남성'),
+		('김철수', 'kim123', 'password123', '1995-05-12', '서울특별시 강남구',
+		'kim123@gmail.com', '액션', '남성'),
+		('이영희', 'lee_yh', '12345678',
+		'1998-02-28', '경기도 고양시 일산동구',
+		'yeonghee@gmail.com', '로맨스', '여성'),
+		('박민준', 'parkminjun', 'pw1234', '2001-11-07', '서울특별시 송파구',
+		'parkmj@gmail.com', '코미디', '남성'),
+		('홍길동', 'honggd', '1234',
+		'1990-06-30', '서울특별시 마포구', 'honggd@naver.com',
+		'드라마', '남성'),
+		('김민지',
+		'minji_kim', 'password!@#', '1992-12-15', '경기도 부천시',
+		'kimminji92@gmail.com', '판타지', '여성'),
+		('이지원', 'jwonlee', 'leejwon11',
+		'1997-08-20', '서울특별시 강서구',
+		'jwonlee@daum.net', '스릴러', '여성'),
+		('최승우',
+		'seungwoo', 'abc123', '2000-03-22', '경기도 용인시',
+		'seungwoo00@naver.com',
+		'애니메이션', '남성'),
+		('정지수', 'jsjung', 'qweasd123', '1994-09-17', '서울특별시
+		종로구',
+		'jsjung94@naver.com', 'SF', '여성'),
+		('윤지현', 'ji_hyun', 'abcd1234',
+		'1999-12-31', '서울특별시 서초구',
+		'yoonjihyun@gmail.com', '코미디', '여성'),
+		('박준혁', 'jh_park', 'pjh9876', '1993-07-06', '경기도 광명시',
+		'junhyuk_park@daum.net', '액션', '남성');
+	</insert>
 </mapper>

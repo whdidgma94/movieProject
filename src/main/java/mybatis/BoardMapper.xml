@@ -27,7 +27,7 @@
 		resultType="board">
 		select * from board where writerId = #{writerId}
 	</select>
-	
+
 	<select id="getMovieBoard" parameterType="Integer"
 		resultType="board">
 		select * from board where movieCd = #{movieCd}
@@ -56,5 +56,18 @@
 		delete from board where
 		boardNo=#{boardNo}
 	</delete>
+	<insert id="setDummyData">
+		INSERT INTO board (writerId, movieCd, grade, contents) VALUES
+		('123', 493529, 4, '재미있었습니다.'),
+		('kim123', 594767, 3, '기대했던 것보단 별로였네요.'),
+		('lee_yh', 603692, 5, '진짜 대박영화입니다.'),
+		('parkminjun', 631842, 4, '보는 내내 긴장감이 유지되는 영화였습니다.'),
+		('honggd', 937278, 2, '이게 뭐냐 싶은 영화였습니다.');
+		('minji_kim', 493529, 4, '킬링타임 강추.'),
+		('jwonlee', 594767, 3, '무난무난 합니다.'),
+		('seungwoo', 603692, 5, '인생작 입니다.'),
+		('ji_hyun', 631842, 4, '한번 더 보고싶어요.'),
+		('jh_park', 937278, 2, '볼 가치가 없습니다.');
+	</insert>
 
 </mapper>
