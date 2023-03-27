@@ -162,8 +162,8 @@ input[type="text"], input[type="password"], input[type="email"], input[type="dat
 	{
 	padding: 5px;
 	border: 1px solid #ccc;
-	background-color:rgb(5, 37, 65);
-	color:white;
+	background-color: rgb(5, 37, 65);
+	color: white;
 	border-radius: 5px;
 	width: 100%;
 }
@@ -193,9 +193,11 @@ input[type="radio"] {
 table td:not(:last-child) {
 	white-space: nowrap;
 }
-.select{
-	background-color:lightgray;
+
+.select {
+	background-color: lightgray;
 }
+
 .email-wrapper {
 	display: flex;
 }
@@ -331,6 +333,18 @@ div#modal.modal {
 	background-color: #008ba3;
 	border: 3px solid #d3d3d3;
 }
-th{
-	color:white;
+
+th {
+	color: white;
+}
+
+#close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 36px;
+	margin: 0;
+	padding: 0;
+	cursor: pointer;
+	margin: 8px auto;
 }

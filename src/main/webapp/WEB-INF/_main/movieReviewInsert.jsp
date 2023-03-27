@@ -30,11 +30,11 @@
 							<label for="grade">평점</label> <select class="form-control"
 								id="grade" name="grade" required>
 								<option value="">선택하세요</option>
-								<option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-								<option value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
-								<option value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
-								<option value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
-								<option value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
+								<option style="color: #f7d400;" value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+								<option style="color: #f7d400;" value="4">&#9733;&#9733;&#9733;&#9733;&#9734;</option>
+								<option style="color: #f7d400;" value="3">&#9733;&#9733;&#9733;&#9734;&#9734;</option>
+								<option style="color: #f7d400;" value="2">&#9733;&#9733;&#9734;&#9734;&#9734;</option>
+								<option style="color: #f7d400;" value="1">&#9733;&#9734;&#9734;&#9734;&#9734;</option>
 							</select>
 						</div>
 						<div class="form-group">

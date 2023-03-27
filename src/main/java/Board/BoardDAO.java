@@ -54,5 +54,10 @@ public class BoardDAO {
 			session.close();
 			return cnt;
 		}
+		public void setDummyData() {
+			SqlSession session = MybatisConfig.getInstance().openSession(true);
+			session.insert("mapper.board.setDummyData");
+			session.close();
+		}
 	
 }

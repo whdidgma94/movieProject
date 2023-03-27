@@ -59,7 +59,7 @@
 	$(".content").click(function() {
 		var movieCd = $(this).attr('id');
 	});
-	$(".close").click(function() {
+	$("#close").click(function() {
 		$("#modal").hide();
 	});
 	window.addEventListener("click", function(event) {
@@ -143,7 +143,7 @@
 
 	<div id="modal" class="modal">
 		<div class="modal-content">
-			<span class="close" style="background-color: #316d9f;">&times;</span>
+			<button id="close" style="background-color: transparent; border: none; color: #999999; font-size: 24px; cursor: pointer;">&times;</button>
 			<p id="movieInfo"></p>
 		</div>
 	</div>

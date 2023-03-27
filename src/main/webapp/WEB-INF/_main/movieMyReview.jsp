@@ -7,6 +7,24 @@
 	background-color: #f7f7f7;
 	transition: transform 0.5s;
 }
+
+.fa-star.half, .fa-star.checked.half {
+	color: #f7d400;
+	font-size: 24px;
+}
+
+.grade {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	font-size: 20px;
+	font-weight: bold;
+	color: #777;
+}
+
+.rating-text {
+	margin-left: 10px;
+}
 </style>
 <script>
     var selectedMovieCd = "all";
@@ -45,7 +63,16 @@
     	    	    var review = reviewList[i];
     	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
     	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
-    	    	    cardHtml += "<h6 class='card-subtitle mb-2 text-muted'>&#9733;" + review.grade + "</h6>";
+    	    	    cardHtml += "<div class='grade'>";
+    	    	    for(var j = 0; j <5;j++ ){
+    	    	    	if(review.grade>j){
+    	    	   			cardHtml += "<span class='fa fa-star checked half'></span>"
+    	    	    	}else{
+    	    	    		cardHtml += "<span class='fa fa-star'></span>"
+    	    	    	}
+    	    	    }
+    	    	    cardHtml += "<span class='rating-text'>평점:"
+    					+review.grade+"점</span></div>"
     	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
     	    	    cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
     	    	    cardHtml += "</div></div>";
