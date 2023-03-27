@@ -52,7 +52,8 @@
 		   	                      movieCd: list[i].movieCd,
 		   	                      grade: list[i].grade,
 		   	                      contents: list[i].contents,
-		   	                      movieNm: "${movie.movieNm}"
+		   	                      movieNm: "${movie.movieNm}",
+		   	                      movieImg: "${movie.poster_path}"
 		    	               });
     	    	  			}
     	    	  		}
@@ -60,24 +61,27 @@
     	          }
 
     	    	  for (var i = 0; i < reviewList.length; i++) {
-    	    	    var review = reviewList[i];
-    	    	    var cardHtml = "<div class='card mb-3'><div class='card-body'>";
-    	    	    cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
-    	    	    cardHtml += "<div class='grade'>";
-    	    	    for(var j = 0; j <5;j++ ){
-    	    	    	if(review.grade>j){
-    	    	   			cardHtml += "<span class='fa fa-star checked half'></span>"
-    	    	    	}else{
-    	    	    		cardHtml += "<span class='fa fa-star'></span>"
-    	    	    	}
-    	    	    }
-    	    	    cardHtml += "<span class='rating-text'>평점:"
-    					+review.grade+"점</span></div>"
-    	    	    cardHtml += "<p class='card-text'>" + review.contents + "</p>";
+    	        	  var review = reviewList[i];
+    	        	  var cardHtml = "<div class='card mb-3'><div class='card-body'>";
+    	        	  cardHtml += "<div class='row'><div class='col-3'>";
+    	        	  cardHtml += "<img src=\"https:\/\/image.tmdb.org/t/p/original"+review.movieImg+"\" style=\"width: 100px; height: auto;\" alt=\"...\">";
+    	        	  cardHtml += "</div><div class='col-9'>";
+    	        	  cardHtml += "<h5 class='card-title'>" +review.movieNm + "</h5>";
+    	        	  cardHtml += "<div class='grade'>";
+      	    	    for(var j = 0; j <5;j++ ){
+      	    	    	if(review.grade>j){
+      	    	   			cardHtml += "<span class='fa fa-star checked half'></span>"
+      	    	    	}else{
+      	    	    		cardHtml += "<span class='fa fa-star'></span>"
+      	    	    	}
+      	    	    }
+      	    	    cardHtml += "<span class='rating-text'>평점:"
+      					+review.grade+"점</span></div>"
+    	        	  cardHtml += "<p class='card-text'>" + review.contents + "</p>";
     	    	    cardHtml += "<button class='btn btn-danger' onclick='removeReview("+review.reviewNm+")'>삭제하기</button>";
-    	    	    cardHtml += "</div></div>";
-    	    	    cardsDiv.innerHTML += cardHtml;
-    	    	  }
+    	        	  cardHtml += "</div></div></div></div>";
+    	        	  cardsDiv.innerHTML += cardHtml;
+    	        	}
     	    	},
     	    error: function(xhr, status, error) {
     	      console.log("Error: " + error);
