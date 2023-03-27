@@ -25,7 +25,6 @@ create table credits(
 	job varchar(100)
 );
 
-select * from movie;
 create table member(
 	memberNo int primary key auto_increment,	# 회원 식별번호
     memberName varchar(20) not null, 			# 회원 이름
@@ -73,7 +72,6 @@ create table board(
     foreign key (writerId) references member(id) on delete cascade,
     foreign key (movieCd) references movie(movieCd) on delete cascade
 );
-SELECT * FROM board;
 
 create table notice(
 	noticeNo int primary key auto_increment,
@@ -100,10 +98,6 @@ INSERT INTO board (writerId, movieCd, grade, contents) VALUES
     ('seungwoo', 603692, 5, '인생작 입니다.'),
     ('ji_hyun', 631842, 4, '한번 더 보고싶어요.'),
     ('jh_park', 937278, 2, '볼 가치가 없습니다.');
-    select*from board;
-SELECT movie.movieCd, COUNT(board.movieCd) AS board_cnt
-FROM movie
-LEFT JOIN board ON movie.movieCd = board.movieCd
-GROUP BY movie.movieCd;
-select * from credits
-select * from movie;
+
+
+
