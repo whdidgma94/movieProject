@@ -3,11 +3,11 @@
 <%@ include file="../../header.jsp"%>
 <style>
 tr.movie:hover {
-	background-color: #f7f7f7;
+	background-color: gray;
 }
 
 tr.movie:hover td, tr.movie:hover th {
-	color: #333;
+	color: white;
 }
 </style>
 <body class="mainView">
