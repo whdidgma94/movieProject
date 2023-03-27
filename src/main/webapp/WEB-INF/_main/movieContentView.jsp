@@ -247,13 +247,14 @@ iframe {
 							onclick="movieLike(${vo.movieCd})">좋아요 취소</button>
 					</c:if>
 					<c:if test="${vo.subject != 'upcoming'}">
-					<c:if test="${seen}">
-						<button class="btn btn-primary" onclick="movieSeen(${vo.movieCd})">봤어요</button>
-					</c:if>
-					<c:if test="${not seen}">
-						<button class="btn btn-danger btn-margin"
-							onclick="movieSeen(${vo.movieCd})">봤어요 취소</button>
-					</c:if>
+						<c:if test="${seen}">
+							<button class="btn btn-primary"
+								onclick="movieSeen(${vo.movieCd})">봤어요</button>
+						</c:if>
+						<c:if test="${not seen}">
+							<button class="btn btn-danger btn-margin"
+								onclick="movieSeen(${vo.movieCd})">봤어요 취소</button>
+						</c:if>
 					</c:if>
 					<button class="btn btn-primary" onclick="preview(${vo.movieCd})">예고편
 						보기</button>
@@ -470,11 +471,15 @@ links.forEach(link => {
 	  
 	}
   function closeVideo() {
-	  while (youtube.firstChild) {
-	    youtube.removeChild(youtube.firstChild);
+	  const children = youtube.childNodes;
+	  for (let i = children.length - 1; i >= 0; i--) {
+	    if (children[i].id !== "close") { 
+	      youtube.removeChild(children[i]);
+	    }
 	  }
 	  overlay.classList.remove("show");
 	}
+
 
 
 </script>
