@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.memberPick"> 
+	<resultMap id="memberPick" type="Member.MemberPickVO">
+		<id property="memberId" column="memberId"/>
+		<result property="movieLike" column="movieLike"/>
+		<result property="movieSeen" column="movieSeen"/>
+	</resultMap>
+	<select id="getOneMemberPick" parameterType="String" resultType="memberPick">
+  		SELECT * FROM memberPick
+  		where memberId=#{id}
+	</select>
+	<insert id="addMemberPickLike" parameterType="memberPick">
+        INSERT INTO memberPick (memberId, movieLike)
+       VALUES(
+        #{memberId},
+        #{movieLike}
+        )       
+    </insert>
+	<insert id="addMemberPickSeen" parameterType="memberPick">
+        INSERT INTO memberPick (memberId, movieSeen)
+       VALUES(
+        #{memberId},
+        #{movieSeen}
+        )       
+    </insert>
+    <update id="updateMemberPickLike" parameterType="memberPick">
+         update memberPick
+         set movieLike=#{movieLike}
+         where memberId=#{memberId}
+    </update>
+    <update id="updateMemberPickSeen" parameterType="memberPick">
+         update memberPick
+         set movieSeen=#{movieSeen}
+         where memberId=#{memberId}
+    </update>
+</mapper>

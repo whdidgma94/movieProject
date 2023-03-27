@@ -10,14 +10,15 @@
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-12 col-md-8 mt-5">
-					<form class="bg-light p-3" action="${ctx}/addNotice.do" method="post">
+					<form action="${ctx}/addNotice.do" method="post">
 						<div class="form-group">
 							<label for="contents">제목</label>
 							<input type="text" name="title">
 							</div>
 						<div class="form-group">
 							<label for="contents">내용</label>
-							<textarea class="form-control" id="content" name="content" rows="10" style="resize:none;" required></textarea>
+							<textarea class="form-control" id="content" name="content" rows="10" style="resize:none;background-color:rgb(5, 37, 65);
+	color:white;" required></textarea>
 						</div>
 						<div class="text-center">
 							<button type="button" class="btn btn-primary" onclick="submitForm()">등록</button>
