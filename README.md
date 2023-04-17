@@ -1,6 +1,6 @@
 <h1 style="text-align:center;font-family: Arial, sans-serif;">JOTTE Movie</h1>
 <div style="text-align:center;"><h3>영화 박스오피스 / 영화 추천 및 리뷰 사이트(JOTTE Movie) </h3></div>
-<div style="text-align:center;"><h4>사용 프로그램 : Eclipse , JDK 1.8, MySQL </h4></div>
+<div style="text-align:center;"><h4>사용 프로그램 : Eclipse , JDK 15, MySQL </h4></div>
 <div style="text-align:center;"><h4>제작시기 : 23.02.13 ~ 23.02.24 (2주) </h4></div>
 <div style="text-align:center;"><h4>기획의도 : 영화 박스오피스를 제공하고 영화에 대한 리뷰를 달 수 있으며 선호하는 장르를 선택하면 추천 영화를 보여주는 사이트입니다. 오픈API를 활용하는 능력을 기르고 웹 디자인 역량을 강화 하고 싶어서 제작하게 되었습니다. </h4></div>
 <div style="text-align:center;"><h4>기능</h4></div>
