@@ -1,3 +1,4 @@
+<h1>JOTTE Movie</h1>
 ▪ 주제 : 영화 박스오피스 / 영화 추천 및 리뷰 사이트(JOTTE Movie) 
 
 ▪ 사용 프로그램 : Eclipse , JDK 1.8, MySQL 
