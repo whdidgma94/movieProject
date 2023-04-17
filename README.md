@@ -1,20 +1,37 @@
-<h1>JOTTE Movie</h1>
-▪ 주제 : 영화 박스오피스 / 영화 추천 및 리뷰 사이트(JOTTE Movie) 
-
-▪ 사용 프로그램 : Eclipse , JDK 1.8, MySQL 
-
-▪ 제작시기 : 23.02.13 ~ 23.02.24 (2주) 
-
-▪ 기획의도 : 영화 박스오피스를 제공하고 영화에 대한 리뷰를 달 수 있으며 선호하는 장르를 선택하면 추천 영화를 보여주는 사이트입니다. 오픈API를 활용하는 능력을 기르고 웹 디자인 역량을 강화 하고 싶어서 제작하게 되었습니다. 
-
-▪ 기능  
-
-a. 박스오피스 제공 : 한국 영화 진흥원 API를 통해 전날의 박스오피스를 제공합니다. 
-
-b. 검색 기능 : 영화의 검색 또한 제공하며, 또한, TMDb API를 이용하여 감독이나 배우의 작품을 확인할 수 있습니다. 
-
-c. 리뷰 작성 기능 : 자신이 봤어요 라고 체크한 영화에 한하여 리뷰를 작성하고 평점을 남길수 있는 기능입니다. 리뷰를 작성할 때 평점을 실시간으로 해당 영화에 적용하여 평점순위를 실시간으로 업데이트 할 수 있게 만들었습니다. 
-
-d. 추천영화 : 자신이 선호하는 장르를 선택 할 시 해당 장르에 맞는 영화를 추천해주거나, 현재 상영중인 영화, 개봉예정인 영화들을 추천합니다. 
-
-e. 영화정보 : 각 영화들의 상세정보를 확인 할 수 있습니다
+<h1 style="text-align:center;font-family: Arial, sans-serif;">JOTTE Movie</h1>
+<div style="text-align:center;"><h3>영화 박스오피스 / 영화 추천 및 리뷰 사이트(JOTTE Movie) </h3></div>
+<div style="text-align:center;"><h4>사용 프로그램 : Eclipse , JDK 1.8, MySQL </h4></div>
+<div style="text-align:center;"><h4>제작시기 : 23.02.13 ~ 23.02.24 (2주) </h4></div>
+<div style="text-align:center;"><h4>기획의도 : 영화 박스오피스를 제공하고 영화에 대한 리뷰를 달 수 있으며 선호하는 장르를 선택하면 추천 영화를 보여주는 사이트입니다. 오픈API를 활용하는 능력을 기르고 웹 디자인 역량을 강화 하고 싶어서 제작하게 되었습니다. </h4></div>
+<div style="text-align:center;"><h4>기능</h4></div>
+<div style="text-align:center;">
+<ul>
+    <li>1. 박스오피스 제공 : 한국 영화 진흥원 API를 통해 전날의 박스오피스를 제공합니다.</li>
+    <li>2. 검색 기능 : 영화의 검색 또한 제공하며, 또한, TMDb API를 이용하여 감독이나 배우의 작품을 확인할 수 있습니다.</li>
+    <li>3. 리뷰 작성 기능 : 자신이 봤어요 라고 체크한 영화에 한하여 리뷰를 작성하고 평점을 남길수 있는 기능입니다. 리뷰를 작성할 때 평점을 실시간으로 해당 영화에 적용하여 평점순위를 실시간으로 업데이트 할 수 있게 만들었습니다.</li>
+    <li>4. 추천영화 : 자신이 선호하는 장르를 선택 할 시 해당 장르에 맞는 영화를 추천해주거나, 현재 상영중인 영화, 개봉예정인 영화들을 추천합니다.</li>
+    <li>5. 영화정보 : 각 영화들의 상세정보를 확인 할 수 있습니다</li>
+</ul>
+</div>
+<table>
+<tr>
+<td><div>메인 화면</div></td>
+<td><img src="https://lh3.googleusercontent.com/fife/APg5EOYpv8LbQJf1fRZ8wCm8uKkSL_RycEDOHrD444lyaV4d00eoK5qNks1O_wFsMJZLOVGt547xZJ9RR1E54huMDXdU88imD_QovbNu0hF2Vx6UEHniqt3zfR0iytePAjbysN2FAD69Tqbz_eAr4tGGwLTbtuncrlLg4iaov6o6TBeD_nc5-5No9NknipSNz6_sD4lXzyys7itOix2SXa-mexkHBMPU0wPX0mvTZ6oUdZtp3IvvM2Qy9DjrZrLJUQE4hZyQgIIPPZqJqk2NibppQNSZLxCFwBBGal7BhLpy0sr9z4k8HEnrlNVnpmpgY86CT6wXjpzfIO_56PwV_7Nhc5Jw2K8nGQapTKfakB6xREmzx7Z_R6Onip6I2ZXd4Sybhl5wmWxO9xw7nsTZlIiYlsxDaagP7aPPtHswZaMcVWl6JyjWcTMsAIt8_DfAaKxMhRDqk1JEOWRn1mn_Yvc8rrN5Kim_gUf0-e6bpCy8cvOgzVqKn0iUylweU6I-Em-zjhjh37eQS5IuTglXs6kVYMfgmqCg2ht4LBiJbvI_8nfaZxdNRi8mcke-MrpMMqNEaBq88qzG10O335Wltl8CGMtveeTkwH8hHSTUeFxYV31A87jiFPL9uZf1SMAK1lYiAC-TwAo6kGVgOey41YxXhFa6k_0DKvc1pB7OfsEmUipLylznu7iQhsu3HkFAnCd2PWyNjwjrkyCmIAoA4pX5SGbXfiCpr6AN124OgiTY1giEUR9_G3Bi_ROAF-gPDfUh6TSH0fjCqoKxKo1zdEPi-mbdznkrDHrhKKw2FpFnajWKihGeCC-I7dIOwU1xKUqlIXMrPwT0vXop_Z8YiEzWjLAR1o3KWq3r6JzUEdgKsspADICvgjNDMcEjfRe9RxS9c7dElk1Ji-7-l3n2wu-s3-SKq1eaTlSHsor9ZHwNhKEmrVvj8WXqphWZdeGpcYNxR-gBA0HsCfE0f_lN74cz0imAOS0G-EFQePcWDIBXotolnXIwaEe8iIRztHw-3H7ahJ7vzZ1kpUjHjwVV3xFDO_Ps1lUEj2QoM4YhiFPTFEvC24fHzt96p53vnoPVax3YA7mbNqPjNEcpiSIg8o8wGcKpXhEfjIs5Z8MvIur0c3I8MtZ03WZ_rRdQ_rDL1OXPyrVtUZ_llCb-8y5tKRYFAFry0W3-PG1aJgZ-s9FejAhAJvMsPL4ujB_D_j-FCOv4bikoqi0Ppnzcdm2jh9MG1ylF1y0f8PXxxXFnPbh7Cj_M_3fJ9a9QIP-uAhaPz4a10oNENV2wdbdLw-wba091mIoPWmMWWbjKkvo5bF0dNe3Dy6O-VYHSBUjTHg4_TfX5BLJ6SX0cI7SDdeMx5ajsMgabe_5BwbYrDG_ZN0G-RQo_i_EY_DT_zSgWWmgoKxCKPohCzKgSWWhpdv09hDC23jXXt_b09vLztWAQXNs0Ox_geCttwLRIxIc0Wgt5ZJ727JaRqFLeTrjswvi3OGKEq0rvA49BKeb3pEvguM60HszN3DEeWNN6Qw=w2064-h969" width="800" height="400"/></td>
+<tr>
+<tr>
+<td><div>선호영화 추천 화면</div></td>
+<td><img src="https://lh3.googleusercontent.com/fife/APg5EOaOmRffR9ng_kMY0u7rbDN02FhLvauXP0-Xm74XGGgH5OFWjYI6PyL9sbWNHCmzOo-0QMdq28zuGlJ5dtjsUDZd_1q2Euig9TcwTmP6jv2YQgzsh8SFKmORSe7jZ16wG8eVymvqWxD55uI8yxco2MZPz8TOIup_3BHZXcYqUTc5PGXtRzEJec-qel70vchKML5QyKAKbQGQXaTSleBfTfWm-_LNOWr88sqayrHf4Aez7RJzzPupdqTGITcbOEkXZ-Qjly5uNr6rbqHTb85HUSNTDTjhTl5otbwC70LKjOhaGIs0vp44Fdw1WD7Fdz7lirbF-DdpZcL7vEYlQSbGGkILQfq5SaJkGQNhiCCLU6923MyBqLxhcxTimI2u9CNNJ2ABRxXBbsgBxpCoaZ4551M7W9sxg-IuRKoAydHUvrjlZEpjlFIWDzEzSK8EFBBHdsrwEi8QX8fZcTNr8o8XlXPkGREy8lmwLV_xuPJx11yjYCBIZavjxOKGr1xhjsMRUmp2lPvkc4o1rCRhxA9QsJK8Np1gKyNbNZBC3e8XXMBWrrUdOobBMJsVZA10lSZDTCpXDETLKBDUu-eLfpBEuIX4Djb6jm_h-u0w_XNFOSfgeHBNs0No28PkOZIPcle_kTbSv1-nzh-xu0njUo9y-kPoji1DcgX4g6s9DVXIYXg1FczKVqDteEorizkVtk8DdXF5KqFXHF31iepmkYOYP7Y_dD2-ezDz8X9ghQvzbMkyeiUKPmiMjcgyVsw-PlLVI8P5KJn5DX9djGlfQiVvMtK9HSUhKEMfWIvYNJ9nCcCzLBsBsFXg9CntSFF49WpN2ru19nDflUtUDUeTp7Krue_GOd3T4jaek-M9Gwznh8L_RS3YSxabQ751pF1pb1RK7Z-Rr9KOFEZ-S9tz50T8_2AbKGdvw9K51_gFZvNm-R6Rs07sjwefm_cCQcKi9YTvSl4QBRFXYqUP1vbokoeHkTNGzC58ouo_M4u_UX60zpUdzW7jaPThl2JkNElIk4otqpKLhI2NDHwi5pwpW93pd65kG7V7vTbsC757jko-3z1dBeDU3myp5-sizv2ye2LiFWepJrTNNPIn7oHofax2w9RBTq_Mi5Cy_v8-sjv0LfPxKLNNEtqaAZM7hQ4-ecNiYc5raOnHJoaKp0p7JxSXTJgshkxe1onu8NHn8BMdPtvl6rw1la_SVzQa-P8KKAFD0Q2qz0A5PG1ImiofaBaXmCh7AxKLhGaeSYyRnrlWBosXpb718GYf-cbzRF9JQpJGxdG-zJoMLW_lCLhG3rysTa3Rc-Pagn0_MAM-WkIQI8BnIHZ_dzfhUYJIPIiaN40rf7MQlcT8Nubx2Ihpvf0jpN8YNHTRcNhwCU9T8j7mkGNaUoll0_FqKc4MxePWjnqZ960DYtsP9AARQ1BdtpaC0k0ZWxp9plWb_Q3uq_Lo8M8wSPvMJRgph2QxD8wKjjwPSvXnLOEai0azGauNRFQOsXtOch-WLy46w68uxw78uO73jId3qKmirA=w2064-h969" width="800" height="400"/></td>
+<tr>
+<tr>
+<td><div>박스오피스 순위 화면</div></td>
+<td><img src="https://lh3.googleusercontent.com/fife/APg5EOaEj0CZrpFUoYgSLHwtNyu5oUqnASHz7Nu7UfUpUJse5S96sdV-NPHV2SieX0gy_v1-H3ICGfavGHqNbJ4oSW2bJKTV_uyeEalFSd4KnP9o3vQOAJk4rb5GNwqbeJBkK2fA5UyzH6hBixH56ZSu0iuZMSu8sNy1G8VDruiJx5lfWROONI2OSBZ_nN_AqrddOczEZbJJjQhZngrR3BH2sKo4VXVHhDCwNElAIfErkyatcX-8a5BAISxjIAQr4HuaLY2gYvexgcwvD_7ciVAns6tgoez0eFlTsh-uVJLXmNNAyNeGD7_o8mXiyHX_uVs5e4beaU5cI2xuiaJvveaKaMXbkfNT1GGMAe6jp2saH3G5SrXyem2GZL_Qewn0w_pIyiVDQG85533IKV8FBTjSJvEnG61HKnGQTtXymIqdwtvfpkvHhiMm3plH0wr5CrpA8SNPKRLpUIGvTW9NaykAZ5_rpY0HJkeb1AIvaH-5wJwnvMPdPielq7Uh4hih_7_5y-vqYIZYjw6RTU3dnoYX69JeTGmVc61qcuf7jL9okaBh15cKF1x6zNO25HW1xGNfevTQ1gir5f0xbj9dfZC_2mecj-n2SHNblFepf3Paz2J3QjgIrayQ6GFx7BtJDDulfSIjt6XSiTRU8v5f_WWONJKqRY3CsdynsvQGIECgqhS7rRub8NbiXvBBodXP_WNfrbhKIi28RFqBaNo893_7bxGGoQFgywafhO4Iua-dMzqyjpfvDkHXM31l1-OWIV13qIDi2BtioVDUDDVi4uzzTAM99OFpV6YViNInoZ7PDleET8uRsPszCj0rSfHwjtx4tQBYbYCVGq_DYzn3tlNL7Bx5sOMlSrUOkRY28ByKADTeXHhqwvBGe3UwRF09yP2g-n1vJBKHULuALDwMVy4Pi90krWJcEfYo1iUVtyF02c0G8aL1dCN_PeofEOxoUHDA398zjG1AZmHrw9lCmzeYSrYAFztQ_t9PGSVHk8C5ZlCn6gi_33G4GL1LMsTWldXhaas-9e28bIxWaxZ96Y5UE-nwKwAOE3UtZ3Xph0t5JmqfUuvZ6EKgoPwaEJEzs9WjKIU5m-7u0s5NnWVw5vWQyf2YSrSnYHc4urv5oqdnaTsjVkEbettiWfiAFHDftgsOjmCYYLJ0oioodnlwRSsfAQ3OwZOUuc1F80UW-4oWafqRqyemBqVy7Xoq8NvZrS1hwYd8fUL-lW-4flcQhCEJR8GM3Ns8TwGcYYMbOxQQZxEprHX8vbX0i2QR6YzEf8e8FGuiIzpiItY9v3tpwqlGR9xZhHuKIwt7VWeWzBu-t-65PwLdFg-VZA-TazGX8SgZD7li4qJMm3VUFxdr5ta52aGMOgL-jnazbxAOymFGUhjBj3cdaWMftBeHf5d-x6c8qWNsPJZR6gv_cnOV0gsCGOkLwAv89VVhiyX87A7cCklztCfY9_sqM-pqLsSrbHCUvnAc7RJV_5L18f9TNnm3MRmXBt4a9E7TMmmDeM_y9e5bGqpeZkrDxw=w2064-h969" width="800" height="400"/></td>
+<tr>
+<tr>
+<td><div>영화 리뷰 화면</div></td>
+<td><img src="https://lh3.googleusercontent.com/fife/APg5EObDV3OtIjFxKFxjNMJV-zZ0K6lrbD5HjdJbuRvuUx9cC8e57zLLWuoKL_Ts_OOXB6lwW-Cv7rnV2g-VlYqzuB76slKq4Txe9KfBNLjup36dEeRcx_rUFZIqqzAgCdvGV9A5fO2a2H-m0nyAlBODHvIEYriyl_6Ldt844IklFHGC2wJPiu9rDMcy-S_fxfNerLgMSjaYShmh5NF-musC0gXYEJjBub0ci_TUmb9Ke19od8-ZE5OjQMWxxh3In4XEjxTl5hYxWHCc0HH-uks2cY5V1QchQLuLvNX-wrjd8cAlYVFOCm7MiRjvWmC3Qimov851Qw_RuyfESYXp4xAELoTiVSGdEvDJvEnnSiZ7UGBMuUH94NZRIG6tHZ-bW__o7Jk2vAHWVIHFYRVNODVTgvvMRy_2gotZLuP3-434Dn7xo9r6gc24qXYgXtLL6f0nRvlUTCqEnlqjwDmxmr28hs644kZpJvQ_THRVXqnkkIY4vvfudpTaPy-H8Tk8jlaVwppBgGGXRtqcbbOLKF4SCFXR-eVtRDZ_ROWXOWU98TDLmtZ1B9lFaJGqOMLoQjselX0qiGbnetAQ4w2t0c6_tkPLG1pE2ekzmYYncclccASvmLjhdrKpvdAXkMdIVKBZB29EaT7awDyhft3rKTAslRIj13JG1dGN3PXf-02Pl5-y5AD9H4W7gA8mMM6WufsEETX72xhLnulq2T_QVK65WM_sYHAabQO09wPptGPGZaGtic_8PFHt3IH0_Yf-B1PYura3CWSQzbSSwbA2LCP0rguHULbTTVqcd6aSx-dOPiAS1qRGv5Z_PZitkgIBJBCuBdI_c2KMLv99DiJdvJlYpZmn9yFrxAxMd307R-TBlzJSGb4AJ4ktBElzxIWuMdRQDKK9qGCr-QKXtXstPLUR4hjDXfpY_bLK_QuBSMYfIGAMQHogaZN7aCkRRU7Z86fKbCMwUDJC4EvhqoIQoMqVYcpOrwvg0wiq4Np-ZxcXUE4-pMy-4h5dOZXjs6qpQBV5ETiBb0eV0EhNPqKhvFz7g9GwWKlo3zXk5_z-Jw0iP3qELxGwS2mtmkF8-X9f0FWjPmP-wVqfu4Fg0958VuX2A8MFumVSzqvnIYSD9_4fwlSD5h-TSDZwHGawN1i4WrL1vqekVMfpN1s2He0-Wc74ksgXYSwyYzXvaeb4t7mQanzHjTVe-mjsxRb_S_jwyJJD4dxuMPi5D9f-j6K9a9sKHrSxveR61o-o8Ki5oKmm4_41WZTQ328YunezI0ZW-GV39L9YnPits_gT_g98h2QU7h_1qzUYN6hv7AWhWA_VL-AevCBZAwIHfC7tnFsTbpCRh_5Zy2biNK5107iTPFI9Fy8lKeG1s00zX7LMgmA4P7kB3h4oa1qJb3aWdU2-2qmovGf86nQ04DUAmEZ7byi3PYRSZ-eM_MFdiThUFUTRp0Ut1algjvk5648z4Kzu7gxpab_8WcnJLEuTT8InvbCrZKiMwpgXc6bdXm8vBDBjddX2O17JWBoGlg=w2064-h969" width="800" height="400"/></td>
+<tr>
+<tr>
+<td><div>영화 상세정보 화면</div></td>
+<td><img src="https://lh3.googleusercontent.com/fife/APg5EOZ_9x9DISw6sIYAd9oa1PlWc7Zuus_AymFZTU9KHb8BkTTFDSfUznwcgmFFHXORb0EoolJ-xLsqQQSgZVL4v9eT56dl3D8QEHFRafxbk1HL0P-xF3F12m9Ir1QmFcSR6Do21GvDYe_AR9en784hBqwWx0dU25s9sHhhau__Rl7pbr9M-WyO3M1hK9TdqL1rELdNZmkal9GSwCnLoQZEHxv5Z1AETVIwzd8bjBizmuBc8Mmww4z8Dv8g5cUwBlWlnwbjL5kxUVkm8rLTmwYNf4V9IIm93puaE13ZS7E-WJpH3Wn8grnDGMICUJfsUaIMFp_CM8BlxWhACq8ksZaotvJ1OUghahErAGMySwLOTgvlS_oxHggkm7236W0Yw8Sjjh00gAIP6LMkoDL6GjJkwn4XFZzabWsjyn9VK9tSTywWZ_QadaG67LS3dmeqdIrI1-XmgIInym2OZ6NVh8xX4oL7I1DTC0yK_zVDWFMCr4_bmowZ09sxtCOpj1v5cKyP1kxWaBO-Lvg1DF2lGcFgeLpOd9s3qnEEVQbLSjOtGOPkMf2pmRmaGEXhcLEOWBAM74Zc62_e0m6Ae_A2b88NlBRJBJN3nfDU-wqo-cS-WK9jOFl7-0BisYuhMhW3XEhPjwKuuVCLQCtFQcpNyVwE7Xu82K8g8yU50cQ8lmd9IkLqMdi4w8WF-2M4O9kk6bZVgsqXisQZBUNeecNT2KfOt70H48PZobkiPAnzfVvhn2UZHVTfQKoxTrDc4d-cRUlKqG4ueoqNe-phDcOUMsBhNTtzkSi82VkoaCAC5KNU295ZFp7uzHdoCW4mozaxbRtkrX0cW74QByIr8OZ4FI4C-0LtuS5FkyHT2IGepDk_4X2fNV-DoqPxZtPSZqzFcweEnZXei1yVndRAnjHKqqGv3k8IQIalLOAJmlZGG4z5BZi51WejAzvbK5JeWLmve11jphnpdY_7WrB_KHsQyLGBSlRx8dneij92u3fXTA9dTulpuk7MSJ0n0r6hj5YeiJUyH46qXGrJkCMTYRMl-PyYw1NXGJGNCUyoNLjCYIXX2OPGrggGWg_JdczzxfgATZscR6Wlclpmmaw2-uniSwt5y7Ubq3qWsFLihxdD3s1LTPBDWBeLHf3LGMhmUTL-dRg3mA5P-jTxh9xw6VxPSS7XHJiBJOooHm1FBgkUk34T9nr9alHh4_9AHNBBQPQuk5zTg1hoVA4-LNCI7EeOe8GNykAdz6SZPjbEUUHFAw8IPgbXhP4RBaKZDAdhfrGXqwXXZFd7kL7Qa9XsgXtjN1MuiDD4dq9ewZdsOAV0zgMEDmvU6-sGPpzF0eU7FA-1p9cwlVLwG4oOQYRpKFZyl0k0bIsdSTGumpjSBu0BGwVM_yveHx9_QS1iFn8ZQw91OVHn17zpDucs_pd2Yw4vWFkvdMt0YJu9IaPEdb5HBc3zV-MgAGnrSFFloO29FBqXVMvqBFylSJpWVfotEp-4OpGASSzqgChVeqseZB_wmuSZ1gf2GhRppeiALA=w2064-h969" width="800" height="400"/></td>
+<tr>
+</table>
