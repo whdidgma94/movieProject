@@ -1,4 +1,4 @@
-<h1 style="text-align:center;font-family: Arial, sans-serif;">JOTTE Movie</h1>
+<h1 style="text-align:center;font-family: Arial, sans-serif;">JJOTTE Movie</h1>
 <div style="text-align:center;"><h3>영화 박스오피스 / 영화 추천 및 리뷰 사이트(JJOTTE Movie) </h3></div>
 <div style="text-align:center;"><h4>사용 프로그램 : Eclipse , JDK 15, MySQL </h4></div>
 <div style="text-align:center;"><h4>제작시기 : 23.02.13 ~ 23.02.24 (2주) </h4></div>
